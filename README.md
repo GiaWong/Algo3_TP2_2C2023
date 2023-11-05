@@ -8,7 +8,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 * **Integrante 1** - [Angie Isabella Valdivia Wong](https://github.com/GiaWong)
 * **Integrante 2** - [Ignacio Urbieta](https://github.com/ignaciou)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
+* **Integrante 3** - [Lopez Francisco](https://github.com/integrante3)
 * **Integrante 4** - [integrante4](https://github.com/integrante4)
 
 Corrector: **{Corrector}**
