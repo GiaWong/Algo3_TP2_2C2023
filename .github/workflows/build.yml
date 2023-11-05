@@ -19,7 +19,7 @@ jobs:
     if: contains(github.ref, 'refs/tags/v')
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
       - name: Start services
         run: scripts/start_services.sh
       - name: Package
