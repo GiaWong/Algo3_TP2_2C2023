@@ -10,7 +10,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 2** - [Ignacio Urbieta](https://github.com/ignaciou)
 * **Integrante 3** - [Lopez Francisco](https://github.com/franlopez1234)
 * **Integrante 4** - [Gabriela Yanes](https://github.com/YANESGHD)
-* **Integrante 5** - [integrante4](https://github.com/integrante5)
+* **Integrante 5** - [Roy Fiorilo](https://github.com/Rfiorilo14)
 
 Corrector: **{Corrector}**
 
