@@ -26,4 +26,27 @@ public class CasoDeUso1 {
         assertEquals(energiaEsperada , unGladiador.obtenerEnergia() );
         assertEquals(equipamientoEsperado, unGladiador.obtenerEquipamiento() );
     }
+
+    @Test
+    public void VerificarQueUnGladiadorSalgaDeLaCasillaInicial() {
+        AlgoRoma algoRoma = new AlgoRoma();
+        algoRoma.registrarCantidadJugadores(1);
+
+        Tablero tablero = new Tablero(1, new Casilla(1));
+        algoRoma.registrarNombre("Rosher");
+
+        tablero.agregarJugador(new Gladiador(20, new Novato(), 0));
+        Gladiador gladiador = tablero.obtenerGladiador();
+        Dado dado = new Dado();
+        Casilla casilla = new Casilla(3);
+        tablero.avanzar(dado, gladiador);
+
+
+        int casillaEsperada = 3;
+
+        assertEquals( casillaEsperada, gladiador.obtenerPosicion());
+
+    }
 }
+
+

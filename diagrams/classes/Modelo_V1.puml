@@ -11,10 +11,14 @@ class Gladiador{
     -energia:int
     -seniority:Seniority
     -turno:int
+    -posicion:int
     +Gladiador(unaEnergia:int, seniority:Seniority, unTurno:int)
     +gastarEnergia():void
     +aumentarEnergia(seniority:Seniority):void
+    +avanzar(unasCasillas:int):void
+    +obtenerPosicion():int
     -aumentarTurno()
+
 }
 
 

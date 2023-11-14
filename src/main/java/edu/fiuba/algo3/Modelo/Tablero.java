@@ -10,4 +10,13 @@ public class Tablero {
     public Gladiador obtenerGladiador() {
         return (new Gladiador(20, new Novato(),0));
     }
+
+    public void avanzar(Dado dado, Gladiador gladiador) {
+        int moverUnasCasillas = dado.tirar();
+        gladiador.avanzar(moverUnasCasillas);
+
+
+
+
+    }
 }
