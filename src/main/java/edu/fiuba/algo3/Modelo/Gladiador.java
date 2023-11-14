@@ -4,12 +4,13 @@ import java.util.Optional;
 
 public class Gladiador {
     private int posicion;
+    private int energia;
 
-    public Gladiador(int i, Novato novato, int i1) {
+    public Gladiador(int unaEneriga, Novato novato, int unTurno, int posicion) {
     }
 
     public int obtenerEnergia() {
-        return 20;
+        return energia;
     }
 
 
