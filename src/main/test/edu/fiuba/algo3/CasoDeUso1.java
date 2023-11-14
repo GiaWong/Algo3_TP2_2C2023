@@ -21,7 +21,9 @@ public class CasoDeUso1 {
         Gladiador unGladiador = tablero.obtenerGladiador();
         int energiaEsperada = 20;
 
+        int equipamientoEsperado = 0;
+
         assertEquals(energiaEsperada , unGladiador.obtenerEnergia() );
-        //assertEquals(Optional.ofNullable(null), unGladiador.obtenerEquipamiento() );
+        assertEquals(equipamientoEsperado, unGladiador.obtenerEquipamiento() );
     }
 }
