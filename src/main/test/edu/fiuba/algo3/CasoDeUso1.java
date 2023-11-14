@@ -41,7 +41,6 @@ public class CasoDeUso1 {
         Casilla casilla = new Casilla(3);
         tablero.avanzar(dado, gladiador);
 
-
         int casillaEsperada = 3;
 
         assertEquals( casillaEsperada, gladiador.obtenerPosicion());
