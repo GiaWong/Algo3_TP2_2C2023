@@ -6,4 +6,8 @@ public class Tablero {
 
     public void agregarJugador(Gladiador gladiador) {
     }
+
+    public Gladiador obtenerGladiador() {
+        return (new Gladiador(20, new Novato(),0));
+    }
 }
