@@ -1,0 +1,135 @@
+@startuml
+
+
+class   AlgoRoma{
+    +registrarCantidadJugadores(unsJugadores:int)
+    +registrarNombres(unNombre:String)
+}
+
+
+class Gladiador{
+    -energia:int
+    -seniority:Seniority
+    -turno:int
+    +Gladiador(unaEnergia:int, seniority:Seniority, unTurno:int)
+    +gastarEnergia():void
+    +aumentarEnergia(seniority:Seniority):void
+    -aumentarTurno()
+}
+
+
+class Tablero{
+    -cantidadJugadores:int
+    +Tablero(cantidadJugadores:int, unaCasilla:Casilla)
+    +añadirJugador(unGladiador:Gladiador, unNombre:String):void
+    +avanzar(unDado:Dado, unGladiador:Gladiador)
+    +retroceder(unDado:Dado, unGladiador:Gladiador)
+}
+
+
+class Dado{
+    +tirar():int
+}
+note left: 1) Trabajará con el numero aleatorio entre 1-6\n2) El numero saliente indicará cuantas casillas avanza
+
+
+interface Premio{
+    +{abstract}plusEnergia():int
+}
+
+interface  Obstaculo{
+    +{abstract}restarEnergia()
+}
+class Bacanal{
+    +restarEnergia()
+}
+class FieraSalvaje{
+    +restarEnergia()
+}
+class Lesion{
+    +restarEnergia()
+}
+
+
+interface  Seniority{
+
+    +{abstract}plusEnergia():int
+
+}
+class Novato{
+    +plusEnergia():int
+}
+class SemiSenior{
+    +plusEnergia():int
+}
+class Senior{
+    +plusEnergia():int
+}
+
+
+abstract class  Equipamiento{
+    +{abstract}plusEnergia():int
+}
+class Casco{
+    +plusEnergia():int
+}
+class Escudo{
+    +plusEnergia():int
+}
+class Armadura{
+    +plusEnergia():int
+}
+class Espada{
+    +plusEnergia():int
+}
+class LLave{
+    +plusEnergia():int
+}
+class Nada{
+    +plusEnergia():int
+}
+
+class Comida{
+    +plusEnergia():int
+}
+
+class Casilla{
+    -numeroCasilla:int
+    -unPremio:Premio
+    -unObstaculo:Obstaculo
+    +Casilla(unaCasilla:int)
+    +recibirPremio(unPremio:Premio)
+    +recibirPremio(unObstaculo:Obstaculo)
+}
+
+
+Tablero *-left->"*"Casilla
+Tablero *--->"2...6 "Gladiador
+AlgoRoma o--> Tablero
+Tablero -up-> Dado
+
+Casilla --left-> Obstaculo
+Casilla ---> Premio
+Gladiador --> Seniority
+
+Premio <|... Comida
+Premio <|... Equipamiento
+
+Equipamiento <|-- Casco
+Equipamiento <|-- Escudo
+Equipamiento <|-- Armadura
+Equipamiento <|-- Espada
+Equipamiento <|-- LLave
+Equipamiento <|-- Nada
+
+Obstaculo <|.. Bacanal
+Obstaculo <|.. FieraSalvaje
+Obstaculo <|.. Lesion
+
+Seniority <|.. Novato
+Seniority <|.. SemiSenior
+Seniority <|.. Senior
+
+Gladiador -> "*"Equipamiento
+
+@enduml
