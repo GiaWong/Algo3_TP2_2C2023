@@ -5,8 +5,12 @@ import java.util.Optional;
 public class Gladiador {
     private int posicion;
     private int energia;
+    private Novato unSeniority;
 
-    public Gladiador(int unaEneriga, Novato novato, int unTurno, int posicion) {
+    public Gladiador(int unaEnergia, Novato novato, int posicion) {
+        this.energia = unaEnergia;
+        this.posicion = posicion;
+        this.unSeniority = novato;
     }
 
     public int obtenerEnergia() {
@@ -14,8 +18,7 @@ public class Gladiador {
     }
 
 
-    public int  obtenerEquipamiento() {
-        return (0);
+    public int  obtenerEquipamiento() {return 0;
 
     }
 
@@ -25,5 +28,9 @@ public class Gladiador {
 
     public int obtenerPosicion() {
         return posicion;
+    }
+
+    public void setEnergia(int unaEneriga ){
+        energia = unaEneriga;
     }
 }

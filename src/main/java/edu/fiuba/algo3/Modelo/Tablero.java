@@ -1,22 +1,50 @@
 package edu.fiuba.algo3.Modelo;
 
+import java.util.ArrayList;
+
 public class Tablero {
-    public Tablero(int i, Casilla casilla) {
+
+    private ArrayList<Gladiador> listaDeGladiadores ;
+    private int cantidadDeJugadores;
+    private Casilla unasCasillas;
+    private Turno turno;
+
+    public Tablero(int unosJugadores, Casilla casilla, Turno turno) {
+        this.cantidadDeJugadores = unosJugadores;
+        this.unasCasillas = casilla ;
+        this.listaDeGladiadores = new ArrayList<>();
+        this.turno = turno;
     }
+
+    public Tablero(int unosJugadores, Casilla casilla) {
+        this.cantidadDeJugadores = unosJugadores;
+        this.unasCasillas = casilla ;
+        this.listaDeGladiadores = new ArrayList<>();
+    }
+
 
     public void agregarJugador(Gladiador gladiador) {
+            listaDeGladiadores.add(gladiador);
     }
 
-    public Gladiador obtenerGladiador() {
-        return (new Gladiador(20, new Novato(),0));
+
+    public boolean validarTurno(Gladiador unGladiador){
+
+        return (turno.jugar(unGladiador.obtenerEnergia()));
     }
 
-    public void avanzar(Dado dado, Gladiador gladiador) {
+    public void avanzar(Dado dado) {
         int moverUnasCasillas = dado.tirar();
-        gladiador.avanzar(moverUnasCasillas);
+        Gladiador ungladiador = listaDeGladiadores.get(0);
+        if (this.validarTurno(ungladiador) == true) { //(esto es un pecado) refactorizar con excepcion
 
 
+            ungladiador.avanzar(moverUnasCasillas);
+            int energiaModificada = unasCasillas.modificarEnergia(ungladiador.obtenerEnergia());//por ahora es 1 sola casilla
+            ungladiador.setEnergia(energiaModificada);
+        }
 
 
     }
+
 }
