@@ -52,7 +52,7 @@ public class CasoDeUso1 {
 
     }
 
-|    @Test
+    @Test
     public void VerificarQueSiRecibeComidaIncrementaEnergiaEn15() {
 
         Tablero tablero = new Tablero(1,new Casilla(new Comida(15)),new Turno(30));
