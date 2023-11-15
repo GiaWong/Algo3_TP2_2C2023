@@ -20,7 +20,7 @@ public class CasoDeUso1 {
         assertEquals(equipamientoEsperado,unGladiador.obtenerEquipamiento());
 
     }
-    
+
     @Test
     public void VerificarQueUnGladiadorSalgaDeLaCasillaInicial() {
         Tablero tablero = new Tablero(1, new Casilla(new FieraSalvaje()),new Turno(30));
