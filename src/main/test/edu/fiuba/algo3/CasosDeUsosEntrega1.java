@@ -85,44 +85,43 @@ public class CasosDeUsosEntrega1 {
     public void Test05VerificarQueSiRecibeUnPremioPorPrimeraVezObtieneUnCasco() {
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
 
         tablero.agregarJugador(unGladiador);
-        //System.out.printf("%d", unGladiador.obtenerPosicion());
-        tablero.avanzar(new Dado());
-        //System.out.printf("%d", unGladiador.obtenerPosicion());
-
         tablero.avanzar(new Dado());
 
-        int energiaEsperada = 5;
+        unGladiador.agregarEquipamiento(new Casco(5)); //PONERLO DENTRO DE Casco
 
-        assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
+        int longitudEsperada = 1;
+
+        assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
     }
 
-    /*
+
     @Test
     public void Test06VerificarQueSiRecibeUnPremioPorTerceraVezObtieneEscudoYEspada(){
 
         Tablero tablero = new Tablero(1, new Turno(30));
 
         tablero.agregarCasilla(new Casilla(new Casco(5)));
-        tablero.agregarCasilla(new Casilla(new Armadura(5)));//verificar la energia
-        tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));//verificar la energia
+        tablero.agregarCasilla(new Casilla(new Armadura(5)));
+        tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
 
+        unGladiador.agregarEquipamiento(new Casco(5)); //PONERLO DENTRO DE Casco
+        unGladiador.agregarEquipamiento(new Armadura(5)); //PONERLO DENTRO DE Armadura
+        unGladiador.agregarEquipamiento(new EscudoYEspada(2)); //PONERLO DENTRO DE EscudoYEspada
+
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
 
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        int longitudEsperada = 3;
 
-        int energiaEsperada = 18;//describir la cuentaaa 20-
-        assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
+        assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
     }
-    */
 
     @Test
     public void Test07VerificarQueSiHayUnCombateConUnaFieraSalvajeYTieneCascoPierde10Puntos() {

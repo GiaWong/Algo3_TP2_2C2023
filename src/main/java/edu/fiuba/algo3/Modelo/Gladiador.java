@@ -1,15 +1,19 @@
 package edu.fiuba.algo3.Modelo;
 
+import java.util.ArrayList;
+
 public class Gladiador {
     private int posicion;
     private int energia;
     private Seniority unSeniority;
+    private ArrayList<Ocupacion> listaDeEquipamiento;
 
 
     public Gladiador(int unaEnergia, Novato novato, int posicion) {
         this.energia = unaEnergia;
         this.posicion = posicion;
         this.unSeniority = novato;
+        this.listaDeEquipamiento = new ArrayList<>();
     }
 
     public int obtenerEnergia() {
@@ -36,5 +40,10 @@ public class Gladiador {
 
     public void setEnergia(int unaEnergia ){
         energia = unSeniority.modificarEnergia(unaEnergia);
+    }
+
+    public int obtenerCantidadDeEquipamiento(){return listaDeEquipamiento.size();}
+    public void agregarEquipamiento(Ocupacion ocupacion){
+        listaDeEquipamiento.add(ocupacion);
     }
 }
