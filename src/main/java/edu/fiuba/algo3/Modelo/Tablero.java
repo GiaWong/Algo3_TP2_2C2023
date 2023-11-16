@@ -27,7 +27,7 @@ public class Tablero {
 
     public boolean validarTurno(Gladiador unGladiador){
 
-        return (turno.jugar(unGladiador.obtenerEnergia()));
+        return (turno.jugar(unGladiador));
     }
 
     public Casilla obtenerCasilla(int unaPosicion) {
@@ -39,6 +39,7 @@ public class Tablero {
     public void avanzar(Dado dado) {
         int moverUnasCasillas = dado.tirar();
         Gladiador ungladiador = listaDeGladiadores.get(0);
+
         if (this.validarTurno(ungladiador) == true) { //(esto es un pecado) refactorizar con excepcion
 
             //Casco casco=listaDeCasillas.get(0); //POSICION 0 DAME LO QUE TENES --> CASCO
@@ -47,6 +48,7 @@ public class Tablero {
 
             ungladiador.avanzar(moverUnasCasillas);
             int energiaModificada = unaOcupacion.modificarEnergia(ungladiador.obtenerEnergia());//por ahora es 1 sola casilla
+
             ungladiador.setEnergia(energiaModificada);
         }
 

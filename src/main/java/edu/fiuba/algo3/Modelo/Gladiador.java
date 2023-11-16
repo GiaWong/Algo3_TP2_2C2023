@@ -3,7 +3,7 @@ package edu.fiuba.algo3.Modelo;
 public class Gladiador {
     private int posicion;
     private int energia;
-    private Novato unSeniority;
+    private Seniority unSeniority;
 
 
     public Gladiador(int unaEnergia, Novato novato, int posicion) {
@@ -22,6 +22,10 @@ public class Gladiador {
 
     }
 
+    public void cambiarSeniority(Seniority seniority) {
+        this.unSeniority = seniority;
+    }
+
     public void avanzar(int moverUnasCasillas) {
         posicion = posicion + moverUnasCasillas;
     }
@@ -31,6 +35,6 @@ public class Gladiador {
     }
 
     public void setEnergia(int unaEnergia ){
-        energia = unaEnergia;
+        energia = unSeniority.modificarEnergia(unaEnergia);
     }
 }

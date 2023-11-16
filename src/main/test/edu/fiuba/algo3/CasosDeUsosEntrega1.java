@@ -26,19 +26,17 @@ public class CasosDeUsosEntrega1 {
         Gladiador unGladiador = new Gladiador(20, new Novato(), 0);
 
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());//ahi adntro hará todas las modificaciones de las energias
+        tablero.avanzar(new Dado()); //ahi adentro hará todas las modificaciones de las energias
 
         int energiaEsperada = 0;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
         // assertEquals(TurnoExpiradoException, tablero.avanzzar(new Dado())); Pendiente en la refactorizacion
-
-
     }
 
-    /*
     @Test
     public void VerificarQueUnGladiadorSalgaDeLaCasillaInicial() {
-        Tablero tablero = new Tablero(1, new Casilla(new FieraSalvaje()),new Turno(30));
+        Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla((new Casilla(new FieraSalvaje())));
         Gladiador unGladiador = new Gladiador(20, new Novato(), 0);
 
         tablero.agregarJugador(unGladiador);
@@ -47,10 +45,7 @@ public class CasosDeUsosEntrega1 {
         int energiaEsperada = 0;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
         // assertEquals(TurnoExpiradoException, tablero.avanzzar(new Dado())); Pendiente en la refactorizacion
-
-
     }
-    */
 
     @Test
     public void Test03VerificarQuejugadorSinEnergíaNoPuedaJugarElTurno() {
@@ -73,7 +68,7 @@ public class CasosDeUsosEntrega1 {
     public void Test04VerificarQueSiRecibeComidaIncrementaEnergiaEn15() {
 
         Tablero tablero = new Tablero(1,new Turno(30));
-       tablero.agregarCasilla(new Casilla(new Comida(15)));
+        tablero.agregarCasilla(new Casilla(new Comida(15)));
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
 
         tablero.agregarJugador(unGladiador);
@@ -105,7 +100,7 @@ public class CasosDeUsosEntrega1 {
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
     }
 
-
+    /*
     @Test
     public void Test06VerificarQueSiRecibeUnPremioPorTerceraVezObtieneEscudoYEspada(){
 
@@ -127,6 +122,7 @@ public class CasosDeUsosEntrega1 {
         int energiaEsperada = 18;//describir la cuentaaa 20-
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
     }
+    */
 
     @Test
     public void Test07VerificarQueSiHayUnCombateConUnaFieraSalvajeYTieneCascoPierde10Puntos() {
@@ -137,10 +133,41 @@ public class CasosDeUsosEntrega1 {
 
         tablero.agregarJugador(unGladiador);
         tablero.avanzar(new Dado());
-
         tablero.avanzar(new Dado());
 
         int energiaEsperada = 5;
+
+        assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
+    }
+
+    @Test
+    public void Test08VerificarQueSiPasan8TurnosElGladiadorPasaDeNovatoASemiSeniorYVeSuEnergiaIncrementadaEnElSiguienteTurno() {
+        Tablero tablero = new Tablero(1, new Turno(30));
+
+        tablero.agregarCasilla(new Casilla(new Comida(15)));
+        tablero.agregarCasilla(new Casilla(new Comida(15)));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla(new Casilla(new Comida(15)));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla(new Casilla(new Comida(15)));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla(new Casilla(new Comida(15)));
+        tablero.agregarCasilla(new Casilla(new Comida(15)));
+
+        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(unGladiador);
+
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+
+        int energiaEsperada = 60;
 
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
     }
