@@ -10,5 +10,5 @@ public class Casco implements Ocupacion {
     @Override
     public int modificarEnergia(int unaEnergia) {
         return (unaEnergia + energia);
-    }
+    }//no se debería restar??
 }

@@ -3,15 +3,12 @@ package edu.fiuba.algo3;
 import edu.fiuba.algo3.Modelo.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CasoDeUso1 {
+public class CasosDeUsosEntrega1 {
 
     @Test
-    public void UnGladiadorSeInicializaConLaEnergiaYNoTieneEquipamiento() {
+    public void Test01UnGladiadorSeInicializaConLaEnergiaYNoTieneEquipamiento() {
         Gladiador unGladiador = new Gladiador(20, new Novato(), 0);
         //act
         int energiaEsperada = 20;
@@ -23,7 +20,7 @@ public class CasoDeUso1 {
     }
 
     @Test
-    public void VerificarQueUnGladiadorSalgaDeLaCasillaInicial() {
+    public void Test02VerificarQueUnGladiadorSalgaDeLaCasillaInicial() {
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
         Gladiador unGladiador = new Gladiador(20, new Novato(), 0);
@@ -56,7 +53,7 @@ public class CasoDeUso1 {
     */
 
     @Test
-    public void VerificarQuejugadorSinEnergíaNoPuedaJugarElTurno() {
+    public void Test03VerificarQuejugadorSinEnergíaNoPuedaJugarElTurno() {
 
         Tablero tablero = new Tablero(1, new Turno(30));//para turno asumimos que el gladiador 1 será el primer turno
         tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
@@ -73,7 +70,7 @@ public class CasoDeUso1 {
     }
 
    @Test
-    public void VerificarQueSiRecibeComidaIncrementaEnergiaEn15() {
+    public void Test04VerificarQueSiRecibeComidaIncrementaEnergiaEn15() {
 
         Tablero tablero = new Tablero(1,new Turno(30));
        tablero.agregarCasilla(new Casilla(new Comida(15)));
@@ -90,7 +87,7 @@ public class CasoDeUso1 {
     }
 
     @Test
-    public void VerificarQueSiRecibeUnPremioPorPrimeraVezObtieneUnCasco() {
+    public void Test05VerificarQueSiRecibeUnPremioPorPrimeraVezObtieneUnCasco() {
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
         tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
@@ -110,13 +107,13 @@ public class CasoDeUso1 {
 
 
     @Test
-    public void VerificarQueSiRecibeUnPremioPorTerceraVezObtieneEscudoYEspada(){
+    public void Test06VerificarQueSiRecibeUnPremioPorTerceraVezObtieneEscudoYEspada(){
 
         Tablero tablero = new Tablero(1, new Turno(30));
 
         tablero.agregarCasilla(new Casilla(new Casco(5)));
-        tablero.agregarCasilla(new Casilla(new Armadura()));
-        tablero.agregarCasilla(new Casilla(new EscudoYEspada()));
+        tablero.agregarCasilla(new Casilla(new Armadura(5)));//verificar la energia
+        tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));//verificar la energia
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
@@ -127,12 +124,12 @@ public class CasoDeUso1 {
 
         tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
 
-        int energiaEsperada = 18;
+        int energiaEsperada = 18;//describir la cuentaaa 20-
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
     }
 
     @Test
-    public void VerificarQueSiHayUnCombateConUnaFieraSalvajeYTieneCascoPierde10Puntos() {
+    public void Test07VerificarQueSiHayUnCombateConUnaFieraSalvajeYTieneCascoPierde10Puntos() {
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
         tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
