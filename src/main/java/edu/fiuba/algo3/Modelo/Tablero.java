@@ -40,6 +40,7 @@ public class Tablero {
             Casilla casillaActual = this.obtenerCasilla(ungladiador.obtenerPosicion());
             int energiaModificada = casillaActual.modificarEnergia(ungladiador.obtenerEnergia());
             ungladiador.setEnergia( energiaModificada);
+            ungladiador.agregarEquipamiento( casillaActual.getEquipamiento() );
             ungladiador.avanzar(cantidadAMoverse);
 
 

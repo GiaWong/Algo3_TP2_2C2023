@@ -23,26 +23,25 @@ public class CasosDeUsosEntregaUno {
     public void Test02VerificarQueUnGladiadorSalgaDeLaCasillaInicial() {
 
         Tablero tablero = new Tablero(1, new Turno(30));
-        tablero.agregarCasilla((new Casilla(new Nada())));
+        tablero.agregarCasilla((new Casilla(new NadaOcupacion())));
         Gladiador unGladiador = new Gladiador(20, new Novato(), 0);
 
         tablero.agregarJugador(unGladiador);
         tablero.avanzar(new Dado());
 
-        int energiaEsperada = 0;
+        int energiaEsperada = 20;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
-        // assertEquals(TurnoExpiradoException, tablero.avanzzar(new Dado())); Pendiente en la refactorizacion
+
     }
 
     @Test
-    public void Test03VerificarQuejugadorSinEnergíaNoPuedaJugarElTurno() {
+    public void Test03VerificarQuejugadorSinEnergiaNoPuedaJugarElTurno() {
 
         Tablero tablero = new Tablero(1, new Turno(30));//para turno asumimos que el gladiador 1 será el primer turno
         tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
         Gladiador unGladiador = new Gladiador(0, new Novato(), 0);//asumimos que ya tiene energia cero, el como llega a ese eavlor se discute luego
 
         tablero.agregarJugador(unGladiador);
-
         tablero.avanzar(new Dado());
 
         int posicionEsperada = 0;
@@ -59,7 +58,6 @@ public class CasosDeUsosEntregaUno {
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
 
         tablero.agregarJugador(unGladiador);
-
         tablero.avanzar(new Dado());
 
         int energiaEsperada = 35;
@@ -77,8 +75,6 @@ public class CasosDeUsosEntregaUno {
 
         tablero.agregarJugador(unGladiador);
         tablero.avanzar(new Dado());
-
-        unGladiador.agregarEquipamiento(new Casco(5)); //PONERLO DENTRO DE Casco
 
         int longitudEsperada = 1;
 
@@ -98,9 +94,6 @@ public class CasosDeUsosEntregaUno {
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
 
-        unGladiador.agregarEquipamiento(new Casco(5)); //PONERLO DENTRO DE Casco
-        unGladiador.agregarEquipamiento(new Armadura(5)); //PONERLO DENTRO DE Armadura
-        unGladiador.agregarEquipamiento(new EscudoYEspada(2)); //PONERLO DENTRO DE EscudoYEspada
 
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());

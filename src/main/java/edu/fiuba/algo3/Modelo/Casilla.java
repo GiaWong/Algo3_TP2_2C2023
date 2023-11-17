@@ -10,4 +10,13 @@ public class Casilla {
     public int modificarEnergia(int unaEnergia){
         return (unaOcupacion.modificarEnergia(unaEnergia) );
     }
+
+
+
+    public Ocupacion getEquipamiento() {
+
+         return unaOcupacion;
+
+
+    }
 }

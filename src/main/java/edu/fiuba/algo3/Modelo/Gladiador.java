@@ -39,6 +39,11 @@ public class Gladiador {
 
     public int obtenerCantidadDeEquipamiento(){return listaDeEquipamiento.size();}
     public void agregarEquipamiento(Ocupacion ocupacion){
-        listaDeEquipamiento.add(ocupacion);
+        if(NadaOcupacion.class.equals(ocupacion.getClass())){
+            System.out.println("No se agrega nada de Equipamiento");
+        }else {
+            listaDeEquipamiento.add(ocupacion);
+        }
+
     }
 }
