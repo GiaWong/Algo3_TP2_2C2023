@@ -50,6 +50,10 @@ public class Tablero {
         }
     }
 
+    private boolean esLaUltimaPosicion(int posicion) {
+        return  (posicion == listaDeCasillas.size() - 1);
+    }
+
 
 
     public void avanzar(Dado dado) {
@@ -62,24 +66,35 @@ public class Tablero {
         if (this.validarTurno(ungladiador)) { //(esto es un pecado) refactorizar con excepcion
 
             Casilla casillaActual = obtenerCasilla(ungladiador.obtenerPosicion());
+
+
+
             int energiaModificada = casillaActual.modificarEnergia(ungladiador.obtenerEnergia());
             ungladiador.setEnergia( energiaModificada);
             ungladiador.agregarEquipamiento( casillaActual.getEquipamiento() );
 
             if(hayMasCasillas()) {
                 ungladiador.avanzar(cantidadAMoverse);
-                System.out.println("dentroTablero");
-
             }
 
 
-            if(casillaActual.seLLegoALaMeta() ) {
-                System.out.println("enel tabbleero hay meta");
+
+            if(esLaUltimaPosicion(ungladiador.obtenerPosicion())){
+
                 if (!ungladiador.tieneLLave()) { //si no tiene llave
+                    System.out.println("\n----Se LLegó a la meta sin equipamiento completo----\n");
                     cantidadAMoverse = obtenerPosicionMitadCasilla();
                     ungladiador.retroceder(cantidadAMoverse);
                 }
+
+
             }
+
+
+
+
+
+
 
 
 
@@ -89,7 +104,6 @@ public class Tablero {
 
 
     }
-
 
 
 

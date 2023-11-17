@@ -159,7 +159,7 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarCasilla(new Casilla(new Casco(5))); //posicion 0
         tablero.agregarCasilla(new Casilla(new Armadura(5))); // posicion 1
         tablero.agregarCasilla(new Casilla(new EscudoYEspada(2))); // posicion 2
-        tablero.agregarCasilla(new Casilla(new Meta()));                     // posicion 3
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));                     // posicion 3
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
@@ -167,6 +167,7 @@ public class CasosDeUsosEntregaUno {
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
+
 
 
 
