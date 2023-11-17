@@ -42,12 +42,7 @@ public class Tablero {
         }
     }
     private boolean hayMasCasillas() {
-        if(listaDeCasillas.size() > 1){
-            return true;
-        }else {
-            System.out.println("No hay mas casilla para avanzar");
-            return false;
-        }
+        return (listaDeCasillas.size() > 1);
     }
 
     private boolean esLaUltimaPosicion(int posicion) {

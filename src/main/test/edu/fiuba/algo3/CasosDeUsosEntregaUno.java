@@ -24,8 +24,11 @@ public class CasosDeUsosEntregaUno {
 
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla((new Casilla(new NadaOcupacion())));
-        Gladiador unGladiador = new Gladiador(20, new Novato(), 0);
+        //agrego mas casillas para que el gladiador no llegue a la meta
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
+        Gladiador unGladiador = new Gladiador(20, new Novato(), 0);
         tablero.agregarJugador(unGladiador);
         tablero.avanzar(new Dado());
 
@@ -39,14 +42,16 @@ public class CasosDeUsosEntregaUno {
 
         Tablero tablero = new Tablero(1, new Turno(30));//para turno asumimos que el gladiador 1 será el primer turno
         tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
-        Gladiador unGladiador = new Gladiador(0, new Novato(), 0);//asumimos que ya tiene energia cero, el como llega a ese eavlor se discute luego
+        //agrego mas casillas para que el gladiador no llegue a la meta
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
+        Gladiador unGladiador = new Gladiador(0, new Novato(), 0);//asumimos que ya tiene energia cero, el como llega a ese eavlor se discute luego
         tablero.agregarJugador(unGladiador);
         tablero.avanzar(new Dado());
 
         int posicionEsperada = 0;
-        //Como el gladiador no avanzo, su turno expiro
-        assertEquals(posicionEsperada, unGladiador.obtenerPosicion());
+        assertEquals(posicionEsperada, unGladiador.obtenerPosicion());//Como el gladiador no avanzo, su turno expiro
 
     }
 
@@ -55,13 +60,16 @@ public class CasosDeUsosEntregaUno {
 
         Tablero tablero = new Tablero(1,new Turno(30));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
-        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
+       //agrego mas casillas para que el gladiador no llegue a la meta
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
+
+        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
         tablero.avanzar(new Dado());
 
         int energiaEsperada = 35;
-
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
 
     }
@@ -71,13 +79,15 @@ public class CasosDeUsosEntregaUno {
 
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
-        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
+        //agrego mas casillas para que el gladiador no llegue a la meta
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
+        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
         tablero.avanzar(new Dado());
 
         int longitudEsperada = 1;
-
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
     }
 
@@ -89,17 +99,17 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarCasilla(new Casilla(new Casco(5)));
         tablero.agregarCasilla(new Casilla(new Armadura(5)));
         tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));
+        //agrego mas casillas para que el gladiador no llegue a la meta
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-
-
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
 
         int longitudEsperada = 3;
-
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
     }
 
@@ -109,15 +119,23 @@ public class CasosDeUsosEntregaUno {
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
         tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
+        //se agrega mas casillas para que no termine el juego ,
+        // porque asumí que si ya no hay mas casillas entonces se llegó a la meta
+        tablero.agregarCasilla(new Casilla(new Armadura(5)));
+        tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
 
         tablero.agregarJugador(unGladiador);
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
-
         int energiaEsperada = 5;
-
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
+
+
+
+
     }
 
     @Test
@@ -133,10 +151,12 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
+        //agrego mas casillas para que el gladiador no llegue a la meta
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
@@ -148,7 +168,6 @@ public class CasosDeUsosEntregaUno {
         tablero.avanzar(new Dado());
 
         int energiaEsperada = 60;
-
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
     }
 
@@ -167,9 +186,6 @@ public class CasosDeUsosEntregaUno {
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
-
-
-
 
         int posicionEsperada = 1;
         assertEquals(posicionEsperada, unGladiador.obtenerPosicion());
