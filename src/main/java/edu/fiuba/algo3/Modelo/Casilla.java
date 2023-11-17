@@ -14,7 +14,7 @@ public class Casilla {
 
     public Gladiador enfrentarObstaculo(Gladiador ungladiador) {
 
-        if(esObstaculo()) {
+        if(esObstaculo()) { //viola telldont ask --> Refactorizar
             System.out.println("\nEs obstaculo\n");
             ungladiador = unaOcupacion.combatir(ungladiador);
         }
@@ -22,7 +22,7 @@ public class Casilla {
         return ungladiador;
     }
 
-    //no le toma al obstaculo
+    //Es un tema los tipos de datos
     private boolean esObstaculo() {
         return (unaOcupacion.getClass().equals(FieraSalvaje.class));//refactorizar a la FieraSalvaje con una abstraccion
     }
@@ -30,7 +30,7 @@ public class Casilla {
 
     public Gladiador recibirPremio(Gladiador ungladiador) {
 
-        if(esPremio()) {
+        if(esPremio()) { //viola del dont ask --> Reffactorizar
             System.out.println("\nEs Premio\n");
             ungladiador = unaOcupacion.recibirPremio(ungladiador);
         }

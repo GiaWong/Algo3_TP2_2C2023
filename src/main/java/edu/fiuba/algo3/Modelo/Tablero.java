@@ -37,7 +37,6 @@ public class Tablero {
             return indiceMitad ;
 
         } else {
-            System.out.println("La Lista de Casilla está vacía.");
             return 0;
         }
     }
@@ -59,6 +58,8 @@ public class Tablero {
         if (this.validarTurno(ungladiador)) { //(esto es un pecado) refactorizar con excepcion
 
             Casilla casillaActual = obtenerCasilla(ungladiador.obtenerPosicion());
+
+            //Hay que debugear y ver por que no lo toma el test 7 y 8 al entrar al metodo enfrentarObstaculo()
             ungladiador = casillaActual.enfrentarObstaculo(ungladiador);
             ungladiador = casillaActual.recibirPremio(ungladiador);
 
