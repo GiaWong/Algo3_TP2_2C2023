@@ -9,8 +9,8 @@ public class Tablero {
     private ArrayList<Casilla> listaDeCasillas;
     private Turno turno;
 
-    public Tablero(int unosJugadores, Turno turno) {
-        this.cantidadDeJugadores = unosJugadores;
+    public Tablero(int cantidadJugadores, Turno turno) {
+        this.cantidadDeJugadores = cantidadJugadores;
         this.listaDeGladiadores = new ArrayList<>();
         this.listaDeCasillas = new ArrayList<>();
         this.turno = turno;
@@ -33,7 +33,7 @@ public class Tablero {
         int cantidadAMoverse = dado.tirar();
 
 
-        Gladiador ungladiador = listaDeGladiadores.get(0);
+        Gladiador ungladiador = listaDeGladiadores.get(0);//refactorizar porque simpre estamos trabajando con primer gladiaor de la lista
 
         if (this.validarTurno(ungladiador)) { //(esto es un pecado) refactorizar con excepcion
 

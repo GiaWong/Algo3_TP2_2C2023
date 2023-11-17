@@ -9,9 +9,9 @@ public class Gladiador {
     private ArrayList<Ocupacion> listaDeEquipamiento;
 
 
-    public Gladiador(int unaEnergia, Novato novato, int posicion) {
+    public Gladiador(int unaEnergia, Novato novato, int posicionActual) {
         this.energia = unaEnergia;
-        this.posicionActual = posicion;
+        this.posicionActual = posicionActual;
         this.unSeniority = novato;
         this.listaDeEquipamiento = new ArrayList<>();
     }

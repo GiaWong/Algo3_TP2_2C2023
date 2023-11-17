@@ -38,7 +38,7 @@ public class CasosDeUsosEntregaUno {
     public void Test03VerificarQuejugadorSinEnergiaNoPuedaJugarElTurno() {
 
         Tablero tablero = new Tablero(1, new Turno(30));//para turno asumimos que el gladiador 1 será el primer turno
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
         Gladiador unGladiador = new Gladiador(0, new Novato(), 0);//asumimos que ya tiene energia cero, el como llega a ese eavlor se discute luego
 
         tablero.agregarJugador(unGladiador);
@@ -86,7 +86,6 @@ public class CasosDeUsosEntregaUno {
     public void Test06VerificarQueSiRecibeUnPremioPorTerceraVezObtieneEscudoYEspada(){
 
         Tablero tablero = new Tablero(1, new Turno(30));
-
         tablero.agregarCasilla(new Casilla(new Casco(5)));
         tablero.agregarCasilla(new Casilla(new Armadura(5)));
         tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));
@@ -106,9 +105,10 @@ public class CasosDeUsosEntregaUno {
 
     @Test
     public void Test07VerificarQueSiHayUnCombateConUnaFieraSalvajeYTieneCascoPierde10Puntos() {
+
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
 
         tablero.agregarJugador(unGladiador);
@@ -122,15 +122,15 @@ public class CasosDeUsosEntregaUno {
 
     @Test
     public void Test08VerificarQueSiPasan8TurnosElGladiadorPasaDeNovatoASemiSeniorYVeSuEnergiaIncrementadaEnElSiguienteTurno() {
-        Tablero tablero = new Tablero(1, new Turno(30));
 
+        Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
 

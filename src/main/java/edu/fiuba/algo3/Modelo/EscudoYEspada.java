@@ -5,7 +5,6 @@ public class EscudoYEspada implements Ocupacion{
     public EscudoYEspada(int energia) {
         this.energia=energia;
     }
-
     @Override
     public int modificarEnergia(int unaEnergia) {
         return unaEnergia - energia ;

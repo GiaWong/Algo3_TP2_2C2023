@@ -4,15 +4,8 @@ import java.io.ObjectStreamConstants;
 
 public class Comida implements Ocupacion  {
 
-    private int puntos;
-    public Comida(int unosPuntos){
-
-        this.puntos = unosPuntos;
-    }
+    private int energia;
+    public Comida(int energiaPropia){this.energia = energiaPropia;}
     @Override
-    public int modificarEnergia(int unaEnergia){
-        int energiaModificada = unaEnergia + 15;
-
-        return energiaModificada;
-    }
+    public int modificarEnergia(int unaEnergia){return (unaEnergia + energia);}
 }
