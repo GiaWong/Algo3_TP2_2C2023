@@ -24,35 +24,29 @@ public class Tablero {
             listaDeGladiadores.add(gladiador);
     }
 
+    public boolean validarTurno(Gladiador unGladiador){return (turno.jugar(unGladiador));}
 
-    public boolean validarTurno(Gladiador unGladiador){
-
-        return (turno.jugar(unGladiador));
-    }
-
-    public Casilla obtenerCasilla(int unaPosicion) {
-       return (listaDeCasillas.get(unaPosicion));
-    }
-
-
+    private Casilla obtenerCasilla(int unaPosicion){return (listaDeCasillas.get(unaPosicion));}
 
     public void avanzar(Dado dado) {
-        int moverUnasCasillas = dado.tirar();
+
+        int cantidadAMoverse = dado.tirar();
+
+
         Gladiador ungladiador = listaDeGladiadores.get(0);
 
-        if (this.validarTurno(ungladiador) == true) { //(esto es un pecado) refactorizar con excepcion
+        if (this.validarTurno(ungladiador)) { //(esto es un pecado) refactorizar con excepcion
 
-            //Casco casco=listaDeCasillas.get(0); //POSICION 0 DAME LO QUE TENES --> CASCO
-            Casilla casillaActual = obtenerCasilla(ungladiador.obtenerPosicion());
-            Ocupacion unaOcupacion = casillaActual.obtenerOcupacion();
+            Casilla casillaActual = this.obtenerCasilla(ungladiador.obtenerPosicion());
+            int energiaModificada = casillaActual.modificarEnergia(ungladiador.obtenerEnergia());
+            ungladiador.setEnergia( energiaModificada);
+            ungladiador.avanzar(cantidadAMoverse);
 
-            ungladiador.avanzar(moverUnasCasillas);
-            int energiaModificada = unaOcupacion.modificarEnergia(ungladiador.obtenerEnergia());//por ahora es 1 sola casilla
 
-            ungladiador.setEnergia(energiaModificada);
         }
 
 
     }
+
 
 }

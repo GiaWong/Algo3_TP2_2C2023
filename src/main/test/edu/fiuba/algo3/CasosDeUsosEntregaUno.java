@@ -5,42 +5,29 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CasosDeUsosEntrega1 {
+public class CasosDeUsosEntregaUno {
 
     @Test
     public void Test01UnGladiadorSeInicializaConLaEnergiaYNoTieneEquipamiento() {
+
         Gladiador unGladiador = new Gladiador(20, new Novato(), 0);
-        //act
         int energiaEsperada = 20;
         int equipamientoEsperado = 0;
 
         assertEquals(energiaEsperada,unGladiador.obtenerEnergia());
-        assertEquals(equipamientoEsperado,unGladiador.obtenerEquipamiento());
+        assertEquals(equipamientoEsperado,unGladiador.obtenerCantidadDeEquipamiento());
 
     }
 
     @Test
     public void Test02VerificarQueUnGladiadorSalgaDeLaCasillaInicial() {
+
         Tablero tablero = new Tablero(1, new Turno(30));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla((new Casilla(new Nada())));
         Gladiador unGladiador = new Gladiador(20, new Novato(), 0);
 
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado()); //ahi adentro hará todas las modificaciones de las energias
-
-        int energiaEsperada = 0;
-        assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
-        // assertEquals(TurnoExpiradoException, tablero.avanzzar(new Dado())); Pendiente en la refactorizacion
-    }
-
-    @Test
-    public void VerificarQueUnGladiadorSalgaDeLaCasillaInicial() {
-        Tablero tablero = new Tablero(1, new Turno(30));
-        tablero.agregarCasilla((new Casilla(new FieraSalvaje())));
-        Gladiador unGladiador = new Gladiador(20, new Novato(), 0);
-
-        tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());//ahi adntro hará todas las modificaciones de las energias
+        tablero.avanzar(new Dado());
 
         int energiaEsperada = 0;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
@@ -83,6 +70,7 @@ public class CasosDeUsosEntrega1 {
 
     @Test
     public void Test05VerificarQueSiRecibeUnPremioPorPrimeraVezObtieneUnCasco() {
+
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);

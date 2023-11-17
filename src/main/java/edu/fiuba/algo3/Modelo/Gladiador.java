@@ -3,7 +3,7 @@ package edu.fiuba.algo3.Modelo;
 import java.util.ArrayList;
 
 public class Gladiador {
-    private int posicion;
+    private int posicionActual;
     private int energia;
     private Seniority unSeniority;
     private ArrayList<Ocupacion> listaDeEquipamiento;
@@ -11,7 +11,7 @@ public class Gladiador {
 
     public Gladiador(int unaEnergia, Novato novato, int posicion) {
         this.energia = unaEnergia;
-        this.posicion = posicion;
+        this.posicionActual = posicion;
         this.unSeniority = novato;
         this.listaDeEquipamiento = new ArrayList<>();
     }
@@ -21,21 +21,16 @@ public class Gladiador {
     }
 
 
-    public int  obtenerEquipamiento() {
-        return 0;
-
-    }
-
     public void cambiarSeniority(Seniority seniority) {
         this.unSeniority = seniority;
     }
 
-    public void avanzar(int moverUnasCasillas) {
-        posicion = posicion + moverUnasCasillas;
+    public void avanzar(int cantidadAMoverse) {
+        posicionActual = posicionActual + cantidadAMoverse;
     }
 
     public int obtenerPosicion() {
-        return posicion;
+        return posicionActual;
     }
 
     public void setEnergia(int unaEnergia ){
