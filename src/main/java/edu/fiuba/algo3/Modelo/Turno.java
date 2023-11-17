@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.Modelo;
 
+import edu.fiuba.algo3.Modelo.Seniority.Semisenior;
+
 public class Turno {
     private int turno;
 

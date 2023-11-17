@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.Modelo;
 
+import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
+import edu.fiuba.algo3.Modelo.Premios.Comida;
+
 public class Casilla {
     Ocupacion unaOcupacion;
 

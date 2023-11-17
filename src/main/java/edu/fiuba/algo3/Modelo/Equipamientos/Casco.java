@@ -1,4 +1,7 @@
-package edu.fiuba.algo3.Modelo;
+package edu.fiuba.algo3.Modelo.Equipamientos;
+
+import edu.fiuba.algo3.Modelo.Gladiador;
+import edu.fiuba.algo3.Modelo.Ocupacion;
 
 public class Casco extends Equipamiento implements Ocupacion {
     private int energia;

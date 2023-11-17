@@ -1,6 +1,12 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.Modelo.*;
+import edu.fiuba.algo3.Modelo.Equipamientos.Armadura;
+import edu.fiuba.algo3.Modelo.Equipamientos.Casco;
+import edu.fiuba.algo3.Modelo.Equipamientos.EscudoYEspada;
+import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
+import edu.fiuba.algo3.Modelo.Premios.Comida;
+import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -54,27 +54,17 @@ public class Tablero {
     public void avanzar(Dado dado) {
 
         int cantidadAMoverse = dado.tirar();
-
-
         Gladiador ungladiador = listaDeGladiadores.get(0);//refactorizar porque simpre estamos trabajando con primer gladiaor de la lista
 
         if (this.validarTurno(ungladiador)) { //(esto es un pecado) refactorizar con excepcion
 
             Casilla casillaActual = obtenerCasilla(ungladiador.obtenerPosicion());
-
-
-            //int energiaModificada = casillaActual.modificarEnergia(ungladiador.obtenerEnergia());
-
             ungladiador = casillaActual.enfrentarObstaculo(ungladiador);
             ungladiador = casillaActual.recibirPremio(ungladiador);
-
-            //ungladiador.setEnergia( energiaModificada);
-            //ungladiador.agregarEquipamiento( casillaActual.getEquipamiento() );
 
             if(hayMasCasillas()) {
                 ungladiador.avanzar(cantidadAMoverse);
             }
-
 
             if(esLaUltimaPosicion(ungladiador.obtenerPosicion())){//porque asumí que si ya no hay mas casillas entonces se llegó a la meta
 
@@ -86,21 +76,7 @@ public class Tablero {
 
             }
 
-
-
-
-
-
-
-
-
-
-
         }
-
-
     }
-
-
 
 }

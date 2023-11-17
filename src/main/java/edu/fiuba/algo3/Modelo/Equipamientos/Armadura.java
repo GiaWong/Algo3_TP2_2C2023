@@ -1,13 +1,16 @@
-package edu.fiuba.algo3.Modelo;
+package edu.fiuba.algo3.Modelo.Equipamientos;
 
-public class EscudoYEspada extends Equipamiento implements Ocupacion{
+import edu.fiuba.algo3.Modelo.Gladiador;
+import edu.fiuba.algo3.Modelo.Ocupacion;
+
+public class Armadura extends Equipamiento implements Ocupacion {
     private int energia;
-    public EscudoYEspada(int energia) {
-        this.energia=energia;
+    public Armadura(int energia) {
+        this.energia = energia;
     }
 
     @Override
-    public Gladiador modificarEnergia(Gladiador unGladiador) { //estosMetodos está de mas =(
+    public Gladiador modificarEnergia(Gladiador unGladiador) {//estosMetodos está de mas =(
         return null;
     }
     @Override
@@ -24,6 +27,5 @@ public class EscudoYEspada extends Equipamiento implements Ocupacion{
     public int modificarEnergia(int unaEnergia) {
         return (unaEnergia - energia);
     }
-
 
 }
