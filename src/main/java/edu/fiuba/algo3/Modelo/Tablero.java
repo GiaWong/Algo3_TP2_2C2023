@@ -63,25 +63,26 @@ public class Tablero {
             Casilla casillaActual = obtenerCasilla(ungladiador.obtenerPosicion());
 
 
+            //int energiaModificada = casillaActual.modificarEnergia(ungladiador.obtenerEnergia());
 
-            int energiaModificada = casillaActual.modificarEnergia(ungladiador.obtenerEnergia());
-            ungladiador.setEnergia( energiaModificada);
-            ungladiador.agregarEquipamiento( casillaActual.getEquipamiento() );
+            ungladiador = casillaActual.enfrentarObstaculo(ungladiador);
+            ungladiador = casillaActual.recibirPremio(ungladiador);
+
+            //ungladiador.setEnergia( energiaModificada);
+            //ungladiador.agregarEquipamiento( casillaActual.getEquipamiento() );
 
             if(hayMasCasillas()) {
                 ungladiador.avanzar(cantidadAMoverse);
             }
 
 
-
-            if(esLaUltimaPosicion(ungladiador.obtenerPosicion())){
+            if(esLaUltimaPosicion(ungladiador.obtenerPosicion())){//porque asumí que si ya no hay mas casillas entonces se llegó a la meta
 
                 if (!ungladiador.tieneLLave()) { //si no tiene llave
                     System.out.println("\n----Se LLegó a la meta sin equipamiento completo----\n");
                     cantidadAMoverse = obtenerPosicionMitadCasilla();
                     ungladiador.retroceder(cantidadAMoverse);
                 }
-
 
             }
 

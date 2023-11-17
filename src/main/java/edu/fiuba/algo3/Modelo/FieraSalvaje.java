@@ -1,14 +1,30 @@
 package edu.fiuba.algo3.Modelo;
 
-public  class FieraSalvaje implements Ocupacion {
+public  class FieraSalvaje extends Obstaculo implements Ocupacion {
 
-    private int energia;
-    public FieraSalvaje(int energiaPropia) {
-        this.energia = energiaPropia;
+
+    public FieraSalvaje() {
     }
 
     @Override
-    public int modificarEnergia(int unaEnergia) {
-        return (unaEnergia-energia);
+    public Gladiador modificarEnergia(Gladiador unGladiador) {//estosMetodos está de mas =(
+        return null;
+    }
+
+    @Override
+    public int modificarEnergia(int energia) {//estosMetodos está de mas =(
+        return 0;
+    }
+
+    @Override
+    public Gladiador combatir(Gladiador unGladiador) {
+
+        unGladiador.combatir();
+        return unGladiador;
+    }
+
+    @Override
+    public Gladiador recibirPremio(Gladiador ungladiador) {//estosMetodos está de mas =(
+        return null;
     }
 }

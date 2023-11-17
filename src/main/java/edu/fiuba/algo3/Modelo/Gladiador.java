@@ -67,5 +67,11 @@ public class Gladiador {
         return (this.obtenerCantidadDeEquipamiento() == 3);
     }
 
+    //aca entra la logica de Ignacio
+    public void combatir() {
 
+        Ocupacion unEquipamiento = listaDeEquipamiento.get(listaDeEquipamiento.size() - 1);//me da el ultimo
+        unEquipamiento.modificarEnergia(energia); //casco,armadura,escudoEspada
+
+    }
 }

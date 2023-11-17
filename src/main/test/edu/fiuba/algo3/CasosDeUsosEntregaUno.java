@@ -41,7 +41,7 @@ public class CasosDeUsosEntregaUno {
     public void Test03VerificarQuejugadorSinEnergiaNoPuedaJugarElTurno() {
 
         Tablero tablero = new Tablero(1, new Turno(30));//para turno asumimos que el gladiador 1 será el primer turno
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
         //agrego mas casillas para que el gladiador no llegue a la meta
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
@@ -114,23 +114,22 @@ public class CasosDeUsosEntregaUno {
     }
 
     @Test
-    public void Test07VerificarQueSiHayUnCombateConUnaFieraSalvajeYTieneCascoPierde10Puntos() {
+    public void Test07VerificarQueSiHayUnCombateConUnaFieraSalvajeYTieneCascoPierde5Puntos() {
 
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
-        //se agrega mas casillas para que no termine el juego ,
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        // agrego mas casillas para que el gladiador no llegue a la meta
         // porque asumí que si ya no hay mas casillas entonces se llegó a la meta
         tablero.agregarCasilla(new Casilla(new Armadura(5)));
         tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
-
         tablero.agregarJugador(unGladiador);
         tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        int energiaEsperada = 5;
+
+        int energiaEsperada = 15;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
 
 
@@ -144,11 +143,11 @@ public class CasosDeUsosEntregaUno {
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
         //agrego mas casillas para que el gladiador no llegue a la meta
@@ -175,10 +174,11 @@ public class CasosDeUsosEntregaUno {
     public void Test09UnGladiadorLLegaALaMetaSinLaLLaveYEsteRetrocedeHastaLaMitadDeLasCasillas() {
 
         Tablero tablero = new Tablero(1, new Turno(30));
-        tablero.agregarCasilla(new Casilla(new Casco(5))); //posicion 0
-        tablero.agregarCasilla(new Casilla(new Armadura(5))); // posicion 1
-        tablero.agregarCasilla(new Casilla(new EscudoYEspada(2))); // posicion 2
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));                     // posicion 3
+        tablero.agregarCasilla(new Casilla(new Casco(5)));
+        tablero.agregarCasilla(new Casilla(new Armadura(5)));
+        tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
@@ -191,8 +191,36 @@ public class CasosDeUsosEntregaUno {
         assertEquals(posicionEsperada, unGladiador.obtenerPosicion());
 
     }
+
+    //El enunciado del teest stá mal del pdf, si tiene todos los equipamientos solo le resta -2,
+    // guiarse del cuadro obstaculo
     @Test
     public void Test10UnGladiadorConTodosSusEquipamientosEsAtacadoPorUnaFieraSalvajeLaEnergiaNoSeModifica() {
+
+        Tablero tablero = new Tablero(1, new Turno(30));
+
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion())); //pos0
+        tablero.agregarCasilla(new Casilla(new Casco(5))); //pos1 -5pu
+        tablero.agregarCasilla(new Casilla(new Armadura(5))); // pos2 -10pu
+        tablero.agregarCasilla(new Casilla(new EscudoYEspada(2))); //pos3 -2pu
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));           // pos4
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));//pos5
+        //agrego mas casillas para que el gladiador no llegue a la meta
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+
+        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(unGladiador);
+
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+
+
+        int energiaEsperada = 20;
+        assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
 
     }@Test
     public void Test11UnGladiadorTieneLaLLaveYRecibeOtroPremioNoCambiaNada() {

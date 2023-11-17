@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.Modelo;
 
-public class LLave {
+public class LLave extends Equipamiento {
 
 }
