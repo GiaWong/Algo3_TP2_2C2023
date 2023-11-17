@@ -6,6 +6,7 @@ public class Gladiador {
     private int posicionActual;
     private int energia;
     private Seniority unSeniority;
+
     private ArrayList<Ocupacion> listaDeEquipamiento;
 
 
@@ -27,6 +28,8 @@ public class Gladiador {
 
     public void avanzar(int cantidadAMoverse) {
         posicionActual = posicionActual + cantidadAMoverse;
+        System.out.println("Gladiador avanza una casilla ---> está en la posicion:  " + posicionActual);
+
     }
 
     public int obtenerPosicion() {
@@ -46,4 +49,23 @@ public class Gladiador {
         }
 
     }
+
+    public void retroceder(int cantidadAMoverse) {
+        posicionActual = posicionActual - cantidadAMoverse;
+        System.out.println("Gladiador retrocede ----> está en la posicion: " + posicionActual);
+
+    }
+
+    public boolean tieneLLave() {
+        // Utilicé Stream para buscar el elemento en la lista
+        return ((listaDeEquipamiento.stream()
+                .anyMatch(elemento -> elemento instanceof LLave)) && cantidadEquipamientoPermitido());
+
+    }
+
+    private boolean cantidadEquipamientoPermitido() {
+        return (this.obtenerCantidadDeEquipamiento() == 3);
+    }
+
+
 }

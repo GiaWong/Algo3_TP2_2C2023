@@ -151,5 +151,39 @@ public class CasosDeUsosEntregaUno {
 
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
     }
+
+    @Test
+    public void Test09UnGladiadorLLegaALaMetaSinLaLLaveYEsteRetrocedeHastaLaMitadDeLasCasillas() {
+
+        Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new Casco(5))); //posicion 0
+        tablero.agregarCasilla(new Casilla(new Armadura(5))); // posicion 1
+        tablero.agregarCasilla(new Casilla(new EscudoYEspada(2))); // posicion 2
+        tablero.agregarCasilla(new Casilla(new Meta()));                     // posicion 3
+
+        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(unGladiador);
+
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+
+
+
+        int posicionEsperada = 1;
+        assertEquals(posicionEsperada, unGladiador.obtenerPosicion());
+
+    }
+    @Test
+    public void Test10UnGladiadorConTodosSusEquipamientosEsAtacadoPorUnaFieraSalvajeLaEnergiaNoSeModifica() {
+
+    }@Test
+    public void Test11UnGladiadorTieneLaLLaveYRecibeOtroPremioNoCambiaNada() {
+
+    }
+    @Test
+    public void Test12GladiadorNoLLegaALaMetaAlPasarTreintaTurnosElJuegoSeTermina() {
+
+    }
 }
 
