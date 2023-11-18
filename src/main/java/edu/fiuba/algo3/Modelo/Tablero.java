@@ -56,6 +56,7 @@ public class Tablero {
         Gladiador ungladiador = listaDeGladiadores.get(0);//refactorizar porque simpre estamos trabajando con primer gladiaor de la lista
 
         if (this.validarTurno(ungladiador)) { //(esto es un pecado) refactorizar con excepcion
+            ungladiador.aumentarEnergiaAlIniciarElTurno();
 
             Casilla casillaActual = obtenerCasilla(ungladiador.obtenerPosicion());
 

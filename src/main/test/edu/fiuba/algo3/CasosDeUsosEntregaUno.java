@@ -142,8 +142,6 @@ public class CasosDeUsosEntregaUno {
 
     }
 
-    //Este test esta mal (no funciona, ya que el seniority nunca se setea)
-    //Osea,hay que implementarlo.
     @Test
     public void Test08VerificarQueSiPasan8TurnosElGladiadorPasaDeNovatoASemiSeniorYVeSuEnergiaIncrementadaEnElSiguienteTurno() {
 
@@ -174,7 +172,7 @@ public class CasosDeUsosEntregaUno {
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
 
-        int energiaEsperada = 20;
+        int energiaEsperada = 30;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
     }
 

@@ -44,7 +44,7 @@ public class Gladiador {
 
     //Esto tiene que aplicar el seniority, cada vez que inicia el turno recibe esta energia
     //Cuando pasar x turnos, cambia al siguiente
-    public void aumentarEnergiaAlIniciarElTurno(int unaEnergia){energia = unSeniority.modificarEnergia(unaEnergia);}
+    public void aumentarEnergiaAlIniciarElTurno(){energia = unSeniority.modificarEnergia(energia);}
     public void setEnergia(int unaEnergia ){energia = unaEnergia; }
 
     public int obtenerCantidadDeEquipamiento(){return listaDeEquipamiento.size();}
