@@ -25,7 +25,7 @@ public class Armadura extends Equipamiento implements Ocupacion {
 
     @Override
     public int modificarEnergia(int unaEnergia) {
-        return (unaEnergia - energia);
+        return (unaEnergia + energia);
     }
 
 }

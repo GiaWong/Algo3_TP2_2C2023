@@ -16,12 +16,16 @@ public  class FieraSalvaje extends Obstaculo implements Ocupacion {
 
     @Override
     public int modificarEnergia(int energia) {//estosMetodos está de mas =(
-        return 0;
+        return (energia -20) ;
     }
 
     @Override
     public Gladiador combatir(Gladiador unGladiador) {
 
+        // Rompo todo principio aprendido, refactorizar!
+        unGladiador.setEnergia(this.modificarEnergia(unGladiador.obtenerEnergia()));
+
+        //Lo mando a combatir y lo equipo
         unGladiador.combatir();
         return unGladiador;
     }

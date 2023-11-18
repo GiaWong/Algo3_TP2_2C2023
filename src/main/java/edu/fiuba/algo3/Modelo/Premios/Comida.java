@@ -27,6 +27,7 @@ public class Comida implements Ocupacion {
     public Gladiador recibirPremio(Gladiador ungladiador) {
 
         int energiaModificada = ungladiador.obtenerEnergia() + energia;
+
         ungladiador.setEnergia(energiaModificada);
         return ungladiador;
     }

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.Modelo;
 
+import edu.fiuba.algo3.Modelo.Equipamientos.Equipamiento;
 import edu.fiuba.algo3.Modelo.Equipamientos.LLave;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Seniority.Seniority;
@@ -40,12 +41,15 @@ public class Gladiador {
         return posicionActual;
     }
 
-    public void setEnergia(int unaEnergia ){
-        energia = unSeniority.modificarEnergia(unaEnergia);
-    }
+
+    //Esto tiene que aplicar el seniority, cada vez que inicia el turno recibe esta energia
+    //Cuando pasar x turnos, cambia al siguiente
+    public void aumentarEnergiaAlIniciarElTurno(int unaEnergia){energia = unSeniority.modificarEnergia(unaEnergia);}
+    public void setEnergia(int unaEnergia ){energia = unaEnergia; }
 
     public int obtenerCantidadDeEquipamiento(){return listaDeEquipamiento.size();}
     public void agregarEquipamiento(Ocupacion ocupacion){
+
         if(NadaOcupacion.class.equals(ocupacion.getClass())){
             System.out.println("No se agrega nada de Equipamiento");
         }else {
@@ -71,11 +75,12 @@ public class Gladiador {
         return (this.obtenerCantidadDeEquipamiento() == 3);
     }
 
-    //aca entra la logica de Ignacio
+    //Vamos a hacer que combatir se la parte donde el gladiador se proteje de la fiera -> osea usa la energia de su equipamiento
     public void combatir() {
 
-        Ocupacion unEquipamiento = listaDeEquipamiento.get(listaDeEquipamiento.size() - 1);//me da el ultimo
-        unEquipamiento.modificarEnergia(energia); //casco,armadura,escudoEspada
-
+        for (Ocupacion unEquipamiento: listaDeEquipamiento) {
+            this.setEnergia(unEquipamiento.modificarEnergia(energia));
+        }
+        //Malisimo, estoy modificando la energia antes de la pelea
     }
 }

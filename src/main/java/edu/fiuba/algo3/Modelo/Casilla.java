@@ -17,7 +17,10 @@ public class Casilla {
         if(esObstaculo()) { //viola telldont ask --> Refactorizar
             System.out.println("\nEs obstaculo\n");
             ungladiador = unaOcupacion.combatir(ungladiador);
+
+            return ungladiador;
         }
+
         ungladiador.agregarEquipamiento(unaOcupacion);
         return ungladiador;
     }
