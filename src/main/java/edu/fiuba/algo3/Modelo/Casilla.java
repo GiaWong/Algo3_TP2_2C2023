@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.Modelo;
 
+import edu.fiuba.algo3.Modelo.Equipamientos.LLave;
 import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Premios.Comida;
 
@@ -10,7 +11,6 @@ public class Casilla {
         this.unaOcupacion = ocupacion;
 
     }
-
 
     public Gladiador enfrentarObstaculo(Gladiador ungladiador) {
 

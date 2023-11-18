@@ -50,10 +50,12 @@ public class Gladiador {
     public int obtenerCantidadDeEquipamiento(){return listaDeEquipamiento.size();}
     public void agregarEquipamiento(Ocupacion ocupacion){
 
-        if(NadaOcupacion.class.equals(ocupacion.getClass())){
-            System.out.println("No se agrega nada de Equipamiento");
-        }else {
+        if(!NadaOcupacion.class.equals(ocupacion.getClass()) && listaDeEquipamiento.size() < 4){
             listaDeEquipamiento.add(ocupacion);
+        }
+
+        else {
+            System.out.println("No se agrega nada de Equipamiento");
         }
 
     }
@@ -80,6 +82,7 @@ public class Gladiador {
 
         for (Ocupacion unEquipamiento: listaDeEquipamiento) {
             this.setEnergia(unEquipamiento.modificarEnergia(energia));
+
         }
         //Malisimo, estoy modificando la energia antes de la pelea
     }
