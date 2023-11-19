@@ -267,7 +267,77 @@ public class CasosDeUsosEntregaUno {
     }
     @Test
     public void Test12GladiadorNoLLegaALaMetaAlPasarTreintaTurnosElJuegoSeTermina() {
+        Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        // hay 32 casillas
 
+        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(unGladiador);
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        //se juegan 30 turnos
+
+        boolean juegoTerminado= true;
+        assertEquals(juegoTerminado, tablero.validarFinalizarJuego());
     }
 }
 

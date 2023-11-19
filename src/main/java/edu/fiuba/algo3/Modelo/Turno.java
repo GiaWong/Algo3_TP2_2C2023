@@ -22,4 +22,9 @@ public class Turno {
         return true;
     }
 
+    public int obtenerTurno(){
+        return turno;
+    }
+
 }
+

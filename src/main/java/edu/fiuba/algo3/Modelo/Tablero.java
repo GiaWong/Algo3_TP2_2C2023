@@ -81,4 +81,19 @@ public class Tablero {
         }
     }
 
+    public boolean validarFinalizarJuego(){
+        int turno = this.turno.obtenerTurno(); //violando ocultamiento de la informacion(?
+        boolean devolver = false; // inicizalizamos el valor de un boleano
+        if (turno >= 0){
+            System.out.println("Se finalizo el juego ----> cantidad de turnos para llegar a 30 es " + turno);
+            devolver = true;
+        }
+        if (turno < 0){
+            System.out.println("Aun NO se finalizo el juego ----> cantidad de turnos para llegar a 30 es " + turno);
+            devolver = false;
+        }
+        return devolver;
+    }
+
 }
+
