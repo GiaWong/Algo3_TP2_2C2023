@@ -60,7 +60,6 @@ public class Tablero {
 
             Casilla casillaActual = obtenerCasilla(ungladiador.obtenerPosicion());
 
-
             ungladiador = casillaActual.enfrentarObstaculo(ungladiador);
             ungladiador = casillaActual.recibirPremio(ungladiador);
 
