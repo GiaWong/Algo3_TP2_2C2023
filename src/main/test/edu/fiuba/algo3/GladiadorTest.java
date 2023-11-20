@@ -63,4 +63,5 @@ public class GladiadorTest {
         int energiaEsperada = 10;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
     }
+
 }

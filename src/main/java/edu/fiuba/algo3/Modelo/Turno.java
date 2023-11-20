@@ -2,11 +2,18 @@ package edu.fiuba.algo3.Modelo;
 
 import edu.fiuba.algo3.Modelo.Seniority.Semisenior;
 
+import java.util.ArrayList;
+
 public class Turno {
-    private int turno;
+    private int turnoActual;
+    private int maximaCantidadDeTurnos;
 
     public  Turno(int maximaCantidad){
-        this.turno = maximaCantidad;
+
+        this.maximaCantidadDeTurnos = maximaCantidad;
+        this.turnoActual = 0;
+
+
     }
     
     public boolean jugar(Gladiador unGladiador) {
@@ -14,8 +21,7 @@ public class Turno {
             return false;
         }
 
-        turno--;
-        if (turno == 22) {
+        if (turnoActual == 8) {
             unGladiador.cambiarSeniority(new Semisenior());
         }
 
@@ -23,7 +29,15 @@ public class Turno {
     }
 
     public int obtenerTurno(){
-        return turno;
+        return maximaCantidadDeTurnos;
+    }
+
+    public Gladiador siguienteTurno(ArrayList<Gladiador> gladiadores){
+        //Por ahora lodejo asi, la idea mas adelante seria que puedan inicializarse varios gladiadores
+        //no pongoun for o un if en el tablero por que ya tiene demasiados
+
+       turnoActual++;
+       return  gladiadores.get(0);
     }
 
 }

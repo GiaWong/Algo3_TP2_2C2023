@@ -53,7 +53,7 @@ public class Tablero {
     public void avanzar(Dado dado) {
 
         int cantidadAMoverse = dado.tirar();
-        Gladiador ungladiador = listaDeGladiadores.get(0);//refactorizar porque simpre estamos trabajando con primer gladiaor de la lista
+        Gladiador ungladiador = turno.siguienteTurno(listaDeGladiadores);//refactorizar porque simpre estamos trabajando con primer gladiaor de la lista
 
         if (this.validarTurno(ungladiador)) { //(esto es un pecado) refactorizar con excepcion
             ungladiador.aumentarEnergiaAlIniciarElTurno();

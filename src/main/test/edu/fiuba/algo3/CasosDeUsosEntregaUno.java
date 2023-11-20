@@ -262,6 +262,7 @@ public class CasosDeUsosEntregaUno {
         //Tiene que seguir teniendo 4 items de equipamiento, medio que aca no hacemos mucho el uso de objetos
         //Para el refactor hay que buscar solucion, aparte estoy usando muchos ifs para ver esto!
         //El metodo agregarEquipamiento no tendria que ser de esta forma
+
         int cantidadDeEquipamientoEsperado = 4;
         assertEquals(cantidadDeEquipamientoEsperado, unGladiador.obtenerCantidadDeEquipamiento());
     }

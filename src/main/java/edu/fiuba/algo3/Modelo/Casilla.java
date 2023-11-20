@@ -40,7 +40,6 @@ public class Casilla {
         return ungladiador;
     }
 
-    // no lo toma al premio
     private boolean esPremio() {
         return unaOcupacion.getClass().equals(Comida.class);//refactorizar a la Comida con una abstraccion
     }
