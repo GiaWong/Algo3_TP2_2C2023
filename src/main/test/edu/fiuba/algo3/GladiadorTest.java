@@ -3,6 +3,8 @@ package edu.fiuba.algo3;
 import edu.fiuba.algo3.Modelo.*;
 import edu.fiuba.algo3.Modelo.Equipamientos.Armadura;
 import edu.fiuba.algo3.Modelo.Equipamientos.Casco;
+import edu.fiuba.algo3.Modelo.Equipamientos.EscudoYEspada;
+import edu.fiuba.algo3.Modelo.Equipamientos.LLave;
 import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import org.junit.jupiter.api.Test;
@@ -62,6 +64,45 @@ public class GladiadorTest {
 
         int energiaEsperada = 10;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
+    }
+
+    @Test
+    public void Test04SiUnGladiadorRecibeUnPremioPorSegundaVezObtieneUnaArmadura() {
+
+        Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new Casco(5)));
+        tablero.agregarCasilla(new Casilla(new Armadura(5)));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+
+        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(unGladiador);
+
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+
+        int longitudEsperada = 2;
+        assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
+    }
+
+    @Test
+    public void Test05SiUnGladiadorRecibeUnPremioPorCuartaVezObtieneUnaLlave() {
+
+        Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new Casco(5)));
+        tablero.agregarCasilla(new Casilla(new Armadura(5)));
+        tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));
+        tablero.agregarCasilla(new Casilla (new LLave()));
+
+        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(unGladiador);
+
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
+
+        int longitudEsperada = 4;
+        assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
     }
 
 }
