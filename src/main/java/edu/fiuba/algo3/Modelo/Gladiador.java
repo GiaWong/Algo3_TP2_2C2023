@@ -34,12 +34,12 @@ public class Gladiador {
 
     public void avanzar(int cantidadAMoverse) {
         posicionActual = posicionActual + cantidadAMoverse;
-        System.out.println("Gladiador avanza una casilla ---> está en la posicion:  " + posicionActual);
+        System.out.println("\nGladiador avanza una casilla ---> está en la posicion:  " + posicionActual);
 
     }
     public void retroceder(int cantidadAMoverse) {
         posicionActual = posicionActual - cantidadAMoverse;
-        System.out.println("Gladiador retrocede ----> está en la posicion: " + posicionActual);
+        System.out.println("\nGladiador retrocede ----> está en la posicion: " + posicionActual);
 
     }
 
@@ -60,6 +60,7 @@ public class Gladiador {
     }
 
     private List<Equipamiento> filtrarRepetidos() {
+        System.out.println("\n==> Filtrando equipamientos repetidos ... ok");
         return listaDeEquipamiento.stream()
                 .filter(distinctByClass())
                 .collect(Collectors.toList());

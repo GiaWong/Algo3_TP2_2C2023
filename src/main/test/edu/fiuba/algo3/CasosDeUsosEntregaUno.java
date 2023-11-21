@@ -52,7 +52,6 @@ public class CasosDeUsosEntregaUno {
 
         Tablero tablero = new Tablero(1, new Turno(30));//para turno asumimos que el gladiador 1 será el primer turno
         tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
-        //agrego mas casillas para que el gladiador no llegue a la meta
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
@@ -247,29 +246,26 @@ public class CasosDeUsosEntregaUno {
     public void Test11UnGladiadorTieneLaLLaveYRecibeOtroPremioNoCambiaNada() {
 
         Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
         tablero.agregarCasilla(new Casilla(new Armadura(5)));
         tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));
         tablero.agregarCasilla(new Casilla (new LLave()));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
-
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-
-        //Avanza 4 veces, recibe los 4 premios, avanza una vez mas y no recibe otra vez un casco
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
-
-        //Tiene que seguir teniendo 4 items de equipamiento, medio que aca no hacemos mucho el uso de objetos
-        //Para el refactor hay que buscar solucion, aparte estoy usando muchos ifs para ver esto!
-        //El metodo agregarEquipamiento no tendria que ser de esta forma
+        tablero.avanzar(new Dado());
+        tablero.avanzar(new Dado());
 
         int cantidadDeEquipamientoEsperado = 4;
         assertEquals(cantidadDeEquipamientoEsperado, unGladiador.obtenerCantidadDeEquipamiento());
