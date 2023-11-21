@@ -65,10 +65,12 @@ public class CasosDeUsosEntregaUno {
 
     }
 
+    //recomendable que en la primera posicion de las casillas empiece algo vacio
    @Test
     public void Test04VerificarQueSiRecibeComidaIncrementaEnergiaEn15() {
 
         Tablero tablero = new Tablero(1,new Turno(30));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
@@ -87,6 +89,7 @@ public class CasosDeUsosEntregaUno {
     public void Test05VerificarQueSiRecibeUnPremioPorPrimeraVezObtieneUnCasco() {
 
         Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
@@ -106,6 +109,7 @@ public class CasosDeUsosEntregaUno {
 
         Tablero tablero = new Tablero(1, new Turno(30));
 
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
         tablero.agregarCasilla(new Casilla(new Comida(15)));
@@ -114,6 +118,7 @@ public class CasosDeUsosEntregaUno {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
+        tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());

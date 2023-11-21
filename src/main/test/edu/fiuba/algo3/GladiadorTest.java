@@ -74,6 +74,7 @@ public class GladiadorTest {
     public void Test04SiUnGladiadorRecibeUnPremioPorSegundaVezObtieneUnaArmadura() {
 
         Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
         tablero.agregarCasilla(new Casilla(new Armadura(5)));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
@@ -94,6 +95,7 @@ public class GladiadorTest {
     public void Test05SiUnGladiadorRecibeUnPremioPorCuartaVezObtieneUnaLlave() {
 
         Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
         tablero.agregarCasilla(new Casilla(new Armadura(5)));
         tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));
