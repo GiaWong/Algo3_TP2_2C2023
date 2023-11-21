@@ -12,12 +12,14 @@ public class Tablero {
     private int cantidadDeJugadores;
     private ArrayList<Casilla> listaDeCasillas;
     private Turno turno;
+    private int controladorCantidadMoverse;
 
     public Tablero(int cantidadJugadores, Turno turno) {
         this.cantidadDeJugadores = cantidadJugadores;
         this.listaDeGladiadores = new ArrayList<>();
         this.listaDeCasillas = new ArrayList<>();
         this.turno = turno;
+        this.controladorCantidadMoverse = 0;
     }
 
     public void agregarCasilla(Casilla unaCasilla) {
@@ -56,24 +58,22 @@ public class Tablero {
     public void avanzar(Dado dado) {
 
         int cantidadAMoverse = dado.tirar();
-        Gladiador ungladiador = turno.siguienteTurno(listaDeGladiadores);//refactorizar porque simpre estamos trabajando con primer gladiaor de la lista
+        Gladiador ungladiador = turno.siguienteTurno(listaDeGladiadores);
 
         if (this.validarTurno(ungladiador)) {//refactorizar
             ungladiador.aumentarEnergiaAlIniciarElTurno();
 
 
-            //Patron visitor reemplaza el codigo comentado de abajo
-            VisitorDeCasillas visitor = new OperacionVisitorDeCasillas();
-            for (Casilla casillaActual : listaDeCasillas) {
-               ungladiador = casillaActual.interactuarConLaOcupacion(visitor, ungladiador);
-            }
-           /* Casilla casillaActual = obtenerCasilla(ungladiador.obtenerPosicion());
-
-            ungladiador = casillaActual.enfrentarObstaculo(ungladiador);
-            ungladiador = casillaActual.recibirPremio(ungladiador);*/
 
             if(hayMasCasillas()) {
+
                 ungladiador.avanzar(cantidadAMoverse);
+                //Patron visitor
+                VisitorDeCasillas visitor = new OperacionVisitorDeCasillas();
+                controladorCantidadMoverse = controladorCantidadMoverse + cantidadAMoverse;
+                Casilla casillaActual = listaDeCasillas.get(controladorCantidadMoverse);
+                ungladiador = casillaActual.interactuarConLaOcupacion(visitor, ungladiador);
+
             }
 
             if(esLaUltimaPosicion(ungladiador.obtenerPosicion())){//porque asumí que si ya no hay mas casillas entonces se llegó a la meta

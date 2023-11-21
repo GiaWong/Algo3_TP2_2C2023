@@ -18,6 +18,7 @@ public class GladiadorTest {
 
     @Test
     public void test01UnGladiadorAvanzaUnaPosicionDespuesDeArrojarLosDados(){
+
         Tablero tablero = new Tablero(1,new Turno(30));
         Gladiador gladiador = new Gladiador(20, new Novato(), 0);
         tablero.agregarJugador(gladiador);
@@ -93,7 +94,6 @@ public class GladiadorTest {
     public void Test05SiUnGladiadorRecibeUnPremioPorCuartaVezObtieneUnaLlave() {
 
         Tablero tablero = new Tablero(1, new Turno(30));
-
         tablero.agregarCasilla(new Casilla(new Casco(5)));
         tablero.agregarCasilla(new Casilla(new Armadura(5)));
         tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));

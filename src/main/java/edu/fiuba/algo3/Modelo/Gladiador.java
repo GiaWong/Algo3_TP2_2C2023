@@ -5,13 +5,15 @@ import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Seniority.Seniority;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Gladiador {
     private int posicionActual;
     private int energia;
     private Seniority unSeniority;
 
-    private ArrayList<Equipamiento> listaDeEquipamiento;
+    private List<Equipamiento> listaDeEquipamiento;
 
 
     public Gladiador(int unaEnergia, Novato novato, int posicionActual) {
@@ -50,10 +52,27 @@ public class Gladiador {
     //Cuando pasar x turnos, cambia al siguiente
     public void aumentarEnergiaAlIniciarElTurno(){energia = unSeniority.modificarEnergia(energia);}
 
-    public int obtenerCantidadDeEquipamiento(){return listaDeEquipamiento.size();}
+    public int obtenerCantidadDeEquipamiento(){
+
+        listaDeEquipamiento = filtrarRepetidos();//ver test13 de OcupacionesTests
+        return listaDeEquipamiento.size();
+
+    }
+
+    private List<Equipamiento> filtrarRepetidos() {
+        return listaDeEquipamiento.stream()
+                .filter(distinctByClass())
+                .collect(Collectors.toList());
+    }
+
+    public static java.util.function.Predicate<Object> distinctByClass() {
+        java.util.Set<Class<?>> seen = new java.util.HashSet<>();
+        return objeto -> seen.add(objeto.getClass());
+    }
+
     public void agregarEquipamiento(Equipamiento equipamiento){
             listaDeEquipamiento.add(equipamiento);
-            System.out.println("\n===> Se agrega un equipamiento al gladiador");
+
     }
 
 
