@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.Modelo;
 
-import edu.fiuba.algo3.Modelo.Equipamientos.Equipamiento;
-import edu.fiuba.algo3.Modelo.Equipamientos.LLave;
+import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Seniority.Seniority;
 
@@ -12,7 +11,7 @@ public class Gladiador {
     private int energia;
     private Seniority unSeniority;
 
-    private ArrayList<Ocupacion> listaDeEquipamiento;
+    private ArrayList<Equipamiento> listaDeEquipamiento;
 
 
     public Gladiador(int unaEnergia, Novato novato, int posicionActual) {
@@ -36,6 +35,11 @@ public class Gladiador {
         System.out.println("Gladiador avanza una casilla ---> está en la posicion:  " + posicionActual);
 
     }
+    public void retroceder(int cantidadAMoverse) {
+        posicionActual = posicionActual - cantidadAMoverse;
+        System.out.println("Gladiador retrocede ----> está en la posicion: " + posicionActual);
+
+    }
 
     public int obtenerPosicion() {
         return posicionActual;
@@ -45,26 +49,14 @@ public class Gladiador {
     //Esto tiene que aplicar el seniority, cada vez que inicia el turno recibe esta energia
     //Cuando pasar x turnos, cambia al siguiente
     public void aumentarEnergiaAlIniciarElTurno(){energia = unSeniority.modificarEnergia(energia);}
-    public void setEnergia(int unaEnergia ){energia = unaEnergia; }
 
     public int obtenerCantidadDeEquipamiento(){return listaDeEquipamiento.size();}
-    public void agregarEquipamiento(Ocupacion ocupacion){
-
-        if(!NadaOcupacion.class.equals(ocupacion.getClass()) && listaDeEquipamiento.size() < 4){
-            listaDeEquipamiento.add(ocupacion);
-        }
-
-        else {
-            System.out.println("No se agrega nada de Equipamiento");
-        }
-
+    public void agregarEquipamiento(Equipamiento equipamiento){
+            listaDeEquipamiento.add(equipamiento);
+            System.out.println("\n===> Se agrega un equipamiento al gladiador");
     }
 
-    public void retroceder(int cantidadAMoverse) {
-        posicionActual = posicionActual - cantidadAMoverse;
-        System.out.println("Gladiador retrocede ----> está en la posicion: " + posicionActual);
 
-    }
 
     public boolean tieneLLave() {
         // Utilicé Stream para buscar el elemento en la lista
@@ -79,11 +71,37 @@ public class Gladiador {
 
     //Vamos a hacer que combatir se la parte donde el gladiador se proteje de la fiera -> osea usa la energia de su equipamiento
     public void combatir() {
-
-        for (Ocupacion unEquipamiento: listaDeEquipamiento) {
-            this.setEnergia(unEquipamiento.modificarEnergia(energia));
-
+        //pensarlo!!!! es un lío el combate
+        for (Equipamiento unEquipamiento: listaDeEquipamiento) {
+            //this.setEnergia(unEquipamiento.modificarEnergia(energia));
+            System.out.println("\nEntra a desgastar");// esto pongo para ebuggear a la antigua xD
+            energia = unEquipamiento.desgastar(energia);
         }
-        //Malisimo, estoy modificando la energia antes de la pelea
+
+    }
+
+    public void aumentarEnergia(int unaEnergia) {
+        this.energia = this.energia + unaEnergia;
+    }
+
+    //desacoplar con un refactor
+    public void agregarEquipamientoSegunCantidadDePremios() {
+
+        if(listaDeEquipamiento.isEmpty()){
+            listaDeEquipamiento.add(new Casco(5));
+            System.out.println("\n===> Obtiene un Casco como premio");
+
+        }else if (listaDeEquipamiento.size()==1) {
+            listaDeEquipamiento.add(new Armadura(5));
+            System.out.println("\n===> Obtiene un Armadura como premio");
+
+        } else if (listaDeEquipamiento.size()==2) {
+            listaDeEquipamiento.add(new EscudoYEspada(2));
+            System.out.println("\n===> Obtiene un EscudoYEspada como premio");
+
+        }else if (listaDeEquipamiento.size()==3) {
+            listaDeEquipamiento.add(new LLave());
+            System.out.println("\n===> Obtiene un LLave como premio\n");
+        }
     }
 }

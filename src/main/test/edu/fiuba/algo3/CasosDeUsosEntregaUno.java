@@ -1,6 +1,8 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.Modelo.*;
+import edu.fiuba.algo3.Modelo.Casillas.Casilla;
+import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
 import edu.fiuba.algo3.Modelo.Equipamientos.Armadura;
 import edu.fiuba.algo3.Modelo.Equipamientos.Casco;
 import edu.fiuba.algo3.Modelo.Equipamientos.EscudoYEspada;
@@ -85,7 +87,7 @@ public class CasosDeUsosEntregaUno {
     public void Test05VerificarQueSiRecibeUnPremioPorPrimeraVezObtieneUnCasco() {
 
         Tablero tablero = new Tablero(1, new Turno(30));
-        tablero.agregarCasilla(new Casilla(new Casco(5)));
+        tablero.agregarCasilla(new Casilla(new Comida(15)));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
@@ -98,14 +100,15 @@ public class CasosDeUsosEntregaUno {
     }
 
 
-    //Este test esta mal,tiene que recibir un "premio" y el 3 tiene que ser una lo que pide, ahi le estas tirando los premios nomas
+
     @Test
     public void Test06VerificarQueSiRecibeUnPremioPorTerceraVezObtieneEscudoYEspada(){
 
         Tablero tablero = new Tablero(1, new Turno(30));
-        tablero.agregarCasilla(new Casilla(new Casco(5)));
-        tablero.agregarCasilla(new Casilla(new Armadura(5)));
-        tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));
+
+        tablero.agregarCasilla(new Casilla(new Comida(15)));
+        tablero.agregarCasilla(new Casilla(new Comida(15)));
+        tablero.agregarCasilla(new Casilla(new Comida(15)));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 

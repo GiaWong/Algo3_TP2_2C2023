@@ -1,31 +1,26 @@
 package edu.fiuba.algo3.Modelo.Equipamientos;
 
-import edu.fiuba.algo3.Modelo.Equipamientos.Equipamiento;
 import edu.fiuba.algo3.Modelo.Gladiador;
-import edu.fiuba.algo3.Modelo.Ocupacion;
+import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
+import edu.fiuba.algo3.Modelo.Casillas.VisitorDeCasillas;
 
-public class LLave extends Equipamiento implements Ocupacion {
+public class LLave extends Ocupacion implements Equipamiento {
 
-    public LLave(){};
+    public LLave(){}
+
+    @Override
+    public Gladiador aceptarVisitante(VisitorDeCasillas visitor, Gladiador ungladiador) {
+
+        return  visitor.visitar(this, ungladiador);
+    }
 
     @Override
     public Gladiador modificarEnergia(Gladiador unGladiador) {
-        return null;
+        return  unGladiador;
     }
-
     @Override
-    public int modificarEnergia(int energia) {
+    public int desgastar(int energiaGladiador) {
         return 0;
-    }
-
-    @Override
-    public Gladiador combatir(Gladiador ungladiador) {
-        return null;
-    }
-
-    @Override
-    public Gladiador recibirPremio(Gladiador ungladiador) {
-        return null;
     }
 
 

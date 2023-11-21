@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.Modelo;
 
+import edu.fiuba.algo3.Modelo.Casillas.Casilla;
+import edu.fiuba.algo3.Modelo.Casillas.OperacionVisitorDeCasillas;
+import edu.fiuba.algo3.Modelo.Casillas.VisitorDeCasillas;
+
 import java.util.ArrayList;
 
 public class Tablero {
@@ -26,7 +30,6 @@ public class Tablero {
 
     public boolean validarTurno(Gladiador unGladiador){return (turno.jugar(unGladiador));}
 
-    private Casilla obtenerCasilla(int unaPosicion){return (listaDeCasillas.get(unaPosicion));}
 
     private int obtenerPosicionMitadCasilla() {
 
@@ -55,13 +58,19 @@ public class Tablero {
         int cantidadAMoverse = dado.tirar();
         Gladiador ungladiador = turno.siguienteTurno(listaDeGladiadores);//refactorizar porque simpre estamos trabajando con primer gladiaor de la lista
 
-        if (this.validarTurno(ungladiador)) { //(esto es un pecado) refactorizar con excepcion
+        if (this.validarTurno(ungladiador)) {//refactorizar
             ungladiador.aumentarEnergiaAlIniciarElTurno();
 
-            Casilla casillaActual = obtenerCasilla(ungladiador.obtenerPosicion());
+
+            //Patron visitor reemplaza el codigo comentado de abajo
+            VisitorDeCasillas visitor = new OperacionVisitorDeCasillas();
+            for (Casilla casillaActual : listaDeCasillas) {
+               ungladiador = casillaActual.interactuarConLaOcupacion(visitor, ungladiador);
+            }
+           /* Casilla casillaActual = obtenerCasilla(ungladiador.obtenerPosicion());
 
             ungladiador = casillaActual.enfrentarObstaculo(ungladiador);
-            ungladiador = casillaActual.recibirPremio(ungladiador);
+            ungladiador = casillaActual.recibirPremio(ungladiador);*/
 
             if(hayMasCasillas()) {
                 ungladiador.avanzar(cantidadAMoverse);
