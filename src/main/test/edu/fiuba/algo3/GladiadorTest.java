@@ -54,6 +54,7 @@ public class GladiadorTest {
     void test03UnGladiadorCombateConUnaFieraConUnCascoYArmadura(){
 
         Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
         tablero.agregarCasilla(new Casilla(new Armadura(5)));
         tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
@@ -62,6 +63,7 @@ public class GladiadorTest {
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
         Dado dado = new Dado();
+        tablero.avanzar(dado);
         tablero.avanzar(dado);
         tablero.avanzar(dado);
         tablero.avanzar(dado);

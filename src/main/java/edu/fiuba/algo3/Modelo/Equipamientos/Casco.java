@@ -9,6 +9,7 @@ public class Casco extends Ocupacion implements Equipamiento{
     public Casco(int energia) {
         this.energia = energia;
     }
+
     @Override
     public Gladiador modificarEnergia(Gladiador unGladiador) {
         unGladiador.aumentarEnergia(energia);
@@ -17,7 +18,7 @@ public class Casco extends Ocupacion implements Equipamiento{
 
     @Override
     public int desgastar(int energiaGladiador) {
-        return energiaGladiador - energia;
+        return energiaGladiador + energia;
     }
 
     @Override

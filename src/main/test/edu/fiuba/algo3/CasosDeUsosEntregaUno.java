@@ -132,6 +132,7 @@ public class CasosDeUsosEntregaUno {
 
         Tablero tablero = new Tablero(1, new Turno(30));
 
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
         tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
@@ -143,7 +144,7 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarJugador(unGladiador);
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
-
+        tablero.avanzar(new Dado());
 
         int energiaEsperada = 5;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());

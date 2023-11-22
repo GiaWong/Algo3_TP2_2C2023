@@ -15,16 +15,19 @@ public  class FieraSalvaje  extends Ocupacion implements Obstaculo {
         return  visitor.visitar(this, ungladiador);
     }
 
+    //La fiera tiene que poder restar la energia del gladiador
+    public int modificarEnergia(int energia) {
+        return (energia -20) ;
+    }
+
+    //Una forma de pensarlo es pasarle por param la ocupacion y que el gladiador se reste los putnos
+    //En su "combatir"
     @Override
-    public void combatir(Gladiador unGladiador) {//pensarlo bien
-        unGladiador.combatir();
+    public void combatir(Gladiador unGladiador) {
+        unGladiador.combatir(this );
     }
 
 
-    /*@Override
-    public int modificarEnergia(int energia) {
-        return (energia -20) ;
-    }*/
 
 
 

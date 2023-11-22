@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.Modelo;
 
+import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
+import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Seniority.Seniority;
 
@@ -89,14 +91,19 @@ public class Gladiador {
         return (this.obtenerCantidadDeEquipamiento() == 3);
     }
 
-    //Vamos a hacer que combatir se la parte donde el gladiador se proteje de la fiera -> osea usa la energia de su equipamiento
-    public void combatir() {
-        //pensarlo!!!! es un lío el combate
+    //Violo polimorfismo!!!
+    //Tengo que pasarle una ocupacion, pero necesitaria que todas conozcan elmetodo modificarEnergia
+    public void combatir(FieraSalvaje unaFiera) {
+        //El gladiador tiene que equiparse antes de pelear, por lo que no hay masopcion que pasarle la ocupacion
+        //Y aca hago que la fiera le quite puntos desp de que el gladiador se equipa
+
         for (Equipamiento unEquipamiento: listaDeEquipamiento) {
             //this.setEnergia(unEquipamiento.modificarEnergia(energia));
             System.out.println("\nEntra a desgastar");// esto pongo para ebuggear a la antigua xD
             energia = unEquipamiento.desgastar(energia);
         }
+
+        energia = unaFiera.modificarEnergia(energia);
 
     }
 

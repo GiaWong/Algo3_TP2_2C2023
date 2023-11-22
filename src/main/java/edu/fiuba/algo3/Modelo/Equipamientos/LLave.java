@@ -16,8 +16,10 @@ public class LLave extends Ocupacion implements Equipamiento {
 
     @Override
     public Gladiador modificarEnergia(Gladiador unGladiador) {
-        return  unGladiador;
+        return unGladiador;
     }
+
+
     @Override
     public int desgastar(int energiaGladiador) {
         return 0;

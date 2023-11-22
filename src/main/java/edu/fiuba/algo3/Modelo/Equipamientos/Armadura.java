@@ -10,14 +10,17 @@ public class Armadura extends Ocupacion implements Equipamiento{
         this.energia = energia;
     }
 
+
    @Override
    public Gladiador modificarEnergia(Gladiador unGladiador) {
        unGladiador.aumentarEnergia(energia);
        return unGladiador;
    }
+
+
     @Override
     public int desgastar(int energiaGladiador) {
-        return energiaGladiador - energia;
+        return (energiaGladiador + energia);
     }
 
     @Override
