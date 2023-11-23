@@ -2,138 +2,169 @@
 
 
 class   AlgoRoma{
-    +registrarCantidadJugadores(unsJugadores:int)
-    +registrarNombres(unNombre:String)
+    +registrarCantidadJugadores(unsJugadores int)
+    +registrarNombres(unNombre String)
 }
 
 
 class Gladiador{
     -energia:int
-    -seniority:Seniority
-    -turno:int
-    -posicion:int
-    +Gladiador(unaEnergia:int, seniority:Seniority, unTurno:int, unaPosicion: int)
-    +gastarEnergia():void
-    +aumentarEnergia(seniority:Seniority):void
-    +avanzar(unasCasillas:int):void
-    +obtenerPosicion():int
-    -aumentarTurno()
-
+    -posicionActual:int
+    +Gladiador(unaEnergia int, seniority Seniority,unaPosicion int)
+    +obtenerEnergia()
+    +cambiarSeniority(seniority Seniority)
+    +avanzar(cantidadAMoverse int)
+    +retroceder(cantidadAMoverse int)
+    +combatir(unObstaculo Obstaculo)
 }
 
 
 class Tablero{
     -cantidadJugadores:int
-    +Tablero(cantidadJugadores:int, unaCasilla:Casilla)
-    +añadirJugador(unGladiador:Gladiador, unNombre:String):void
-    +avanzar(unDado:Dado, unGladiador:Gladiador)
-    +retroceder(unDado:Dado, unGladiador:Gladiador)
+    -controladorCantidadMoverse:int
+    +Tablero(int cantidadJugadores, turno Turno)
+    +validarTurno(unGladiador Gladiador):Boolean
+    +añadirJugador(unGladiador Gladiador, unNombre String)
+    +avanzar(unDado Dado)
 }
 
 
 class Dado{
     +tirar():int
 }
-note left: 1) Trabajará con el numero aleatorio entre 1-6\n2) El numero saliente indicará cuantas casillas avanza
-
 
 interface Premio{
-    +{abstract}plusEnergia():int
+    +{abstract}modificarEnergia(unGladiador Gladiador):Gladiador
 }
 
+
 interface  Obstaculo{
-    +{abstract}restarEnergia()
+    +{abstract}combatir(unGladiador Gladiador)
+    +{abstract}modificarEnergia(unaEnergia int):int
 }
-class Bacanal{
-    +restarEnergia()
-}
+
 class FieraSalvaje{
-    +restarEnergia()
+    +Gladiador aceptarVisitante(Visitor VisitorDeCasillas,ungladiador Gladiador):VisitorDeCasillas
+    +combatir(unGladiador Gladiador)
 }
-class Lesion{
-    +restarEnergia()
-}
+
+class PremioEquipamiento{
+      +Gladiador aceptarVisitante(visitor VisitorDeCasillas, ungladiador Gladiador)
+      }
+
 
 
 interface  Seniority{
 
-    +{abstract}plusEnergia():int
+    +{abstract}modificarEnergia(unaEnergia int):int
 
 }
 class Novato{
-    +plusEnergia():int
+    +modificarEnergia(unaEnergia int:int
 }
 class SemiSenior{
-    +plusEnergia():int
+    +modificarEnergia(unaEnergia int):int
 }
 class Senior{
-    +plusEnergia():int
+    +modificarEnergia(unaEnergia int):int
 }
 
 
-abstract class  Equipamiento{
-    +{abstract}plusEnergia():int
+interface Equipamiento{
+    +{abstract}modificarEnergia(unaEnergia int):int
 }
 class Casco{
-    +plusEnergia():int
+    +modificarEnergia(unaEnergia int):int
 }
 class Escudo{
-    +plusEnergia():int
+    +modificarEnergia(unaEnergia int):int
 }
 class Armadura{
-    +plusEnergia():int
+    +modificarEnergia(unaEnergia int):int
 }
 class Espada{
-    +plusEnergia():int
+    +modificarEnergia(unaEnergia int:int
 }
 class LLave{
-    +plusEnergia():int
+    +modificarEnergia(unaEnergia int):int
 }
 class Nada{
-    +plusEnergia():int
+    +modificarEnergia(unaEnergia int):int
 }
 
 class Comida{
-    +plusEnergia():int
+    +modificarEnergia(unaEnergia int):int
+}
+
+interface Ocupacion{
+    Gladiador aceptarVisitante(visitor VisitorDeCasillas, ungladiador Gladiador);
 }
 
 class Casilla{
-    -numeroCasilla:int
-    -unPremio:Premio
-    -unObstaculo:Obstaculo
-    +Casilla(unaCasilla:int)
-    +recibirPremio(unPremio:Premio)
-    +recibirPremio(unObstaculo:Obstaculo)
+    +Casilla(unaCasilla:int):void
+    +Gladiador interactuarConLaOcupacion(visitor VisitorDeCasillas,ungladiador Gladiador):Ocupacion
+}
+
+interface VisitorDeCasillas{
+    +Gladiador visitar(casco Casco, unGladiador Gladiador)
+    +Gladiador visitar(armadura Armadura, unGladiador Gladiador)
+    +Gladiador visitar(escudoYEspada EscudoYEspada,unGladiador Gladiador)
+    +Gladiador visitar(lLave LLave, unGladiador Gladiador);
+    +Gladiador visitar(fieraSalvaje FieraSalvaje, unGladiador Gladiador)
+    +Gladiador visitar(nada NadaOcupacion,unGladiador Gladiador)
+    +Gladiador visitar(comida Comida,unGladiador Gladiador)
+    +Gladiador visitar(unPremio PremioEquipamiento,unGladiador Gladiador)
 }
 
 
+class OperacionVisitorDeCasillas{
+    +Gladiador visitar(casco Casco, unGladiador Gladiador)
+    +Gladiador visitar(armadura Armadura,unGladiador Gladiador)
+    +Gladiador visitar(escudoYEspada EscudoYEspada, unGladiador Gladiador)
+    +Gladiador visitar(llave LLave , unGladiador Gladiador )
+    +Gladiador visitar(fieraSalvaje FieraSalvaje ,unGladiador Gladiador)
+    +Gladiador visitar(nada NadaOcupacion, unGladiador Gladiador)
+    +Gladiador visitar(comida Comida,unGladiador Gladiador)
+    +Gladiador visitar(unPremio PremioEquipamiento ,unGladiador Gladiador)
+}
+
+class Turno {
+    -turnoActual:int
+    -maximaCantidadDeTurnos:int
+    +Turno(int maximaCantidad)
+    +jugar(unGladiador Gladiador):boolean
+    +Gladidor siguienteTurno(gladiadores ArrayList<Gladiador>):Gladiador
+    }
+
+
 Tablero *-left->"*"Casilla
-Tablero *--->"2...6 "Gladiador
+Tablero *-right->"2...6 "Gladiador
 AlgoRoma o--> Tablero
 Tablero -up-> Dado
+Tablero --> Turno
 
-Casilla --left-> Obstaculo
-Casilla ---> Premio
-Gladiador --> Seniority
-
+Casilla --> Ocupacion
 Premio <|... Comida
-Premio <|... Equipamiento
+Ocupacion <|... Comida
 
-Equipamiento <|-- Casco
-Equipamiento <|-- Escudo
-Equipamiento <|-- Armadura
-Equipamiento <|-- Espada
-Equipamiento <|-- LLave
-Equipamiento <|-- Nada
+Equipamiento <|...Casco
+Equipamiento <|... Escudo
+Equipamiento <|... Armadura
+Equipamiento <|... Espada
+Equipamiento <|... LLave
+Equipamiento <|... Nada
+Ocupacion<|.. PremioEquipamiento
 
-Obstaculo <|.. Bacanal
 Obstaculo <|.. FieraSalvaje
-Obstaculo <|.. Lesion
+
 
 Seniority <|.. Novato
 Seniority <|.. SemiSenior
 Seniority <|.. Senior
 
 Gladiador -> "*"Equipamiento
+Gladiador -> "1"Seniority
+
+VisitorDeCasillas<|.. OperacionVisitorDeCasillas
 
 @enduml

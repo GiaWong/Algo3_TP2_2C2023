@@ -41,7 +41,7 @@ public class GladiadorTest {
         Gladiador gladiador = new Gladiador(20, new Novato(), 0);
         tablero.agregarJugador(gladiador);
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
 
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
@@ -59,7 +59,7 @@ public class GladiadorTest {
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new Casco(5)));
         tablero.agregarCasilla(new Casilla(new Armadura(5)));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);

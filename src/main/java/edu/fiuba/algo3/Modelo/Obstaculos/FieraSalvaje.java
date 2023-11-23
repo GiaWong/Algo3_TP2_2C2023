@@ -5,9 +5,10 @@ import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
 import edu.fiuba.algo3.Modelo.Casillas.VisitorDeCasillas;
 
 public  class FieraSalvaje implements Ocupacion,Obstaculo {
+    private int unaEnergia;
 
-
-    public FieraSalvaje() {
+    public FieraSalvaje(int energia) {
+        unaEnergia = energia;
     }
 
     @Override
@@ -17,7 +18,7 @@ public  class FieraSalvaje implements Ocupacion,Obstaculo {
 
     //La fiera tiene que poder restar la energia del gladiador
     public int modificarEnergia(int energia) {
-        return (energia -20) ;
+        return (energia - unaEnergia) ;
     }
 
     //Una forma de pensarlo es pasarle por param la ocupacion y que el gladiador se reste los putnos

@@ -32,7 +32,6 @@ public class Tablero {
 
     public boolean validarTurno(Gladiador unGladiador){return (turno.jugar(unGladiador));}
 
-
     private int obtenerPosicionMitadCasilla() {
 
         int longitud = listaDeCasillas.size();
@@ -52,8 +51,6 @@ public class Tablero {
     private boolean esLaUltimaPosicion(int posicion) {
         return  (posicion == listaDeCasillas.size() - 1);
     }
-
-
 
     public void avanzar(Dado dado) {
 

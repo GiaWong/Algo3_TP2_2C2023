@@ -48,7 +48,7 @@ public class CasosDeUsosEntregaUno {
     public void Test03VerificarQuejugadorSinEnergiaNoPuedaJugarElTurno() {
 
         Tablero tablero = new Tablero(1, new Turno(30));//para turno asumimos que el gladiador 1 será el primer turno
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
@@ -131,7 +131,7 @@ public class CasosDeUsosEntregaUno {
 
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
@@ -219,7 +219,7 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
 
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
