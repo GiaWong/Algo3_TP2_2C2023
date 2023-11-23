@@ -27,4 +27,9 @@ public class Armadura  implements Ocupacion,Equipamiento{
         return  visitor.visitar(this, ungladiador);
     }
 
+    @Override
+    public String obtenerNombre() {
+        return "Armadura";
+    }
+
 }

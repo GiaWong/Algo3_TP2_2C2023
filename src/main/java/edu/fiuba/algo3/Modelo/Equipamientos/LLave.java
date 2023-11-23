@@ -20,5 +20,8 @@ public class LLave  implements Ocupacion,Equipamiento {
         return (unaEnergia); //+ energia);
     }
 
-
+    @Override
+    public String obtenerNombre() {
+        return "LLave";
+    }
 }

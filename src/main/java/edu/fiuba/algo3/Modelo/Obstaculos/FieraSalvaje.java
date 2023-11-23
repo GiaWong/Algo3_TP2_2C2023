@@ -4,33 +4,25 @@ import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
 import edu.fiuba.algo3.Modelo.Casillas.VisitorDeCasillas;
 
-public  class FieraSalvaje implements Ocupacion,Obstaculo {
-    private int unaEnergia;
+public class FieraSalvaje implements Ocupacion, Obstaculo {
+    private int energia;
 
     public FieraSalvaje(int energia) {
-        unaEnergia = energia;
+        this.energia = energia;
     }
 
     @Override
-    public Gladiador aceptarVisitante(VisitorDeCasillas visitor, Gladiador ungladiador) {
-        return  visitor.visitar(this, ungladiador);
+    public Gladiador aceptarVisitante(VisitorDeCasillas visitor, Gladiador gladiador) {
+        return visitor.visitar(this, gladiador);
     }
 
-    //La fiera tiene que poder restar la energia del gladiador
+    // Método significativo que indica claramente la acción
     public int modificarEnergia(int energia) {
-        return (energia - unaEnergia) ;
+        return (energia - this.energia);
     }
 
-    //Una forma de pensarlo es pasarle por param la ocupacion y que el gladiador se reste los putnos
-    //En su "combatir"
     @Override
-    public void combatir(Gladiador unGladiador) {
-        unGladiador.combatir(this );
+    public void combatir(Gladiador gladiador) {
+        gladiador.combatir(this);
     }
-
-
-
-
-
-
 }

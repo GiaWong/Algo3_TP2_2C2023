@@ -20,4 +20,9 @@ public class Casco implements Ocupacion,Equipamiento {
     public Gladiador aceptarVisitante(VisitorDeCasillas visitor, Gladiador ungladiador) {
         return  visitor.visitar(this, ungladiador);
     }
+    @Override
+    public String obtenerNombre() {
+        return "Casco";
+    }
+
 }

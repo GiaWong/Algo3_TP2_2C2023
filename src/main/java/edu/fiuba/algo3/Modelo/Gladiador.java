@@ -103,22 +103,22 @@ public class Gladiador {
 
     //desacoplar con un refactor
     public void agregarEquipamientoSegunCantidadDePremios() {
+        if (listaDeEquipamiento.size() <= 3) {
+            listaDeEquipamiento.add(crearEquipamientoSegunCantidadDePremios());
+            System.out.println("\n===> Obtiene un " + listaDeEquipamiento.get(listaDeEquipamiento.size() - 1).obtenerNombre() + " como premio\n");
+        }
+    }
 
-        if(listaDeEquipamiento.isEmpty()){
-            listaDeEquipamiento.add(new Casco(5));
-            System.out.println("\n===> Obtiene un Casco como premio");
-
-        }else if (listaDeEquipamiento.size()==1) {
-            listaDeEquipamiento.add(new Armadura(5));
-            System.out.println("\n===> Obtiene un Armadura como premio");
-
-        } else if (listaDeEquipamiento.size()==2) {
-            listaDeEquipamiento.add(new EscudoYEspada(8));
-            System.out.println("\n===> Obtiene un EscudoYEspada como premio");
-
-        }else if (listaDeEquipamiento.size()==3) {
-            listaDeEquipamiento.add(new LLave());
-            System.out.println("\n===> Obtiene un LLave como premio\n");
+    private Equipamiento crearEquipamientoSegunCantidadDePremios() {
+        switch (listaDeEquipamiento.size()) {
+            case 0:
+                return new Casco(5);
+            case 1:
+                return new Armadura(5);
+            case 2:
+                return new EscudoYEspada(8);
+            default:
+                return new LLave();
         }
     }
 }

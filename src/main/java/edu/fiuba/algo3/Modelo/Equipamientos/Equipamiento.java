@@ -6,4 +6,5 @@ import edu.fiuba.algo3.Modelo.Casillas.VisitorDeCasillas;
 public interface Equipamiento {
     public int modificarEnergia(int unaEnergia);
 
+    public String obtenerNombre();
 }
