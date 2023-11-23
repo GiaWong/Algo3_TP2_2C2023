@@ -119,8 +119,16 @@ public class CasosDeUsosEntregaUno {
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
 
+        //Expected :edu.fiuba.algo3.Modelo.Equipamientos.EscudoYEspada@57a3af25
+        //Actual   :edu.fiuba.algo3.Modelo.Equipamientos.EscudoYEspada@2b662a77
+
+        //Equipamiento equipamientoEsperado = new EscudoYEspada(8);
+        //assertEquals(equipamientoEsperado, unGladiador.obtenerUltimoEquipamientoAdquirido());
+
         int longitudEsperada = 3;
+
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
+
     }
 
     //Si me atacan y tengo un casco me quedo con 5 puntos, no con 15!

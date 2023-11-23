@@ -121,4 +121,8 @@ public class Gladiador {
             System.out.println("\n===> Obtiene un LLave como premio\n");
         }
     }
+    public Equipamiento obtenerUltimoEquipamientoAdquirido(){
+        int tamanio = listaDeEquipamiento.size();
+        return listaDeEquipamiento.get(tamanio - 1);
+    }
 }
