@@ -63,8 +63,6 @@ public class Tablero {
         if (this.validarTurno(ungladiador)) {//refactorizar
             ungladiador.aumentarEnergiaAlIniciarElTurno();
 
-
-
             if(hayMasCasillas()) {
 
                 ungladiador.avanzar(cantidadAMoverse);

@@ -3,10 +3,7 @@ package edu.fiuba.algo3;
 import edu.fiuba.algo3.Modelo.*;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
-import edu.fiuba.algo3.Modelo.Equipamientos.Armadura;
-import edu.fiuba.algo3.Modelo.Equipamientos.Casco;
-import edu.fiuba.algo3.Modelo.Equipamientos.EscudoYEspada;
-import edu.fiuba.algo3.Modelo.Equipamientos.LLave;
+import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Premios.Comida;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
@@ -89,7 +86,7 @@ public class CasosDeUsosEntregaUno {
 
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new Comida(15)));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
@@ -133,7 +130,7 @@ public class CasosDeUsosEntregaUno {
         Tablero tablero = new Tablero(1, new Turno(30));
 
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new Casco(5)));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
@@ -195,9 +192,9 @@ public class CasosDeUsosEntregaUno {
     public void Test09UnGladiadorLLegaALaMetaSinLaLLaveYEsteRetrocedeHastaLaMitadDeLasCasillas() {
 
         Tablero tablero = new Tablero(1, new Turno(30));
-        tablero.agregarCasilla(new Casilla(new Casco(5)));
-        tablero.agregarCasilla(new Casilla(new Armadura(5)));
-        tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
 
@@ -220,9 +217,9 @@ public class CasosDeUsosEntregaUno {
         Tablero tablero = new Tablero(1, new Turno(30));
 
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new Casco(5)));
-        tablero.agregarCasilla(new Casilla(new Armadura(5)));
-        tablero.agregarCasilla(new Casilla(new EscudoYEspada(8)));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
 
@@ -249,11 +246,11 @@ public class CasosDeUsosEntregaUno {
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new Casco(5)));
-        tablero.agregarCasilla(new Casilla(new Armadura(5)));
-        tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));
-        tablero.agregarCasilla(new Casilla (new LLave()));
-        tablero.agregarCasilla(new Casilla(new Casco(5)));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));

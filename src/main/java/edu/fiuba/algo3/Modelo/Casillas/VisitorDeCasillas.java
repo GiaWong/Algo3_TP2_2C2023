@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.Modelo.Casillas;
 
-import edu.fiuba.algo3.Modelo.Equipamientos.Armadura;
-import edu.fiuba.algo3.Modelo.Equipamientos.Casco;
-import edu.fiuba.algo3.Modelo.Equipamientos.EscudoYEspada;
-import edu.fiuba.algo3.Modelo.Equipamientos.LLave;
+import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Premios.Comida;
@@ -18,4 +15,7 @@ public interface VisitorDeCasillas {
     Gladiador visitar(NadaOcupacion nada, Gladiador unGladiador);
 
     Gladiador visitar(Comida comida, Gladiador unGladiador);
+
+    //Este es medio una chota por que es solo para darle el premio
+    Gladiador visitar(PremioEquipamiento unPremio, Gladiador unGladiador);
 }

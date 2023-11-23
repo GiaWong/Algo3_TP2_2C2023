@@ -4,7 +4,7 @@ import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
 import edu.fiuba.algo3.Modelo.Casillas.VisitorDeCasillas;
 
-public  class FieraSalvaje  extends Ocupacion implements Obstaculo {
+public  class FieraSalvaje implements Ocupacion,Obstaculo {
 
 
     public FieraSalvaje() {

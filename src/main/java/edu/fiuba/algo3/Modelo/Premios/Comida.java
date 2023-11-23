@@ -4,7 +4,7 @@ import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
 import edu.fiuba.algo3.Modelo.Casillas.VisitorDeCasillas;
 
-public class Comida extends Ocupacion implements Premio {
+public class Comida  implements Premio,Ocupacion {
 
     private int energia;
     public Comida(int energiaPropia){this.energia = energiaPropia;}

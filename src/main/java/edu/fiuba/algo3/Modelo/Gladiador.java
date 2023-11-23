@@ -78,8 +78,6 @@ public class Gladiador {
 
     }
 
-
-
     public boolean tieneLLave() {
         // Utilicé Stream para buscar el elemento en la lista
         return ((listaDeEquipamiento.stream()
@@ -94,13 +92,9 @@ public class Gladiador {
     //Violo polimorfismo!!!
     //Tengo que pasarle una ocupacion, pero necesitaria que todas conozcan elmetodo modificarEnergia
     public void combatir(FieraSalvaje unaFiera) {
-        //El gladiador tiene que equiparse antes de pelear, por lo que no hay masopcion que pasarle la ocupacion
-        //Y aca hago que la fiera le quite puntos desp de que el gladiador se equipa
 
         for (Equipamiento unEquipamiento: listaDeEquipamiento) {
-            //this.setEnergia(unEquipamiento.modificarEnergia(energia));
-            System.out.println("\nEntra a desgastar");// esto pongo para ebuggear a la antigua xD
-            energia = unEquipamiento.desgastar(energia);
+            energia = unEquipamiento.modificarEnergia(energia);
         }
 
         energia = unaFiera.modificarEnergia(energia);
@@ -123,7 +117,7 @@ public class Gladiador {
             System.out.println("\n===> Obtiene un Armadura como premio");
 
         } else if (listaDeEquipamiento.size()==2) {
-            listaDeEquipamiento.add(new EscudoYEspada(2));
+            listaDeEquipamiento.add(new EscudoYEspada(8));
             System.out.println("\n===> Obtiene un EscudoYEspada como premio");
 
         }else if (listaDeEquipamiento.size()==3) {

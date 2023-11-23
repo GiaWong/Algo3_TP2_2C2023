@@ -40,8 +40,10 @@ public class GladiadorTest {
         Tablero tablero = new Tablero(1,new Turno(30));
         Gladiador gladiador = new Gladiador(20, new Novato(), 0);
         tablero.agregarJugador(gladiador);
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new FieraSalvaje()));
 
+        tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
 
         int energiaEsperada = 0;

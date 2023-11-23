@@ -4,7 +4,7 @@ import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
 import edu.fiuba.algo3.Modelo.Casillas.VisitorDeCasillas;
 
-public class EscudoYEspada extends Ocupacion implements Equipamiento {
+public class EscudoYEspada implements Ocupacion,Equipamiento  {
     private int energia;
     public EscudoYEspada(int energia) {
         this.energia=energia;
@@ -12,15 +12,8 @@ public class EscudoYEspada extends Ocupacion implements Equipamiento {
 
 
     @Override
-    public Gladiador modificarEnergia(Gladiador unGladiador) {
-        unGladiador.aumentarEnergia(energia);
-        return unGladiador;
-    }
-
-
-    @Override
-    public int desgastar(int energiaGladiador) {
-        return (energiaGladiador + energia);
+    public int modificarEnergia(int unaEnergia) {
+        return (unaEnergia + energia);
     }
 
     @Override
