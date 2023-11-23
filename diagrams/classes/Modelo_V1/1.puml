@@ -1,0 +1,76 @@
+@startuml
+
+interface Premio{
+    +{abstract}modificarEnergia(unGladiador Gladiador):Gladiador
+}
+
+
+interface  Obstaculo{
+    +{abstract}combatir(unGladiador Gladiador)
+    +{abstract}modificarEnergia(unaEnergia int):int
+}
+
+class PremioEquipamiento{
+      +Gladiador aceptarVisitante(visitor VisitorDeCasillas, ungladiador Gladiador)
+      }
+
+interface Equipamiento{
+    +{abstract}modificarEnergia(unaEnergia int):int
+}
+class Casco{
+    +modificarEnergia(unaEnergia int):int
+}
+class EscudoYEspada{
+    +modificarEnergia(unaEnergia int):int
+}
+class Armadura{
+    +modificarEnergia(unaEnergia int):int
+}
+class LLave{
+    +modificarEnergia(unaEnergia int):int
+}
+
+class Comida{
+    +modificarEnergia(unaEnergia int):int
+}
+
+interface Ocupacion{
+    Gladiador aceptarVisitante(visitor VisitorDeCasillas, ungladiador Gladiador);
+}
+
+class FieraSalvaje{
+    +Gladiador aceptarVisitante(Visitor VisitorDeCasillas,ungladiador Gladiador):VisitorDeCasillas
+    +combatir(unGladiador Gladiador)
+}
+
+
+class NadaOcupacion{
+    Gladiador aceptarVisitante(visitor VisitorDeCasillas, ungladiador Gladiador);
+}
+
+
+
+Premio <|.right. Comida
+Ocupacion <|... Comida
+
+Equipamiento <|.up.Casco
+Equipamiento <|.up. Armadura
+Equipamiento <|.up. LLave
+Equipamiento <|.up. EscudoYEspada
+
+
+Obstaculo <|.up. FieraSalvaje
+Ocupacion <|.. FieraSalvaje
+
+
+Ocupacion<|.right. PremioEquipamiento
+Ocupacion<|.up. NadaOcupacion
+Ocupacion <|... Armadura
+Ocupacion <|... Casco
+Ocupacion <|... EscudoYEspada
+Ocupacion <|... LLave
+
+
+
+
+@enduml

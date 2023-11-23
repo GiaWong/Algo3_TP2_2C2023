@@ -1,0 +1,113 @@
+@startuml
+
+
+class   AlgoRoma{
+    +registrarCantidadJugadores(unsJugadores int)
+    +registrarNombres(unNombre String)
+}
+
+
+class Gladiador{
+    -energia:int
+    -posicionActual:int
+    +Gladiador(unaEnergia int, seniority Seniority,unaPosicion int)
+    +obtenerEnergia()
+    +cambiarSeniority(seniority Seniority)
+    +avanzar(cantidadAMoverse int)
+    +retroceder(cantidadAMoverse int)
+    +combatir(unObstaculo Obstaculo)
+}
+
+
+class Tablero{
+    -cantidadJugadores:int
+    -controladorCantidadMoverse:int
+    +Tablero(int cantidadJugadores, turno Turno)
+    +validarTurno(unGladiador Gladiador):Boolean
+    +añadirJugador(unGladiador Gladiador, unNombre String)
+    +avanzar(unDado Dado)
+}
+
+
+class Dado{
+    +tirar():int
+}
+
+interface  Seniority{
+    +{abstract}modificarEnergia(unaEnergia int):int
+
+}
+class Novato{
+    +modificarEnergia(unaEnergia int:int
+}
+class SemiSenior{
+    +modificarEnergia(unaEnergia int):int
+}
+class Senior{
+    +modificarEnergia(unaEnergia int):int
+}
+
+
+interface Equipamiento{
+    +{abstract}modificarEnergia(unaEnergia int):int
+}
+
+interface Ocupacion{
+     +Gladiador aceptarVisitante(visitor VisitorDeCasillas, ungladiador Gladiador);
+   }
+
+
+class Casilla{
+    +Casilla(unaCasilla:int):void
+    +Gladiador interactuarConLaOcupacion(visitor VisitorDeCasillas,ungladiador Gladiador):Ocupacion
+}
+
+interface VisitorDeCasillas{
+    +Gladiador visitar(casco Casco, unGladiador Gladiador)
+    +Gladiador visitar(armadura Armadura, unGladiador Gladiador)
+    +Gladiador visitar(escudoYEspada EscudoYEspada,unGladiador Gladiador)
+    +Gladiador visitar(lLave LLave, unGladiador Gladiador);
+    +Gladiador visitar(fieraSalvaje FieraSalvaje, unGladiador Gladiador)
+    +Gladiador visitar(nada NadaOcupacion,unGladiador Gladiador)
+    +Gladiador visitar(comida Comida,unGladiador Gladiador)
+    +Gladiador visitar(unPremio PremioEquipamiento,unGladiador Gladiador)
+}
+
+
+class OperacionVisitorDeCasillas{
+
+}
+
+class Turno {
+    -turnoActual:int
+    -maximaCantidadDeTurnos:int
+    +Turno(int maximaCantidad)
+    +jugar(unGladiador Gladiador):boolean
+    +Gladidor siguienteTurno(gladiadores ArrayList<Gladiador>):Gladiador
+    }
+
+
+
+Tablero *-left->"*"Casilla
+Tablero *-right->"2...6 "Gladiador
+AlgoRoma o--> Tablero
+Tablero -up-> Dado
+Tablero --> Turno
+
+
+Casilla -->VisitorDeCasillas
+Casilla --> Ocupacion
+
+
+
+
+Seniority <|.up. Novato
+Seniority <|.up. SemiSenior
+Seniority <|.up. Senior
+
+Gladiador -> "*"Equipamiento
+Gladiador -up-> "1"Seniority
+
+VisitorDeCasillas<|.. OperacionVisitorDeCasillas
+
+@enduml

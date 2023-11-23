@@ -52,8 +52,6 @@ class PremioEquipamiento{
       +Gladiador aceptarVisitante(visitor VisitorDeCasillas, ungladiador Gladiador)
       }
 
-
-
 interface  Seniority{
 
     +{abstract}modificarEnergia(unaEnergia int):int
@@ -68,7 +66,6 @@ class SemiSenior{
 class Senior{
     +modificarEnergia(unaEnergia int):int
 }
-
 
 interface Equipamiento{
     +{abstract}modificarEnergia(unaEnergia int):int
