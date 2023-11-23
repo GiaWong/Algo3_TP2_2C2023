@@ -85,7 +85,7 @@ public class Tablero {
     }
 
     public boolean validarFinalizarJuego(){
-        int turno = this.turno.obtenerTurno(); //violando ocultamiento de la informacion(?
+        int turno = this.turno.obtenerTurno(); //viola  tell dontAsk
         boolean devolver = false; // inicizalizamos el valor de un boleano
         if (turno >= 30){
             System.out.println("Se finalizo el juego ----> cantidad de turnos para llegar a 30 es " + (30-turno));

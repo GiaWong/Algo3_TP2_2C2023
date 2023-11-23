@@ -26,7 +26,7 @@ public class Turno {
     }
 
     public int obtenerTurno(){
-        return maximaCantidadDeTurnos;
+        return turnoActual;
     }
 
     public Gladiador siguienteTurno(ArrayList<Gladiador> gladiadores){
