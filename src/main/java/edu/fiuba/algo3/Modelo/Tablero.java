@@ -52,6 +52,17 @@ public class Tablero {
         return  (posicion == listaDeCasillas.size() - 1);
     }
 
+    public boolean validarFinalizarJuego() {
+        int turno = this.turno.obtenerTurno(); // Violando ocultamiento de la información(?
+        if (turno >= 30) {
+            System.out.println("Se finalizó el juego ----> cantidad de turnos para llegar a 30 es " + (30 - turno));
+            return true;
+
+        } else {
+            System.out.println("Aún NO se finalizó el juego ----> cantidad de turnos para llegar a 30 es " + (30 - turno));
+            return false;
+        }
+    }
     public void avanzar(Dado dado) {
         Gladiador ungladiador = turno.siguienteTurno(listaDeGladiadores);
 
@@ -79,15 +90,5 @@ public class Tablero {
         }
     }
 
-    public boolean validarFinalizarJuego() {
-        int turno = this.turno.obtenerTurno(); // Violando ocultamiento de la información(?
-        if (turno >= 30) {
-            System.out.println("Se finalizó el juego ----> cantidad de turnos para llegar a 30 es " + (30 - turno));
-            return true;
-        } else {
-            System.out.println("Aún NO se finalizó el juego ----> cantidad de turnos para llegar a 30 es " + (30 - turno));
-            return false;
-        }
-    }
 }
 
