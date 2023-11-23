@@ -106,9 +106,9 @@ public class CasosDeUsosEntregaUno {
         Tablero tablero = new Tablero(1, new Turno(30));
 
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new Comida(15)));
-        tablero.agregarCasilla(new Casilla(new Comida(15)));
-        tablero.agregarCasilla(new Casilla(new Comida(15)));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
