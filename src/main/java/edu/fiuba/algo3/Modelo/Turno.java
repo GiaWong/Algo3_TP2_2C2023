@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.Modelo;
 
 import edu.fiuba.algo3.Modelo.Seniority.Semisenior;
-
 import java.util.ArrayList;
 
 public class Turno {
