@@ -136,6 +136,9 @@ class Turno {
     +Gladidor siguienteTurno(gladiadores ArrayList<Gladiador>):Gladiador
     }
 
+class NadaOcupacion{
+    Gladiador aceptarVisitante(visitor VisitorDeCasillas, ungladiador Gladiador);
+}
 
 Tablero *-left->"*"Casilla
 Tablero *-right->"2...6 "Gladiador
@@ -154,9 +157,15 @@ Equipamiento <|... Espada
 Equipamiento <|... LLave
 Equipamiento <|... Nada
 Ocupacion<|.. PremioEquipamiento
+Ocupacion<|.. NadaOcupacion
 
 Obstaculo <|.. FieraSalvaje
+Ocupacion <|.. FieraSalvaje
 
+Ocupacion <|... Armadura
+Ocupacion <|... Casco
+Ocupacion <|... EscudoYEspada
+Ocupacion <|... LLave
 
 Seniority <|.. Novato
 Seniority <|.. SemiSenior
