@@ -11,7 +11,6 @@ public  class OperacionVisitorDeCasillas implements VisitorDeCasillas {
 
     @Override
     public Gladiador visitar(Casco casco, Gladiador unGladiador) {
-        //unGladiador = casco.modificarEnergia(unGladiador);
         unGladiador.agregarEquipamiento(casco);
         System.out.println("\n===> Se agrega un Casco al Equipamiento");
         return unGladiador;
@@ -19,7 +18,6 @@ public  class OperacionVisitorDeCasillas implements VisitorDeCasillas {
 
     @Override
     public Gladiador visitar(Armadura armadura, Gladiador unGladiador) {
-        //unGladiador = armadura.modificarEnergia(unGladiador);
         unGladiador.agregarEquipamiento(armadura);
         System.out.println("\n===> Se agrega una Armadura al Equipamiento");
         return  unGladiador;
@@ -27,7 +25,6 @@ public  class OperacionVisitorDeCasillas implements VisitorDeCasillas {
 
     @Override
     public Gladiador visitar(EscudoYEspada escudoYEspada, Gladiador unGladiador) {
-        //unGladiador = escudoYEspada.modificarEnergia(unGladiador);
         unGladiador.agregarEquipamiento(escudoYEspada);
         System.out.println("\n===> Se agrega un EscudoEspada al Equipamiento");
         return unGladiador;

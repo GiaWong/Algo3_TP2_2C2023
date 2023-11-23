@@ -11,8 +11,6 @@ public class Turno {
 
         this.maximaCantidadDeTurnos = maximaCantidad;
         this.turnoActual = 0;
-
-
     }
     
     public boolean jugar(Gladiador unGladiador) {

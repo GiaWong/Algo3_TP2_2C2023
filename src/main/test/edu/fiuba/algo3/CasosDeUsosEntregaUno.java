@@ -209,8 +209,6 @@ public class CasosDeUsosEntregaUno {
         assertEquals(posicionEsperada, unGladiador.obtenerPosicion());
 
     }
-
-    //Corregido si tiene todo el equipamiento menos la llave, le restan solo 2 puntos
     @Test
     public void Test10UnGladiadorConTodosSusEquipamientosEsAtacadoPorUnaFieraSalvajeLaEnergiaNoSeModifica() {
 

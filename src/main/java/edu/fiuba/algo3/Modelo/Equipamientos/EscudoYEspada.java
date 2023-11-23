@@ -21,5 +21,4 @@ public class EscudoYEspada implements Ocupacion,Equipamiento  {
         return  visitor.visitar(this, ungladiador);
     }
 
-
 }

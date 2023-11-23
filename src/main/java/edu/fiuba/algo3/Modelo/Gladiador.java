@@ -3,6 +3,7 @@ package edu.fiuba.algo3.Modelo;
 import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
+import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Seniority.Seniority;
 
@@ -49,9 +50,6 @@ public class Gladiador {
         return posicionActual;
     }
 
-
-    //Esto tiene que aplicar el seniority, cada vez que inicia el turno recibe esta energia
-    //Cuando pasar x turnos, cambia al siguiente
     public void aumentarEnergiaAlIniciarElTurno(){energia = unSeniority.modificarEnergia(energia);}
 
     public int obtenerCantidadDeEquipamiento(){
@@ -88,16 +86,14 @@ public class Gladiador {
     private boolean cantidadEquipamientoPermitido() {
         return (this.obtenerCantidadDeEquipamiento() == 3);
     }
-
-    //Violo polimorfismo!!!
-    //Tengo que pasarle una ocupacion, pero necesitaria que todas conozcan elmetodo modificarEnergia
-    public void combatir(FieraSalvaje unaFiera) {
+    
+    public void combatir(Obstaculo unObstaculo) {
 
         for (Equipamiento unEquipamiento: listaDeEquipamiento) {
             energia = unEquipamiento.modificarEnergia(energia);
         }
 
-        energia = unaFiera.modificarEnergia(energia);
+        energia = unObstaculo.modificarEnergia(energia);
 
     }
 
