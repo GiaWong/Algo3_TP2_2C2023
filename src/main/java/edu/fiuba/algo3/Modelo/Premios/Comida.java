@@ -12,7 +12,6 @@ public class Comida  implements Premio,Ocupacion {
 
     @Override
     public void modificarEnergia(Gladiador unGladiador) {
-        unGladiador.agregarEquipamientoSegunCantidadDePremios();
         unGladiador.aumentarEnergia(energia);
     }
 

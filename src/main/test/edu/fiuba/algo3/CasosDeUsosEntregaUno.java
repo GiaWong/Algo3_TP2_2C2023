@@ -30,7 +30,7 @@ public class CasosDeUsosEntregaUno {
 
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla((new Casilla(new NadaOcupacion())));
-        //agrego mas casillas para que el gladiador no llegue a la meta
+
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
@@ -47,21 +47,20 @@ public class CasosDeUsosEntregaUno {
     @Test
     public void Test03VerificarQuejugadorSinEnergiaNoPuedaJugarElTurno() {
 
-        Tablero tablero = new Tablero(1, new Turno(30));//para turno asumimos que el gladiador 1 será el primer turno
+        Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
-        Gladiador unGladiador = new Gladiador(0, new Novato(), 0);//asumimos que ya tiene energia cero, el como llega a ese eavlor se discute luego
+        Gladiador unGladiador = new Gladiador(0, new Novato(), 0);
         tablero.agregarJugador(unGladiador);
         tablero.avanzar(new Dado());
 
         int posicionEsperada = 0;
-        assertEquals(posicionEsperada, unGladiador.obtenerPosicion());//Como el gladiador no avanzo, su turno expiro
+        assertEquals(posicionEsperada, unGladiador.obtenerPosicion());
 
     }
 
-    //recomendable que en la primera posicion de las casillas empiece algo vacio
    @Test
     public void Test04VerificarQueSiRecibeComidaIncrementaEnergiaEn15() {
 
@@ -119,11 +118,6 @@ public class CasosDeUsosEntregaUno {
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
 
-        //Expected :edu.fiuba.algo3.Modelo.Equipamientos.EscudoYEspada@57a3af25
-        //Actual   :edu.fiuba.algo3.Modelo.Equipamientos.EscudoYEspada@2b662a77
-
-        //Equipamiento equipamientoEsperado = new EscudoYEspada(8);
-        //assertEquals(equipamientoEsperado, unGladiador.obtenerUltimoEquipamientoAdquirido());
 
         int longitudEsperada = 3;
 
@@ -131,7 +125,6 @@ public class CasosDeUsosEntregaUno {
 
     }
 
-    //Si me atacan y tengo un casco me quedo con 5 puntos, no con 15!
     @Test
     public void Test07VerificarQueSiHayUnCombateConUnaFieraSalvajeYTieneCascoPierde15Puntos() {
 

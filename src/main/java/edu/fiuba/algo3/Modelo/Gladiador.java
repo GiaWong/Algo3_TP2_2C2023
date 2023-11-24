@@ -17,18 +17,11 @@ public class Gladiador {
     private int energia;
     private Seniority unSeniority;
     private List<Equipamiento> listaDeEquipamiento;
-    private int estadosPosibles;
-
-
-
-
     public Gladiador(int unaEnergia, Novato novato, int posicionActual) {
         this.energia = unaEnergia;
         this.posicionActual = posicionActual;
         this.unSeniority = novato;
         this.listaDeEquipamiento = new ArrayList<>();
-        this.estadosPosibles = 0;
-
     }
 
     public int obtenerEnergia() {
@@ -107,15 +100,14 @@ public class Gladiador {
     }
 
 
-    //No se me ocurre otra forma de cambiar los estadosque no sea usando un contador
     //Otra forma es sacar el map y ir cambiando a medida que entra, pero volveriamos a los 4 ifs
     public void agregarEquipamientoSegunCantidadDePremios() {
         ManejarEquipamiento manejarEquipamiento = new ManejarEquipamiento();
 
-        if (estadosPosibles <= 3){
-            manejarEquipamiento.cambiarEstado(estadosPosibles);
+        if (listaDeEquipamiento.size() <= 3){
+            manejarEquipamiento.cambiarEstado(listaDeEquipamiento.size());
             manejarEquipamiento.obtenerPremio(listaDeEquipamiento);
-            estadosPosibles = estadosPosibles +1;
+
         }
 
     }
