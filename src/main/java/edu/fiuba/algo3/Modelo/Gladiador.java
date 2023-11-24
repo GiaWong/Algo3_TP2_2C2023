@@ -28,11 +28,6 @@ public class Gladiador {
         return energia;
     }
 
-
-    public void cambiarSeniority(Seniority seniority) {
-        this.unSeniority = seniority;
-    }
-
     public void avanzar(int cantidadAMoverse) {
         posicionActual = posicionActual + cantidadAMoverse;
         System.out.println("\nGladiador avanza una casilla ---> está en la posicion:  " + posicionActual);
@@ -48,7 +43,10 @@ public class Gladiador {
         return posicionActual;
     }
 
-    public void aumentarEnergiaAlIniciarElTurno(){energia = unSeniority.modificarEnergia(energia);}
+    public void aumentarEnergiaAlIniciarElTurno(){
+
+        unSeniority = unSeniority.sumarTurno();
+        energia = unSeniority.modificarEnergia(energia);}
 
     public int obtenerCantidadDeEquipamiento(){
 

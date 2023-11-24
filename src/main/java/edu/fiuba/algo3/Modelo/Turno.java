@@ -18,10 +18,6 @@ public class Turno {
             return false;
         }
 
-        if (turnoActual == 8) {
-            unGladiador.cambiarSeniority(new Semisenior());
-        }
-
         return true;
     }
 
