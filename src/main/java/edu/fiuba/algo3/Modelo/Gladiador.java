@@ -4,6 +4,7 @@ import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
+import edu.fiuba.algo3.Modelo.PatronState.ManejarEquipamiento;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Seniority.Seniority;
 
@@ -15,8 +16,10 @@ public class Gladiador {
     private int posicionActual;
     private int energia;
     private Seniority unSeniority;
-
     private List<Equipamiento> listaDeEquipamiento;
+    private int estadosPosibles;
+
+
 
 
     public Gladiador(int unaEnergia, Novato novato, int posicionActual) {
@@ -24,6 +27,8 @@ public class Gladiador {
         this.posicionActual = posicionActual;
         this.unSeniority = novato;
         this.listaDeEquipamiento = new ArrayList<>();
+        this.estadosPosibles = 0;
+
     }
 
     public int obtenerEnergia() {
@@ -101,25 +106,18 @@ public class Gladiador {
         this.energia = this.energia + unaEnergia;
     }
 
-    //desacoplar con un refactor
+
+    //No se me ocurre otra forma de cambiar los estadosque no sea usando un contador
+    //Otra forma es sacar el map y ir cambiando a medida que entra, pero volveriamos a los 4 ifs
     public void agregarEquipamientoSegunCantidadDePremios() {
+        ManejarEquipamiento manejarEquipamiento = new ManejarEquipamiento();
 
-        if(listaDeEquipamiento.isEmpty()){
-            listaDeEquipamiento.add(new Casco(5));
-            System.out.println("\n===> Obtiene un Casco como premio");
-
-        }else if (listaDeEquipamiento.size()==1) {
-            listaDeEquipamiento.add(new Armadura(5));
-            System.out.println("\n===> Obtiene un Armadura como premio");
-
-        } else if (listaDeEquipamiento.size()==2) {
-            listaDeEquipamiento.add(new EscudoYEspada(8));
-            System.out.println("\n===> Obtiene un EscudoYEspada como premio");
-
-        }else if (listaDeEquipamiento.size()==3) {
-            listaDeEquipamiento.add(new LLave());
-            System.out.println("\n===> Obtiene un LLave como premio\n");
+        if (estadosPosibles <= 3){
+            manejarEquipamiento.cambiarEstado(estadosPosibles);
+            manejarEquipamiento.obtenerPremio(listaDeEquipamiento);
+            estadosPosibles = estadosPosibles +1;
         }
+
     }
     public Equipamiento obtenerUltimoEquipamientoAdquirido(){
         int tamanio = listaDeEquipamiento.size();
