@@ -47,19 +47,9 @@ public class Tablero {
         }
     }
 
-    public boolean validarFinalizarJuego(){
-        int turno = this.turno.obtenerTurno(); //viola  tell dontAsk
-        boolean devolver = false; // inicizalizamos el valor de un boleano
-        if (turno >= 30){
-            System.out.println("Se finalizo el juego ----> cantidad de turnos para llegar a 30 es " + (30-turno));
-            devolver = true;
-        }
-        if (turno < 30){
-            System.out.println("Aun NO se finalizo el juego ----> cantidad de turnos para llegar a 30 es " + (30-turno));
-            devolver = false;
-        }
-        return devolver;
-        //PRBANDO SI FUNCIONA LA NUEVA BRANCH
+    public boolean FinalizarJuego(){
+        return turno.validarFinalizarJuego();
+        //ACA SE TIENE QUE TERMINAR EL TABLERO Y TODO EL JUEGO EN GENERAL
     }
 
 }
