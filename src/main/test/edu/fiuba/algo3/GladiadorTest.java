@@ -116,4 +116,80 @@ public class GladiadorTest {
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
     }
 
+    @Test
+    public void Test06SePuedenAgregarMultiplesJugadoresAlTablero() {
+        Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+
+        Gladiador primerGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(primerGladiador);
+        Gladiador segundoGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(segundoGladiador);
+        Gladiador tercerGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(tercerGladiador);
+
+        int longitudEsperada0 = 0;
+        int longitudEsperada1 = 1;
+
+        tablero.avanzar(new DadoMock());
+
+        // Se lanzan los dados y el primer jugador se mueve
+        assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada0, segundoGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada0, tercerGladiador.obtenerCantidadDeEquipamiento());
+
+        tablero.avanzar(new DadoMock());
+
+        // Se lanzan los dados y el segundo jugador se mueve
+        assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada0, tercerGladiador.obtenerCantidadDeEquipamiento());
+
+        tablero.avanzar(new DadoMock());
+
+        // Se lanzan los dados y el tercer jugador se mueve
+        assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada1, tercerGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
+    }
+
+    @Test
+    public void Test07CuandoSeIniciaUnTurnoSeEmpiezaConElPrimerGladiadorDeLaLista() {
+        Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+
+        Gladiador primerGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(primerGladiador);
+        Gladiador segundoGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(segundoGladiador);
+
+        int longitudEsperada0 = 0;
+        int longitudEsperada1 = 1;
+        int longitudEsperada2 = 2;
+
+        tablero.avanzar(new DadoMock());
+
+        // Se inicia un nuevo turno, se lanzan los dados y el primer jugador se mueve
+        assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada0, segundoGladiador.obtenerCantidadDeEquipamiento());
+
+        tablero.avanzar(new DadoMock());
+
+        // Se lanzan los dados y el segundo jugador se mueve
+        assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
+
+        tablero.avanzar(new DadoMock());
+
+        // Se inicia un nuevo turno, se lanzan los dados y el primer jugador se mueve de nuevo
+        assertEquals(longitudEsperada2, primerGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
+    }
 }
