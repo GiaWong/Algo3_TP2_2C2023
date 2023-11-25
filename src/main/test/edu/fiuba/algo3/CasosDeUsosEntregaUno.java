@@ -336,6 +336,7 @@ public class CasosDeUsosEntregaUno {
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
         tablero.avanzar(new Dado());
+
         //se juegan 30 turnos
 
         boolean juegoTerminado= true;

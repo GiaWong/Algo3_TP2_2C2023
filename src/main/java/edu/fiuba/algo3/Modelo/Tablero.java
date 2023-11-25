@@ -48,8 +48,16 @@ public class Tablero {
     }
 
     public boolean FinalizarJuego(){
-        return turno.validarFinalizarJuego();
-        //ACA SE TIENE QUE TERMINAR EL TABLERO Y TODO EL JUEGO EN GENERAL
+        boolean validacion = turno.validarFinalizarJuego();
+        if (validacion){  //Si se TRUE, se finaliza y se reinicia todos los parametros , si es FALSE no entra aca
+            this.cantidadDeJugadores = 0;
+            this.listaDeGladiadores.clear();
+            this.listaDeCasillas.clear();
+            this.turno = null;
+            this.controladorCantidadMoverse = 0;
+        }
+        return validacion;
+
     }
 
 }
