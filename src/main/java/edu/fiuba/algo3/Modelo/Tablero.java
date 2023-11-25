@@ -32,7 +32,7 @@ public class Tablero {
 
     public void avanzar(Dado dado) {
 
-        int cantidadAMoverse = dado.tirar();
+        int cantidadAMoverse = dado.lanzarDado();
         Gladiador ungladiador = turno.siguienteTurno(listaDeGladiadores);
 
         if (this.validarTurno(ungladiador)) {

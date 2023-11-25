@@ -36,7 +36,7 @@ public class CasosDeUsosEntregaUno {
 
         Gladiador unGladiador = new Gladiador(20, new Novato(), 0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
 
         int energiaEsperada = 20;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
@@ -54,7 +54,7 @@ public class CasosDeUsosEntregaUno {
 
         Gladiador unGladiador = new Gladiador(0, new Novato(), 0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
 
         int posicionEsperada = 0;
         assertEquals(posicionEsperada, unGladiador.obtenerPosicion());
@@ -73,7 +73,7 @@ public class CasosDeUsosEntregaUno {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
 
         int energiaEsperada = 35;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
@@ -91,7 +91,7 @@ public class CasosDeUsosEntregaUno {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
 
         int longitudEsperada = 1;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
@@ -113,10 +113,10 @@ public class CasosDeUsosEntregaUno {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
 
         int longitudEsperada = 3;
@@ -140,9 +140,9 @@ public class CasosDeUsosEntregaUno {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int energiaEsperada = 5;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
@@ -170,19 +170,19 @@ public class CasosDeUsosEntregaUno {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         //Hasta aca la energia se tiene que mantener normal
         int energiaEsperada1 = 20;
         assertEquals(energiaEsperada1, unGladiador.obtenerEnergia());
 
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
 
         //Tuvo otro turno, se sube el rango del seniority y aumenta a 25
         int energiaEsperada = 25;
@@ -202,9 +202,9 @@ public class CasosDeUsosEntregaUno {
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int posicionEsperada = 1;
         assertEquals(posicionEsperada, unGladiador.obtenerPosicion());
@@ -228,12 +228,12 @@ public class CasosDeUsosEntregaUno {
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
 
         int energiaEsperada = 18;
@@ -256,13 +256,13 @@ public class CasosDeUsosEntregaUno {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int cantidadDeEquipamientoEsperado = 4;
         assertEquals(cantidadDeEquipamientoEsperado, unGladiador.obtenerCantidadDeEquipamiento());
@@ -306,36 +306,36 @@ public class CasosDeUsosEntregaUno {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
         //se juegan 30 turnos
 
         boolean juegoTerminado= true;
