@@ -135,21 +135,21 @@ public class GladiadorTest {
         int longitudEsperada0 = 0;
         int longitudEsperada1 = 1;
 
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
 
         // Se lanzan los dados y el primer jugador se mueve
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada0, segundoGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada0, tercerGladiador.obtenerCantidadDeEquipamiento());
 
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
 
         // Se lanzan los dados y el segundo jugador se mueve
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada0, tercerGladiador.obtenerCantidadDeEquipamiento());
 
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
 
         // Se lanzan los dados y el tercer jugador se mueve
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
@@ -174,19 +174,19 @@ public class GladiadorTest {
         int longitudEsperada1 = 1;
         int longitudEsperada2 = 2;
 
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
 
         // Se inicia un nuevo turno, se lanzan los dados y el primer jugador se mueve
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada0, segundoGladiador.obtenerCantidadDeEquipamiento());
 
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
 
         // Se lanzan los dados y el segundo jugador se mueve
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
 
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
 
         // Se inicia un nuevo turno, se lanzan los dados y el primer jugador se mueve de nuevo
         assertEquals(longitudEsperada2, primerGladiador.obtenerCantidadDeEquipamiento());
