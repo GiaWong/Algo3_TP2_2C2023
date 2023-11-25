@@ -25,7 +25,7 @@ public class GladiadorTest {
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
 
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
 
         int posicionEsperada = 1;
 
@@ -40,8 +40,8 @@ public class GladiadorTest {
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
 
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int energiaEsperada = 0;
 
@@ -61,7 +61,7 @@ public class GladiadorTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        Dado dado = new Dado();
+        Dado dado = new DadoMock();
         tablero.avanzar(dado);
         tablero.avanzar(dado);
         tablero.avanzar(dado);
@@ -85,8 +85,8 @@ public class GladiadorTest {
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int longitudEsperada = 2;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
@@ -107,10 +107,10 @@ public class GladiadorTest {
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int longitudEsperada = 4;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
