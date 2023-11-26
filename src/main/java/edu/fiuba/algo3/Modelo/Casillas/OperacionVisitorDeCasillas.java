@@ -3,6 +3,7 @@ package edu.fiuba.algo3.Modelo.Casillas;
 
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Gladiador;
+import edu.fiuba.algo3.Modelo.Obstaculos.Bacanal;
 import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Premios.Comida;
 
@@ -61,5 +62,12 @@ public  class OperacionVisitorDeCasillas implements VisitorDeCasillas {
         unGladiador.agregarEquipamientoSegunCantidadDePremios();
         return unGladiador;
     }
+    @Override
+    public Gladiador visitar(Bacanal bacanal, Gladiador unGladiador) {
+        bacanal.combatir(unGladiador);
+        System.out.println("\nEntró a Bacanal");
+        return  unGladiador;
+    }
+
 
 }
