@@ -271,9 +271,10 @@ public class CasosDeUsosEntregaUno {
     public void Test12GladiadorNoLLegaALaMetaAlPasarTreintaTurnosElJuegoSeTermina() {
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
@@ -306,39 +307,7 @@ public class CasosDeUsosEntregaUno {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-<<<<<<< HEAD
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
 
-=======
         tablero.avanzar(new DadoMock());
         tablero.avanzar(new DadoMock());
         tablero.avanzar(new DadoMock());
@@ -369,7 +338,39 @@ public class CasosDeUsosEntregaUno {
         tablero.avanzar(new DadoMock());
         tablero.avanzar(new DadoMock());
         tablero.avanzar(new DadoMock());
->>>>>>> master
+
+
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+
         //se juegan 30 turnos
 
         boolean juegoTerminado= true;

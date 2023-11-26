@@ -49,6 +49,7 @@ public class Tablero {
 
     public boolean FinalizarJuego(){
         boolean validacion = turno.validarFinalizarJuego();
+        /*
         if (validacion){  //Si se TRUE, se finaliza y se reinicia todos los parametros , si es FALSE no entra aca
             this.cantidadDeJugadores = 0;
             this.listaDeGladiadores.clear();
@@ -56,6 +57,8 @@ public class Tablero {
             this.turno = null;
             this.controladorCantidadMoverse = 0;
         }
+
+         */
         return validacion;
 
     }
