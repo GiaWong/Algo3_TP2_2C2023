@@ -1,14 +1,11 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.Modelo.*;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
-import edu.fiuba.algo3.Modelo.Dado;
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
-import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Premios.Comida;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
-import edu.fiuba.algo3.Modelo.Tablero;
-import edu.fiuba.algo3.Modelo.Turno;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,8 +24,8 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
 
         int longitudEsperada = 0;
@@ -47,8 +44,8 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
 
         int longitudEsperada = 1;
@@ -70,11 +67,11 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
 
         int longitudEsperada = 2;
@@ -98,11 +95,11 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
 
         int longitudEsperada = 3;
@@ -128,14 +125,14 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
 
         int longitudEsperada = 4;
@@ -157,9 +154,9 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int longitudEsperada = 1;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
@@ -178,9 +175,9 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int longitudEsperada = 2;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
@@ -203,12 +200,12 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
 
         int longitudEsperada = 3;
@@ -232,12 +229,12 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
 
         int longitudEsperada = 4;
@@ -258,11 +255,11 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int longitudEsperada = 2;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
@@ -283,11 +280,11 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int longitudEsperada = 3;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
@@ -313,15 +310,15 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int longitudEsperada = 4;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
@@ -340,10 +337,10 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int longitudEsperada = 1;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
@@ -366,13 +363,13 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int longitudEsperada = 2;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
@@ -395,13 +392,13 @@ public class OcupacionesTest {
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
-        tablero.avanzar(new Dado());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
 
         int longitudEsperada = 3;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());

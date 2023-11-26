@@ -26,10 +26,9 @@ public class Turno {
     }
 
     public Gladiador siguienteTurno(ArrayList<Gladiador> gladiadores){
-        //Por ahora lodejo asi, la idea mas adelante seria que puedan inicializarse varios gladiadores
-        //no pongoun for o un if en el tablero por que ya tiene demasiados
-       turnoActual++;
-       return  gladiadores.get(0);
+        Gladiador gladiadorActual = gladiadores.get(turnoActual % gladiadores.size());
+        turnoActual++;
+        return gladiadorActual;
     }
 
     public boolean validarFinalizarJuego(){
