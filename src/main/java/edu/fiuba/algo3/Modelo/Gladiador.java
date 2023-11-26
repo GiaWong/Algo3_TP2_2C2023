@@ -58,13 +58,13 @@ public class Gladiador {
     private List<Equipamiento> filtrarRepetidos() {
         System.out.println("\n==> Filtrando equipamientos repetidos ... ok");
         return listaDeEquipamiento.stream()
-                .filter(distinctByClass())
+                .filter(distinguirPorClases())
                 .collect(Collectors.toList());
     }
 
-    public static java.util.function.Predicate<Object> distinctByClass() {
-        java.util.Set<Class<?>> seen = new java.util.HashSet<>();
-        return objeto -> seen.add(objeto.getClass());
+    private  java.util.function.Predicate<Object> distinguirPorClases() {
+        java.util.Set<Class<?>> vista = new java.util.HashSet<>();
+        return objeto -> vista.add(objeto.getClass());
     }
 
     public void agregarEquipamiento(Equipamiento equipamiento){
