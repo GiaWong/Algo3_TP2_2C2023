@@ -47,18 +47,17 @@ public class Tablero {
         }
     }
 
-    public boolean validarFinalizarJuego(){
-        int turno = this.turno.obtenerTurno(); //viola  tell dontAsk
-        boolean devolver = false; // inicizalizamos el valor de un boleano
-        if (turno >= 30){
-            System.out.println("Se finalizo el juego ----> cantidad de turnos para llegar a 30 es " + (30-turno));
-            devolver = true;
+    public boolean FinalizarJuego(){
+        boolean validacion = turno.validarFinalizarJuego();
+        if (validacion){  //Si se TRUE, se finaliza y se reinicia todos los parametros , si es FALSE no entra aca
+            this.cantidadDeJugadores = 0;
+            this.listaDeGladiadores.clear();
+            this.listaDeCasillas.clear();
+            this.turno = null;
+            this.controladorCantidadMoverse = 0;
         }
-        if (turno < 30){
-            System.out.println("Aun NO se finalizo el juego ----> cantidad de turnos para llegar a 30 es " + (30-turno));
-            devolver = false;
-        }
-        return devolver;
+        return validacion;
+
     }
 
 }

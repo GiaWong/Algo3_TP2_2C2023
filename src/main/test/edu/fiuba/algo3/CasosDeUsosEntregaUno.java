@@ -339,7 +339,7 @@ public class CasosDeUsosEntregaUno {
         //se juegan 30 turnos
 
         boolean juegoTerminado= true;
-        assertEquals(juegoTerminado, tablero.validarFinalizarJuego());
+        assertEquals(juegoTerminado, tablero.FinalizarJuego());
     }
 }
 
