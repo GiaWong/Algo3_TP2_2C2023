@@ -215,14 +215,13 @@ public class OcupacionesTest {
     @Test
     public void Test09LaListaDeCasillasTieneCuatroEquipamientosIncluidoLaLLave() {
         Tablero tablero = new Tablero(1, new Turno(30));
-
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new Casco(5)));
-        tablero.agregarCasilla(new Casilla(new Armadura(5)));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new EscudoYEspada(2)));
-        tablero.agregarCasilla(new Casilla(new LLave()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));

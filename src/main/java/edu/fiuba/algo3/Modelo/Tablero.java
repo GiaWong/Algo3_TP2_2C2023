@@ -40,16 +40,12 @@ public class Tablero {
             controladorCantidadMoverse = controladorCantidadMoverse + cantidadAMoverse;
             Casilla casillaActual = listaDeCasillas.get(controladorCantidadMoverse);
             ungladiador = casillaActual.siguiente(ungladiador, cantidadAMoverse, listaDeCasillas.size());
-
-            //hay que actualizar la lista de gladiadores para despues por eso esta ungladiador con color gris
-
-
         }
     }
 
     public boolean FinalizarJuego(){
         boolean validacion = turno.validarFinalizarJuego();
-        if (validacion){  //Si se TRUE, se finaliza y se reinicia todos los parametros , si es FALSE no entra aca
+        if (validacion){
             this.cantidadDeJugadores = 0;
             this.listaDeGladiadores.clear();
             this.listaDeCasillas.clear();

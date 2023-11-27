@@ -9,7 +9,6 @@ public class ManejarEquipamiento {
     private Map<Integer, Estado> estados = new HashMap<>();
     private int estadoActual;
 
-    //uso un map para sacar los ifs de encima
     public ManejarEquipamiento() {
         estados.put(0, new EstadoSinEquipamiento());
         estados.put(1, new EstadoConUnEquipamiento());

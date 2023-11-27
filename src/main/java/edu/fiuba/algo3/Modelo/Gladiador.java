@@ -73,7 +73,6 @@ public class Gladiador {
     }
 
     public boolean tieneLLave() {
-        // Utilicé Stream para buscar el elemento en la lista
         return ((listaDeEquipamiento.stream()
                 .anyMatch(elemento -> elemento instanceof LLave)) && cantidadEquipamientoPermitido());
 
@@ -97,8 +96,6 @@ public class Gladiador {
         this.energia = this.energia + unaEnergia;
     }
 
-
-    //Otra forma es sacar el map y ir cambiando a medida que entra, pero volveriamos a los 4 ifs
     public void agregarEquipamientoSegunCantidadDePremios() {
         ManejarEquipamiento manejarEquipamiento = new ManejarEquipamiento();
 

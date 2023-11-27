@@ -9,7 +9,6 @@ import edu.fiuba.algo3.Modelo.Premios.Comida;
 
 public  class OperacionVisitorDeCasillas implements VisitorDeCasillas {
 
-
     @Override
     public Gladiador visitar(Casco casco, Gladiador unGladiador) {
         unGladiador.agregarEquipamiento(casco);

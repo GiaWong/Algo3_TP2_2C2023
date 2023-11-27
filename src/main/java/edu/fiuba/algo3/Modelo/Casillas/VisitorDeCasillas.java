@@ -18,6 +18,5 @@ public interface VisitorDeCasillas {
 
     Gladiador visitar(Comida comida, Gladiador unGladiador);
 
-    //Este es medio una chota por que es solo para darle el premio
     Gladiador visitar(PremioEquipamiento unPremio, Gladiador unGladiador);
 }

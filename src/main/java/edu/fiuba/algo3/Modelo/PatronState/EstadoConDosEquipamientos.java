@@ -7,7 +7,6 @@ import java.util.List;
 
 public class EstadoConDosEquipamientos implements Estado{
 
-
     @Override
     public void ejercutarAccion(List<Equipamiento> listaDeEquipamiento) {
         listaDeEquipamiento.add(new EscudoYEspada(8));

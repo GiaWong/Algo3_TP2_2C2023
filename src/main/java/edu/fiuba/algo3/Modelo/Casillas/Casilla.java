@@ -25,7 +25,6 @@ public class Casilla {
 
     private void estaEnLaUltimaPosicion(Gladiador ungladiador, int tamanioLista ) {
 
-        //porque se asume que si ya no hay mas casillas entonces se llegó a la meta
         if (esLaUltimaPosicion(ungladiador.obtenerPosicion(), tamanioLista)) {
             if (!ungladiador.tieneLLave()) {
                 System.out.println("\n----Se LLegó a la meta sin equipamiento completo----\n");

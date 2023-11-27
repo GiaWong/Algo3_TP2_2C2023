@@ -16,12 +16,6 @@ public class Armadura  implements Ocupacion,Equipamiento{
        return (unaEnergia + energia);
    }
 
-
-    //@Override
-    //public int desgastar(int energiaGladiador) {
-    //    return (energiaGladiador + energia);
-    //}
-
     @Override
     public Gladiador aceptarVisitante(VisitorDeCasillas visitor, Gladiador ungladiador) {
         return  visitor.visitar(this, ungladiador);

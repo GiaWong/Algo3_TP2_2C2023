@@ -5,8 +5,8 @@ import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
 import edu.fiuba.algo3.Modelo.Casillas.VisitorDeCasillas;
 
 public class LLave  implements Ocupacion,Equipamiento {
-
-    public LLave(){}
+    private int energia;
+    public LLave(int energia){this.energia =energia;}
 
     @Override
     public Gladiador aceptarVisitante(VisitorDeCasillas visitor, Gladiador ungladiador) {
@@ -14,7 +14,6 @@ public class LLave  implements Ocupacion,Equipamiento {
         return  visitor.visitar(this, ungladiador);
     }
 
-    //Por ahora la llave no tiene energia
     @Override
     public int modificarEnergia(int unaEnergia) {
         return (unaEnergia); //+ energia);

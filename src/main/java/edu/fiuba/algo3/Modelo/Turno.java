@@ -32,7 +32,7 @@ public class Turno {
     }
 
     public boolean validarFinalizarJuego(){
-        boolean devolver = false; // inicizalizamos el valor de un boleano
+        boolean devolver = false;
         if (turnoActual >= 30){
             System.out.println("Se finalizo el juego ----> cantidad de turnos para llegar a 30 es " + (30-turnoActual));
             devolver = true;

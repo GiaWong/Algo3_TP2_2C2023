@@ -16,13 +16,10 @@ public  class FieraSalvaje implements Ocupacion,Obstaculo {
         return  visitor.visitar(this, ungladiador);
     }
 
-    //La fiera tiene que poder restar la energia del gladiador
     public int modificarEnergia(int energia) {
         return (energia - unaEnergia) ;
     }
 
-    //Una forma de pensarlo es pasarle por param la ocupacion y que el gladiador se reste los putnos
-    //En su "combatir"
     @Override
     public void combatir(Gladiador unGladiador) {
         unGladiador.combatir(this );

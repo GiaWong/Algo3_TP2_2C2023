@@ -9,7 +9,6 @@ public class Comida  implements Premio,Ocupacion {
     private int energia;
     public Comida(int energiaPropia){this.energia = energiaPropia;}
 
-
     @Override
     public void modificarEnergia(Gladiador unGladiador) {
         unGladiador.aumentarEnergia(energia);

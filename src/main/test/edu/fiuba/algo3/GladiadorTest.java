@@ -100,7 +100,7 @@ public class GladiadorTest {
         tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
-        tablero.agregarCasilla(new Casilla (new LLave()));
+        tablero.agregarCasilla(new Casilla (new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
 
