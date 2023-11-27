@@ -1,23 +1,20 @@
 package edu.fiuba.algo3.Modelo.Casillas;
-
 import edu.fiuba.algo3.Modelo.Gladiador;
 
 public class Casilla {
-    Ocupacion unaOcupacion;
-    VisitorDeCasillas visitor;
+    Ocupable unaOcupacion;
 
-    public Casilla(Ocupacion ocupacion) {
+    public Casilla(Ocupable ocupacion) {
         this.unaOcupacion = ocupacion;
-        this.visitor = new OperacionVisitorDeCasillas();
 
     }
 
 
-    public Gladiador siguiente(Gladiador ungladiador, int cantidadAMoverse, int tamanioLista) {
+    public Gladiador interactuarConLaOcupacion(Gladiador ungladiador, int cantidadAMoverse, int tamanioLista) {
 
         ungladiador.aumentarEnergiaAlIniciarElTurno();
         ungladiador.avanzar(cantidadAMoverse);
-        ungladiador = unaOcupacion.aceptarVisitante(visitor, ungladiador);//Patron visitor
+        ungladiador = unaOcupacion.interactuarConLaOcupacion( ungladiador);
         estaEnLaUltimaPosicion(ungladiador,tamanioLista);
         return ungladiador;
     }

@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.Modelo.Premios;
 
 import edu.fiuba.algo3.Modelo.Gladiador;
-import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
-import edu.fiuba.algo3.Modelo.Casillas.VisitorDeCasillas;
+import edu.fiuba.algo3.Modelo.Casillas.Ocupable;
 
-public class Comida  implements Premio,Ocupacion {
+public class Comida  implements Premio, Ocupable {
 
     private int energia;
     public Comida(int energiaPropia){this.energia = energiaPropia;}
@@ -15,7 +14,9 @@ public class Comida  implements Premio,Ocupacion {
     }
 
     @Override
-    public Gladiador aceptarVisitante(VisitorDeCasillas visitor, Gladiador ungladiador) {
-        return  visitor.visitar(this, ungladiador);
+    public Gladiador interactuarConLaOcupacion(Gladiador unGladiador) {
+        this.modificarEnergia(unGladiador);
+        return unGladiador;
     }
+
 }

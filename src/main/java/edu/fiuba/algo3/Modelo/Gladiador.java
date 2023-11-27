@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.Modelo;
 
-import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
-import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
-import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
+import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculizador;
 import edu.fiuba.algo3.Modelo.PatronState.ManejarEquipamiento;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Seniority.Seniority;
@@ -16,7 +14,7 @@ public class Gladiador {
     private int posicionActual;
     private int energia;
     private Seniority unSeniority;
-    private List<Equipamiento> listaDeEquipamiento;
+    private List<Equipado> listaDeEquipamiento;
     public Gladiador(int unaEnergia, Novato novato, int posicionActual) {
         this.energia = unaEnergia;
         this.posicionActual = posicionActual;
@@ -55,7 +53,7 @@ public class Gladiador {
 
     }
 
-    private List<Equipamiento> filtrarRepetidos() {
+    private List<Equipado> filtrarRepetidos() {
         System.out.println("\n==> Filtrando equipamientos repetidos ... ok");
         return listaDeEquipamiento.stream()
                 .filter(distinguirPorClases())
@@ -67,7 +65,7 @@ public class Gladiador {
         return objeto -> vista.add(objeto.getClass());
     }
 
-    public void agregarEquipamiento(Equipamiento equipamiento){
+    public void agregarEquipamiento(Equipado equipamiento){
             listaDeEquipamiento.add(equipamiento);
 
     }
@@ -82,9 +80,9 @@ public class Gladiador {
         return (this.obtenerCantidadDeEquipamiento() == 3);
     }
     
-    public void combatir(Obstaculo unObstaculo) {
+    public void combatir(Obstaculizador unObstaculo) {
 
-        for (Equipamiento unEquipamiento: listaDeEquipamiento) {
+        for (Equipado unEquipamiento: listaDeEquipamiento) {
             energia = unEquipamiento.modificarEnergia(energia);
         }
 
@@ -105,9 +103,5 @@ public class Gladiador {
 
         }
 
-    }
-    public Equipamiento obtenerUltimoEquipamientoAdquirido(){
-        int tamanio = listaDeEquipamiento.size();
-        return listaDeEquipamiento.get(tamanio - 1);
     }
 }
