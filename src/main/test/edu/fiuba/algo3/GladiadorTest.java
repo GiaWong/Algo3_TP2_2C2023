@@ -192,4 +192,28 @@ public class GladiadorTest {
         assertEquals(longitudEsperada2, primerGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
     }
+    @Test
+    public void Test08CuandoPasando12TurnosUnGladiadorPasaDeNovatoASeniority(){
+
+        Tablero tablero = new Tablero(1, new Turno(30));
+
+        for (int i=1 ; i <20 ;i++){
+            tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        }
+
+        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(unGladiador);
+        DadoMock dado = new DadoMock();
+
+        for (int i=1 ; i <13 ;i++){
+            tablero.avanzar(dado);
+        }
+
+        //Apartir del turno 8 suma 4 semisenior 20 de energia
+        //Despues suma 10
+        //Tiene que dar 50
+        int energiaEsperada = 50;
+        assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
+
+    }
 }

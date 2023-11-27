@@ -154,30 +154,17 @@ public class CasosDeUsosEntregaUno {
     public void Test08VerificarQueSiPasan8TurnosElGladiadorPasaDeNovatoASemiSeniorYVeSuEnergiaIncrementadaEnElSiguienteTurno() {
 
         Tablero tablero = new Tablero(1, new Turno(30));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+
+        for (int i= 1; i <12; i++) {
+            tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        }
+
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-
+        for (int i= 1; i <8; i++) {
+            tablero.avanzar(new DadoMock());
+        }
         //Hasta aca la energia se tiene que mantener normal
         int energiaEsperada1 = 20;
         assertEquals(energiaEsperada1, unGladiador.obtenerEnergia());
@@ -270,73 +257,18 @@ public class CasosDeUsosEntregaUno {
     @Test
     public void Test12GladiadorNoLLegaALaMetaAlPasarTreintaTurnosElJuegoSeTermina() {
         Tablero tablero = new Tablero(1, new Turno(30));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        // hay 32 casillas
+        DadoMock dado = new DadoMock();
+        for (int i=1 ; i <33 ;i++){
+            tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        }
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        //se juegan 30 turnos
+
+        for (int i=1 ; i <31 ;i++){
+            tablero.avanzar(dado);
+        }
+
 
         boolean juegoTerminado= true;
         assertEquals(juegoTerminado, tablero.FinalizarJuego());
