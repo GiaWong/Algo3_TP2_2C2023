@@ -3,7 +3,7 @@ package edu.fiuba.algo3.Modelo.Obstaculos;
 import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Casillas.Ocupable;
 
-public  class FieraSalvaje implements Ocupable,Obstaculo {
+public  class FieraSalvaje implements Ocupable, Obstaculizador {
     private int unaEnergia;
 
     public FieraSalvaje(int energia) {

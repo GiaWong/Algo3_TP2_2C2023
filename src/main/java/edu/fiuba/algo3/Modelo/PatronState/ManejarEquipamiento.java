@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.Modelo.PatronState;
-import edu.fiuba.algo3.Modelo.Equipamientos.Equipamiento;
+import edu.fiuba.algo3.Modelo.Equipamientos.Equipado;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,7 @@ public class ManejarEquipamiento {
         estadoActual = nuevoEstado;
     }
 
-    public void obtenerPremio(List<Equipamiento> listaDeEquipamiento) {
+    public void obtenerPremio(List<Equipado> listaDeEquipamiento) {
         estado = estados.get(estadoActual);
         estado.ejercutarAccion(listaDeEquipamiento);
     }

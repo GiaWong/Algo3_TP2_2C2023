@@ -3,7 +3,7 @@ package edu.fiuba.algo3.Modelo.Equipamientos;
 import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Casillas.Ocupable;
 
-public class Casco implements Ocupable,Equipamiento {
+public class Casco implements Ocupable, Equipado {
     private int energia;
     public Casco(int energia) {
         this.energia = energia;

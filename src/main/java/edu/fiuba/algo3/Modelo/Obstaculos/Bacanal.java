@@ -4,7 +4,7 @@ import edu.fiuba.algo3.Modelo.Casillas.Ocupable;
 import edu.fiuba.algo3.Modelo.DadoMock;
 import edu.fiuba.algo3.Modelo.Gladiador;
 
-public class Bacanal implements Obstaculo, Ocupable {
+public class Bacanal implements Obstaculizador, Ocupable {
     @Override
     public void combatir(Gladiador unGladiador) {
         unGladiador.combatir(this );

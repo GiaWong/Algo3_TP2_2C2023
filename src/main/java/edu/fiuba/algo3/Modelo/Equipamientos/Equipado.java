@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.Modelo.Equipamientos;
 
-public interface Equipamiento {
+public interface Equipado {
     int modificarEnergia(int unaEnergia);
 
 }
