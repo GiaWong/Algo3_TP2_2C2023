@@ -1,6 +1,11 @@
 package edu.fiuba.algo3;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
+import edu.fiuba.algo3.Modelo.Casillas.Ocupable;
+import edu.fiuba.algo3.Modelo.Obstaculos.Bacanal;
+import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
+import edu.fiuba.algo3.Modelo.Obstaculos.Lesion;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -10,7 +15,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class CasosDeUsosEntregaDos {
+    List<String> obstaculosPermitidosSegunModelo;
+    List<String> premiosPermitidosSegunModelo;
+    public CasosDeUsosEntregaDos(){//constructor
+
+        this.obstaculosPermitidosSegunModelo = new ArrayList<>();
+        this.premiosPermitidosSegunModelo = new ArrayList<>();
+
+
+        this.obstaculosPermitidosSegunModelo.add("".toUpperCase());
+        this.obstaculosPermitidosSegunModelo.add("Lesion".toUpperCase());
+        this.obstaculosPermitidosSegunModelo.add("Fiera".toUpperCase());
+        this.obstaculosPermitidosSegunModelo.add("Bacanal".toUpperCase());
+
+        this.premiosPermitidosSegunModelo.add("".toUpperCase());
+        this.premiosPermitidosSegunModelo.add("Equipamiento".toUpperCase());
+        this.premiosPermitidosSegunModelo.add("Comida".toUpperCase());
+    }
 
     @Test
     public void Test013SeVerificaJsonDeMapaEsValido() { //verifico la estructura del .json
@@ -97,35 +120,75 @@ public class CasosDeUsosEntregaDos {
     }
 
     private boolean existenObstaculosNoContemplados(List<String> listaObstaculosJSON) {
-
-        List<String> obstaculosPermitidos = new ArrayList<>();
-        obstaculosPermitidos.add("".toUpperCase());
-        obstaculosPermitidos.add("Lesion".toUpperCase());
-        obstaculosPermitidos.add("Fiera".toUpperCase());
-        obstaculosPermitidos.add("Bacanal".toUpperCase());
-
         return listaObstaculosJSON.stream()
-                .allMatch(elementoActual -> obstaculosPermitidos.contains(elementoActual));
+                .allMatch(elementoActual -> this.obstaculosPermitidosSegunModelo.contains(elementoActual));
 
     }
     private boolean existenPremiosNoContemplados(List<String> listaPremiosJSON) {
-
-        List<String> premiosPermitidos = new ArrayList<>();
-        premiosPermitidos.add("".toUpperCase());
-        premiosPermitidos.add("Equipamiento".toUpperCase());
-        premiosPermitidos.add("Comida".toUpperCase());
-
         return listaPremiosJSON.stream()
-                .allMatch(elementoActual -> premiosPermitidos.contains(elementoActual));
+                .allMatch(elementoActual -> this.premiosPermitidosSegunModelo.contains(elementoActual));
 
     }
 
 
     @Test
-    public void Test015SeVerificaLaLecturayConversionDeEnemigosDeJsonEsValido() {
+    public void Test015SeVerificaLaLecturayConversionDeObstaculosDelJsonAlModelo() {//los contenidos de obstaculos vincularlos con los objetos del modelo
+
+        String rutaDelArchivo = "src/main/java/edu/fiuba/algo3/Modelo/Mapa/mapa.json";
+
+        try {
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(new File(rutaDelArchivo));
+            JsonNode celdas = jsonNode.get("camino").get("celdas");
+            List<String> listaObstaculosJSON = new ArrayList<>();
+
+            for (JsonNode celda : celdas) {
+                String obstaculo = celda.get("obstaculo").asText().toUpperCase();
+                listaObstaculosJSON.add(obstaculo);
+            }
+
+            assertTrue(conversionObstaculosJsonAlModelo(listaObstaculosJSON), "\nNo se pudo convertir a los objetos del Modelo");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Error al leer el archivo JSON");
+        }
+
+    }
+
+    private boolean conversionObstaculosJsonAlModelo(List<String> listaObstaculosJSON) {
+        List<Ocupable> listaDeObjetosObstaculos = new ArrayList<>();
+        if(existenObstaculosNoContemplados(listaObstaculosJSON)) {
+
+            for (String nombreActual : listaObstaculosJSON) {
+
+                if (nombreActual.equalsIgnoreCase("Lesion")) {
+                    System.out.println("\nConvirtiendo a clase Lesion()");
+                     listaDeObjetosObstaculos.add(new Lesion());
+
+                } else if (nombreActual.equalsIgnoreCase("Fiera")) {
+                    System.out.println("\nConvirtiendo a clase FieraSalvaje()");
+                    listaDeObjetosObstaculos.add( new FieraSalvaje(5));
+
+                } else if (nombreActual.equalsIgnoreCase("Bacanal")) {
+                    System.out.println("\nConvirtiendo a clase Bacanal()");
+                    listaDeObjetosObstaculos.add( new Bacanal());
+                } else {
+                    System.out.println("\nConvirtiendo a clase NadaOcupacion()");
+                    listaDeObjetosObstaculos.add( new NadaOcupacion());
+                }
+            }
+            return true;
+        }
+        return false;
+
     }
 
     @Test
+    public void Test016SeVerificaLaLecturayConversionDePremiosDelJsonAlModelo() {//los contenidos de premio vincularlos con los objetos del modelo
+    }
+    /*@Test
     public void Test016SeVerificaLaLecturayConversionDeEnemigosDeJsonEsValido() {
     }
 
@@ -143,5 +206,5 @@ public class CasosDeUsosEntregaDos {
 
     @Test
     public void Test20SimulamosYVerificamosQueElJugadorPierda() {
-    }
+    }*/
 }
