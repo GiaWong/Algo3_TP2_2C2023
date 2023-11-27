@@ -10,7 +10,7 @@ public class Casilla {
     }
 
 
-    public Gladiador siguiente(Gladiador ungladiador, int cantidadAMoverse, int tamanioLista) {
+    public Gladiador interactuarConLaOcupacion(Gladiador ungladiador, int cantidadAMoverse, int tamanioLista) {
 
         ungladiador.aumentarEnergiaAlIniciarElTurno();
         ungladiador.avanzar(cantidadAMoverse);

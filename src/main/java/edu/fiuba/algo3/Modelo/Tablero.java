@@ -39,7 +39,7 @@ public class Tablero {
 
             controladorCantidadMoverse = controladorCantidadMoverse + cantidadAMoverse;
             Casilla casillaActual = listaDeCasillas.get(controladorCantidadMoverse);
-            ungladiador = casillaActual.siguiente(ungladiador, cantidadAMoverse, listaDeCasillas.size());
+            ungladiador = casillaActual.interactuarConLaOcupacion(ungladiador, cantidadAMoverse, listaDeCasillas.size());
         }
     }
 
