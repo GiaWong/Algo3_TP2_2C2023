@@ -1,19 +1,13 @@
 package edu.fiuba.algo3.Modelo.Obstaculos;
 
 import edu.fiuba.algo3.Modelo.Gladiador;
-import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
-import edu.fiuba.algo3.Modelo.Casillas.VisitorDeCasillas;
+import edu.fiuba.algo3.Modelo.Casillas.Ocupable;
 
-public  class FieraSalvaje implements Ocupacion,Obstaculo {
+public  class FieraSalvaje implements Ocupable,Obstaculo {
     private int unaEnergia;
 
     public FieraSalvaje(int energia) {
         unaEnergia = energia;
-    }
-
-    @Override
-    public Gladiador aceptarVisitante(VisitorDeCasillas visitor, Gladiador ungladiador) {
-        return  visitor.visitar(this, ungladiador);
     }
 
     public int modificarEnergia(int energia) {
@@ -26,8 +20,10 @@ public  class FieraSalvaje implements Ocupacion,Obstaculo {
     }
 
 
-
-
-
-
+    @Override
+    public Gladiador interactuarConLaOcupacion(Gladiador unGladiador) {
+        this.combatir(unGladiador);
+        System.out.println("\nEntró a FieraSalvaje");
+        return  unGladiador;
+    }
 }

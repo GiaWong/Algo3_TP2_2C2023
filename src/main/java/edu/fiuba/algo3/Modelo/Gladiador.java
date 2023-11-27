@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.Modelo;
 
-import edu.fiuba.algo3.Modelo.Casillas.Ocupacion;
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
-import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
 import edu.fiuba.algo3.Modelo.PatronState.ManejarEquipamiento;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
@@ -105,9 +103,5 @@ public class Gladiador {
 
         }
 
-    }
-    public Equipamiento obtenerUltimoEquipamientoAdquirido(){
-        int tamanio = listaDeEquipamiento.size();
-        return listaDeEquipamiento.get(tamanio - 1);
     }
 }
