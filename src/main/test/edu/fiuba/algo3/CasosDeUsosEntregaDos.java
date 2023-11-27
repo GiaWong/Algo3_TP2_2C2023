@@ -1,10 +1,14 @@
 package edu.fiuba.algo3;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
 public class CasosDeUsosEntregaDos {
 
     @Test
     public void Test013SeVerificaJsonDeMapaEsValido() {
+        // Ruta al archivo JSON
+        String rutaDelArchivo = "src/main/java/edu/fiuba/algo3/Modelo/Mapa/mapa.json";
+
     }
 
     @Test
