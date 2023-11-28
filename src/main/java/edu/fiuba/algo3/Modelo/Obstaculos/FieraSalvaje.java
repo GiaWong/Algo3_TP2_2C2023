@@ -10,6 +10,7 @@ public  class FieraSalvaje implements Ocupable, Obstaculizador {
         unaEnergia = energia;
     }
 
+    @Override
     public int modificarEnergia(int energia) {
         return (energia - unaEnergia) ;
     }
@@ -18,7 +19,6 @@ public  class FieraSalvaje implements Ocupable, Obstaculizador {
     public void combatir(Gladiador unGladiador) {
         unGladiador.combatir(this );
     }
-
 
     @Override
     public Gladiador interactuarConLaOcupacion(Gladiador unGladiador) {

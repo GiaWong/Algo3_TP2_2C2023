@@ -11,7 +11,7 @@ public class Lesion implements Obstaculizador, Ocupable {
     public void combatir(Gladiador unGladiador) {
     }
 
-    public Lesion(){}
+    @Override
     public int modificarEnergia(int energia) {
         return energia;
     }

@@ -9,6 +9,7 @@ public class Senior extends Seniority{
         return unaEnergia + 10;
     }
 
+    @Override
     public Seniority sumarTurno() {
         this.turnoActual++;
         return this;

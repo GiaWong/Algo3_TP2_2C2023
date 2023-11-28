@@ -10,7 +10,7 @@ public class Bacanal implements Obstaculizador, Ocupable {
         unGladiador.combatir(this );
     }
 
-    public Bacanal(){}
+    @Override
     public int modificarEnergia(int energia) {
         DadoMock dado = new DadoMock();
         int tragosTomados = dado.lanzarDado();
