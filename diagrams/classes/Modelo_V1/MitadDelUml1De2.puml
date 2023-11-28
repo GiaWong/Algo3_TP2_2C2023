@@ -5,18 +5,40 @@ interface Premio{
 }
 
 
-interface  Obstaculo{
+interface  Obstaculizador{
     +{abstract}combatir(unGladiador Gladiador)
     +{abstract}modificarEnergia(unaEnergia int):int
 }
 
-class PremioEquipamiento{
-      +Gladiador aceptarVisitante(visitor VisitorDeCasillas, ungladiador Gladiador)
-      }
 
-interface Equipamiento{
+class FieraSalvaje{
+    -energia:int
+    +FieraSalvaje(energia int):void
+    +combatir(unGladiador Gladiador):void
+}
+
+class Bacanal{
+    +combatir(unGladiador Gladiador):void
+    +modificarEnergia(unaEnergia int):int
+}
+
+class Lesion{
+    +combatir(unGladiador Gladiador):void
+    +modificarEnergia(unaEnergia int):int
+    +interactuarConLaOcupacion(ungladiador Gladiador ):Gladiador
+}
+
+
+class PremioEquipamiento{
+      +interactuarConLaOcupacion(ungladiador Gladiador ):Gladiador
+ }
+
+
+interface Equipado{
     +{abstract}modificarEnergia(unaEnergia int):int
 }
+
+
 class Casco{
     +modificarEnergia(unaEnergia int):int
 }
@@ -34,41 +56,40 @@ class Comida{
     +modificarEnergia(unaEnergia int):int
 }
 
-interface Ocupacion{
-    Gladiador aceptarVisitante(visitor VisitorDeCasillas, ungladiador Gladiador);
-}
 
-class FieraSalvaje{
-    +Gladiador aceptarVisitante(Visitor VisitorDeCasillas,ungladiador Gladiador):VisitorDeCasillas
-    +combatir(unGladiador Gladiador)
+interface Ocupable{
+    interactuarConLaOcupacion(ungladiador Gladiador ):Gladiador
 }
 
 
 class NadaOcupacion{
-    Gladiador aceptarVisitante(visitor VisitorDeCasillas, ungladiador Gladiador);
+    +interactuarConLaOcupacion(ungladiador Gladiador ):Gladiador
 }
 
 
 
 Premio <|.right. Comida
-Ocupacion <|... Comida
+Ocupable <|... Comida
 
-Equipamiento <|.up.Casco
-Equipamiento <|.up. Armadura
-Equipamiento <|.up. LLave
-Equipamiento <|.up. EscudoYEspada
-
-
-Obstaculo <|.up. FieraSalvaje
-Ocupacion <|.. FieraSalvaje
+Equipado <|.up.Casco
+Equipado <|.up. Armadura
+Equipado <|.up. LLave
+Equipado <|.up. EscudoYEspada
 
 
-Ocupacion<|.right. PremioEquipamiento
-Ocupacion<|.up. NadaOcupacion
-Ocupacion <|... Armadura
-Ocupacion <|... Casco
-Ocupacion <|... EscudoYEspada
-Ocupacion <|... LLave
+Obstaculizador <|.up. FieraSalvaje
+Obstaculizador <|.right. Bacanal
+Obstaculizador <|.left.Lesion
+
+
+Ocupable <|.left.Bacanal
+Ocupable <|.. FieraSalvaje
+Ocupable<|.right. PremioEquipamiento
+Ocupable<|.up. NadaOcupacion
+Ocupable <|... Armadura
+Ocupable <|... Casco
+Ocupable <|... EscudoYEspada
+Ocupable <|... LLave
 
 
 

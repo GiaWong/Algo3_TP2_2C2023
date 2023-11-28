@@ -16,11 +16,13 @@ public class Gladiador {
     private int energia;
     private Seniority unSeniority;
     private List<Equipado> listaDeEquipamiento;
+    private boolean lesionado;
     public Gladiador(int unaEnergia, Novato novato, int posicionActual) {
         this.energia = unaEnergia;
         this.posicionActual = posicionActual;
         this.unSeniority = novato;
         this.listaDeEquipamiento = new ArrayList<>();
+        this.lesionado = false;
     }
 
     public int obtenerEnergia() {
@@ -105,6 +107,14 @@ public class Gladiador {
         }
 
     }
+  
+    public void lesionar(){
+        this.lesionado = true;
+    }
+    public void rehabilitar(){
+        this.lesionado = false;
+    }
+    public boolean estaLesionado(){return this.lesionado;};
 
     public boolean SeEncuentraEnUltimaPosicion(int tableroLongitud) {
         return((tableroLongitud -1) == posicionActual);

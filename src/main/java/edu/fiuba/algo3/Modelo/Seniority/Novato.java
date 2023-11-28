@@ -11,6 +11,7 @@ public class Novato extends Seniority {
         return unaEnergia;
     }
 
+    @Override
     public Seniority sumarTurno() {
         this.turnoActual++;
         if (turnoActual == 8) {

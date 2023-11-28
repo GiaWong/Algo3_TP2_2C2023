@@ -243,14 +243,15 @@ public class CasosDeUsosEntregaDos {
         }
 
     }
-    /*@Test
-    public void Test016SeVerificaLaLecturayConversionDeEnemigosDeJsonEsValido() {
-    }
+
 
     @Test
-    public void Test017SeVerificaElsistemaLog() {
+    public void Test017VerificarQueElJuegoSeCreaAcordeALosPuntoJson() {
+
+
     }
 
+    /*
     @Test
     public void Test018SeVerificaLaCreacionDeAmbosJson() {
     }*/

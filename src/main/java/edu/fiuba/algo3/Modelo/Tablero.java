@@ -36,7 +36,6 @@ public class Tablero {
         Gladiador ungladiador = turno.siguienteTurno(listaDeGladiadores);
 
         if (this.validarTurno(ungladiador)) {
-
             controladorCantidadMoverse = controladorCantidadMoverse + cantidadAMoverse;
             Casilla casillaActual = listaDeCasillas.get(controladorCantidadMoverse);
             ungladiador = casillaActual.interactuarConLaOcupacion(ungladiador, cantidadAMoverse, listaDeCasillas.size());
