@@ -45,11 +45,7 @@ public class Tablero {
     public boolean FinalizarJuego(){
         boolean validacion = turno.validarFinalizarJuego();
         if (validacion){
-            this.cantidadDeJugadores = 0;
-            this.listaDeGladiadores.clear();
-            this.listaDeCasillas.clear();
-            this.turno = null;
-            this.controladorCantidadMoverse = 0;
+            reiniciarTodoLosValores();
         }
         return validacion;
 
@@ -64,17 +60,20 @@ public class Tablero {
         boolean validarEquipamiento = unGladiador.cantidadEquipamientoPermitido();
         boolean validarPosicion = unGladiador.SeEncuentraEnUltimaPosicion(LongitudDeTablero());
 
-        if ( validarPosicion && validarEquipamiento){
-            this.cantidadDeJugadores = 0;
-            this.listaDeGladiadores.clear();
-            this.listaDeCasillas.clear();
-            this.turno = null;
-            this.controladorCantidadMoverse = 0;
+        if (validarPosicion && validarEquipamiento){
+            reiniciarTodoLosValores();
             System.out.println("\n----GANASTE, FELICIDADES!----\n");
             return true;
         }
         return false;
 
     }
-}
 
+    private void reiniciarTodoLosValores(){
+        this.cantidadDeJugadores = 0;
+        this.listaDeGladiadores.clear();
+        this.listaDeCasillas.clear();
+        this.turno = null;
+        this.controladorCantidadMoverse = 0;
+    }
+}
