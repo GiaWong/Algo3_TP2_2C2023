@@ -28,6 +28,7 @@ public class Casilla {
                 int cantidadAMoverse = obtenerPosicionMitadCasilla(tamanioLista);
                 ungladiador.retroceder(cantidadAMoverse);
             }
+            System.out.println("\n----Se LLegó a la meta con TODO el EQUIPAMIENTO completo----\n");
         }
     }
     private boolean esLaUltimaPosicion(int posicion, int tamanioLista) {
