@@ -14,10 +14,10 @@ public class Turno {
     }
 
     public boolean jugar(Gladiador unGladiador) {
-        if (unGladiador.obtenerEnergia() <= 0){
+        if (unGladiador.obtenerEnergia() <= 0 || unGladiador.estaLesionado() ) {
+            unGladiador.rehabilitar();
             return false;
         }
-
         return true;
     }
 
@@ -42,6 +42,10 @@ public class Turno {
             devolver = false;
         }
         return devolver;
+    }
+
+    public static void perderSiguienteTurno(Gladiador unGladiador){
+        unGladiador.lesionar();
     }
 }
 
