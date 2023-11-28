@@ -117,7 +117,7 @@ public class GladiadorTest {
     }
 
     @Test
-    public void Test06SePuedenAgregarMultiplesJugadoresAlTablero() {
+    public void Test06SePuedenAgregarMultiplesGladiadoresAlTablero() {
         Tablero tablero = new Tablero(1, new Turno(30));
         tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
         tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
@@ -215,5 +215,74 @@ public class GladiadorTest {
         int energiaEsperada = 50;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
 
+    }
+
+    @Test
+    public void Test09SiDosJugadoresCaenEnUnaCasillaConUnaFieraAmbosSonAtacados() {
+        Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
+
+        Gladiador primerGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(primerGladiador);
+        Gladiador segundoGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(segundoGladiador);
+
+        int energiaEsperada0 = 0;
+        int energiaEsperada20 = 20;
+
+        tablero.avanzar(new DadoMock());
+
+        // Se inicia un nuevo turno, se lanzan los dados y el primer jugador es atacado por una fiera
+        assertEquals(energiaEsperada0, primerGladiador.obtenerEnergia());
+        assertEquals(energiaEsperada20, segundoGladiador.obtenerEnergia());
+
+        tablero.avanzar(new DadoMock());
+
+        // Se lanzan los dados y el segundo jugador es atacado por una fiera
+
+        assertEquals(energiaEsperada0, primerGladiador.obtenerEnergia());
+        assertEquals(energiaEsperada0, segundoGladiador.obtenerEnergia());
+    }
+
+    @Test
+    public void Test10SiTresJugadoresCaenEnUnaCasillaConUnPremioTodosRecibenCascos() {
+        Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
+
+        Gladiador primerGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(primerGladiador);
+        Gladiador segundoGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(segundoGladiador);
+        Gladiador tercerGladiador = new Gladiador(20,new Novato(),0);
+        tablero.agregarJugador(tercerGladiador);
+
+        int longitudEsperada0 = 0;
+        int longitudEsperada1 = 1;
+
+        tablero.avanzar(new DadoMock());
+
+        // Se inicia un nuevo turno, se lanzan los dados y el primer jugador consigue un equipamiento
+        assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada0, segundoGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada0, tercerGladiador.obtenerCantidadDeEquipamiento());
+
+        tablero.avanzar(new DadoMock());
+
+        // Se lanzan los dados y el segundo jugador consigue un equipamiento
+        assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada0, tercerGladiador.obtenerCantidadDeEquipamiento());
+
+        tablero.avanzar(new DadoMock());
+
+        // Se lanzan los dados y el tercer jugador consigue un equipamiento
+        assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
+        assertEquals(longitudEsperada1, tercerGladiador.obtenerCantidadDeEquipamiento());
     }
 }
