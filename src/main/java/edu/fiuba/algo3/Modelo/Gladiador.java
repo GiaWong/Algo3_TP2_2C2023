@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.Modelo;
 
+import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculizador;
 import edu.fiuba.algo3.Modelo.PatronState.ManejarEquipamiento;
@@ -76,8 +77,8 @@ public class Gladiador {
 
     }
 
-    private boolean cantidadEquipamientoPermitido() {
-        return (this.obtenerCantidadDeEquipamiento() == 3);
+    public boolean cantidadEquipamientoPermitido() {
+        return (this.obtenerCantidadDeEquipamiento() == 4); // ANTES ERA 3, LO ALTERE ACA
     }
     
     public void combatir(Obstaculizador unObstaculo) {
@@ -103,5 +104,9 @@ public class Gladiador {
 
         }
 
+    }
+
+    public boolean SeEncuentraEnUltimaPosicion(int tableroLongitud) {
+        return((tableroLongitud -1) == posicionActual);
     }
 }

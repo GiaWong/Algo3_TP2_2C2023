@@ -56,5 +56,26 @@ public class Tablero {
 
     }
 
+    public int LongitudDeTablero(){
+        return this.listaDeCasillas.size();
+    }
+
+    public boolean validarGanador(Gladiador unGladiador) {
+
+        boolean validarEquipamiento = unGladiador.cantidadEquipamientoPermitido();
+        boolean validarPosicion = unGladiador.SeEncuentraEnUltimaPosicion(LongitudDeTablero());
+
+        if ( validarPosicion && validarEquipamiento){
+            this.cantidadDeJugadores = 0;
+            this.listaDeGladiadores.clear();
+            this.listaDeCasillas.clear();
+            this.turno = null;
+            this.controladorCantidadMoverse = 0;
+            System.out.println("\n----GANASTE, FELICIDADES!----\n");
+            return true;
+        }
+        return false;
+
+    }
 }
 
