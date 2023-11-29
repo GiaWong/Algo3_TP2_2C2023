@@ -15,6 +15,13 @@ public class Casilla {
         //y tambien de la idea de que en una casilla puede
         // haber Premio y/o Obstaculo
     }
+    public void setUbicacion(int posX, int posY) {
+        //ver que hará
+    }
+
+    public void setTipo(Ocupable CaminoOLLegada) {
+        //ver qué hará
+    }
 
     public Gladiador interactuarConLaOcupacion(Gladiador ungladiador, int cantidadAMoverse, int tamanioLista) {
 

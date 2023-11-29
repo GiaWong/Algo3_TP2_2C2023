@@ -9,6 +9,10 @@ import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Tablero;
 import edu.fiuba.algo3.Modelo.Turno;
 import org.junit.jupiter.api.Test;
+
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -43,11 +47,9 @@ public class CasosDeUsosEntregaDos {
     @Test
     public void Test014SeVerificaElFormatoValidoDelJsonDeObstaculosYPremios() {
 
-        // Ruta al archivo JSON
         String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
         DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
-        deserializadorJSON.extraerOcupacionesDeLasCeldas(rutaDelArchivo);
-
+        deserializadorJSON.extraerContenidoDeCadaCelda(rutaDelArchivo);
         int valorEsperado = 39;
 
         assertEquals(valorEsperado,deserializadorJSON.cantidadCeldasDeserealizadas());
@@ -57,67 +59,58 @@ public class CasosDeUsosEntregaDos {
 
 
     @Test
-    public void Test015SeVerificaLaLecturayConversionDeObstaculosDelJsonAlModelo() {//los contenidos de obstaculos vincularlos con los objetos del modelo
-
-        /*String rutaDelArchivo = "src/main/java/edu/fiuba/algo3/Modelo/Mapa/mapa.json";
-
-        try {
-
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode jsonNode = objectMapper.readTree(new File(rutaDelArchivo));
-            JsonNode celdas = jsonNode.get("camino").get("celdas");
-            List<String> listaObstaculosJSON = new ArrayList<>();
-
-            for (JsonNode celda : celdas) {
-                String obstaculo = celda.get("obstaculo").asText().toUpperCase();
-                listaObstaculosJSON.add(obstaculo);
-            }
-
-            assertTrue(conversionObstaculosJsonAlModelo(listaObstaculosJSON), "\nNo se pudo convertir a los objetos del Modelo");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            fail("Error al leer el archivo JSON");
-        }*/
-
+    public void Test015SeVerificaLaLecturayConversionDeObstaculosDelJsonAlModelo() {
+        /**
+         *
+         * Ya estan contempladas
+         * */
     }
     @Test
     public void test016SeVerificaLaLecturayConversionDePremiosDelJsonAlModelo() {
-
-       /* String rutaDelArchivo = "src/main/java/edu/fiuba/algo3/Modelo/Mapa/mapa.json";
-        try {
-
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode jsonNode = objectMapper.readTree(new File(rutaDelArchivo));
-            JsonNode celdas = jsonNode.get("camino").get("celdas");
-            List<String> listaPremiosJSON = new ArrayList<>();
-
-            for (JsonNode celda : celdas) {
-                String premio = celda.get("premio").asText().toUpperCase();
-                listaPremiosJSON.add(premio);
-            }
-
-            assertTrue(conversionDePremiosJsonAlModelo(listaPremiosJSON), "\nNo se pudo convertir a los objetos del Modelo");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            fail("Error al leer el archivo JSON");
-        }*/
-
+        /**
+         *
+         *Ya estan contempladas
+         * */
     }
 
 
     @Test
-    public void Test017VerificarQueElJuegoSeCreaAcordeALosPuntoJson() {
+    public void Test017VerificarQueElJuegoSeCreaAcordeALJson() {
+
+        String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
+        DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
+        deserializadorJSON.extraerContenidoDeCadaCelda(rutaDelArchivo);
+
+        List<Casilla> listaCasillas = deserializadorJSON.obtenerListaCasillas();
+
+        Tablero tablero = new Tablero(1,new Turno(30));
+
+        for (Casilla casillaActual : listaCasillas){
+
+            tablero.agregarCasilla(casillaActual);
+        }
+
+        /**
+         *  otra forma para evitar usar for es que directamente el tabblero
+         *  tenga un metodo para setear la lista de casillas ya cargadas por la clase Deserializadorjson()
+         *  PENSARLOOO...
+         *
+         *
+         * Para poder usar los contenidos del json con el modelo siempre se debe llamar a la linea 82,83,84.
+         */
+
+
+        //y empezar a codear
 
 
     }
 
-    /*
-    @Test
-    public void Test018SeVerificaLaCreacionDeAmbosJson() {
-    }*/
 
+    /**
+     * TODO: los tests que siguen de aqui para abajo deben ir en otro lado porque no se contempla
+     * TODO: a los casos de usos de la entrega 2  (ROY FIJATE EN EESO)
+     *
+     * */
     @Test
     public void Test19SimulamosYVerificamosQueElJugadorGane() {
 
@@ -143,7 +136,4 @@ public class CasosDeUsosEntregaDos {
 
     }
 
-    /*@Test
-    public void Test20SimulamosYVerificamosQueElJugadorPierda() {
-    }*/
 }

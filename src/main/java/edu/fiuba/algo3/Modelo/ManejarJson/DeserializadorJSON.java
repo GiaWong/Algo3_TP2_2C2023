@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.Modelo.ManejarJson;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.fiuba.algo3.Modelo.Casillas.Casilla;
-import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
-import edu.fiuba.algo3.Modelo.Casillas.Ocupable;
+import edu.fiuba.algo3.Modelo.Casillas.*;
 import edu.fiuba.algo3.Modelo.Equipamientos.PremioEquipamiento;
 import edu.fiuba.algo3.Modelo.Obstaculos.Bacanal;
 import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
@@ -33,7 +31,7 @@ public class DeserializadorJSON {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return -1;
+            return -1; //devuelvvo -1 porque el 0 se contempla en el tablero como una posicion mas
         }
     }
 
@@ -55,7 +53,7 @@ public class DeserializadorJSON {
 
 
 
-    public void extraerOcupacionesDeLasCeldas(String rutaArchivoJson) {
+    public void extraerContenidoDeCadaCelda(String rutaArchivoJson) {
 
         try {
 
@@ -66,10 +64,18 @@ public class DeserializadorJSON {
 
             for (JsonNode celda : celdas) {
 
+                int posX = celda.get("x").asInt();
+                int posY = celda.get("y").asInt();
+                String tipo = celda.get("tipo").asText().toUpperCase();
                 String obstaculo = celda.get("obstaculo").asText().toUpperCase();
                 String premio = celda.get("premio").asText().toUpperCase();
+
+                //System.out.println("\n\t------------");
                 Casilla casillaActual = new Casilla(transformarAObjeto(obstaculo), transformarAObjeto(premio));
+                casillaActual.setUbicacion(posX, posY);
+                casillaActual.setTipo(transformarAObjeto(tipo));
                 listaCasillas.add(casillaActual);
+
 
 
             }
@@ -86,27 +92,35 @@ public class DeserializadorJSON {
     private Ocupable transformarAObjeto(String nombreActual) {
 
         if (nombreActual.equalsIgnoreCase("Lesion")) {
-            System.out.println("\nConvirtiendo a clase Lesion()");
+           // System.out.println("\nConvirtiendo a clase Lesion()");
             return new Lesion();
 
         } else if (nombreActual.equalsIgnoreCase("Fiera")) {
-            System.out.println("\nConvirtiendo a clase FieraSalvaje()");
+            //System.out.println("\nConvirtiendo a clase FieraSalvaje()");
             return new FieraSalvaje(5);
 
         } else if (nombreActual.equalsIgnoreCase("Bacanal")) {
-            System.out.println("\nConvirtiendo a clase Bacanal()");
+            //System.out.println("\nConvirtiendo a clase Bacanal()");
             return new Bacanal();
 
         } else if (nombreActual.equalsIgnoreCase("Equipamiento")) {
-            System.out.println("\nConvirtiendo a clase Equipamiento");
+            //System.out.println("\nConvirtiendo a clase Equipamiento");
             return new PremioEquipamiento();
 
         } else if (nombreActual.equalsIgnoreCase("Comida")) {
-            System.out.println("\nConvirtiendo a clase Comida");
+            //System.out.println("\nConvirtiendo a clase Comida");
             return new Comida(15);
 
-        } else {
-            System.out.println("\nConvirtiendo a clase NadaOcupacion()");
+        } else if (nombreActual.equalsIgnoreCase("Camino")) {
+            //System.out.println("\nConvirtiendo a clase Camino");
+            return new Camino();
+
+        }else if (nombreActual.equalsIgnoreCase("Llegada")) {
+            //System.out.println("\nConvirtiendo a clase LLegada");
+            return new LLegada();
+
+        }else {
+            //System.out.println("\nConvirtiendo a clase NadaOcupacion()");
             return new NadaOcupacion();
         }
 
@@ -115,5 +129,9 @@ public class DeserializadorJSON {
 
     public int cantidadCeldasDeserealizadas() {
         return  listaCasillas.size();
+    }
+
+    public List<Casilla> obtenerListaCasillas() {
+        return  listaCasillas;
     }
 }
