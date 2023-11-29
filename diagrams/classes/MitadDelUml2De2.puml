@@ -1,0 +1,131 @@
+@startuml
+
+
+class   AlgoRoma{
+    +registrarCantidadJugadores(unsJugadores int)
+    +registrarNombres(unNombre String)
+}
+
+
+class Gladiador{
+    -energia:int
+    -posicionActual:int
+    -lesionado:boolean
+    +Gladiador(unaEnergia int, seniority Seniority,unaPosicion int)
+    +AumentarEnergiaAlIniciarElTurno():void
+    +avanzar(cantidadAMoverse int):void
+    +retroceder(cantidadAMoverse int):void
+    +combatir(unObstaculo Obstaculizador): void
+    +tieneLLave(): boolean
+    +lesionar():void
+    +rehabilitado():void
+    +estaLesionado():void
+}
+
+
+interface Estado{
+    {abstract}+ejercutarAccion(listaDeEquipamiento List<Equipado>);
+}
+
+
+class Tablero{
+    -cantidadJugadores:int
+    -controladorCantidadMoverse:int
+    +Tablero(int cantidadJugadores, turno Turno)
+    +validarTurno(unGladiador Gladiador):boolean
+    +avanzar(unDado Dado):void
+    +FinalizarJuego(): boolean
+}
+
+class Turno {
+    -turnoActual:int
+    -maximaCantidadDeTurnos:int
+    +Turno(int maximaCantidad)
+    +jugar(unGladiador Gladiador):boolean
+    +obtenerTurno():int
+    +siguienteTurno(gladiadores ArrayList<Gladiador>):Gladiador
+    +validarFinalizarJuego(): boolean
+    }
+
+
+class Casilla{
+    +Casilla(ocupacion:Ocupable):void
+    +interactuarConLaOcupacion(ungladiador Gladiador,cantidadAMoverse int,tamanioLista int):Gladiador
+    +estaEnLaUltimaPosicion(unGladiador Gladiador, tamanioLista int): void
+    +esLaUltimaPosicion(posicion int, tamanioLista int):boolean
+    +obtenerPosicionMitadCasilla(tamanioLista int)
+}
+
+
+interface Dado{
+    +{abstract}lanzarDado():int
+}
+
+class DadoMock{
+    +lanzarDado():int
+}
+
+class DadoReal{
+    +lanzarDado():int
+}
+
+abstract class Seniority{
+    -turnoActual: int
+    +Seniority(turno int)
+    +{abstract}modificarEnergia(unaEnergia int):int
+    +{abstract}sumarTurno():Seniority
+}
+class Novato{
+    +Novato():void
+    +modificarEnergia(unaEnergia int:int
+    +sumarTurno():Seniority
+}
+class SemiSenior{
+    +SemiSenior():void
+    +modificarEnergia(unaEnergia int):int
+    +sumarTurno():Seniority
+}
+
+class Senior{
+    +Senior():void
+    +modificarEnergia(unaEnergia int):int
+    +sumarTurno():Seniority
+}
+
+interface Equipado{
+    +{abstract}modificarEnergia(unaEnergia int):int
+}
+
+interface Ocupable{
+     +interactuarConLaOcupacion(ungladiador Gladiador);
+   }
+
+
+
+
+AlgoRoma o--> Tablero
+
+
+Tablero *-left->"*"Casilla
+Tablero *-right->"2...6 "Gladiador
+Tablero -up-> Dado
+Tablero --> Turno
+
+
+    Casilla --> Ocupable
+
+
+Dado <|.up. DadoMock
+Dado <|.left. DadoReal
+
+
+Seniority <|.up. Novato
+Seniority <|.up. SemiSenior
+Seniority <|.up. Senior
+
+Gladiador ..> Estado
+Gladiador -> "*"Equipado
+Gladiador -up-> "1"Seniority
+
+
+@enduml
