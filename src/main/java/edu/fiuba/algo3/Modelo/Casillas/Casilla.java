@@ -9,7 +9,6 @@ public class Casilla {
 
     }
 
-
     public Gladiador interactuarConLaOcupacion(Gladiador ungladiador, int cantidadAMoverse, int tamanioLista) {
 
         ungladiador.aumentarEnergiaAlIniciarElTurno();

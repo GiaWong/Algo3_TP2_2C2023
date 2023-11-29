@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.Modelo;
-
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import java.util.ArrayList;
 
 public class Tablero {
-
     private ArrayList<Gladiador> listaDeGladiadores;
     private int cantidadDeJugadores;
     private ArrayList<Casilla> listaDeCasillas;

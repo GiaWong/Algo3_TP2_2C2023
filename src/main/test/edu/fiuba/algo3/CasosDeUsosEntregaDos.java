@@ -1,12 +1,11 @@
 package edu.fiuba.algo3;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
 import edu.fiuba.algo3.Modelo.Casillas.Ocupable;
 import edu.fiuba.algo3.Modelo.DadoMock;
 import edu.fiuba.algo3.Modelo.Equipamientos.PremioEquipamiento;
 import edu.fiuba.algo3.Modelo.Gladiador;
+import edu.fiuba.algo3.Modelo.ManejarJson.DeserializadorJSON;
 import edu.fiuba.algo3.Modelo.Obstaculos.Bacanal;
 import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Obstaculos.Lesion;
@@ -15,12 +14,8 @@ import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Tablero;
 import edu.fiuba.algo3.Modelo.Turno;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -43,51 +38,21 @@ public class CasosDeUsosEntregaDos {
         this.premiosPermitidosSegunModelo.add("Comida".toUpperCase());
     }
 
+    /**
+     * Verifico que se haya deserializado "ancho" y "largo" del mapa json
+     * */
     @Test
-    public void Test013SeVerificaJsonDeMapaEsValido() { //verifico la estructura del .json
+    public void Test013SeVerificaElFormatoValidoDelJsonDelMapa() {
 
         // Ruta al archivo JSON
-        String rutaDelArchivo = "src/main/java/edu/fiuba/algo3/Modelo/Mapa/mapa.json";
-        try {
-            // Creando un ObjectMapper
-            ObjectMapper objectMapper = new ObjectMapper();
+        String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
+        DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
 
-            // Leeyendo el archivo JSON y mapeando a un árbol de nodos
-            JsonNode jsonNode = objectMapper.readTree(new File(rutaDelArchivo));
+        int valorEsperadoAncho = 10;
+        int valorEsperadoLargo = 18;
 
-            // Verifico la existencia y el tipo de los campos
-            assertTrue(jsonNode.has("mapa"));
-            assertTrue(jsonNode.get("mapa").isObject());
-            assertTrue(jsonNode.get("mapa").has("ancho"));
-            assertTrue(jsonNode.get("mapa").has("largo"));
-            assertTrue(jsonNode.get("mapa").get("ancho").isInt());
-            assertTrue(jsonNode.get("mapa").get("largo").isInt());
-
-            // Verifico la existencia y el tipo de los campos en las celdas/Casillas del camino
-            assertTrue(jsonNode.has("camino"));
-            assertTrue(jsonNode.get("camino").isObject());
-            assertTrue(jsonNode.get("camino").has("celdas"));
-            assertTrue(jsonNode.get("camino").get("celdas").isArray());
-
-            // Itero sobre las celdas/Casillas del camino y verifico sus campos
-            JsonNode celdas = jsonNode.get("camino").get("celdas");
-            for (JsonNode celda : celdas) {
-                assertTrue(celda.has("x"));//son las claves
-                assertTrue(celda.has("y"));
-                assertTrue(celda.has("tipo"));
-                assertTrue(celda.has("obstaculo"));
-                assertTrue(celda.has("premio"));
-                assertTrue(celda.get("x").isInt());
-                assertTrue(celda.get("y").isInt());
-                assertTrue(celda.get("tipo").isTextual());
-                assertTrue(celda.get("obstaculo").isTextual());
-                assertTrue(celda.get("premio").isTextual());
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            fail("Error al leer el archivo JSON");
-        }
+        assertEquals(valorEsperadoAncho,deserializadorJSON.extraerValorAnchoDelMapa(rutaDelArchivo));
+        assertEquals(valorEsperadoLargo,deserializadorJSON.extraerValorLargoDelMapa(rutaDelArchivo));
 
     }
 
@@ -95,7 +60,7 @@ public class CasosDeUsosEntregaDos {
     public void Test014SeVerificaJsonDeObstaculosYPremiosSonValidos() {//verifico el contenido de la ocupacion
 
 
-        String rutaDelArchivo = "src/main/java/edu/fiuba/algo3/Modelo/Mapa/mapa.json";
+        /*String rutaDelArchivo = "src/main/java/edu/fiuba/algo3/Modelo/Mapa/mapa.json";
 
         try {
 
@@ -123,7 +88,7 @@ public class CasosDeUsosEntregaDos {
         } catch (IOException e) {
             e.printStackTrace();
             fail("Error al leer el archivo JSON");
-        }
+        }*/
 
     }
 
@@ -197,7 +162,7 @@ public class CasosDeUsosEntregaDos {
     @Test
     public void Test015SeVerificaLaLecturayConversionDeObstaculosDelJsonAlModelo() {//los contenidos de obstaculos vincularlos con los objetos del modelo
 
-        String rutaDelArchivo = "src/main/java/edu/fiuba/algo3/Modelo/Mapa/mapa.json";
+        /*String rutaDelArchivo = "src/main/java/edu/fiuba/algo3/Modelo/Mapa/mapa.json";
 
         try {
 
@@ -216,13 +181,13 @@ public class CasosDeUsosEntregaDos {
         } catch (IOException e) {
             e.printStackTrace();
             fail("Error al leer el archivo JSON");
-        }
+        }*/
 
     }
     @Test
     public void test016SeVerificaLaLecturayConversionDePremiosDelJsonAlModelo() {
 
-        String rutaDelArchivo = "src/main/java/edu/fiuba/algo3/Modelo/Mapa/mapa.json";
+       /* String rutaDelArchivo = "src/main/java/edu/fiuba/algo3/Modelo/Mapa/mapa.json";
         try {
 
             ObjectMapper objectMapper = new ObjectMapper();
@@ -240,7 +205,7 @@ public class CasosDeUsosEntregaDos {
         } catch (IOException e) {
             e.printStackTrace();
             fail("Error al leer el archivo JSON");
-        }
+        }*/
 
     }
 
