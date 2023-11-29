@@ -9,6 +9,13 @@ public class Casilla {
 
     }
 
+
+    public Casilla(Ocupable obstaculo, Ocupable premio) {
+        //esto surge de la clase Deserializador , ver test 14
+        //y tambien de la idea de que en una casilla puede
+        // haber Premio y/o Obstaculo
+    }
+
     public Gladiador interactuarConLaOcupacion(Gladiador ungladiador, int cantidadAMoverse, int tamanioLista) {
 
         ungladiador.aumentarEnergiaAlIniciarElTurno();
