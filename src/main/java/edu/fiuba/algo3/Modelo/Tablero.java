@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.Modelo;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
+import edu.fiuba.algo3.Modelo.ManejarJson.DeserializadorJSON;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Tablero {
     private ArrayList<Gladiador> listaDeGladiadores;
@@ -26,7 +29,6 @@ public class Tablero {
     }
 
     public boolean validarTurno(Gladiador unGladiador){return (turno.jugar(unGladiador));}
-
 
     public void avanzar(Dado dado) {
 
@@ -73,5 +75,21 @@ public class Tablero {
         this.listaDeCasillas.clear();
         this.turno = null;
         this.controladorCantidadMoverse = 0;
+    }
+
+    public void AgregarMapa(){
+
+        //Este es el mapa original!
+        String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
+        DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
+        deserializadorJSON.extraerContenidoDeCadaCelda(rutaDelArchivo);
+
+        List <Casilla>  mapa =  deserializadorJSON.obtenerListaCasillas();
+
+
+        for (Casilla casillaActual : mapa){
+
+            this.agregarCasilla(casillaActual);
+        }
     }
 }

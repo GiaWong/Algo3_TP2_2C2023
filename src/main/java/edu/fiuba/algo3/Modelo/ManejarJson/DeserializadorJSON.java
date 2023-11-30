@@ -76,8 +76,6 @@ public class DeserializadorJSON {
                 casillaActual.setTipo(transformarAObjeto(tipo));
                 listaCasillas.add(casillaActual);
 
-
-
             }
 
 

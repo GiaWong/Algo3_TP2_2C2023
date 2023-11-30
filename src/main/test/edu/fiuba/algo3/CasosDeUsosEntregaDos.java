@@ -90,6 +90,7 @@ public class CasosDeUsosEntregaDos {
             tablero.agregarCasilla(casillaActual);
         }
 
+
         /**
          *  otra forma para evitar usar for es que directamente el tabblero
          *  tenga un metodo para setear la lista de casillas ya cargadas por la clase Deserializadorjson()

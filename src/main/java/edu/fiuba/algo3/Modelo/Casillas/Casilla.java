@@ -1,24 +1,29 @@
 package edu.fiuba.algo3.Modelo.Casillas;
 import edu.fiuba.algo3.Modelo.Gladiador;
+import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculizador;
+import edu.fiuba.algo3.Modelo.Premios.Premio;
 
 public class Casilla {
     Ocupable unaOcupacion;
+    Ocupable unaSegundaOcupacion;
+
+    int posicionEnX;
+    int posicionEnY;
 
     public Casilla(Ocupable ocupacion) {
         this.unaOcupacion = ocupacion;
-
     }
-
 
     public Casilla(Ocupable obstaculo, Ocupable premio) {
-        //esto surge de la clase Deserializador , ver test 14
-        //y tambien de la idea de que en una casilla puede
-        // haber Premio y/o Obstaculo
+        this.unaOcupacion = premio;
+        this.unaSegundaOcupacion = obstaculo;
     }
     public void setUbicacion(int posX, int posY) {
-        //ver que hará
+        this.posicionEnX = posX;
+        this.posicionEnY = posY;
     }
 
+    //Esto me interesa para algo? por ahora no.
     public void setTipo(Ocupable CaminoOLLegada) {
         //ver qué hará
     }
@@ -28,6 +33,13 @@ public class Casilla {
         ungladiador.aumentarEnergiaAlIniciarElTurno();
         ungladiador.avanzar(cantidadAMoverse);
         ungladiador = unaOcupacion.interactuarConLaOcupacion( ungladiador);
+
+
+        //Le clavo un if para poder interactuar con dos casillas
+        if (unaSegundaOcupacion !=null  ) {
+            ungladiador = unaSegundaOcupacion.interactuarConLaOcupacion(ungladiador);
+        }
+
         estaEnLaUltimaPosicion(ungladiador,tamanioLista);
         return ungladiador;
     }
