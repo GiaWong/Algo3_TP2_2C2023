@@ -28,7 +28,7 @@ public class GladiadorTest {
 
         int posicionEsperada = 1;
 
-        assertEquals(posicionEsperada, gladiador.obetenerPosicionEnX());
+        assertEquals(posicionEsperada, gladiador.obetenerPosicionEnY());
     }
 
     /*
