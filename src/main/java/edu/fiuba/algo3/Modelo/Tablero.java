@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.Modelo;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
+import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
 import edu.fiuba.algo3.Modelo.ManejarJson.DeserializadorJSON;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class Tablero {
     private Turno turno;
     private int controladorCantidadMoverse;
 
+    private Casilla[][] mapa;
     public Tablero(int cantidadJugadores, Turno turno) {
         this.cantidadDeJugadores = cantidadJugadores;
         this.listaDeGladiadores = new ArrayList<>();
@@ -86,5 +88,36 @@ public class Tablero {
         for (Casilla casillaActual : mapa){
             this.agregarCasilla(casillaActual);
         }
+    }
+
+    public void AgregarMapaComoMatriz(){
+        String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
+
+        DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
+        deserializadorJSON.extraerContenidoDeCadaCelda(rutaDelArchivo);
+
+        //Lista con las ubicaciones del mapa original
+        List <Casilla>  listaDeCasillasJSON =  deserializadorJSON.obtenerListaCasillas();
+
+        //En vez de agregarsela a tablero la pongo en una matriz
+        Casilla[][] matriz = new Casilla[18][10] ;
+
+        //Primero creo toda la matriz
+        for (int i = 0; i < 18; i++) {
+            for (int j = 0; j < 10; j++) {
+                Casilla casilla = new Casilla(new NadaOcupacion(), new NadaOcupacion());
+                casilla.setUbicacion(i,j);
+                matriz[i][j] = casilla;
+            }
+        }
+
+        //Ahora cada casilla que tenga en la lista del .json la pongo en la matiz
+        for (Casilla casilla : listaDeCasillasJSON) {
+            matriz[casilla.obtenerposicionEnX()][casilla.obtenerposicionEny()] = casilla;
+        }
+
+        //Finalmente lo añado como el mapa original
+        this.mapa   = matriz;
+
     }
 }

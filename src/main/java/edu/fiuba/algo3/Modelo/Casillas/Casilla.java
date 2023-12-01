@@ -17,10 +17,22 @@ public class Casilla {
         this.unaOcupacion = premio;
         this.unaSegundaOcupacion = obstaculo;
     }
+
+
     public void setUbicacion(int posX, int posY) {
         this.posicionEnX = posX;
         this.posicionEnY = posY;
     }
+
+
+    public int obtenerposicionEnX(){
+        return posicionEnX;
+    }
+
+    public int obtenerposicionEny(){
+        return posicionEnY;
+    }
+
 
     public Gladiador interactuarConLaOcupacion(Gladiador ungladiador, int cantidadAMoverse, int tamanioLista) {
 
@@ -50,6 +62,8 @@ public class Casilla {
             System.out.println("\n----Se LLegó a la meta con TODO el EQUIPAMIENTO completo----\n");
         }
     }
+
+
     private boolean esLaUltimaPosicion(int posicion, int tamanioLista) {
         return  (posicion == tamanioLista - 1);
     }
