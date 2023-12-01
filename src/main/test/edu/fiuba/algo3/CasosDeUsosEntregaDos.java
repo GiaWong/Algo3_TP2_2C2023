@@ -1,13 +1,10 @@
 package edu.fiuba.algo3;
+import edu.fiuba.algo3.Modelo.*;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
-import edu.fiuba.algo3.Modelo.DadoMock;
 import edu.fiuba.algo3.Modelo.Equipamientos.PremioEquipamiento;
-import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.ManejarJson.DeserializadorJSON;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
-import edu.fiuba.algo3.Modelo.Tablero;
-import edu.fiuba.algo3.Modelo.Turno;
 import org.junit.jupiter.api.Test;
 
 
@@ -76,6 +73,9 @@ public class CasosDeUsosEntregaDos {
 
     @Test
     public void Test017VerificarQueElJuegoSeCreaAcordeALJson() {
+        Mapa mapa = new Mapa();
+        mapa.mapaTest();
+        Casilla[][] unMapa = mapa.obtenerMapa();
 
         String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
         DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
@@ -83,11 +83,11 @@ public class CasosDeUsosEntregaDos {
 
         List<Casilla> listaCasillas = deserializadorJSON.obtenerListaCasillas();
 
-        Tablero tablero = new Tablero(1,new Turno(30));
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa);
 
         for (Casilla casillaActual : listaCasillas){
 
-            tablero.agregarCasilla(casillaActual);
+            tablero.agregarCasillaAlMapa(casillaActual);
         }
 
 
