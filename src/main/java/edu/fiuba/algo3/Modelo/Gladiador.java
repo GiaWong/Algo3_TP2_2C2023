@@ -16,14 +16,14 @@ public class Gladiador {
     private Seniority unSeniority;
     private List<Equipado> listaDeEquipamiento;
 
-    private int posicionEnX,posicionEny;
+    private int posicionEnX,posicionEnY;
     private boolean lesionado;
 
     private ManejarEquipamiento manejarequipamiento;
     public Gladiador(int unaEnergia, Seniority unSeniority, int posicionX,int posicionY) {
         this.energia = unaEnergia;
         this.posicionEnX = posicionX;
-        this.posicionEny = posicionY;
+        this.posicionEnY = posicionY;
         this.unSeniority = unSeniority;
         this.listaDeEquipamiento = new ArrayList<>();
         this.manejarequipamiento = new ManejarEquipamiento();
@@ -36,8 +36,8 @@ public class Gladiador {
     }
 
     public void avanzar(int cantidadAMoverse) {
-        posicionEnX = posicionEnX + cantidadAMoverse;
-        System.out.println("\nGladiador avanza una casilla ---> está en la posicion:  " + posicionEnX);
+        posicionEnY = posicionEnY + cantidadAMoverse;
+        System.out.println("\nGladiador avanza una casilla ---> está en la posicion:  " + posicionEnY);
 
     }
     public void retroceder(int cantidadAMoverse) {
@@ -51,7 +51,7 @@ public class Gladiador {
     }
 
     public int obetenerPosicionEnY() {
-        return posicionEny;
+        return posicionEnY;
     }
 
     public void aumentarEnergiaAlIniciarElTurno(){

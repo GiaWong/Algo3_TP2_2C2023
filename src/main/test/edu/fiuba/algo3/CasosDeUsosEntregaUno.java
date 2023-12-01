@@ -38,7 +38,7 @@ public class CasosDeUsosEntregaUno {
         tablero.avanzar(new DadoMock());
 
         int posicionEnxEsperada = 1;
-        assertEquals(posicionEnxEsperada, unGladiador.obetenerPosicionEnX());
+        assertEquals(posicionEnxEsperada, unGladiador.obetenerPosicionEnY());
 
     }
 
@@ -56,7 +56,7 @@ public class CasosDeUsosEntregaUno {
         tablero.avanzar(new DadoMock());
 
         int posicionEsperada = 0;
-        assertEquals(posicionEsperada, unGladiador.obetenerPosicionEnX());
+        assertEquals(posicionEsperada, unGladiador.obetenerPosicionEnY());
 
     }
 
@@ -68,7 +68,7 @@ public class CasosDeUsosEntregaUno {
 
 
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
-        tablero.agregarCasillaAlMapa(new Casilla(new Comida(15),new NadaOcupacion(),1,0));
+        tablero.agregarCasillaAlMapa(new Casilla(new Comida(15),new NadaOcupacion(),0,1));
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0,0);
         tablero.agregarJugador(unGladiador);
@@ -88,7 +88,7 @@ public class CasosDeUsosEntregaUno {
         Casilla[][] unMapa = mapa.obtenerMapa();
 
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,0));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),0,1));
         Gladiador unGladiador = new Gladiador(20,new Novato(),0,0);
         tablero.agregarJugador(unGladiador);
 
@@ -108,9 +108,9 @@ public class CasosDeUsosEntregaUno {
         Casilla[][] unMapa = mapa.obtenerMapa();
 
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,0));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,0));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),3,0));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),0,1));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),0,2));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),0,3));
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0,0);
         tablero.agregarJugador(unGladiador);
@@ -136,7 +136,7 @@ public class CasosDeUsosEntregaUno {
         Casilla[][] unMapa = mapa.obtenerMapa();
 
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
-        tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(20),new PremioEquipamiento(),1,0));
+        tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(20),new PremioEquipamiento(),0,1));
 
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0,0);
@@ -210,9 +210,9 @@ public class CasosDeUsosEntregaUno {
         Casilla[][] unMapa = mapa.obtenerMapa();
 
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),1,0));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,0));
-        tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(20),new NadaOcupacion(),3,0));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),0,1));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),0,2));
+        tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(20),new NadaOcupacion(),0,3));
         Dado dado = new DadoMock();
         Gladiador unGladiador = new Gladiador(20,new Novato(),0,0);
         tablero.agregarJugador(unGladiador);
@@ -238,9 +238,9 @@ public class CasosDeUsosEntregaUno {
 
         Dado dado = new DadoMock();
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),1,0));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,0));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),3,0));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),0,1));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),0,2));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),0,3));
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),0,0);
         tablero.agregarJugador(unGladiador);
