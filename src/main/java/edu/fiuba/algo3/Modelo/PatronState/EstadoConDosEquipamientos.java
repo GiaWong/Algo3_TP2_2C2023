@@ -8,8 +8,9 @@ import java.util.List;
 public class EstadoConDosEquipamientos implements Estado{
 
     @Override
-    public void ejercutarAccion(List<Equipado> listaDeEquipamiento) {
+    public Estado ejercutarAccion(List<Equipado> listaDeEquipamiento) {
         listaDeEquipamiento.add(new EscudoYEspada(8));
         System.out.println("\n===> Obtiene un Escudo y una espada como premio");
+        return new EstadoConTresEquipamientos();
     }
 }

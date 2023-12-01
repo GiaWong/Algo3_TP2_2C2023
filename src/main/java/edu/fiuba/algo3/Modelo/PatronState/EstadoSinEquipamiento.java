@@ -7,8 +7,10 @@ import java.util.List;
 
 public class EstadoSinEquipamiento implements Estado{
     @Override
-    public void ejercutarAccion(List<Equipado> listaDeEquipamiento) {
+    public Estado ejercutarAccion(List<Equipado> listaDeEquipamiento) {
         listaDeEquipamiento.add(new Casco(5));
         System.out.println("\n===> Obtiene un Casco como premio");
+
+        return new EstadoConUnEquipamiento();
     }
 }

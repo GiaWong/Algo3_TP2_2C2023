@@ -17,12 +17,15 @@ public class Gladiador {
     private Seniority unSeniority;
     private List<Equipado> listaDeEquipamiento;
     private boolean lesionado;
+
+    private ManejarEquipamiento manejarequipamiento;
     public Gladiador(int unaEnergia, Novato novato, int posicionActual) {
         this.energia = unaEnergia;
         this.posicionActual = posicionActual;
         this.unSeniority = novato;
         this.listaDeEquipamiento = new ArrayList<>();
         this.lesionado = false;
+        this.manejarequipamiento = new ManejarEquipamiento();
     }
 
     public int obtenerEnergia() {
@@ -98,16 +101,13 @@ public class Gladiador {
     }
 
     public void agregarEquipamientoSegunCantidadDePremios() {
-        ManejarEquipamiento manejarEquipamiento = new ManejarEquipamiento();
 
         if (listaDeEquipamiento.size() <= 3){
-            manejarEquipamiento.cambiarEstado(listaDeEquipamiento.size());
-            manejarEquipamiento.obtenerPremio(listaDeEquipamiento);
+            manejarequipamiento.obtenerPremio(listaDeEquipamiento);
 
         }
 
     }
-  
     public void lesionar(){
         this.lesionado = true;
     }

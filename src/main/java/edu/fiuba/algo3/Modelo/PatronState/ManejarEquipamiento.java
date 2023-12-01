@@ -6,23 +6,12 @@ import java.util.Map;
 
 public class ManejarEquipamiento {
     private Estado estado;
-    private Map<Integer, Estado> estados = new HashMap<>();
-    private int estadoActual;
 
-    public ManejarEquipamiento() {
-        estados.put(0, new EstadoSinEquipamiento());
-        estados.put(1, new EstadoConUnEquipamiento());
-        estados.put(2, new EstadoConDosEquipamientos());
-        estados.put(3, new EstadoConTresEquipamientos());
+    public ManejarEquipamiento(){
+        estado = new EstadoSinEquipamiento();
     }
-
-    public void cambiarEstado(int nuevoEstado) {
-        estadoActual = nuevoEstado;
-    }
-
     public void obtenerPremio(List<Equipado> listaDeEquipamiento) {
-        estado = estados.get(estadoActual);
-        estado.ejercutarAccion(listaDeEquipamiento);
+        estado = estado.ejercutarAccion(listaDeEquipamiento);
     }
 
 
