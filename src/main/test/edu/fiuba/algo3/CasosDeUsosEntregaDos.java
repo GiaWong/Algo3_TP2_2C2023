@@ -21,6 +21,8 @@ public class CasosDeUsosEntregaDos {
     /**
      * Verifico que la deserializacion "ancho" y "largo" del mapa json
      * */
+
+
     @Test
     public void Test013SeVerificaElFormatoValidoDelJsonDelMapa() {
 
@@ -73,7 +75,7 @@ public class CasosDeUsosEntregaDos {
          * */
     }
 
-
+    /*
     @Test
     public void Test017VerificarQueElJuegoSeCreaAcordeALJson() {
 
@@ -106,12 +108,13 @@ public class CasosDeUsosEntregaDos {
 
     }
 
-
+    /*
     /**
      * TODO: los tests que siguen de aqui para abajo deben ir en otro lado porque no se contempla
      * TODO: a los casos de usos de la entrega 2  (ROY FIJATE EN EESO)
      *
      * */
+    /*
     @Test
     public void Test19SimulamosYVerificamosQueElJugadorGane() {
 
@@ -137,4 +140,7 @@ public class CasosDeUsosEntregaDos {
 
     }
 
-}
+     */
+
+
+

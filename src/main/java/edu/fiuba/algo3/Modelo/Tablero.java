@@ -12,18 +12,18 @@ public class Tablero {
     private ArrayList<Casilla> listaDeCasillas;
     private Turno turno;
     private int controladorCantidadMoverse;
-
     private Casilla[][] mapa;
-    public Tablero(int cantidadJugadores, Turno turno) {
+    public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa) {
         this.cantidadDeJugadores = cantidadJugadores;
         this.listaDeGladiadores = new ArrayList<>();
         this.listaDeCasillas = new ArrayList<>();
         this.turno = turno;
         this.controladorCantidadMoverse = 0;
+        this.mapa = unMapa;
     }
 
-    public void agregarCasilla(Casilla unaCasilla) {
-        listaDeCasillas.add(unaCasilla);
+    public void agregarCasillaAlMapa(Casilla unaCasilla){
+        this.mapa[unaCasilla.obtenerposicionEnX()][unaCasilla.obtenerposicionEny()] =unaCasilla;
     }
 
     public void agregarJugador(Gladiador gladiador) {
@@ -39,7 +39,7 @@ public class Tablero {
 
         if (this.validarTurno(ungladiador)) {
             controladorCantidadMoverse = controladorCantidadMoverse + cantidadAMoverse;
-            Casilla casillaActual = listaDeCasillas.get(controladorCantidadMoverse);
+            Casilla casillaActual = mapa[ungladiador.obetenerPosicionEnX()][ungladiador.obetenerPosicionEnY()];
             ungladiador = casillaActual.interactuarConLaOcupacion(ungladiador, cantidadAMoverse, listaDeCasillas.size());
         }
     }
@@ -79,45 +79,4 @@ public class Tablero {
         this.controladorCantidadMoverse = 0;
     }
 
-    public void AgregarMapa(String rutaDelArchivo){
-
-        DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
-        deserializadorJSON.extraerContenidoDeCadaCelda(rutaDelArchivo);
-        List <Casilla>  mapa =  deserializadorJSON.obtenerListaCasillas();
-
-        for (Casilla casillaActual : mapa){
-            this.agregarCasilla(casillaActual);
-        }
-    }
-
-    public void AgregarMapaComoMatriz(){
-        String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
-
-        DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
-        deserializadorJSON.extraerContenidoDeCadaCelda(rutaDelArchivo);
-
-        //Lista con las ubicaciones del mapa original
-        List <Casilla>  listaDeCasillasJSON =  deserializadorJSON.obtenerListaCasillas();
-
-        //En vez de agregarsela a tablero la pongo en una matriz
-        Casilla[][] matriz = new Casilla[18][10] ;
-
-        //Primero creo toda la matriz
-        for (int i = 0; i < 18; i++) {
-            for (int j = 0; j < 10; j++) {
-                Casilla casilla = new Casilla(new NadaOcupacion(), new NadaOcupacion());
-                casilla.setUbicacion(i,j);
-                matriz[i][j] = casilla;
-            }
-        }
-
-        //Ahora cada casilla que tenga en la lista del .json la pongo en la matiz
-        for (Casilla casilla : listaDeCasillasJSON) {
-            matriz[casilla.obtenerposicionEnX()][casilla.obtenerposicionEny()] = casilla;
-        }
-
-        //Finalmente lo añado como el mapa original
-        this.mapa   = matriz;
-
-    }
 }

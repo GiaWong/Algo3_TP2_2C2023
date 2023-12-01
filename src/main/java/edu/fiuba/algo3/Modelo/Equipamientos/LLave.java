@@ -9,7 +9,7 @@ public class LLave  implements Ocupable, Equipado {
 
     @Override
     public int modificarEnergia(int unaEnergia) {
-        return (unaEnergia); //+ energia);
+        return (unaEnergia + energia);
     }
 
 

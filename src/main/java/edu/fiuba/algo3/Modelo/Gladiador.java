@@ -12,20 +12,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Gladiador {
-    private int posicionActual;
     private int energia;
     private Seniority unSeniority;
     private List<Equipado> listaDeEquipamiento;
+
+    private int posicionEnX,posicionEny;
     private boolean lesionado;
 
     private ManejarEquipamiento manejarequipamiento;
-    public Gladiador(int unaEnergia, Novato novato, int posicionActual) {
+    public Gladiador(int unaEnergia, Seniority unSeniority, int posicionX,int posicionY) {
         this.energia = unaEnergia;
-        this.posicionActual = posicionActual;
-        this.unSeniority = novato;
+        this.posicionEnX = posicionX;
+        this.posicionEny = posicionY;
+        this.unSeniority = unSeniority;
         this.listaDeEquipamiento = new ArrayList<>();
-        this.lesionado = false;
         this.manejarequipamiento = new ManejarEquipamiento();
+        this.lesionado = false;
+
     }
 
     public int obtenerEnergia() {
@@ -33,18 +36,22 @@ public class Gladiador {
     }
 
     public void avanzar(int cantidadAMoverse) {
-        posicionActual = posicionActual + cantidadAMoverse;
-        System.out.println("\nGladiador avanza una casilla ---> está en la posicion:  " + posicionActual);
+        posicionEnX = posicionEnX + cantidadAMoverse;
+        System.out.println("\nGladiador avanza una casilla ---> está en la posicion:  " + posicionEnX);
 
     }
     public void retroceder(int cantidadAMoverse) {
-        posicionActual = posicionActual - cantidadAMoverse;
-        System.out.println("\nGladiador retrocede ----> está en la posicion: " + posicionActual);
+        posicionEnX = posicionEnX - cantidadAMoverse;
+        System.out.println("\nGladiador retrocede ----> está en la posicion: " + posicionEnX);
 
     }
 
-    public int obtenerPosicion() {
-        return posicionActual;
+    public int obetenerPosicionEnX() {
+        return posicionEnX;
+    }
+
+    public int obetenerPosicionEnY() {
+        return posicionEny;
     }
 
     public void aumentarEnergiaAlIniciarElTurno(){
@@ -117,6 +124,6 @@ public class Gladiador {
     public boolean estaLesionado(){return this.lesionado;};
 
     public boolean SeEncuentraEnUltimaPosicion(int tableroLongitud) {
-        return((tableroLongitud -1) == posicionActual);
+        return((tableroLongitud -1) == posicionEnX);
     }
 }

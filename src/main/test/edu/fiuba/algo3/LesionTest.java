@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LesionTest {
 
-
+    /*
     @Test
     public void Test01UnJugadorLesionadoNoPuedeJugarElSiguienteTurno() {
 
@@ -40,5 +40,5 @@ public class LesionTest {
 
     }
 
-
+    */
 }

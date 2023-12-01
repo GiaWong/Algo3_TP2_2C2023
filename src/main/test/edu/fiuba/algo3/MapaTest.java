@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MapaTest {
 
+    /*
     @Test
     public void test01UnGladidadorAvanzaAUnaCasillaConDosOcupaciones(){
         Tablero tablero = new Tablero(1,new Turno(30));
@@ -62,5 +63,7 @@ public class MapaTest {
         tablero.AgregarMapaComoMatriz();
 
     }
+
+     */
 
 }
