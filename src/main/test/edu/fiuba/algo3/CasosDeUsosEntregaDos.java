@@ -107,34 +107,4 @@ public class CasosDeUsosEntregaDos {
     }
 
 
-    /**
-     * TODO: los tests que siguen de aqui para abajo deben ir en otro lado porque no se contempla
-     * TODO: a los casos de usos de la entrega 2  (ROY FIJATE EN EESO)
-     *
-     * */
-    @Test
-    public void Test19SimulamosYVerificamosQueElJugadorGane() {
-
-        Tablero tablero = new Tablero(1, new Turno(5));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
-        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
-        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
-        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-
-        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
-        tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-
-
-        boolean JugadorEsGanador= true;
-        assertEquals(JugadorEsGanador, tablero.validarGanador(unGladiador));
-
-    }
-
 }
