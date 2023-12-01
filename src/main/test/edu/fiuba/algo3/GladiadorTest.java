@@ -192,12 +192,13 @@ public class GladiadorTest {
         assertEquals(longitudEsperada2, primerGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
     }
+
     @Test
     public void Test08CuandoPasando12TurnosUnGladiadorPasaDeNovatoASeniority(){
 
         Tablero tablero = new Tablero(1, new Turno(30));
 
-        for (int i=1 ; i <20 ;i++){
+        for (int i = 1; i < 20 ; i++) {
             tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
         }
 
@@ -205,7 +206,7 @@ public class GladiadorTest {
         tablero.agregarJugador(unGladiador);
         DadoMock dado = new DadoMock();
 
-        for (int i=1 ; i <13 ;i++){
+        for (int i = 1; i < 13; i++) {
             tablero.avanzar(dado);
         }
 
@@ -284,5 +285,45 @@ public class GladiadorTest {
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada1, tercerGladiador.obtenerCantidadDeEquipamiento());
+    }
+
+    @Test
+    public void Test11ValidarQueUnJugadorPuedeSeguirJugandoAunqueSeQuedeSinEnergia() {
+        Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+
+        Gladiador primerGladiador = new Gladiador(20, new Novato(), 0);
+        tablero.agregarJugador(primerGladiador);
+
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+
+        int energiaEsperada = 0;
+
+        assertEquals(energiaEsperada, primerGladiador.obtenerEnergia());
+    }
+
+    @Test
+    public void Test12ValidarQueSiUnJugadorSeQuedaEnergiaYEsAtacadoLaEnergiaSeMantieneEnCero() {
+        Tablero tablero = new Tablero(1, new Turno(30));
+        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
+        tablero.agregarCasilla(new Casilla(new FieraSalvaje(20)));
+
+        Gladiador primerGladiador = new Gladiador(20, new Novato(), 0);
+        tablero.agregarJugador(primerGladiador);
+
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
+
+        int energiaEsperada = 0;
+
+        assertEquals(energiaEsperada, primerGladiador.obtenerEnergia());
     }
 }
