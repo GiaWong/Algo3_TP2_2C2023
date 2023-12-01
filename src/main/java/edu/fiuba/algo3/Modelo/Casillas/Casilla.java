@@ -13,17 +13,12 @@ public class Casilla {
         this.unaOcupacion = ocupacion;
     }
 
-    public Casilla(Ocupable obstaculo, Ocupable premio) {
+    public Casilla(Ocupable obstaculo, Ocupable premio,int posX, int posY) {
         this.unaOcupacion = premio;
         this.unaSegundaOcupacion = obstaculo;
-    }
-
-
-    public void setUbicacion(int posX, int posY) {
         this.posicionEnX = posX;
         this.posicionEnY = posY;
     }
-
 
     public int obtenerposicionEnX(){
         return posicionEnX;
@@ -46,11 +41,11 @@ public class Casilla {
             ungladiador = unaSegundaOcupacion.interactuarConLaOcupacion(ungladiador);
         }
 
-        estaEnLaUltimaPosicion(ungladiador,tamanioLista);
+        //estaEnLaUltimaPosicion(ungladiador,tamanioLista);
         return ungladiador;
     }
 
-
+    /*
     private void estaEnLaUltimaPosicion(Gladiador ungladiador, int tamanioLista ) {
 
         if (esLaUltimaPosicion(ungladiador.obtenerPosicion(), tamanioLista)) {
@@ -62,7 +57,7 @@ public class Casilla {
             System.out.println("\n----Se LLegó a la meta con TODO el EQUIPAMIENTO completo----\n");
         }
     }
-
+    */
 
     private boolean esLaUltimaPosicion(int posicion, int tamanioLista) {
         return  (posicion == tamanioLista - 1);

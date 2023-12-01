@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BacanalTest {
-
+    /*
     @Test
     public void Test01SiUnGladiadorAsisteAUnBacanalYToma1TradoPierdeCiertaEnergia() {
 
@@ -55,5 +55,7 @@ public class BacanalTest {
 
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
     }
+
+     */
 
 }

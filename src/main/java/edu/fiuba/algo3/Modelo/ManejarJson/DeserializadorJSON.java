@@ -70,8 +70,7 @@ public class DeserializadorJSON {
                 String premio = celda.get("premio").asText().toUpperCase();
 
                 //System.out.println("\n\t------------");
-                Casilla casillaActual = new Casilla(transformarAObjeto(obstaculo), transformarAObjeto(premio));
-                casillaActual.setUbicacion(posX, posY);
+                Casilla casillaActual = new Casilla(transformarAObjeto(obstaculo), transformarAObjeto(premio),posX,posY);
                 listaCasillas.add(casillaActual);
 
             }
