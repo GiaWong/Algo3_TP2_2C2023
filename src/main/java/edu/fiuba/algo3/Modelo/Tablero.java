@@ -77,18 +77,13 @@ public class Tablero {
         this.controladorCantidadMoverse = 0;
     }
 
-    public void AgregarMapa(){
+    public void AgregarMapa(String rutaDelArchivo){
 
-        //Este es el mapa original!
-        String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
         DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
         deserializadorJSON.extraerContenidoDeCadaCelda(rutaDelArchivo);
-
         List <Casilla>  mapa =  deserializadorJSON.obtenerListaCasillas();
 
-
         for (Casilla casillaActual : mapa){
-
             this.agregarCasilla(casillaActual);
         }
     }

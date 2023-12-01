@@ -66,14 +66,12 @@ public class DeserializadorJSON {
 
                 int posX = celda.get("x").asInt();
                 int posY = celda.get("y").asInt();
-                String tipo = celda.get("tipo").asText().toUpperCase();
                 String obstaculo = celda.get("obstaculo").asText().toUpperCase();
                 String premio = celda.get("premio").asText().toUpperCase();
 
                 //System.out.println("\n\t------------");
                 Casilla casillaActual = new Casilla(transformarAObjeto(obstaculo), transformarAObjeto(premio));
                 casillaActual.setUbicacion(posX, posY);
-                casillaActual.setTipo(transformarAObjeto(tipo));
                 listaCasillas.add(casillaActual);
 
             }
@@ -109,15 +107,7 @@ public class DeserializadorJSON {
             //System.out.println("\nConvirtiendo a clase Comida");
             return new Comida(15);
 
-        } else if (nombreActual.equalsIgnoreCase("Camino")) {
-            //System.out.println("\nConvirtiendo a clase Camino");
-            return new Camino();
-
-        }else if (nombreActual.equalsIgnoreCase("Llegada")) {
-            //System.out.println("\nConvirtiendo a clase LLegada");
-            return new LLegada();
-
-        }else {
+        } else {
             //System.out.println("\nConvirtiendo a clase NadaOcupacion()");
             return new NadaOcupacion();
         }

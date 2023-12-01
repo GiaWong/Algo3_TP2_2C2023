@@ -40,7 +40,8 @@ public class MapaTest {
     public void test01UnGladiadorAvanzaAUnaCasillaEnElNuevoMapa(){
         //Arrange
         Tablero tablero = new Tablero(1,new Turno(30));
-        tablero.AgregarMapa();
+        String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
+        tablero.AgregarMapa(rutaDelArchivo);
         Gladiador gladiador = new Gladiador(20,new Novato(),0);
         tablero.agregarJugador(gladiador);
 

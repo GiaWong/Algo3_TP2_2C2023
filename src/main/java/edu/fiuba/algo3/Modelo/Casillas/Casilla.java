@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.Modelo.Casillas;
 import edu.fiuba.algo3.Modelo.Gladiador;
-import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculizador;
-import edu.fiuba.algo3.Modelo.Premios.Premio;
+
 
 public class Casilla {
     Ocupable unaOcupacion;
@@ -21,11 +20,6 @@ public class Casilla {
     public void setUbicacion(int posX, int posY) {
         this.posicionEnX = posX;
         this.posicionEnY = posY;
-    }
-
-    //Esto me interesa para algo? por ahora no.
-    public void setTipo(Ocupable CaminoOLLegada) {
-        //ver qué hará
     }
 
     public Gladiador interactuarConLaOcupacion(Gladiador ungladiador, int cantidadAMoverse, int tamanioLista) {

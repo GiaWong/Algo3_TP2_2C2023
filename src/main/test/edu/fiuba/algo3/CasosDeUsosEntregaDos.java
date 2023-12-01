@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CasosDeUsosEntregaDos {
 
     /**
-     * Verifico que se haya deserializado "ancho" y "largo" del mapa json
+     * Verifico que la deserializacion "ancho" y "largo" del mapa json
      * */
     @Test
     public void Test013SeVerificaElFormatoValidoDelJsonDelMapa() {
@@ -37,7 +37,7 @@ public class CasosDeUsosEntregaDos {
     }
 
     /**
-     * Verifico que se haya deserializado "obstaculo" y "premio" de las celdas json
+     * Verifico la deserializacion "obstaculo" y "premio" de las celdas json
      *
      * Supuesto: si una celda tiene mal el contenido de la ocupacion entonces
      * no se guardará en la lista de casillas que tiene adentro la clase DeserializadorJson()
