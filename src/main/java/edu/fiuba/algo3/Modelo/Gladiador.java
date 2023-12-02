@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.Modelo;
 
-import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculizador;
 import edu.fiuba.algo3.Modelo.PatronState.ManejarEquipamiento;
-import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Seniority.Seniority;
 
 import java.util.ArrayList;
@@ -79,6 +77,7 @@ public class Gladiador {
     }
 
     public void agregarEquipamiento(Equipado equipamiento){
+        System.out.println("\nse guarda equipamiento");
             listaDeEquipamiento.add(equipamiento);
 
     }
@@ -121,7 +120,7 @@ public class Gladiador {
     public void rehabilitar(){
         this.lesionado = false;
     }
-    public boolean estaLesionado(){return this.lesionado;};
+    public boolean estaLesionado(){return this.lesionado;}
 
     public boolean SeEncuentraEnUltimaPosicion(int tableroLongitud) {
         return((tableroLongitud -1) == posicionEnX);

@@ -1,24 +1,18 @@
 package edu.fiuba.algo3.Modelo;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
-import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
-import edu.fiuba.algo3.Modelo.ManejarJson.DeserializadorJSON;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class Tablero {
     private ArrayList<Gladiador> listaDeGladiadores;
     private int cantidadDeJugadores;
     private ArrayList<Casilla> listaDeCasillas;
     private Turno turno;
-    private int controladorCantidadMoverse;
     private Casilla[][] mapa;
     public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa) {
         this.cantidadDeJugadores = cantidadJugadores;
         this.listaDeGladiadores = new ArrayList<>();
         this.listaDeCasillas = new ArrayList<>();
         this.turno = turno;
-        this.controladorCantidadMoverse = 0;
         this.mapa = unMapa;
     }
 
@@ -38,9 +32,9 @@ public class Tablero {
         Gladiador ungladiador = turno.siguienteTurno(listaDeGladiadores);
 
         if (this.validarTurno(ungladiador)) {
-            controladorCantidadMoverse = controladorCantidadMoverse + cantidadAMoverse;
+
             Casilla casillaActual = mapa[ungladiador.obetenerPosicionEnX()][ungladiador.obetenerPosicionEnY()];
-            ungladiador = casillaActual.interactuarConLaOcupacion(ungladiador, cantidadAMoverse, listaDeCasillas.size());
+            ungladiador = casillaActual.interactuarConLaOcupacion(ungladiador, cantidadAMoverse);
         }
     }
 
@@ -76,7 +70,6 @@ public class Tablero {
         this.listaDeGladiadores.clear();
         this.listaDeCasillas.clear();
         this.turno = null;
-        this.controladorCantidadMoverse = 0;
     }
 
 }
