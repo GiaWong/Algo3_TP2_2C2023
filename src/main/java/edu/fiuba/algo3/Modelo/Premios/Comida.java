@@ -16,6 +16,7 @@ public class Comida  implements Premio, Ocupable {
     @Override
     public Gladiador interactuarConLaOcupacion(Gladiador unGladiador) {
         this.modificarEnergia(unGladiador);
+        System.out.println("\nEntró a Comida");
         return unGladiador;
     }
 

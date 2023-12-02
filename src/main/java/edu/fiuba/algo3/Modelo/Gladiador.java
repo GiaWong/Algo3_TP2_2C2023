@@ -13,7 +13,7 @@ public class Gladiador {
     private int energia;
     private Seniority unSeniority;
     private List<Equipado> listaDeEquipamiento;
-
+    private int posicion;
     private int posicionEnX,posicionEnY;
     private boolean lesionado;
 
@@ -29,20 +29,48 @@ public class Gladiador {
 
     }
 
+    //PRUEBAAAAAAAAAAA
+    public Gladiador(int unaEnergia, Seniority unSeniority, int unaPosicion) {
+        this.energia = unaEnergia;
+        this.posicion = unaPosicion;
+        this.unSeniority = unSeniority;
+        this.listaDeEquipamiento = new ArrayList<>();
+        this.manejarequipamiento = new ManejarEquipamiento();
+        this.lesionado = false;
+
+    }
+
     public int obtenerEnergia() {
         return energia;
     }
 
+    /*
     public void avanzar(int cantidadAMoverse) {
         posicionEnY = posicionEnY + cantidadAMoverse;
         System.out.println("\nGladiador avanza una casilla ---> está en la posicion:  " + posicionEnY);
-
     }
     public void retroceder(int cantidadAMoverse) {
         posicionEnX = posicionEnX - cantidadAMoverse;
         System.out.println("\nGladiador retrocede ----> está en la posicion: " + posicionEnX);
 
     }
+    */
+
+
+
+    //CAMBIOOOOOOOOOOOOOOOOOO
+    public void avanzar(int cantidadAMoverse) {
+        posicion = posicion + cantidadAMoverse;
+    }
+    public void retroceder(int cantidadAMoverse) {
+        posicion = posicion - cantidadAMoverse;
+    }
+    public int obtenerPosicionEnCamino() {
+        return posicion;
+    }
+
+
+
 
     public int obetenerPosicionEnX() {
         return posicionEnX;

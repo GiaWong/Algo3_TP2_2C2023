@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.Modelo;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Tablero {
     private ArrayList<Gladiador> listaDeGladiadores;
@@ -8,6 +9,9 @@ public class Tablero {
     private ArrayList<Casilla> listaDeCasillas;
     private Turno turno;
     private Casilla[][] mapa;
+    private List<Casilla> camino;
+
+
     public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa) {
         this.cantidadDeJugadores = cantidadJugadores;
         this.listaDeGladiadores = new ArrayList<>();
@@ -15,6 +19,20 @@ public class Tablero {
         this.turno = turno;
         this.mapa = unMapa;
     }
+
+
+
+    //CAMBIOOOOOOOOOOOOOOOOOO
+    public Tablero(int cantidadJugadores, Turno turno, List<Casilla> unCamino) {
+        this.cantidadDeJugadores = cantidadJugadores;
+        this.listaDeGladiadores = new ArrayList<>();
+        this.listaDeCasillas = new ArrayList<>();
+        this.turno = turno;
+        this.camino = unCamino;
+    }
+
+
+
 
     public void agregarCasillaAlMapa(Casilla unaCasilla){
         this.mapa[unaCasilla.obtenerposicionEnX()][unaCasilla.obtenerposicionEny()] =unaCasilla;
@@ -33,7 +51,10 @@ public class Tablero {
 
         if (this.validarTurno(ungladiador)) {
 
-            Casilla casillaActual = mapa[ungladiador.obetenerPosicionEnX()][ungladiador.obetenerPosicionEnY()];
+            //Casilla casillaActual = mapa[ungladiador.obetenerPosicionEnX()][ungladiador.obetenerPosicionEnY()];
+            Casilla casillaActual = camino.get(ungladiador.obtenerPosicionEnCamino());
+            System.out.println("\nCasilla ---> ("+casillaActual.obtenerposicionEnX()+","+casillaActual.obtenerposicionEny()+")");
+
             ungladiador = casillaActual.interactuarConLaOcupacion(ungladiador, cantidadAMoverse);
         }
     }
