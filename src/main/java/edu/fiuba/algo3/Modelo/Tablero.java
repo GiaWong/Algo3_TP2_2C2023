@@ -1,12 +1,13 @@
 package edu.fiuba.algo3.Modelo;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
+import edu.fiuba.algo3.Movimiento.Direccion;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Tablero {
     private ArrayList<Gladiador> listaDeGladiadores;
     private int cantidadDeJugadores;
-    private ArrayList<Casilla> listaDeCasillas;
     private Turno turno;
     private Casilla[][] mapa;
     private List<Casilla> camino;
@@ -15,34 +16,25 @@ public class Tablero {
     public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa) {
         this.cantidadDeJugadores = cantidadJugadores;
         this.listaDeGladiadores = new ArrayList<>();
-        this.listaDeCasillas = new ArrayList<>();
         this.turno = turno;
         this.mapa = unMapa;
     }
 
-
-
-    //CAMBIOOOOOOOOOOOOOOOOOO
-    public Tablero(int cantidadJugadores, Turno turno, List<Casilla> unCamino) {
-        this.cantidadDeJugadores = cantidadJugadores;
-        this.listaDeGladiadores = new ArrayList<>();
-        this.listaDeCasillas = new ArrayList<>();
-        this.turno = turno;
-        this.camino = unCamino;
-    }
-
-
-
-
-    public void agregarCasillaAlMapa(Casilla unaCasilla){
-        this.mapa[unaCasilla.obtenerposicionEnX()][unaCasilla.obtenerposicionEny()] =unaCasilla;
+    public void agregarCasillaAlMapa(Casilla unaCasilla) {
+        this.mapa[unaCasilla.obtenerposicionEnX()][unaCasilla.obtenerposicionEny()] = unaCasilla;
     }
 
     public void agregarJugador(Gladiador gladiador) {
-            listaDeGladiadores.add(gladiador);
+        listaDeGladiadores.add(gladiador);
     }
 
-    public boolean validarTurno(Gladiador unGladiador){return (turno.jugar(unGladiador));}
+    public boolean validarTurno(Gladiador unGladiador) {
+        return (turno.jugar(unGladiador));
+    }
+
+    public void setearCamino(List<Casilla> unCamino){
+        camino = unCamino;
+    }
 
     public void avanzar(Dado dado) {
 
@@ -51,23 +43,23 @@ public class Tablero {
 
         if (this.validarTurno(ungladiador)) {
 
-            //Casilla casillaActual = mapa[ungladiador.obetenerPosicionEnX()][ungladiador.obetenerPosicionEnY()];
-            Casilla casillaActual = camino.get(ungladiador.obtenerPosicionEnCamino());
-            System.out.println("\nCasilla ---> ("+casillaActual.obtenerposicionEnX()+","+casillaActual.obtenerposicionEny()+")");
+            ungladiador.avanzar(cantidadAMoverse);
+            Casilla casillaActual = mapa[ungladiador.obetenerPosicionEnX()][ungladiador.obetenerPosicionEnY()];
+            System.out.println("\nCasilla ---> (" + casillaActual.obtenerposicionEnX() + "," + casillaActual.obtenerposicionEny() + ")");
 
             ungladiador = casillaActual.interactuarConLaOcupacion(ungladiador, cantidadAMoverse);
         }
     }
-
-    public boolean FinalizarJuego(){
+/*
+    public boolean FinalizarJuego() {
         boolean validacion = turno.validarFinalizarJuego();
-        if (validacion){
+        if (validacion) {
             reiniciarTodoLosValores();
         }
         return validacion;
 
     }
-
+    /*
     public int LongitudDeTablero(){
         return this.listaDeCasillas.size();
     }
@@ -93,4 +85,7 @@ public class Tablero {
         this.turno = null;
     }
 
+}
+
+     */
 }

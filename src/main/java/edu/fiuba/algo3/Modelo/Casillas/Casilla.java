@@ -9,15 +9,14 @@ public class Casilla {
     int posicionEnX;
     int posicionEnY;
 
-    public Casilla(Ocupable ocupacion) {
-        this.unaOcupacion = ocupacion;
-    }
+    String tipo;
 
-    public Casilla(Ocupable obstaculo, Ocupable premio,int posX, int posY) {
+    public Casilla(Ocupable obstaculo, Ocupable premio,int posX, int posY, String tipo) {
         this.unaOcupacion = premio;
         this.unaSegundaOcupacion = obstaculo;
         this.posicionEnX = posX;
         this.posicionEnY = posY;
+        this.tipo = tipo;
     }
 
     public int obtenerposicionEnX(){
@@ -28,11 +27,9 @@ public class Casilla {
         return posicionEnY;
     }
 
-
     public Gladiador interactuarConLaOcupacion(Gladiador ungladiador, int cantidadAMoverse) {
 
         ungladiador.aumentarEnergiaAlIniciarElTurno();
-        ungladiador.avanzar(cantidadAMoverse);
         ungladiador = unaOcupacion.interactuarConLaOcupacion( ungladiador);
 
         //Le clavo un if para poder interactuar con dos casillas
@@ -41,6 +38,13 @@ public class Casilla {
         }
 
         return ungladiador;
+    }
+
+    public boolean tieneCamino(){
+        if (tipo =="CAMINO"){
+            return true ;
+        }
+        return false    ;
     }
 
 

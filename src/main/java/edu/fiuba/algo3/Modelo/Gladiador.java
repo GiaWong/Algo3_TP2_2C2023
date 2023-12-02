@@ -4,6 +4,7 @@ import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculizador;
 import edu.fiuba.algo3.Modelo.PatronState.ManejarEquipamiento;
 import edu.fiuba.algo3.Modelo.Seniority.Seniority;
+import edu.fiuba.algo3.Movimiento.Direccion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,47 +30,37 @@ public class Gladiador {
 
     }
 
-    //PRUEBAAAAAAAAAAA
-    public Gladiador(int unaEnergia, Seniority unSeniority, int unaPosicion) {
-        this.energia = unaEnergia;
-        this.posicion = unaPosicion;
-        this.unSeniority = unSeniority;
-        this.listaDeEquipamiento = new ArrayList<>();
-        this.manejarequipamiento = new ManejarEquipamiento();
-        this.lesionado = false;
-
-    }
-
     public int obtenerEnergia() {
         return energia;
     }
 
-    /*
     public void avanzar(int cantidadAMoverse) {
+
         posicionEnY = posicionEnY + cantidadAMoverse;
         System.out.println("\nGladiador avanza una casilla ---> está en la posicion:  " + posicionEnY);
+
+        //Tenemosque usar este metodo! asi podriamos obtener la proxima direccion a donde tiene que moverse el gladiador
+        //En lugar de tener que usar otra lista mas, nos movemos a las casilla que tengan el atributo "CAMINO"
+        //Entonces podriamos setear la proxima casilla de una forma mas sencilla, luego le seteriamos a gladiador la nueva direccion (x,y)
+        //y finalmente interactua con esa casilla que estara en la matriz
+        /*
+        Direccion direccion;
+        direccion = new Direccion(posicionEnX,posicionEnY);
+        direccion.obtenerProximaCasillaConCamino(mapa)
+        */
     }
+
+
     public void retroceder(int cantidadAMoverse) {
-        posicionEnX = posicionEnX - cantidadAMoverse;
-        System.out.println("\nGladiador retrocede ----> está en la posicion: " + posicionEnX);
+        posicionEnY = posicionEnY - cantidadAMoverse;
+        System.out.println("\nGladiador retrocede ----> está en la posicion: " + posicionEnY);
 
     }
-    */
 
 
-
-    //CAMBIOOOOOOOOOOOOOOOOOO
-    public void avanzar(int cantidadAMoverse) {
-        posicion = posicion + cantidadAMoverse;
-    }
-    public void retroceder(int cantidadAMoverse) {
-        posicion = posicion - cantidadAMoverse;
-    }
     public int obtenerPosicionEnCamino() {
         return posicion;
     }
-
-
 
 
     public int obetenerPosicionEnX() {

@@ -22,7 +22,8 @@ public class Mapa {
 
         for (int i = 0; i < 18; i++) {
             for (int j = 0; j < 10; j++) {
-                Casilla casilla = new Casilla(new NadaOcupacion(), new NadaOcupacion(),i,j);
+                String tipo = "";
+                Casilla casilla = new Casilla(new NadaOcupacion(), new NadaOcupacion(),i,j,tipo);
                 matriz[i][j] = casilla;
             }
         }
@@ -44,7 +45,8 @@ public class Mapa {
 
         for (int i = 0; i < 18; i++) {
             for (int j = 0; j < 10; j++) {
-                Casilla casilla = new Casilla(new NadaOcupacion(), new NadaOcupacion(),i,j);
+                String tipo = "";
+                Casilla casilla = new Casilla(new NadaOcupacion(), new NadaOcupacion(),i,j,tipo);
                 matriz[i][j] = casilla;
             }
         }
@@ -52,6 +54,7 @@ public class Mapa {
             matriz[casilla.obtenerposicionEnX()][casilla.obtenerposicionEny()] = casilla;
         }
 
+        //No necesitamos la lista de casillas, ya que el mapa tiene el atributo camino!!
         this.mapa   = matriz;
         this.camino = listaDeCasillasJSON;
     }
@@ -61,4 +64,5 @@ public class Mapa {
     public List<Casilla> obtenerCamino(){
         return camino;
     }
+
 }

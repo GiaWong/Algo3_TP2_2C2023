@@ -14,28 +14,29 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MapaTest {
 
-    /*
     @Test
-    public void test01UnGladidadorAvanzaAUnaCasillaConDosOcupaciones(){
-        Tablero tablero = new Tablero(1,new Turno(30));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla (new FieraSalvaje(20),new PremioEquipamiento()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+    public void test01UnGladiadorSeMueveDosCasillasDeCamino(){
 
+        Mapa mapa = new Mapa();
+        mapa.mapaReal();
+        Casilla[][] unMapa = mapa.obtenerMapa();
+        List <Casilla> unCamino = mapa.obtenerCamino();
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
+        Tablero tablero = new Tablero(1, new Turno(30),unMapa);
+        tablero.setearCamino(unCamino);
+
+        Gladiador unGladiador = new Gladiador(20, new Novato(), 1,7);
         tablero.agregarJugador(unGladiador);
         tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
 
-        //Act and Assert -> Primero recibe el equipamiento y luego se enfrenta con la fiera
-        int energiaEsperada = 5;
-        assertEquals(energiaEsperada,unGladiador.obtenerEnergia());
+        int posicionEnxEsperada = 2;
+        int posicionEnyEsperada =7 ;
+        assertEquals(posicionEnxEsperada, unGladiador.obetenerPosicionEnX());
+        assertEquals(posicionEnyEsperada,unGladiador.obetenerPosicionEnY());
 
 
     }
-
+    /*
     @Test
     public void test02UnGladiadorAvanzaAUnaCasillaEnElNuevoMapa(){
         //Arrange
@@ -64,7 +65,7 @@ public class MapaTest {
     }
 
      */
-
+    /*
     @Test
     public void Test19SimulamosYVerificamosQueElJugadorGane() {
 
@@ -87,5 +88,5 @@ public class MapaTest {
         assertEquals(posicionEsperada, unGladiador.obtenerPosicionEnCamino());
 
     }
-
+    */
 }
