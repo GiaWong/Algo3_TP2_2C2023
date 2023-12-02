@@ -43,7 +43,7 @@ public class Tablero {
 
         if (this.validarTurno(ungladiador)) {
 
-            ungladiador.avanzar(cantidadAMoverse);
+            ungladiador.avanzar(cantidadAMoverse, mapa);
             Casilla casillaActual = mapa[ungladiador.obetenerPosicionEnX()][ungladiador.obetenerPosicionEnY()];
             System.out.println("\nCasilla ---> (" + casillaActual.obtenerposicionEnX() + "," + casillaActual.obtenerposicionEny() + ")");
 

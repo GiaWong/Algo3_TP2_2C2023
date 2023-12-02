@@ -32,11 +32,13 @@ public class Direccion {
 
         for (Direccion direccion : direcciones) {
             int nuevaDireccionEnX = direccionEnX + direccion.getFila();
-            int NuevaDireccionEnY = direccionEnY + direccion.getColumna();
+            int nuevaDireccionEnY = direccionEnY + direccion.getColumna();
 
             // Verificar si la casilla en la dirección indicada tiene el atributo "camino"
-            if (mapa[nuevaDireccionEnX][NuevaDireccionEnY].tieneCamino()) {
-                return direccion;
+            if (mapa[nuevaDireccionEnX][nuevaDireccionEnY].obtenerTipo().equalsIgnoreCase("CAMINO")) {
+                //System.out.println("entrooooo");
+                Direccion nuevaDireccion = new Direccion(nuevaDireccionEnX, nuevaDireccionEnY);
+                return nuevaDireccion;
             }
 
         }

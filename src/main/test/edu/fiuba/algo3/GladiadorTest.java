@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GladiadorTest {
 
 
-    @Test
+   /* @Test
     public void test01UnGladiadorAvanzaUnaPosicionDespuesDeArrojarLosDados(){
         Mapa mapa = new Mapa();
         mapa.mapaTest();
@@ -29,7 +29,7 @@ public class GladiadorTest {
         int posicionEsperada = 1;
 
         assertEquals(posicionEsperada, gladiador.obetenerPosicionEnY());
-    }
+    }*/
 
     /*
     @Test

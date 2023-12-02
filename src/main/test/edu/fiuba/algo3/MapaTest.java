@@ -6,6 +6,7 @@ import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
 import edu.fiuba.algo3.Modelo.Equipamientos.PremioEquipamiento;
 import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
+import edu.fiuba.algo3.Movimiento.Direccion;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MapaTest {
 
     @Test
+
     public void test01UnGladiadorSeMueveDosCasillasDeCamino(){
 
         Mapa mapa = new Mapa();
@@ -24,13 +26,15 @@ public class MapaTest {
 
         Tablero tablero = new Tablero(1, new Turno(30),unMapa);
         tablero.setearCamino(unCamino);
+        Direccion direccion = new Direccion(1, 7);
+        Gladiador unGladiador = new Gladiador(20, new Novato(), 1,7, direccion);
 
-        Gladiador unGladiador = new Gladiador(20, new Novato(), 1,7);
         tablero.agregarJugador(unGladiador);
         tablero.avanzar(new DadoMock());
 
+
         int posicionEnxEsperada = 2;
-        int posicionEnyEsperada =7 ;
+        int posicionEnyEsperada = 7 ;
         assertEquals(posicionEnxEsperada, unGladiador.obetenerPosicionEnX());
         assertEquals(posicionEnyEsperada,unGladiador.obetenerPosicionEnY());
 

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.Modelo;
 
+import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculizador;
 import edu.fiuba.algo3.Modelo.PatronState.ManejarEquipamiento;
@@ -17,9 +18,10 @@ public class Gladiador {
     private int posicion;
     private int posicionEnX,posicionEnY;
     private boolean lesionado;
+    private Direccion direccion;
 
     private ManejarEquipamiento manejarequipamiento;
-    public Gladiador(int unaEnergia, Seniority unSeniority, int posicionX,int posicionY) {
+    public Gladiador(int unaEnergia, Seniority unSeniority, int posicionX, int posicionY, Direccion direccion) {
         this.energia = unaEnergia;
         this.posicionEnX = posicionX;
         this.posicionEnY = posicionY;
@@ -27,6 +29,7 @@ public class Gladiador {
         this.listaDeEquipamiento = new ArrayList<>();
         this.manejarequipamiento = new ManejarEquipamiento();
         this.lesionado = false;
+        this.direccion = direccion;
 
     }
 
@@ -34,20 +37,12 @@ public class Gladiador {
         return energia;
     }
 
-    public void avanzar(int cantidadAMoverse) {
+    public void avanzar(int cantidadAMoverse, Casilla[][] mapa) {
 
-        posicionEnY = posicionEnY + cantidadAMoverse;
-        System.out.println("\nGladiador avanza una casilla ---> está en la posicion:  " + posicionEnY);
+       direccion = direccion.obtenerProximaCasillaConCamino(mapa);
+       posicionEnX = direccion.getFila();
+       posicionEnY = direccion.getColumna();
 
-        //Tenemosque usar este metodo! asi podriamos obtener la proxima direccion a donde tiene que moverse el gladiador
-        //En lugar de tener que usar otra lista mas, nos movemos a las casilla que tengan el atributo "CAMINO"
-        //Entonces podriamos setear la proxima casilla de una forma mas sencilla, luego le seteriamos a gladiador la nueva direccion (x,y)
-        //y finalmente interactua con esa casilla que estara en la matriz
-        /*
-        Direccion direccion;
-        direccion = new Direccion(posicionEnX,posicionEnY);
-        direccion.obtenerProximaCasillaConCamino(mapa)
-        */
     }
 
 

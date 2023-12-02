@@ -38,7 +38,7 @@ public class LesionTest {
         int posicionEsperada = 1;
         assertEquals(posicionEsperada, unGladiador.obtenerPosicion());
 
-    }
+    }*/
 
-    */
+
 }

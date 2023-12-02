@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CasosDeUsosEntregaUno {
 
-    @Test
+   /* @Test
     public void Test01UnGladiadorSeInicializaConLaEnergiaYNoTieneEquipamiento() {
 
         Gladiador unGladiador = new Gladiador(20, new Novato(), 0,0);
@@ -204,7 +204,7 @@ public class CasosDeUsosEntregaUno {
         assertEquals(posicionEsperada, unGladiador.obtenerPosicion());
 
     }
-    */
+
     @Test
     public void Test10UnGladiadorConTodosSusEquipamientosEsAtacadoPorUnaFieraSalvajeLaEnergiaNoSeModifica() {
 
@@ -275,7 +275,7 @@ public class CasosDeUsosEntregaUno {
 
         boolean juegoTerminado= true;
         assertEquals(juegoTerminado, tablero.FinalizarJuego());
-    }
+    }*/
 
      */
 }

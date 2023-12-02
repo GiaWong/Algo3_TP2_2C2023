@@ -41,12 +41,15 @@ public class Casilla {
     }
 
     public boolean tieneCamino(){
-        if (tipo =="CAMINO"){
+        if (tipo.equalsIgnoreCase("CAMINO")){
             return true ;
         }
         return false    ;
     }
 
+    public String obtenerTipo(){
+        return tipo;
+    }
 
 }
 
