@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.Modelo;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
-import edu.fiuba.algo3.Movimiento.Direccion;
+import edu.fiuba.algo3.Modelo.Dados.Dado;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,10 +68,9 @@ public class Tablero {
     public boolean validarGanador(Gladiador unGladiador) {
 
         boolean validarEquipamiento = unGladiador.tienecantidadEquipamientoPermitido();
-        //validarPosicion() ESTA YA NO SIRVE, HAY QUE ACTUALIZARLO, PORQUE LA POSICION AHORA ES EN X Y EN Y
-        boolean validarPosicion = unGladiador.SeEncuentraEnUltimaPosicion(LongitudDeTablero());
+        boolean validarPosicion = true;
 
-        if (validarPosicion && validarEquipamiento){
+        if (validarEquipamiento){
             reiniciarTodoLosValores();
             System.out.println("\n----GANASTE, FELICIDADES!----\n");
             return true;

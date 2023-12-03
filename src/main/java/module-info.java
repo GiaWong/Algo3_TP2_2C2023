@@ -5,4 +5,5 @@ module edu.fiuba.algo3 {
     exports edu.fiuba.algo3;
     exports edu.fiuba.algo3.Modelo.ManejarJson;
     exports edu.fiuba.algo3.Modelo;
+    exports edu.fiuba.algo3.Modelo.Dados;
 }

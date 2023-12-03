@@ -1,15 +1,5 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.Modelo.Casillas.Casilla;
-import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
-import edu.fiuba.algo3.Modelo.DadoMock;
-import edu.fiuba.algo3.Modelo.Gladiador;
-import edu.fiuba.algo3.Modelo.Obstaculos.Bacanal;
-import edu.fiuba.algo3.Modelo.Seniority.Novato;
-import edu.fiuba.algo3.Modelo.Tablero;
-import edu.fiuba.algo3.Modelo.Turno;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BacanalTest {

@@ -3,15 +3,17 @@ package edu.fiuba.algo3;
 import edu.fiuba.algo3.Modelo.*;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
+import edu.fiuba.algo3.Modelo.Dados.Dado;
+import edu.fiuba.algo3.Modelo.Dados.DadoMock;
 import edu.fiuba.algo3.Modelo.Equipamientos.PremioEquipamiento;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Movimiento.Direccion;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/*
 public class CasosDeUsoEntregaTres {
-    @Test/*
+    @Test
     public void Test19SimulamosYVerificamosQueElJugadorGane() {
 //ESTE TESTA YA ESTA, SOLO QUE VALIDARGANADOR() NO ESTA FUNCIONANDO
         Mapa mapa = new Mapa();
@@ -23,7 +25,7 @@ public class CasosDeUsoEntregaTres {
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),4,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),4,1, "LLEGADA"));
 
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),1,1, direccion);

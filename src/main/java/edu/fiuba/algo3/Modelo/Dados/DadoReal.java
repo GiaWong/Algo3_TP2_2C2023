@@ -1,8 +1,8 @@
-package edu.fiuba.algo3.Modelo;
+package edu.fiuba.algo3.Modelo.Dados;
 
 import java.util.Random;
 
-public class DadoReal implements Dado{
+public class DadoReal implements Dado {
 
     public int lanzarDado() {
         Random random = new Random();
