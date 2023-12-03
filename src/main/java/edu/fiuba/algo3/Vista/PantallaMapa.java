@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.Vista;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -43,7 +44,7 @@ public class PantallaMapa {
                 //stageMapa.close(); CUANDO UN JUGADOR GANE SE CIERRA
             });
             gridMapa.add(btnAvanzar, 0, ancho + 1, largo, 1);
-
+            gridMapa.setAlignment(Pos.CENTER);
 
             double ventanaAncho = largo * tamanoCasilla + 15;
             double ventanaAlto = ancho * tamanoCasilla + 15;
@@ -51,6 +52,7 @@ public class PantallaMapa {
             Scene sceneMapa = new Scene(gridMapa, ventanaAncho, ventanaAlto);
 
             stageMapa.setScene(sceneMapa);
+            stageMapa.setMaximized(true);
             stageMapa.show();
 
             stage.close();

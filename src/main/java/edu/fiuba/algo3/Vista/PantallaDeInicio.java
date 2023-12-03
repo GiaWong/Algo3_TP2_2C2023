@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.Vista;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,6 +15,7 @@ public class PantallaDeInicio {
         grid.setPadding(new Insets(20, 20, 20, 20));
         grid.setVgap(10);
         grid.setHgap(10);
+        grid.setAlignment(Pos.CENTER);
 
         Label labelJugadores = new Label("Cantidad de jugadores:");
         TextField inputJugadores = new TextField();
@@ -23,12 +25,14 @@ public class PantallaDeInicio {
         grid.add(inputJugadores, 1, 0);
         grid.add(btnAceptarJugadores, 2, 0);
 
+
         btnAceptarJugadores.setOnAction(e -> {
             int cantidadJugadores = Integer.parseInt(inputJugadores.getText());
+            stage.close();
             pedirNombresJugadores(cantidadJugadores, stage);
         });
 
-        Scene scene = new Scene(grid, 640, 480);
+        Scene scene = new Scene(grid, 740, 580);
         stage.setScene(scene);
 
         stage.show();
@@ -41,6 +45,7 @@ public class PantallaDeInicio {
         gridNombres.setPadding(new Insets(20, 20, 20, 20));
         gridNombres.setVgap(10);
         gridNombres.setHgap(10);
+        gridNombres.setAlignment(Pos.CENTER);
 
         for (int i = 0; i < cantidadJugadores; i++) {
             Label labelNombre = new Label("Nombre Jugador " + (i + 1) + ":");
@@ -58,7 +63,7 @@ public class PantallaDeInicio {
 
         gridNombres.add(btnAceptarNombres, 1, cantidadJugadores);
 
-        Scene sceneNombres = new Scene(gridNombres, 640, 480);
+        Scene sceneNombres = new Scene(gridNombres, 740, 580);
         stageNombres.setScene(sceneNombres);
 
         stageNombres.show();
