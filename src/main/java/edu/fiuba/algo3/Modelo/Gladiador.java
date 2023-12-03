@@ -98,11 +98,11 @@ public class Gladiador {
 
     public boolean tieneLLave() {
         return ((listaDeEquipamiento.stream()
-                .anyMatch(elemento -> elemento instanceof LLave)) && cantidadEquipamientoPermitido());
+                .anyMatch(elemento -> elemento instanceof LLave)) && tienecantidadEquipamientoPermitido());
 
     }
 
-    public boolean cantidadEquipamientoPermitido() {
+    public boolean tienecantidadEquipamientoPermitido() {
         return (this.obtenerCantidadDeEquipamiento() == 4); // ANTES ERA 3, LO ALTERE ACA
     }
     

@@ -59,14 +59,16 @@ public class Tablero {
         return validacion;
 
     }
-    /*
+    */
     public int LongitudDeTablero(){
-        return this.listaDeCasillas.size();
+        return this.camino.size();
+        //ESTA YA NO SIRVE, HAYQ QUE MEDIR LA LONGITUD DEL TABLERO 18x10
     }
 
     public boolean validarGanador(Gladiador unGladiador) {
 
-        boolean validarEquipamiento = unGladiador.cantidadEquipamientoPermitido();
+        boolean validarEquipamiento = unGladiador.tienecantidadEquipamientoPermitido();
+        //validarPosicion() ESTA YA NO SIRVE, HAY QUE ACTUALIZARLO, PORQUE LA POSICION AHORA ES EN X Y EN Y
         boolean validarPosicion = unGladiador.SeEncuentraEnUltimaPosicion(LongitudDeTablero());
 
         if (validarPosicion && validarEquipamiento){
@@ -81,11 +83,10 @@ public class Tablero {
     private void reiniciarTodoLosValores(){
         this.cantidadDeJugadores = 0;
         this.listaDeGladiadores.clear();
-        this.listaDeCasillas.clear();
+        this.camino.clear();
         this.turno = null;
     }
 
 }
 
-     */
-}
+
