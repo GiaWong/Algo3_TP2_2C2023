@@ -15,7 +15,6 @@ public class Gladiador {
     private int energia;
     private Seniority unSeniority;
     private List<Equipado> listaDeEquipamiento;
-    private int posicion;
     private int posicionEnX,posicionEnY;
     private boolean lesionado;
     private Direccion direccion;
@@ -51,12 +50,6 @@ public class Gladiador {
         System.out.println("\nGladiador retrocede ----> está en la posicion: " + posicionEnY);
 
     }
-
-
-    public int obtenerPosicionEnCamino() {
-        return posicion;
-    }
-
 
     public int obetenerPosicionEnX() {
         return posicionEnX;
@@ -135,8 +128,4 @@ public class Gladiador {
         this.lesionado = false;
     }
     public boolean estaLesionado(){return this.lesionado;}
-
-    public boolean SeEncuentraEnUltimaPosicion(int tableroLongitud) {
-        return((tableroLongitud -1) == posicionEnX);
-    }
 }

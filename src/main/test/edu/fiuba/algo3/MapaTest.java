@@ -35,35 +35,8 @@ public class MapaTest {
 
 
     }
-    /*
-    @Test
-    public void test02UnGladiadorAvanzaAUnaCasillaEnElNuevoMapa(){
-        //Arrange
-        Tablero tablero = new Tablero(1,new Turno(30));
-        String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
-        tablero.AgregarMapa(rutaDelArchivo);
-        Gladiador gladiador = new Gladiador(20,new Novato(),0);
-        tablero.agregarJugador(gladiador);
 
 
-        tablero.avanzar(new DadoMock());
-        //Act
-        int posicionEsperada = 1;
-
-        //Assert
-        assertEquals(1,gladiador.obtenerPosicion());
-
-
-    }
-
-    @Test
-    public void test03CreoElMapaVersionMatriz(){
-        Tablero tablero =new Tablero(1,new Turno(30));
-        tablero.AgregarMapaComoMatriz();
-
-    }
-
-     */
     /*
     @Test
     public void Test19SimulamosYVerificamosQueElJugadorGane() {
