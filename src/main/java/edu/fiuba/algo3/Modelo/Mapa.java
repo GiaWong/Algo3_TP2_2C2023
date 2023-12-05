@@ -11,10 +11,8 @@ public class Mapa {
     private Casilla[][] mapa;
 
     public void mapaTest() {
-        String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
-
         DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
-        deserializadorJSON.extraerContenidoDeCadaCelda(rutaDelArchivo);
+        deserializadorJSON.extraerContenidoDeCadaCelda();
 
         Casilla[][] matriz = new Casilla[18][10];
 
@@ -31,10 +29,8 @@ public class Mapa {
 
     //Este es el verdadero mapa de juego! el de arriba es solo para los test
     public void mapaReal(){
-        String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
-
         DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
-        deserializadorJSON.extraerContenidoDeCadaCelda(rutaDelArchivo);
+        deserializadorJSON.extraerContenidoDeCadaCelda();
         List <Casilla>  listaDeCasillasJSON =  deserializadorJSON.obtenerListaCasillas();
 
 

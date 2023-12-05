@@ -22,14 +22,13 @@ public class CasosDeUsosEntregaDos {
     public void Test013SeVerificaElFormatoValidoDelJsonDelMapa() {
 
         // Ruta al archivo JSON
-        String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
         DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
 
         int valorEsperadoAncho = 10;
         int valorEsperadoLargo = 18;
 
-        assertEquals(valorEsperadoAncho,deserializadorJSON.extraerValorAnchoDelMapa(rutaDelArchivo));
-        assertEquals(valorEsperadoLargo,deserializadorJSON.extraerValorLargoDelMapa(rutaDelArchivo));
+        assertEquals(valorEsperadoAncho,deserializadorJSON.extraerValorAnchoDelMapa());
+        assertEquals(valorEsperadoLargo,deserializadorJSON.extraerValorLargoDelMapa());
 
     }
 
@@ -43,10 +42,8 @@ public class CasosDeUsosEntregaDos {
      * */
     @Test
     public void Test014SeVerificaElFormatoValidoDelJsonDeObstaculosYPremios() {
-
-        String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
         DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
-        deserializadorJSON.extraerContenidoDeCadaCelda(rutaDelArchivo);
+        deserializadorJSON.extraerContenidoDeCadaCelda();
         int valorEsperado = 39;
 
         assertEquals(valorEsperado,deserializadorJSON.cantidadCeldasDeserealizadas());
@@ -77,9 +74,8 @@ public class CasosDeUsosEntregaDos {
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
 
-        String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
         DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
-        deserializadorJSON.extraerContenidoDeCadaCelda(rutaDelArchivo);
+        deserializadorJSON.extraerContenidoDeCadaCelda();
 
         List<Casilla> listaCasillas = deserializadorJSON.obtenerListaCasillas();
 

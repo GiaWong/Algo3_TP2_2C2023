@@ -36,7 +36,6 @@ public class Direccion {
 
             // Verificar si la casilla en la dirección indicada tiene el atributo "camino"
             if (mapa[nuevaDireccionEnX][nuevaDireccionEnY].obtenerTipo().equalsIgnoreCase("CAMINO")) {
-                //System.out.println("entrooooo");
                 Direccion nuevaDireccion = new Direccion(nuevaDireccionEnX, nuevaDireccionEnY);
                 return nuevaDireccion;
             }

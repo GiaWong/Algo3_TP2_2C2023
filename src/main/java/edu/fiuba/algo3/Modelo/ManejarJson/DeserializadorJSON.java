@@ -19,8 +19,9 @@ public class DeserializadorJSON {
        listaCasillas = new ArrayList<>();
     }
 
-    public int extraerValorAnchoDelMapa(String rutaArchivoJson) {
+    public int extraerValorAnchoDelMapa() {
 
+        String rutaArchivoJson = "src/main/java/ArchivoJson/mapa.json";
         try {
 
             String json = new String(Files.readAllBytes(Paths.get(rutaArchivoJson)));
@@ -35,8 +36,8 @@ public class DeserializadorJSON {
         }
     }
 
-    public int extraerValorLargoDelMapa(String rutaArchivoJson) {
-
+    public int extraerValorLargoDelMapa() {
+        String rutaArchivoJson = "src/main/java/ArchivoJson/mapa.json";
         try {
 
             String json = new String(Files.readAllBytes(Paths.get(rutaArchivoJson)));
@@ -53,8 +54,8 @@ public class DeserializadorJSON {
 
 
 
-    public void extraerContenidoDeCadaCelda(String rutaArchivoJson) {
-
+    public void extraerContenidoDeCadaCelda() {
+        String rutaArchivoJson = "src/main/java/ArchivoJson/mapa.json";
         try {
 
             String json = new String(Files.readAllBytes(Paths.get(rutaArchivoJson)));
@@ -69,7 +70,6 @@ public class DeserializadorJSON {
                 String obstaculo = celda.get("obstaculo").asText().toUpperCase();
                 String premio = celda.get("premio").asText().toUpperCase();
                 String tipo = celda.get("tipo").asText().toUpperCase();
-                //System.out.println("\n\t------------");
                 Casilla casillaActual = new Casilla(transformarAObjeto(obstaculo), transformarAObjeto(premio),posX,posY,tipo);
                 listaCasillas.add(casillaActual);
 
@@ -87,27 +87,21 @@ public class DeserializadorJSON {
     private Ocupable transformarAObjeto(String nombreActual) {
 
         if (nombreActual.equalsIgnoreCase("Lesion")) {
-           // System.out.println("\nConvirtiendo a clase Lesion()");
             return new Lesion();
 
         } else if (nombreActual.equalsIgnoreCase("Fiera")) {
-            //System.out.println("\nConvirtiendo a clase FieraSalvaje()");
             return new FieraSalvaje(5);
 
         } else if (nombreActual.equalsIgnoreCase("Bacanal")) {
-            //System.out.println("\nConvirtiendo a clase Bacanal()");
             return new Bacanal();
 
         } else if (nombreActual.equalsIgnoreCase("Equipamiento")) {
-            //System.out.println("\nConvirtiendo a clase Equipamiento");
             return new PremioEquipamiento();
 
         } else if (nombreActual.equalsIgnoreCase("Comida")) {
-            //System.out.println("\nConvirtiendo a clase Comida");
             return new Comida(15);
 
         } else {
-            //System.out.println("\nConvirtiendo a clase NadaOcupacion()");
             return new NadaOcupacion();
         }
 
