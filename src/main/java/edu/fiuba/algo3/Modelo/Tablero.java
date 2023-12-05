@@ -60,10 +60,14 @@ public class Tablero {
 
     }
     */
+
+    /*
     public int LongitudDeTablero(){
         return this.camino.size();
         //ESTA YA NO SIRVE, HAYQ QUE MEDIR LA LONGITUD DEL TABLERO 18x10
     }
+
+     */
 
     public boolean validarGanador(Gladiador unGladiador) {
 

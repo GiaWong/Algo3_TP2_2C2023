@@ -9,10 +9,8 @@ import java.util.List;
 
 public class Mapa {
     private Casilla[][] mapa;
-    private List<Casilla> camino;
 
     public void mapaTest() {
-        //Por ahora para los test creo un mapa normal
         String rutaDelArchivo = "src/main/java/ArchivoJson/mapa.json";
 
         DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
@@ -27,7 +25,6 @@ public class Mapa {
                 matriz[i][j] = casilla;
             }
         }
-
 
         this.mapa = matriz;
     }
@@ -54,15 +51,10 @@ public class Mapa {
             matriz[casilla.obtenerposicionEnX()][casilla.obtenerposicionEny()] = casilla;
         }
 
-        //No necesitamos la lista de casillas, ya que el mapa tiene el atributo camino!!
         this.mapa   = matriz;
-        this.camino = listaDeCasillasJSON;
     }
     public Casilla[][] obtenerMapa(){
         return mapa;
-    }
-    public List<Casilla> obtenerCamino(){
-        return camino;
     }
 
 }

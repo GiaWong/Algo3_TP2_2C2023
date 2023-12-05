@@ -14,16 +14,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MapaTest {
 
     @Test
-
     public void test01UnGladiadorSeMueveDosCasillasDeCamino(){
 
         Mapa mapa = new Mapa();
         mapa.mapaReal();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List <Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30),unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 7);
         Gladiador unGladiador = new Gladiador(20, new Novato(), 1,7, direccion);
 

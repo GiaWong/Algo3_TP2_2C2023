@@ -20,10 +20,8 @@ public class LesionTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
 

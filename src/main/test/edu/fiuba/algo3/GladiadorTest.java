@@ -20,10 +20,8 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaReal();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 7);
         Gladiador unGladiador = new Gladiador(20, new Novato(), 1,7, direccion);
 
@@ -42,10 +40,8 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
 
@@ -67,10 +63,8 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
 
@@ -95,10 +89,8 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
 
@@ -119,10 +111,8 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
 
@@ -147,10 +137,8 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 1);
         Gladiador primerGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
         Gladiador segundoGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
@@ -194,10 +182,8 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 1);
         Gladiador primerGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
         Gladiador segundoGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
@@ -237,10 +223,8 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
 
@@ -266,10 +250,8 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 1);
         Gladiador primerGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
         Gladiador segundoGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
@@ -301,10 +283,8 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 1);
         Gladiador primerGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
         Gladiador segundoGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
@@ -348,10 +328,8 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
 
@@ -375,10 +353,8 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> unCamino = mapa.obtenerCamino();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        tablero.setearCamino(unCamino);
         Direccion direccion = new Direccion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
 

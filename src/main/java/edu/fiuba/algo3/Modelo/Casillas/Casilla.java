@@ -11,9 +11,9 @@ public class Casilla {
 
     String tipo;
 
-    public Casilla(Ocupable obstaculo, Ocupable premio,int posX, int posY, String tipo) {
-        this.unaOcupacion = premio;
-        this.unaSegundaOcupacion = obstaculo;
+    public Casilla(Ocupable primeraOcupacion, Ocupable segundaOcupacion,int posX, int posY, String tipo) {
+        this.unaOcupacion = primeraOcupacion;
+        this.unaSegundaOcupacion = segundaOcupacion;
         this.posicionEnX = posX;
         this.posicionEnY = posY;
         this.tipo = tipo;
@@ -30,21 +30,10 @@ public class Casilla {
     public Gladiador interactuarConLaOcupacion(Gladiador ungladiador, int cantidadAMoverse) {
 
         ungladiador.aumentarEnergiaAlIniciarElTurno();
+        ungladiador = unaSegundaOcupacion.interactuarConLaOcupacion(ungladiador);
         ungladiador = unaOcupacion.interactuarConLaOcupacion( ungladiador);
 
-        //Le clavo un if para poder interactuar con dos casillas
-        if (unaSegundaOcupacion !=null  ) {
-            ungladiador = unaSegundaOcupacion.interactuarConLaOcupacion(ungladiador);
-        }
-
         return ungladiador;
-    }
-
-    public boolean tieneCamino(){
-        if (tipo.equalsIgnoreCase("CAMINO")){
-            return true ;
-        }
-        return false    ;
     }
 
     public String obtenerTipo(){
