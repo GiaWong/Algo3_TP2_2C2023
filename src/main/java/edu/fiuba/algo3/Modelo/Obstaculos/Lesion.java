@@ -7,6 +7,7 @@ public class Lesion implements Obstaculizador, Ocupable {
 
     @Override
     public void combatir(Gladiador unGladiador) {
+        unGladiador.combatir(this);
     }
 
     @Override
