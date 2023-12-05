@@ -10,7 +10,7 @@ public class Tablero {
     private int cantidadDeJugadores;
     private Turno turno;
     private Casilla[][] mapa;
-    
+
     public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa) {
         this.cantidadDeJugadores = cantidadJugadores;
         this.listaDeGladiadores = new ArrayList<>();
@@ -53,15 +53,7 @@ public class Tablero {
         return validacion;
 
     }
-    */
-
-    /*
-    public int LongitudDeTablero(){
-        return this.camino.size();
-        //ESTA YA NO SIRVE, HAYQ QUE MEDIR LA LONGITUD DEL TABLERO 18x10
-    }
-
-     */
+   */
 
     public boolean validarGanador(Gladiador unGladiador) {
 

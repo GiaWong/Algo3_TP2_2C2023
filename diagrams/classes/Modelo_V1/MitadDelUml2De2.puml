@@ -1,9 +1,11 @@
 @startuml
 class Gladiador{
     -energia:int
-    -posicionActual:int
+    -posicionEnX:int
+    -posicionEnY:int
     -lesionado:boolean
-    +Gladiador(unaEnergia int, seniority Seniority,unaPosicion int)
+    -direccion: Direccion
+    +Gladiador(unaEnergia int, seniority Seniority,posicionenX int,posicionEnY int, direccion Direccion)
     +AumentarEnergiaAlIniciarElTurno():void
     +avanzar(cantidadAMoverse int):void
     +retroceder(cantidadAMoverse int):void
@@ -14,6 +16,32 @@ class Gladiador{
     +estaLesionado():void
 }
 
+class Direccion{
+    -posicionEnx:int
+    -posicionEnY:int
+    +Direccion(x int, y int):void
+    +getFila():int
+    +getColumna():int
+    +obtenerProximaCasillaConCamino(mapa Casilla[][]):Direccion
+}
+
+
+class Mapa{
+    -mapa Casilla[][]
+    +mapaTest():void
+    +mapaReal():void
+    +obtenerMapa():Casilla[][]
+
+}
+
+class DeserializadorJSON{
+    -listaDeCasillas List<Casilla>
+    +DeserializadorJSON():void
+    +extraerValorAnchoDelMapa():int
+    +extraerValorLargoDelMapa():int
+    +extraerContenidoDeCadaCelda():void
+    +transformarAObjeto():Ocupable
+}
 
 interface Estado{
     {abstract}+ejercutarAccion(listaDeEquipamiento List<Equipado>);
@@ -41,11 +69,12 @@ class Turno {
 
 
 class Casilla{
-    +Casilla(ocupacion:Ocupable):void
-    +interactuarConLaOcupacion(ungladiador Gladiador,cantidadAMoverse int,tamanioLista int):Gladiador
-    +estaEnLaUltimaPosicion(unGladiador Gladiador, tamanioLista int): void
-    +esLaUltimaPosicion(posicion int, tamanioLista int):boolean
-    +obtenerPosicionMitadCasilla(tamanioLista int)
+    -posicionEnX:int
+    -posicionEnY:int
+    -tipo:string
+    +Casilla(primeraOcupacion:Ocupable,segundaOcupacion:Ocupable,posX:int,posY:int,tipo:String):void
+    +interactuarConLaOcupacion(ungladiador Gladiador,cantidadAMoverse int):Gladiador
+    +obtenerEquipo():String
 }
 
 
@@ -94,13 +123,15 @@ interface Ocupable{
 
 
 Tablero *-left->"*"Casilla
-Tablero *-right->"2...6 "Gladiador
+Tablero *-right->" 2..6 "Gladiador
 Tablero -up-> Dado
 Tablero --> Turno
+Tablero  -> Mapa
 
 
-Casilla --> Ocupable
 
+Casilla -->"1..2" Ocupable
+Mapa .>DeserializadorJSON
 
 Dado <|.up. DadoMock
 Dado <|.left. DadoReal
@@ -110,7 +141,9 @@ Seniority <|.up. Novato
 Seniority <|.up. SemiSenior
 Seniority <|.up. Senior
 
-Gladiador ..> Estado
+
+Gladiador -> Direccion
+Gladiador .down.> Estado
 Gladiador -> "*"Equipado
 Gladiador -up-> "1"Seniority
 
