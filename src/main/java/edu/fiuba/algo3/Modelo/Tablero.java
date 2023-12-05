@@ -10,9 +10,7 @@ public class Tablero {
     private int cantidadDeJugadores;
     private Turno turno;
     private Casilla[][] mapa;
-    private List<Casilla> camino;
-
-
+    
     public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa) {
         this.cantidadDeJugadores = cantidadJugadores;
         this.listaDeGladiadores = new ArrayList<>();
@@ -30,10 +28,6 @@ public class Tablero {
 
     public boolean validarTurno(Gladiador unGladiador) {
         return (turno.jugar(unGladiador));
-    }
-
-    public void setearCamino(List<Casilla> unCamino){
-        camino = unCamino;
     }
 
     public void avanzar(Dado dado) {
@@ -86,7 +80,6 @@ public class Tablero {
     private void reiniciarTodoLosValores(){
         this.cantidadDeJugadores = 0;
         this.listaDeGladiadores.clear();
-        this.camino.clear();
         this.turno = null;
     }
 

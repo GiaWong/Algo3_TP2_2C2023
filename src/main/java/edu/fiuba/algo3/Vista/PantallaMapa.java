@@ -41,7 +41,7 @@ public class PantallaMapa {
 
             Button btnAvanzar = new Button("Avanzar");
             btnAvanzar.setOnAction(e -> {
-                //stageMapa.close(); CUANDO UN JUGADOR GANE SE CIERRA
+
             });
             gridMapa.add(btnAvanzar, 0, ancho + 1, largo, 1);
             gridMapa.setAlignment(Pos.CENTER);

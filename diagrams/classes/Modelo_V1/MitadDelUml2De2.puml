@@ -1,12 +1,4 @@
 @startuml
-
-
-class   AlgoRoma{
-    +registrarCantidadJugadores(unsJugadores int)
-    +registrarNombres(unNombre String)
-}
-
-
 class Gladiador{
     -energia:int
     -posicionActual:int
@@ -31,7 +23,7 @@ interface Estado{
 class Tablero{
     -cantidadJugadores:int
     -controladorCantidadMoverse:int
-    +Tablero(int cantidadJugadores, turno Turno)
+    +Tablero(int cantidadJugadores, turno Turno,mapa Casilla[][])
     +validarTurno(unGladiador Gladiador):boolean
     +avanzar(unDado Dado):void
     +FinalizarJuego(): boolean
@@ -101,18 +93,13 @@ interface Ocupable{
    }
 
 
-
-
-AlgoRoma o--> Tablero
-
-
 Tablero *-left->"*"Casilla
 Tablero *-right->"2...6 "Gladiador
 Tablero -up-> Dado
 Tablero --> Turno
 
 
-    Casilla --> Ocupable
+Casilla --> Ocupable
 
 
 Dado <|.up. DadoMock
