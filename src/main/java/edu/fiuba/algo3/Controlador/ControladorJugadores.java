@@ -1,5 +1,13 @@
 package edu.fiuba.algo3.Controlador;
 
+import edu.fiuba.algo3.Modelo.Casillas.Casilla;
+import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
+import edu.fiuba.algo3.Modelo.Equipamientos.PremioEquipamiento;
+import edu.fiuba.algo3.Modelo.Gladiador;
+import edu.fiuba.algo3.Modelo.Seniority.Novato;
+import edu.fiuba.algo3.Modelo.Tablero;
+import edu.fiuba.algo3.Modelo.Turno;
+import edu.fiuba.algo3.Movimiento.Direccion;
 import edu.fiuba.algo3.Vista.PantallaMapa;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -10,6 +18,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 public class ControladorJugadores {
     private TextField entradaActual;
@@ -26,7 +36,7 @@ public class ControladorJugadores {
         entradaActual.setOnAction(event -> {
             try {
                 cantidadJugadoresIngresados = Integer.parseInt(entradaActual.getText());
-                if (cantidadJugadoresIngresados >= 2 && cantidadJugadoresIngresados <= 6) {
+                if (cantidadJugadoresIngresados >= 1 && cantidadJugadoresIngresados <= 6) {
                     System.out.println("Cantidad jugadores: " + cantidadJugadoresIngresados);
                     stage.close();
                     pedirNombresJugadores();
@@ -70,8 +80,18 @@ public class ControladorJugadores {
         Button btnAceptarNombres = new Button("Aceptar");
         btnAceptarNombres.setOnAction(e -> {
 
+            ArrayList<String> nombresJugadores = new ArrayList<>();
+
+            for (int i = 0; i < cantidadJugadoresIngresados; i++) {
+                TextField nombreIngresado = (TextField) gridNombres.getChildren().get(i * 2 + 1);
+                nombresJugadores.add(nombreIngresado.getText());
+            }
+
+            ArrayList<Gladiador> gladiadores = crearJugadores(nombresJugadores);
+
             stageNombres.close();
-            PantallaMapa mapa = new PantallaMapa(stage);
+
+            PantallaMapa mapa = new PantallaMapa(stage,gladiadores);
             mapa.mostrarMapa();
         });
 
@@ -82,5 +102,18 @@ public class ControladorJugadores {
 
         stageNombres.show();
     }
+
+    private ArrayList<Gladiador> crearJugadores(ArrayList<String> nombresJugadores) {
+        ArrayList<Gladiador> gladiadores = new ArrayList<>();
+        Direccion direccion = new Direccion(1, 7);
+        for (String nombre : nombresJugadores) {
+            Gladiador gladiador = new Gladiador(20, new Novato(), 1,7, direccion);
+            gladiadores.add(gladiador);
+        }
+
+        return gladiadores;
+    }
+
+
 
 }

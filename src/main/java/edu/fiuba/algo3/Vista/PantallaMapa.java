@@ -1,20 +1,45 @@
 package edu.fiuba.algo3.Vista;
 
+import edu.fiuba.algo3.Modelo.Casillas.Casilla;
+import edu.fiuba.algo3.Modelo.Dados.DadoMock;
+import edu.fiuba.algo3.Modelo.Gladiador;
+import edu.fiuba.algo3.Modelo.Mapa;
+import edu.fiuba.algo3.Modelo.Tablero;
+import edu.fiuba.algo3.Modelo.Turno;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
-public class PantallaMapa {
+import java.util.ArrayList;
+
+
+
+public class PantallaMapa extends BorderPane {
+
     private  Stage stage;
-    public PantallaMapa(Stage stage) {
+    private ArrayList<Gladiador> gladiadores;
+    Canvas canvas;
+
+
+
+    public PantallaMapa(Stage stage, ArrayList<Gladiador> gladiadores) {
         this.stage = stage;
+        this.gladiadores = gladiadores;
     }
 
     public void mostrarMapa() {
+
+            Tablero tablero = this.crearTablero(gladiadores);
+            canvas = new Canvas(100,100);
 
             Stage stageMapa = new Stage();
             stageMapa.setTitle("Gladiadores en fuga");
@@ -35,14 +60,27 @@ public class PantallaMapa {
                     label.setMinSize(tamanoCasilla, tamanoCasilla);
                     label.setStyle("-fx-border-color: black;");
                     gridMapa.add(label, j - 1, ancho - i);
+
                 }
             }
 
-
-            Button btnAvanzar = new Button("Avanzar");
+            Button btnAvanzar = new Button("Tirar dado");
             btnAvanzar.setOnAction(e -> {
 
+
+              tablero.avanzar(new DadoMock());
+
+              Gladiador gladiador = gladiadores.get(0);
+              Label label = (Label) obtenerLabelDeGridPane(gridMapa, gladiador.obetenerPosicionEnX(), gladiador.obetenerPosicionEnY());
+              label.setGraphic(new Circle(10, Color.RED));
+
+              //VistaGladiador vista = new VistaGladiador( gladiadores.get(0),canvas,gridMapa);
+              //vista.dibujar();
+
+
             });
+
+
             gridMapa.add(btnAvanzar, 0, ancho + 1, largo, 1);
             gridMapa.setAlignment(Pos.CENTER);
 
@@ -53,9 +91,30 @@ public class PantallaMapa {
 
             stageMapa.setScene(sceneMapa);
             stageMapa.setMaximized(true);
+
             stageMapa.show();
-
             stage.close();
-
     }
+
+    public Tablero crearTablero(ArrayList<Gladiador> gladiadores){
+        Mapa mapa = new Mapa();
+        mapa.mapaReal();
+        Casilla[][] unMapa = mapa.obtenerMapa();
+        Tablero tablero = new Tablero(gladiadores.size(),new Turno(30),unMapa);
+
+        for (Gladiador gladiador : gladiadores) {
+            tablero.agregarJugador(gladiador);
+        }
+        return tablero;
+    }
+
+    private Node obtenerLabelDeGridPane(GridPane gridPane, int col, int row) {
+        for (Node node : gridPane.getChildren()) {
+            if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
+                return node;
+            }
+        }
+        return null;
+    }
+
 }

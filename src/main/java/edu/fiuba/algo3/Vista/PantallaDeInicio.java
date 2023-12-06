@@ -24,7 +24,6 @@ public class PantallaDeInicio {
         grid.add(labelJugadores, 0, 0);
         grid.add(inputJugadores, 1, 0);
 
-        //Agregué esto
         ControladorJugadores controlJugadores = new ControladorJugadores(inputJugadores, stage);
         controlJugadores.controlar();
 
