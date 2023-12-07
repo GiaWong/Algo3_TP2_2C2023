@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.Modelo.ManejarJson;
+package edu.fiuba.algo3.Controlador.ManejarJson;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.fiuba.algo3.Modelo.Casillas.*;

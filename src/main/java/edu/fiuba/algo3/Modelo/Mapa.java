@@ -2,9 +2,8 @@ package edu.fiuba.algo3.Modelo;
 
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
-import edu.fiuba.algo3.Modelo.ManejarJson.DeserializadorJSON;
+import edu.fiuba.algo3.Controlador.ManejarJson.DeserializadorJSON;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Mapa {

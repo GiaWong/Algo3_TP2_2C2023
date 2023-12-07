@@ -1,10 +1,7 @@
 package edu.fiuba.algo3;
 import edu.fiuba.algo3.Modelo.*;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
-import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
-import edu.fiuba.algo3.Modelo.Equipamientos.PremioEquipamiento;
-import edu.fiuba.algo3.Modelo.ManejarJson.DeserializadorJSON;
-import edu.fiuba.algo3.Modelo.Seniority.Novato;
+import edu.fiuba.algo3.Controlador.ManejarJson.DeserializadorJSON;
 import org.junit.jupiter.api.Test;
 
 

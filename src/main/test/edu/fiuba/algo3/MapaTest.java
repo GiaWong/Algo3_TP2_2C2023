@@ -4,10 +4,8 @@ import edu.fiuba.algo3.Modelo.*;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Dados.DadoMock;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
-import edu.fiuba.algo3.Movimiento.Direccion;
+import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

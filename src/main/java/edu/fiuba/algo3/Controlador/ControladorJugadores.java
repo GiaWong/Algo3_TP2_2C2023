@@ -1,13 +1,8 @@
 package edu.fiuba.algo3.Controlador;
 
-import edu.fiuba.algo3.Modelo.Casillas.Casilla;
-import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
-import edu.fiuba.algo3.Modelo.Equipamientos.PremioEquipamiento;
 import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
-import edu.fiuba.algo3.Modelo.Tablero;
-import edu.fiuba.algo3.Modelo.Turno;
-import edu.fiuba.algo3.Movimiento.Direccion;
+import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
 import edu.fiuba.algo3.Vista.PantallaMapa;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

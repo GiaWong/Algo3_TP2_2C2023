@@ -9,7 +9,7 @@ import edu.fiuba.algo3.Modelo.Obstaculos.Bacanal;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Tablero;
 import edu.fiuba.algo3.Modelo.Turno;
-import edu.fiuba.algo3.Movimiento.Direccion;
+import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

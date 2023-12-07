@@ -1,16 +1,5 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.Modelo.*;
-import edu.fiuba.algo3.Modelo.Casillas.Casilla;
-import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
-import edu.fiuba.algo3.Modelo.Dados.Dado;
-import edu.fiuba.algo3.Modelo.Dados.DadoMock;
-import edu.fiuba.algo3.Modelo.Equipamientos.PremioEquipamiento;
-import edu.fiuba.algo3.Modelo.Seniority.Novato;
-import edu.fiuba.algo3.Movimiento.Direccion;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 /*
 public class CasosDeUsoEntregaTres {
     @Test

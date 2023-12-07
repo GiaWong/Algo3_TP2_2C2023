@@ -5,7 +5,7 @@ import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculizador;
 import edu.fiuba.algo3.Modelo.PatronState.ManejarEquipamiento;
 import edu.fiuba.algo3.Modelo.Seniority.Seniority;
-import edu.fiuba.algo3.Movimiento.Direccion;
+import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
 
 import java.util.ArrayList;
 import java.util.List;
