@@ -28,7 +28,7 @@ public class Direccion {
         direcciones.add(new Direccion(1, 0));
         direcciones.add(new Direccion(0, -1));
         direcciones.add(new Direccion(0, 1));
-        direcciones.add(new Direccion(-1, 0));
+
 
         for (Direccion direccion : direcciones) {
             int nuevaDireccionEnX = direccionEnX + direccion.getFila();
@@ -38,6 +38,11 @@ public class Direccion {
             if (mapa[nuevaDireccionEnX][nuevaDireccionEnY].obtenerTipo().equalsIgnoreCase("CAMINO")) {
                 Direccion nuevaDireccion = new Direccion(nuevaDireccionEnX, nuevaDireccionEnY);
                 return nuevaDireccion;
+            } else if ( mapa[nuevaDireccionEnX][nuevaDireccionEnY].obtenerTipo().equalsIgnoreCase("LLEGADA")) {
+                Direccion nuevaDireccion = new Direccion(12, 4);
+
+                return nuevaDireccion;
+
             }
 
         }

@@ -28,8 +28,8 @@ public class MapaTest {
 
         int posicionEnxEsperada = 2;
         int posicionEnyEsperada = 7 ;
-        assertEquals(posicionEnxEsperada, unGladiador.obetenerPosicionEnX());
-        assertEquals(posicionEnyEsperada,unGladiador.obetenerPosicionEnY());
+        assertEquals(posicionEnxEsperada, unGladiador.obtenerPosicionEnX());
+        assertEquals(posicionEnyEsperada,unGladiador.obtenerPosicionEnY());
 
 
     }

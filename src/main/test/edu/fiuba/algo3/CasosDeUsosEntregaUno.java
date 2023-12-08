@@ -51,7 +51,7 @@ public class CasosDeUsosEntregaUno {
         tablero.avanzar(new DadoMock());
 
         int posicionEnYEsperada = 2;
-        assertEquals(posicionEnYEsperada, unGladiador.obetenerPosicionEnY());
+        assertEquals(posicionEnYEsperada, unGladiador.obtenerPosicionEnY());
 
     }
 
@@ -72,8 +72,8 @@ public class CasosDeUsosEntregaUno {
 
         int posicionEsperadaEnX = 1;
          int posicionEsperadaEnY = 1;
-        assertEquals(posicionEsperadaEnX, unGladiador.obetenerPosicionEnX());
-         assertEquals(posicionEsperadaEnY, unGladiador.obetenerPosicionEnY());
+        assertEquals(posicionEsperadaEnX, unGladiador.obtenerPosicionEnX());
+         assertEquals(posicionEsperadaEnY, unGladiador.obtenerPosicionEnY());
 
 
     }
@@ -213,29 +213,38 @@ public class CasosDeUsosEntregaUno {
     }
 
     //Hay que repensar los metodos
-    /*
+
     @Test
     public void Test09UnGladiadorLLegaALaMetaSinLaLLaveYEsteRetrocedeHastaLaMitadDeLasCasillas() {
 
-        Tablero tablero = new Tablero(1, new Turno(30));
-        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
-        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
-        tablero.agregarCasilla(new Casilla(new PremioEquipamiento()));
-        tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+        Mapa mapa = new Mapa();
+        mapa.mapaTest();
+        Casilla[][] unMapa = mapa.obtenerMapa();
+        Direccion direccion = new Direccion(1,1);
+        Dado dado = new DadoMock();
 
-
-        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
+        Tablero tablero = new Tablero(1,new Turno(5),unMapa);
+        Gladiador unGladiador = new Gladiador(20,new Novato(),1,1, direccion);
         tablero.agregarJugador(unGladiador);
 
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),3,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),5,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),6,1,"LLEGADA"));
+
+
+        tablero.avanzar(new DadoMock());
+        tablero.avanzar(new DadoMock());
         tablero.avanzar(new DadoMock());
         tablero.avanzar(new DadoMock());
         tablero.avanzar(new DadoMock());
 
-        int posicionEsperada = 1;
-        assertEquals(posicionEsperada, unGladiador.obtenerPosicion());
+        int posicionEsperada = 4;
+        assertEquals(posicionEsperada, unGladiador.obtenerPosicionEnX());
 
     }
-     */
+
     @Test
     public void Test10UnGladiadorConTodosSusEquipamientosEsAtacadoPorUnaFieraSalvajeLaEnergiaNoSeModifica() {
 
@@ -288,16 +297,24 @@ public class CasosDeUsosEntregaUno {
         int cantidadDeEquipamientoEsperado = 4;
         assertEquals(cantidadDeEquipamientoEsperado, unGladiador.obtenerCantidadDeEquipamiento());
     }
-    /*
+
     @Test
     public void Test12GladiadorNoLLegaALaMetaAlPasarTreintaTurnosElJuegoSeTermina() {
-        Tablero tablero = new Tablero(1, new Turno(30));
-        DadoMock dado = new DadoMock();
-        for (int i=1 ; i <33 ;i++){
-            tablero.agregarCasilla(new Casilla(new NadaOcupacion()));
+
+        Mapa mapa = new Mapa();
+        mapa.mapaTest();
+        Casilla[][] unMapa = mapa.obtenerMapa();
+        Direccion direccion = new Direccion(1,1);
+        Dado dado = new DadoMock();
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa);
+
+        for (int i=1 ; i <17 ;i++){
+            for (int j=1 ; j <9 ;j++){
+                tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),i,j,"CAMINO"));
+            }
         }
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),0);
+        Gladiador unGladiador = new Gladiador(20,new Novato(),1,1, direccion);
         tablero.agregarJugador(unGladiador);
 
         for (int i=1 ; i <31 ;i++){
@@ -307,7 +324,7 @@ public class CasosDeUsosEntregaUno {
 
         boolean juegoTerminado= true;
         assertEquals(juegoTerminado, tablero.FinalizarJuego());
-    }*/
+    }
 
 }
 

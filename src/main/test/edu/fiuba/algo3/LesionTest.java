@@ -35,7 +35,7 @@ public class LesionTest {
 
         int posicionEnXEsperada = 3;
         int posicionEnYEsperada = 1 ;
-        assertEquals(posicionEnXEsperada, unGladiador.obetenerPosicionEnX());
-        assertEquals(posicionEnYEsperada,unGladiador.obetenerPosicionEnY());
+        assertEquals(posicionEnXEsperada, unGladiador.obtenerPosicionEnX());
+        assertEquals(posicionEnYEsperada,unGladiador.obtenerPosicionEnY());
     }
 }

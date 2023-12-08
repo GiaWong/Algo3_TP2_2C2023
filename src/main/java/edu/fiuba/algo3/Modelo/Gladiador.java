@@ -45,17 +45,16 @@ public class Gladiador {
     }
 
 
-    public void retroceder(int cantidadAMoverse) {
-        posicionEnY = posicionEnY - cantidadAMoverse;
-        System.out.println("\nGladiador retrocede ----> está en la posicion: " + posicionEnY);
-
+    public void retroceder() {
+        posicionEnX = 12;
+        posicionEnY = 4;
     }
 
-    public int obetenerPosicionEnX() {
+    public int obtenerPosicionEnX() {
         return posicionEnX;
     }
 
-    public int obetenerPosicionEnY() {
+    public int obtenerPosicionEnY() {
         return posicionEnY;
     }
 

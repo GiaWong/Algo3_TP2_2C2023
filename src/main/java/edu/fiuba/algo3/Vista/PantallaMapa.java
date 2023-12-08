@@ -56,7 +56,7 @@ public class PantallaMapa extends BorderPane {
 
             for (int i = ancho; i >= 1; i--) {
                 for (int j = 1; j <= largo; j++) {
-                    Label label = new Label("(" + i + "," + j + ")");
+                    Label label = new Label("(" + j + "," + i + ")");
                     label.setMinSize(tamanoCasilla, tamanoCasilla);
                     label.setStyle("-fx-border-color: black;");
                     gridMapa.add(label, j - 1, ancho - i);
@@ -70,8 +70,8 @@ public class PantallaMapa extends BorderPane {
 
               tablero.avanzar(new DadoMock());
 
-              Gladiador gladiador = gladiadores.get(0);
-              Label label = (Label) obtenerLabelDeGridPane(gridMapa, gladiador.obetenerPosicionEnX(), gladiador.obetenerPosicionEnY());
+              Gladiador gladiador = tablero.proximoJugador();
+              Label label = (Label) obtenerLabelDeGridPane(gridMapa, gladiador.obtenerPosicionEnX(), gladiador.obtenerPosicionEnY());
               label.setGraphic(new Circle(10, Color.RED));
 
               //VistaGladiador vista = new VistaGladiador( gladiadores.get(0),canvas,gridMapa);

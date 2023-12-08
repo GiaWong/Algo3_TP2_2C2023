@@ -3,7 +3,6 @@ import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Dados.Dado;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Tablero {
     private ArrayList<Gladiador> listaDeGladiadores;
@@ -38,34 +37,19 @@ public class Tablero {
         if (this.validarTurno(ungladiador)) {
 
             ungladiador.avanzar(cantidadAMoverse, mapa);
-            Casilla casillaActual = mapa[ungladiador.obetenerPosicionEnX()][ungladiador.obetenerPosicionEnY()];
+            Casilla casillaActual = mapa[ungladiador.obtenerPosicionEnX()][ungladiador.obtenerPosicionEnY()];
             System.out.println("\nCasilla ---> (" + casillaActual.obtenerposicionEnX() + "," + casillaActual.obtenerposicionEny() + ")");
 
             ungladiador = casillaActual.interactuarConLaOcupacion(ungladiador, cantidadAMoverse);
         }
     }
-/*
+
     public boolean FinalizarJuego() {
         boolean validacion = turno.validarFinalizarJuego();
         if (validacion) {
             reiniciarTodoLosValores();
         }
         return validacion;
-
-    }
-   */
-
-    public boolean validarGanador(Gladiador unGladiador) {
-
-        boolean validarEquipamiento = unGladiador.tienecantidadEquipamientoPermitido();
-        boolean validarPosicion = true;
-
-        if (validarEquipamiento){
-            reiniciarTodoLosValores();
-            System.out.println("\n----GANASTE, FELICIDADES!----\n");
-            return true;
-        }
-        return false;
 
     }
 
@@ -75,6 +59,9 @@ public class Tablero {
         this.turno = null;
     }
 
+    public Gladiador proximoJugador(){
+        return turno.siguienteTurno(listaDeGladiadores);
+    }
 }
 
 

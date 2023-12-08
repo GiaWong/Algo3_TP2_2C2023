@@ -29,8 +29,8 @@ public class GladiadorTest {
 
        int posicionEnXEsperada = 2;
        int posicionEnYEsperada = 7 ;
-       assertEquals(posicionEnXEsperada, unGladiador.obetenerPosicionEnX());
-       assertEquals(posicionEnYEsperada,unGladiador.obetenerPosicionEnY());
+       assertEquals(posicionEnXEsperada, unGladiador.obtenerPosicionEnX());
+       assertEquals(posicionEnYEsperada,unGladiador.obtenerPosicionEnY());
     }
 
     @Test
