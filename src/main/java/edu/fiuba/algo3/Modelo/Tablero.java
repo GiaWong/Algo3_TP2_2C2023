@@ -43,7 +43,7 @@ public class Tablero {
             Casilla casillaActual = mapa[ungladiador.obtenerPosicionEnX()][ungladiador.obtenerPosicionEnY()];
             System.out.println("\nCasilla ---> (" + casillaActual.obtenerposicionEnX() + "," + casillaActual.obtenerposicionEny() + ")");
 
-            ungladiador = casillaActual.interactuarConLaOcupacion(ungladiador, cantidadAMoverse);
+            ungladiador = casillaActual.interactuarConLaOcupacion(ungladiador);
         }
     }
 
