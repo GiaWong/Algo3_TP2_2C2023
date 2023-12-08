@@ -20,7 +20,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-
+import javafx.scene.layout.Pane;
 
 
 public class PantallaMapa extends BorderPane {
@@ -40,6 +40,7 @@ public class PantallaMapa extends BorderPane {
 
             Tablero tablero = this.crearTablero(gladiadores);
             canvas = new Canvas(100,100);
+            Pane pane = new Pane();
 
             Stage stageMapa = new Stage();
             stageMapa.setTitle("Gladiadores en fuga");
@@ -56,10 +57,11 @@ public class PantallaMapa extends BorderPane {
 
             for (int i = ancho; i >= 1; i--) {
                 for (int j = 1; j <= largo; j++) {
-                    Label label = new Label("(" + j + "," + i + ")");
+                    Label label = new Label();
                     label.setMinSize(tamanoCasilla, tamanoCasilla);
                     label.setStyle("-fx-border-color: black;");
                     gridMapa.add(label, j - 1, ancho - i);
+                    //"(" + j + "," + i + ")"
 
                 }
             }
@@ -67,15 +69,45 @@ public class PantallaMapa extends BorderPane {
             Button btnAvanzar = new Button("Tirar dado");
             btnAvanzar.setOnAction(e -> {
 
-
               tablero.avanzar(new DadoMock());
 
               Gladiador gladiador = tablero.proximoJugador();
               Label label = (Label) obtenerLabelDeGridPane(gridMapa, gladiador.obtenerPosicionEnX(), gladiador.obtenerPosicionEnY());
-              label.setGraphic(new Circle(10, Color.RED));
 
-              //VistaGladiador vista = new VistaGladiador( gladiadores.get(0),canvas,gridMapa);
-              //vista.dibujar();
+              Circle circle1 = new Circle(5, Color.RED);
+              Circle circle2 = new Circle(5, Color.BLUE);
+              Circle circle3 = new Circle(5, Color.ORANGE);
+              Circle circle4 = new Circle(5, Color.GREEN);
+              Circle circle5 = new Circle(5, Color.CHOCOLATE);
+              Circle circle6 = new Circle(5, Color.INDIGO);
+
+              Pane circlesPane = new Pane(circle1, circle2, circle3, circle4, circle5, circle6);
+
+              double centerX = (label.getMinWidth() - circlesPane.getBoundsInLocal().getWidth()) / 2;
+              double centerY = (label.getMinHeight() - circlesPane.getBoundsInLocal().getHeight()) / 2;
+
+              circlesPane.setLayoutX(centerX);
+              circlesPane.setLayoutY(centerY);
+
+              circle1.setCenterX(12);
+              circle1.setCenterY(10);
+
+              circle2.setCenterX(27);
+              circle2.setCenterY(10);
+
+              circle3.setCenterX(12);
+              circle3.setCenterY(20);
+
+              circle4.setCenterX(27);
+              circle4.setCenterY(20);
+
+              circle5.setCenterX(12);
+              circle5.setCenterY(30);
+
+              circle6.setCenterX(27);
+              circle6.setCenterY(30);
+
+              label.setGraphic(circlesPane);
 
 
             });
