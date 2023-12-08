@@ -10,7 +10,6 @@ import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
 import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Premios.Comida;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
-import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,17 +38,18 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
 
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
-        Tablero tablero = new Tablero(1, new Turno(30),unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
 
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,2,"CAMINO"));
 
 
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         int posicionEnYEsperada = 2;
         assertEquals(posicionEnYEsperada, unGladiador.obtenerPosicionEnY());
@@ -60,16 +60,18 @@ public class CasosDeUsosEntregaUno {
     public void Test03VerificarQuejugadorSinEnergiaNoPuedaJugarElTurno() {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
+        DadoMock dado = new DadoMock();
+
         Casilla[][] unMapa = mapa.obtenerMapa();
         Posicion posicion = new Posicion(1, 1);
          Gladiador unGladiador = new Gladiador(0, new Novato(), posicion);
 
-        Tablero tablero = new Tablero(1, new Turno(30),unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
 
 
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         int posicionEsperadaEnX = 1;
          int posicionEsperadaEnY = 1;
@@ -84,15 +86,17 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-       Posicion posicion = new Posicion(1, 1);
+        DadoMock dado = new DadoMock();
+
+        Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
 
-        Tablero tablero = new Tablero(1,new Turno(30),unMapa);
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa, dado);
         tablero.agregarCasillaAlMapa(new Casilla(new Comida(15),new NadaOcupacion(),1,2,"CAMINO"));
 
 
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
 
         int energiaEsperada = 35;
@@ -105,15 +109,17 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
+
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
-        Tablero tablero = new Tablero(1,new Turno(30),unMapa);
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa, dado);
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,1,"CAMINO"));
 
 
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
         int longitudEsperada = 1;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
     }
@@ -126,8 +132,10 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
+
         Posicion posicion = new Posicion(1, 1);
-        Tablero tablero = new Tablero(1,new Turno(30),unMapa);
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa, dado);
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,2,"camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,3,"camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,4,"camino"));
@@ -136,9 +144,9 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarJugador(unGladiador);
 
 
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
 
 
         int longitudEsperada = 3;
@@ -153,15 +161,17 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
+
         Posicion posicion = new Posicion(1, 1);
-        Tablero tablero = new Tablero(1,new Turno(30),unMapa);
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa, dado);
         tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(20),new PremioEquipamiento(),1,2,"CAMINO"));
 
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
 
         int energiaEsperada = 5;
@@ -177,9 +187,9 @@ public class CasosDeUsosEntregaUno {
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
         Posicion posicion = new Posicion(1, 1);
+        DadoMock dado = new DadoMock();
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa, dado);
 
-        Tablero tablero = new Tablero(1,new Turno(30),unMapa);
-        Dado dado = new DadoMock();
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
@@ -193,20 +203,18 @@ public class CasosDeUsosEntregaUno {
          tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),8,1,"CAMINO"));
          tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),9,1,"CAMINO"));
 
-
-
-        tablero.avanzar(dado);
-        tablero.avanzar(dado);
-        tablero.avanzar(dado);
-        tablero.avanzar(dado);
-        tablero.avanzar(dado);
-        tablero.avanzar(dado);
-        tablero.avanzar(dado);
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
 
         int energiaEsperada1 = 20;
         assertEquals(energiaEsperada1, unGladiador.obtenerEnergia());
 
-        tablero.avanzar(dado);
+        tablero.avanzar();
 
         //Tuvo otro turno, se sube el rango del seniority y aumenta a 25
         int energiaEsperada = 25;
@@ -224,7 +232,7 @@ public class CasosDeUsosEntregaUno {
         Posicion posicion = new Posicion(1, 1);
         Dado dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1,new Turno(5),unMapa);
+        Tablero tablero = new Tablero(1,new Turno(5),unMapa, dado);
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
@@ -235,11 +243,11 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),6,1,"LLEGADA"));
 
 
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
 
         int posicionEsperada = 4;
         assertEquals(posicionEsperada, unGladiador.obtenerPosicionEnX());
@@ -251,21 +259,24 @@ public class CasosDeUsosEntregaUno {
 
         Mapa mapa = new Mapa();
         mapa.mapaTest();
+        DadoMock dado = new DadoMock();
+
         Casilla[][] unMapa = mapa.obtenerMapa();
         Posicion posicion = new Posicion(1, 1);
-        Tablero tablero = new Tablero(1,new Turno(30),unMapa);
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa, dado);
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
 
 
         tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(20),new NadaOcupacion(),4,1,"CAMINO"));
-        Dado dado = new DadoMock();
+
+
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(dado);
-        tablero.avanzar(dado);
-        tablero.avanzar(dado);
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
 
         int energiaEsperada1 = 20;
         assertEquals(energiaEsperada1, unGladiador.obtenerEnergia());
@@ -283,7 +294,7 @@ public class CasosDeUsosEntregaUno {
         Posicion posicion = new Posicion(1, 1);
         Dado dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1,new Turno(30),unMapa);
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa, dado);
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),4,1,"CAMINO"));
@@ -291,9 +302,9 @@ public class CasosDeUsosEntregaUno {
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(dado);
-        tablero.avanzar(dado);
-        tablero.avanzar(dado);
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
 
         int cantidadDeEquipamientoEsperado = 4;
         assertEquals(cantidadDeEquipamientoEsperado, unGladiador.obtenerCantidadDeEquipamiento());
@@ -307,7 +318,8 @@ public class CasosDeUsosEntregaUno {
         Casilla[][] unMapa = mapa.obtenerMapa();
         Posicion posicion = new Posicion(1, 1);
         Dado dado = new DadoMock();
-        Tablero tablero = new Tablero(1,new Turno(30),unMapa);
+
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa, dado);
 
         for (int i=1 ; i <17 ;i++){
             for (int j=1 ; j <9 ;j++){
@@ -319,7 +331,7 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarJugador(unGladiador);
 
         for (int i=1 ; i <31 ;i++){
-            tablero.avanzar(dado);
+            tablero.avanzar();
         }
 
 

@@ -10,8 +10,6 @@ import edu.fiuba.algo3.Modelo.Obstaculos.Bacanal;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Tablero;
 import edu.fiuba.algo3.Modelo.Turno;
-import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
-import javafx.geometry.Pos;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,16 +20,17 @@ public class BacanalTest {
     public void Test01SiUnGladiadorAsisteAUnBacanalYToma1TradoPierdeCiertaEnergia() {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
+        DadoMock dado = new DadoMock();
         Casilla[][] unMapa = mapa.obtenerMapa();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         tablero.agregarCasillaAlMapa(new Casilla(new Bacanal(),new NadaOcupacion(),1,2,"CAMINO"));
 
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         int energiaEsperada =16;
         assertEquals(energiaEsperada,unGladiador.obtenerEnergia());
@@ -43,17 +42,18 @@ public class BacanalTest {
     public void Test02SiUnGladiadorAsisteAUnBacanalDosVecesYToma1TragoEnCadaUnaPierdeCiertaEnergia() {
 
         Mapa mapa = new Mapa();
+        DadoMock dado = new DadoMock();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         tablero.agregarCasillaAlMapa(new Casilla(new Bacanal(),new Bacanal(),1,2,"CAMINO"));
 
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         int energiaEsperada =12;
         assertEquals(energiaEsperada,unGladiador.obtenerEnergia());

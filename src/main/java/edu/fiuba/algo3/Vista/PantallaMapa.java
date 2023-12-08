@@ -68,7 +68,7 @@ public class PantallaMapa extends BorderPane {
             btnAvanzar.setOnAction(e -> {
 
 
-              tablero.avanzar(new DadoMock());
+              tablero.avanzar();
 
               Gladiador gladiador = tablero.proximoJugador();
               Label label = (Label) obtenerLabelDeGridPane(gridMapa, gladiador.obtenerPosicionEnX(), gladiador.obtenerPosicionEnY());
@@ -99,8 +99,10 @@ public class PantallaMapa extends BorderPane {
     public Tablero crearTablero(ArrayList<Gladiador> gladiadores){
         Mapa mapa = new Mapa();
         mapa.mapaReal();
+        DadoMock dado = new DadoMock();
+
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Tablero tablero = new Tablero(gladiadores.size(),new Turno(30),unMapa);
+        Tablero tablero = new Tablero(gladiadores.size(),new Turno(30),unMapa, dado);
 
         for (Gladiador gladiador : gladiadores) {
             tablero.agregarJugador(gladiador);

@@ -2,6 +2,7 @@ package edu.fiuba.algo3;
 import edu.fiuba.algo3.Modelo.*;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Controlador.ManejarJson.DeserializadorJSON;
+import edu.fiuba.algo3.Modelo.Dados.DadoMock;
 import org.junit.jupiter.api.Test;
 
 
@@ -70,13 +71,14 @@ public class CasosDeUsosEntregaDos {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
 
         DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
         deserializadorJSON.extraerContenidoDeCadaCelda();
 
         List<Casilla> listaCasillas = deserializadorJSON.obtenerListaCasillas();
 
-        Tablero tablero = new Tablero(1,new Turno(30),unMapa);
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa, dado);
 
         for (Casilla casillaActual : listaCasillas){
 

@@ -8,7 +8,6 @@ import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
 import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
-import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,13 +18,14 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaReal();
         Casilla[][] unMapa = mapa.obtenerMapa();
+       DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         Posicion posicion = new Posicion(1, 7);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
 
        int posicionEnXEsperada = 2;
@@ -39,8 +39,9 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
@@ -49,8 +50,8 @@ public class GladiadorTest {
 
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
+        tablero.avanzar();
 
         int energiaEsperada = 0;
 
@@ -62,8 +63,9 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
@@ -74,10 +76,10 @@ public class GladiadorTest {
 
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
 
         int energiaEsperada = 10;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
@@ -88,8 +90,9 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
@@ -98,8 +101,8 @@ public class GladiadorTest {
 
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
+        tablero.avanzar();
 
         int longitudEsperada = 2;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
@@ -110,8 +113,9 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
@@ -122,10 +126,10 @@ public class GladiadorTest {
 
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
 
         int longitudEsperada = 4;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
@@ -136,8 +140,10 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador primerGladiador = new Gladiador(20, new Novato(), posicion);
         Gladiador segundoGladiador = new Gladiador(20, new Novato(), posicion);
@@ -154,21 +160,21 @@ public class GladiadorTest {
         int longitudEsperada0 = 0;
         int longitudEsperada1 = 1;
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         // Se lanzan los dados y el primer jugador se mueve
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada0, segundoGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada0, tercerGladiador.obtenerCantidadDeEquipamiento());
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         // Se lanzan los dados y el segundo jugador se mueve
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada0, tercerGladiador.obtenerCantidadDeEquipamiento());
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         // Se lanzan los dados y el tercer jugador se mueve
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
@@ -181,8 +187,9 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador primerGladiador = new Gladiador(20, new Novato(), posicion);
         Gladiador segundoGladiador = new Gladiador(20, new Novato(), posicion);
@@ -198,19 +205,19 @@ public class GladiadorTest {
         int longitudEsperada1 = 1;
         int longitudEsperada2 = 2;
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         // Se inicia un nuevo turno, se lanzan los dados y el primer jugador se mueve
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada0, segundoGladiador.obtenerCantidadDeEquipamiento());
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         // Se lanzan los dados y el segundo jugador se mueve
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         // Se inicia un nuevo turno, se lanzan los dados y el primer jugador se mueve de nuevo
         assertEquals(longitudEsperada2, primerGladiador.obtenerCantidadDeEquipamiento());
@@ -222,8 +229,9 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
@@ -234,7 +242,7 @@ public class GladiadorTest {
         tablero.agregarJugador(unGladiador);
 
         for (int i = 1; i < 13; i++) {
-            tablero.avanzar(new DadoMock());
+            tablero.avanzar();
         }
 
         //A partir del turno 8 suma 4 semisenior 20 de energia
@@ -249,8 +257,9 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador primerGladiador = new Gladiador(20, new Novato(), posicion);
         Gladiador segundoGladiador = new Gladiador(20, new Novato(), posicion);
@@ -264,13 +273,13 @@ public class GladiadorTest {
         int energiaEsperada0 = 0;
         int energiaEsperada20 = 20;
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         // Se inicia un nuevo turno, se lanzan los dados y el primer jugador es atacado por una fiera
         assertEquals(energiaEsperada0, primerGladiador.obtenerEnergia());
         assertEquals(energiaEsperada20, segundoGladiador.obtenerEnergia());
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         // Se lanzan los dados y el segundo jugador es atacado por una fiera
         assertEquals(energiaEsperada0, primerGladiador.obtenerEnergia());
@@ -282,8 +291,9 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador primerGladiador = new Gladiador(20, new Novato(), posicion);
         Gladiador segundoGladiador = new Gladiador(20, new Novato(), posicion);
@@ -300,21 +310,21 @@ public class GladiadorTest {
         int longitudEsperada0 = 0;
         int longitudEsperada1 = 1;
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         // Se inicia un nuevo turno, se lanzan los dados y el primer jugador consigue un equipamiento
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada0, segundoGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada0, tercerGladiador.obtenerCantidadDeEquipamiento());
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         // Se lanzan los dados y el segundo jugador consigue un equipamiento
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada1, segundoGladiador.obtenerCantidadDeEquipamiento());
         assertEquals(longitudEsperada0, tercerGladiador.obtenerCantidadDeEquipamiento());
 
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
 
         // Se lanzan los dados y el tercer jugador consigue un equipamiento
         assertEquals(longitudEsperada1, primerGladiador.obtenerCantidadDeEquipamiento());
@@ -327,8 +337,9 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
@@ -338,9 +349,9 @@ public class GladiadorTest {
 
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
 
         int energiaEsperada = 0;
 
@@ -352,8 +363,9 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
@@ -364,10 +376,10 @@ public class GladiadorTest {
 
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
-        tablero.avanzar(new DadoMock());
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
 
         int energiaEsperada = 0;
 

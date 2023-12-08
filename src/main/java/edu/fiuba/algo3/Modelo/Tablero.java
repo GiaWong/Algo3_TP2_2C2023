@@ -10,11 +10,14 @@ public class Tablero {
     private Turno turno;
     private Casilla[][] mapa;
 
-    public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa) {
+    private Dado dado;
+
+    public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa, Dado dado) {
         this.cantidadDeJugadores = cantidadJugadores;
         this.listaDeGladiadores = new ArrayList<>();
         this.turno = turno;
         this.mapa = unMapa;
+        this.dado = dado;
     }
 
     public void agregarCasillaAlMapa(Casilla unaCasilla) {
@@ -29,7 +32,7 @@ public class Tablero {
         return (turno.jugar(unGladiador));
     }
 
-    public void avanzar(Dado dado) {
+    public void avanzar() {
 
         int cantidadAMoverse = dado.lanzarDado();
         Gladiador ungladiador = turno.siguienteTurno(listaDeGladiadores);

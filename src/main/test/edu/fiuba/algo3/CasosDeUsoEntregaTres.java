@@ -8,7 +8,6 @@ import edu.fiuba.algo3.Modelo.Dados.DadoMock;
 import edu.fiuba.algo3.Modelo.Equipamientos.PremioEquipamiento;
 import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Mapa;
-import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
 import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Tablero;
@@ -26,7 +25,7 @@ public class CasosDeUsoEntregaTres {
         Posicion posicion = new Posicion(1, 1);
         Dado dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1,new Turno(30),unMapa);
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa, dado);
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),4,1,"LLEGDA"));
@@ -34,9 +33,9 @@ public class CasosDeUsoEntregaTres {
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
-        tablero.avanzar(dado);
-        tablero.avanzar(dado);
-        tablero.avanzar(dado);
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
 
         int coordenadaX= 4;
         int coordenadaY= 1;
