@@ -4,6 +4,7 @@ import edu.fiuba.algo3.Modelo.*;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
 import edu.fiuba.algo3.Modelo.Dados.DadoMock;
+import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
 import edu.fiuba.algo3.Modelo.Obstaculos.Lesion;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
@@ -20,8 +21,8 @@ public class LesionTest {
         Casilla[][] unMapa = mapa.obtenerMapa();
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa);
-        Direccion direccion = new Direccion(1, 1);
-        Gladiador unGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
+        Posicion posicion = new Posicion(1, 1);
+        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 2, 1, "camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new Lesion(), 3, 1, "camino"));

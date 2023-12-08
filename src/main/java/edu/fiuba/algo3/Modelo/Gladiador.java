@@ -2,10 +2,11 @@ package edu.fiuba.algo3.Modelo;
 
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
+import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
+import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculizador;
 import edu.fiuba.algo3.Modelo.PatronState.ManejarEquipamiento;
 import edu.fiuba.algo3.Modelo.Seniority.Seniority;
-import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,20 +16,19 @@ public class Gladiador {
     private int energia;
     private Seniority unSeniority;
     private List<Equipado> listaDeEquipamiento;
-    private int posicionEnX,posicionEnY;
     private boolean lesionado;
     private Direccion direccion;
+    private Posicion posicion;
 
     private ManejarEquipamiento manejarequipamiento;
-    public Gladiador(int unaEnergia, Seniority unSeniority, int posicionX, int posicionY, Direccion direccion) {
+    public Gladiador(int unaEnergia, Seniority unSeniority, Posicion unaPosicion) {
         this.energia = unaEnergia;
-        this.posicionEnX = posicionX;
-        this.posicionEnY = posicionY;
+        this.posicion = unaPosicion;
         this.unSeniority = unSeniority;
         this.listaDeEquipamiento = new ArrayList<>();
         this.manejarequipamiento = new ManejarEquipamiento();
         this.lesionado = false;
-        this.direccion = direccion;
+        this.direccion = new Direccion(unaPosicion.obtenerX(),unaPosicion.obtenerY());
 
     }
 
@@ -37,25 +37,20 @@ public class Gladiador {
     }
 
     public void avanzar(int cantidadAMoverse, Casilla[][] mapa) {
-
-       direccion = direccion.obtenerProximaCasillaConCamino(mapa);
-       posicionEnX = direccion.getFila();
-       posicionEnY = direccion.getColumna();
+       posicion = direccion.proximaPosicion(mapa,posicion);
 
     }
 
 
     public void retroceder() {
-        posicionEnX = 12;
-        posicionEnY = 4;
     }
 
     public int obtenerPosicionEnX() {
-        return posicionEnX;
+        return posicion.obtenerX();
     }
 
     public int obtenerPosicionEnY() {
-        return posicionEnY;
+        return posicion.obtenerY();
     }
 
     public void aumentarEnergiaAlIniciarElTurno(){

@@ -6,6 +6,7 @@ import edu.fiuba.algo3.Modelo.Casillas.NadaOcupacion;
 import edu.fiuba.algo3.Modelo.Dados.Dado;
 import edu.fiuba.algo3.Modelo.Dados.DadoMock;
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
+import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
 import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Premios.Comida;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
@@ -21,9 +22,9 @@ public class CasosDeUsosEntregaUno {
          Mapa mapa = new Mapa();
          mapa.mapaTest();
          Casilla[][] unMapa = mapa.obtenerMapa();
-         Direccion direccion = new Direccion(1,1);
+        Posicion posicion = new Posicion(1, 1);
 
-        Gladiador unGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
+        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
         int energiaEsperada = 20;
         int equipamientoEsperado = 0;
@@ -39,8 +40,8 @@ public class CasosDeUsosEntregaUno {
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
 
-        Direccion direccion = new Direccion(1,1);
-        Gladiador unGladiador = new Gladiador(20, new Novato(), 1,1, direccion);
+        Posicion posicion = new Posicion(1, 1);
+        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
         Tablero tablero = new Tablero(1, new Turno(30),unMapa);
 
@@ -60,8 +61,8 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Direccion direccion = new Direccion(1,1);
-         Gladiador unGladiador = new Gladiador(0, new Novato(), 1,1,direccion);
+        Posicion posicion = new Posicion(1, 1);
+         Gladiador unGladiador = new Gladiador(0, new Novato(), posicion);
 
         Tablero tablero = new Tablero(1, new Turno(30),unMapa);
 
@@ -83,8 +84,8 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Direccion direccion = new Direccion(1,1);
-        Gladiador unGladiador = new Gladiador(20,new Novato(),1,1,direccion);
+       Posicion posicion = new Posicion(1, 1);
+        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
 
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
         tablero.agregarCasillaAlMapa(new Casilla(new Comida(15),new NadaOcupacion(),1,2,"CAMINO"));
@@ -104,8 +105,8 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Direccion direccion = new Direccion(1,1);
-        Gladiador unGladiador = new Gladiador(20,new Novato(),1,1,direccion);
+        Posicion posicion = new Posicion(1, 1);
+        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,1,"CAMINO"));
 
@@ -125,13 +126,13 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Direccion direccion = new Direccion(1,1);
+        Posicion posicion = new Posicion(1, 1);
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,2,"camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,3,"camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,4,"camino"));
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),1,1, direccion);
+        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
 
@@ -152,12 +153,12 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Direccion direccion = new Direccion(1,1);
+        Posicion posicion = new Posicion(1, 1);
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
         tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(20),new PremioEquipamiento(),1,2,"CAMINO"));
 
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),1,1, direccion);
+        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
         tablero.avanzar(new DadoMock());
@@ -175,12 +176,12 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Direccion direccion = new Direccion(1,1);
+        Posicion posicion = new Posicion(1, 1);
 
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
         Dado dado = new DadoMock();
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),1,1, direccion);
+        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
          tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"CAMINO"));
@@ -220,11 +221,11 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Direccion direccion = new Direccion(1,1);
+        Posicion posicion = new Posicion(1, 1);
         Dado dado = new DadoMock();
 
         Tablero tablero = new Tablero(1,new Turno(5),unMapa);
-        Gladiador unGladiador = new Gladiador(20,new Novato(),1,1, direccion);
+        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"CAMINO"));
@@ -251,7 +252,7 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Direccion direccion = new Direccion(1,1);
+        Posicion posicion = new Posicion(1, 1);
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
@@ -259,7 +260,7 @@ public class CasosDeUsosEntregaUno {
 
         tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(20),new NadaOcupacion(),4,1,"CAMINO"));
         Dado dado = new DadoMock();
-        Gladiador unGladiador = new Gladiador(20,new Novato(),1,1, direccion);
+        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
         tablero.avanzar(dado);
@@ -279,7 +280,7 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Direccion direccion = new Direccion(1,1);
+        Posicion posicion = new Posicion(1, 1);
         Dado dado = new DadoMock();
 
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
@@ -287,7 +288,7 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),4,1,"CAMINO"));
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),1,1, direccion);
+        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
         tablero.avanzar(dado);
@@ -304,7 +305,7 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Direccion direccion = new Direccion(1,1);
+        Posicion posicion = new Posicion(1, 1);
         Dado dado = new DadoMock();
         Tablero tablero = new Tablero(1,new Turno(30),unMapa);
 
@@ -314,7 +315,7 @@ public class CasosDeUsosEntregaUno {
             }
         }
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),1,1, direccion);
+        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
         for (int i=1 ; i <31 ;i++){
