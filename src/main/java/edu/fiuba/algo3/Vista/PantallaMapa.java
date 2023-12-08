@@ -18,12 +18,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 
 
 
-public class PantallaMapa extends BorderPane {
+public class PantallaMapa extends BorderPane implements Observable {
 
     private  Stage stage;
     private ArrayList<Gladiador> gladiadores;
@@ -56,7 +57,7 @@ public class PantallaMapa extends BorderPane {
 
             for (int i = ancho; i >= 1; i--) {
                 for (int j = 1; j <= largo; j++) {
-                    Label label = new Label("(" + j + "," + i + ")");
+                    Label label = new Label(/*"(" + j + "," + i + ")"*/);
                     label.setMinSize(tamanoCasilla, tamanoCasilla);
                     label.setStyle("-fx-border-color: black;");
                     gridMapa.add(label, j - 1, ancho - i);
@@ -72,11 +73,40 @@ public class PantallaMapa extends BorderPane {
 
               Gladiador gladiador = tablero.proximoJugador();
               Label label = (Label) obtenerLabelDeGridPane(gridMapa, gladiador.obtenerPosicionEnX(), gladiador.obtenerPosicionEnY());
-              label.setGraphic(new Circle(10, Color.RED));
+              Circle circle1 = new Circle(5, Color.RED);
+              Circle circle2 = new Circle(5, Color.BLUE);
+              Circle circle3 = new Circle(5, Color.ORANGE);
+              Circle circle4 = new Circle(5, Color.GREEN);
+              Circle circle5 = new Circle(5, Color.CHOCOLATE);
+              Circle circle6 = new Circle(5, Color.INDIGO);
 
-              //VistaGladiador vista = new VistaGladiador( gladiadores.get(0),canvas,gridMapa);
-              //vista.dibujar();
+              Pane circulos = new Pane(circle1, circle2, circle3, circle4, circle5, circle6);
 
+              double centerX = (label.getMinWidth() - circulos.getBoundsInLocal().getWidth()) / 2;
+              double centerY = (label.getMinHeight() - circulos.getBoundsInLocal().getHeight()) / 2;
+
+              circulos.setLayoutX(centerX);
+              circulos.setLayoutY(centerY);
+
+              circle1.setCenterX(12);
+              circle1.setCenterY(10);
+
+              circle2.setCenterX(27);
+              circle2.setCenterY(10);
+
+              circle3.setCenterX(12);
+              circle3.setCenterY(20);
+
+              circle4.setCenterX(27);
+              circle4.setCenterY(20);
+
+              circle5.setCenterX(12);
+              circle5.setCenterY(30);
+
+              circle6.setCenterX(27);
+              circle6.setCenterY(30);
+
+              label.setGraphic(circulos);
 
             });
 
@@ -118,5 +148,12 @@ public class PantallaMapa extends BorderPane {
         }
         return null;
     }
+
+    @Override
+    public void attach(Observer o){}
+    @Override
+    public void detach(Observer o){}
+    @Override
+    public void notificar(){}
 
 }
