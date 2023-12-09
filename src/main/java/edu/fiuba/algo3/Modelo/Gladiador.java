@@ -37,7 +37,7 @@ public class Gladiador {
     }
 
     public void avanzar(int cantidadAMoverse, Casilla[][] mapa) {
-       posicion = direccion.proximaPosicion(mapa,posicion);
+       posicion = posicion.PosicionSiguiente(mapa,direccion);
 
     }
 

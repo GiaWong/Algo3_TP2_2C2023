@@ -20,7 +20,7 @@ public class Posicion {
         return posicionEnY;
     }
 
-    public Posicion PosicionSiguien(Casilla[][] mapa, Direccion direccion){
+    public Posicion PosicionSiguiente(Casilla[][] mapa, Direccion direccion){
         return direccion.proximaPosicion(mapa,this);
     }
 
