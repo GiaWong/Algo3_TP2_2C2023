@@ -10,12 +10,15 @@ import javafx.scene.shape.Circle;
 
 import java.util.ArrayList;
 
+
 public class Jugadores implements Observer{
 
 
     private ArrayList<Gladiador> gladiadores;
     private GridPane gridMapa;
     private Pane circulos;
+
+
 
 
     public Jugadores(ArrayList<Gladiador> gladiadores, GridPane gridMapa){
@@ -34,6 +37,7 @@ public class Jugadores implements Observer{
             Label label = (Label) obtenerLabelDeGridPane(gridMapa,g.obtenerPosicionEnX(),g.obtenerPosicionEnY());
             Circle circulo = new Circle(5, Color.RED);
 
+
             circulos.getChildren().add(circulo);
 
             if (contador == 0) {
@@ -43,12 +47,13 @@ public class Jugadores implements Observer{
                 circulo.setCenterX(27);
                 circulo.setCenterY(10);
             }
-
+/*
             if (contador == 0){
                 label.setGraphic(circulo);}
             else{
                 label.setGraphic(circulos);}
-
+*/
+            label.setGraphic(circulo);
             contador++;
 
         }
@@ -105,5 +110,6 @@ public class Jugadores implements Observer{
             }
         }
     }
+
 
 }
