@@ -34,14 +34,14 @@ public class Gladiador {
     public int obtenerEnergia() {
         return energia;
     }
-<<<<<<< HEAD
+
 
     public void avanzar(int cantidadAMoverse, Casilla[][] mapa) {
        posicion = posicion.PosicionSiguiente(mapa,direccion);
-=======
+
     public void avanzar(int cantidadAMoverse,List<Casilla> camino) {
        posicion = posicion.PosicionSiguien(camino,direccion,cantidadAMoverse);
->>>>>>> RefactorParaElAvanzarDeGladiador
+
 
     }
 
