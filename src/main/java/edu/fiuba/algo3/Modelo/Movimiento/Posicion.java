@@ -2,6 +2,8 @@ package edu.fiuba.algo3.Modelo.Movimiento;
 
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 
+import java.util.List;
+
 public class Posicion {
 
     private int posicionEnX;
@@ -20,8 +22,15 @@ public class Posicion {
         return posicionEnY;
     }
 
+<<<<<<< HEAD
     public Posicion PosicionSiguiente(Casilla[][] mapa, Direccion direccion){
         return direccion.proximaPosicion(mapa,this);
+=======
+
+
+    public Posicion PosicionSiguien(List<Casilla> camino, Direccion direccion,int cantidadAMoverse){
+        return direccion.proximaPosicion(camino,this,cantidadAMoverse);
+>>>>>>> RefactorParaElAvanzarDeGladiador
     }
 
 

@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 public class PantallaMapa extends BorderPane implements Observable {
@@ -132,7 +132,7 @@ public class PantallaMapa extends BorderPane implements Observable {
         DadoMock dado = new DadoMock();
 
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Tablero tablero = new Tablero(gladiadores.size(),new Turno(30),unMapa, dado);
+        Tablero tablero = new Tablero(gladiadores.size(),new Turno(30),unMapa,mapa.obtenereCamino(),dado);
 
         for (Gladiador gladiador : gladiadores) {
             tablero.agregarJugador(gladiador);
