@@ -211,6 +211,8 @@ public class CasosDeUsosEntregaUno {
         tablero.avanzar();
         tablero.avanzar();
 
+
+
         int energiaEsperada1 = 20;
         assertEquals(energiaEsperada1, unGladiador.obtenerEnergia());
 

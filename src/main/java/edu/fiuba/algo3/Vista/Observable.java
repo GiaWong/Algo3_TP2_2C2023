@@ -1,8 +1,9 @@
 package edu.fiuba.algo3.Vista;
 
 public interface Observable {
-    void attach(Observer o);
-    void detach(Observer o);
-    void notificar();
+    void agregarObservador(Observer observador);
+    void eliminarObservador(Observer observador);
+
+    //void notificarObservadores();
 
 }
