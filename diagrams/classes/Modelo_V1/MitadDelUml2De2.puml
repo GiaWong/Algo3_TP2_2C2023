@@ -1,0 +1,151 @@
+@startuml
+class Gladiador{
+    -energia:int
+    -posicionEnX:int
+    -posicionEnY:int
+    -lesionado:boolean
+    -direccion: Direccion
+    +Gladiador(unaEnergia int, seniority Seniority,posicionenX int,posicionEnY int, direccion Direccion)
+    +AumentarEnergiaAlIniciarElTurno():void
+    +avanzar(cantidadAMoverse int):void
+    +retroceder(cantidadAMoverse int):void
+    +combatir(unObstaculo Obstaculizador): void
+    +tieneLLave(): boolean
+    +lesionar():void
+    +rehabilitado():void
+    +estaLesionado():void
+}
+
+class Direccion{
+    -posicionEnx:int
+    -posicionEnY:int
+    +Direccion(x int, y int):void
+    +getFila():int
+    +getColumna():int
+    +obtenerProximaCasillaConCamino(mapa Casilla[][]):Direccion
+}
+
+
+class Mapa{
+    -mapa Casilla[][]
+    +mapaTest():void
+    +mapaReal():void
+    +obtenerMapa():Casilla[][]
+
+}
+
+class DeserializadorJSON{
+    -listaDeCasillas List<Casilla>
+    +DeserializadorJSON():void
+    +extraerValorAnchoDelMapa():int
+    +extraerValorLargoDelMapa():int
+    +extraerContenidoDeCadaCelda():void
+    +transformarAObjeto():Ocupable
+}
+
+interface Estado{
+    {abstract}+ejercutarAccion(listaDeEquipamiento List<Equipado>);
+}
+
+
+class Tablero{
+    -cantidadJugadores:int
+    -controladorCantidadMoverse:int
+    +Tablero(int cantidadJugadores, turno Turno,mapa Casilla[][])
+    +validarTurno(unGladiador Gladiador):boolean
+    +avanzar(unDado Dado):void
+    +FinalizarJuego(): boolean
+}
+
+class Turno {
+    -turnoActual:int
+    -maximaCantidadDeTurnos:int
+    +Turno(int maximaCantidad)
+    +jugar(unGladiador Gladiador):boolean
+    +obtenerTurno():int
+    +siguienteTurno(gladiadores ArrayList<Gladiador>):Gladiador
+    +validarFinalizarJuego(): boolean
+    }
+
+
+class Casilla{
+    -posicionEnX:int
+    -posicionEnY:int
+    -tipo:string
+    +Casilla(primeraOcupacion:Ocupable,segundaOcupacion:Ocupable,posX:int,posY:int,tipo:String):void
+    +interactuarConLaOcupacion(ungladiador Gladiador,cantidadAMoverse int):Gladiador
+    +obtenerEquipo():String
+}
+
+
+interface Dado{
+    +{abstract}lanzarDado():int
+}
+
+class DadoMock{
+    +lanzarDado():int
+}
+
+class DadoReal{
+    +lanzarDado():int
+}
+
+abstract class Seniority{
+    -turnoActual: int
+    +Seniority(turno int)
+    +{abstract}modificarEnergia(unaEnergia int):int
+    +{abstract}sumarTurno():Seniority
+}
+class Novato{
+    +Novato():void
+    +modificarEnergia(unaEnergia int:int
+    +sumarTurno():Seniority
+}
+class SemiSenior{
+    +SemiSenior():void
+    +modificarEnergia(unaEnergia int):int
+    +sumarTurno():Seniority
+}
+
+class Senior{
+    +Senior():void
+    +modificarEnergia(unaEnergia int):int
+    +sumarTurno():Seniority
+}
+
+interface Equipado{
+    +{abstract}modificarEnergia(unaEnergia int):int
+}
+
+interface Ocupable{
+     +interactuarConLaOcupacion(ungladiador Gladiador);
+   }
+
+
+Tablero *-left->"*"Casilla
+Tablero *-right->" 2..6 "Gladiador
+Tablero -up-> Dado
+Tablero --> Turno
+Tablero  -> Mapa
+
+
+
+Casilla -->"1..2" Ocupable
+Mapa .>DeserializadorJSON
+
+Dado <|.up. DadoMock
+Dado <|.left. DadoReal
+
+
+Seniority <|.up. Novato
+Seniority <|.up. SemiSenior
+Seniority <|.up. Senior
+
+
+Gladiador -> Direccion
+Gladiador .down.> Estado
+Gladiador -> "*"Equipado
+Gladiador -up-> "1"Seniority
+
+
+@enduml
