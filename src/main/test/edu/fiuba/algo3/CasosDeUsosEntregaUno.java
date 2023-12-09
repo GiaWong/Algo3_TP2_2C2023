@@ -257,6 +257,7 @@ public class CasosDeUsosEntregaUno {
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
     }
 
+    //Este test no hace nada, como llega sin todo el equipamiento tendria que volver a la mitad del camino
 
     @Test
     public void Test09UnGladiadorLLegaALaMetaSinLaLLaveYEsteRetrocedeHastaLaMitadDeLasCasillas() {
@@ -264,27 +265,20 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Posicion posicion = new Posicion(1, 1);
+        Posicion posicion = new Posicion(17, 2);
         Dado dado = new DadoMock();
-        List<Casilla> camino = new ArrayList<>();
 
-        Tablero tablero = new Tablero(1,new Turno(5),unMapa,camino , dado);
+        Tablero tablero = new Tablero(1,new Turno(5),unMapa,mapa.obtenereCamino() , dado);
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),3,1,"llegada"));
-
-
-
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
         tablero.avanzar();
 
-        int posicionEsperada = 4;
-        assertEquals(posicionEsperada, unGladiador.obtenerPosicionEnX());
+
+        int posicionEsperadaEnX = 17;
+        int posicionEsperadaEnY = 1;
+        assertEquals(posicionEsperadaEnX, unGladiador.obtenerPosicionEnX());
+        assertEquals(posicionEsperadaEnY, unGladiador.obtenerPosicionEnY());
 
     }
 
