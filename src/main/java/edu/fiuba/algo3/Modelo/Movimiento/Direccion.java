@@ -27,10 +27,13 @@ public class Direccion {
 
     public Posicion proximaPosicion(List<Casilla> camino, Posicion posicion,int cantidadAMoverse) {
 
+
         for (int i = 0; i < camino.size(); i++) {
             Casilla casillaActual = camino.get(i);
 
             if (casillaActual.obtenerposicionEnX() == posicion.obtenerX() && casillaActual.obtenerposicionEny() == posicion.obtenerY()){
+
+
                 Casilla nuevaCasilla = camino.get(i + cantidadAMoverse);
 
                 Posicion nuevaPosicion = new Posicion(nuevaCasilla.obtenerposicionEnX(),nuevaCasilla.obtenerposicionEny());

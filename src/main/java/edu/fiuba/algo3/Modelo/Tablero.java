@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.Modelo;
-import edu.fiuba.algo3.Modelo.Casillas.Camino;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Dados.Dado;
 
@@ -13,19 +12,15 @@ public class Tablero {
     private Casilla[][] mapa;
     private Dado dado;
 
-    public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa, Dado dado) {
+    private List<Casilla> camino;
+
+    public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa, List<Casilla> camino,Dado dado) {
         this.cantidadDeJugadores = cantidadJugadores;
         this.listaDeGladiadores = new ArrayList<>();
         this.turno = turno;
         this.mapa = unMapa;
         this.dado = dado;
-
-    }
-    //Por ahora agrego elcamino asi:
-    public List<Casilla> obtenerCamino(){
-        Mapa mapa = new Mapa();
-        mapa.mapaTest();
-        return mapa.obtenereCamino();
+        this.camino = camino;
 
     }
     public void agregarCasillaAlMapa(Casilla unaCasilla) {
@@ -47,7 +42,7 @@ public class Tablero {
 
         if (this.validarTurno(ungladiador)) {
 
-            ungladiador.avanzar(cantidadAMoverse, mapa, this.obtenerCamino());
+            ungladiador.avanzar(cantidadAMoverse,camino);
             Casilla casillaActual = mapa[ungladiador.obtenerPosicionEnX()][ungladiador.obtenerPosicionEnY()];
             System.out.println("\nCasilla ---> (" + casillaActual.obtenerposicionEnX() + "," + casillaActual.obtenerposicionEny() + ")");
 
@@ -61,6 +56,16 @@ public class Tablero {
             reiniciarTodoLosValores();
         }
         return validacion;
+
+    }
+
+    public void validarGanador(Gladiador unGladiador){
+        if (unGladiador.obtenerCantidadDeEquipamiento() ==4 ){
+            System.out.println("El jugador gano");
+        }
+        else {
+            unGladiador.retroceder(camino);
+        }
 
     }
 

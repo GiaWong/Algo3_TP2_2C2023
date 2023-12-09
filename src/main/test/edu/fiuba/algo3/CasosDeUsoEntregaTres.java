@@ -14,6 +14,9 @@ import edu.fiuba.algo3.Modelo.Tablero;
 import edu.fiuba.algo3.Modelo.Turno;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CasosDeUsoEntregaTres {
@@ -25,10 +28,17 @@ public class CasosDeUsoEntregaTres {
         Posicion posicion = new Posicion(1, 1);
         Dado dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1,new Turno(30),unMapa, dado);
+        List<Casilla> camino = new ArrayList<Casilla>();
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
+        camino.add(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
+        camino.add(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"CAMINO"));
+
+
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino ,dado);
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),4,1,"LLEGDA"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"LLEGDA"));
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);

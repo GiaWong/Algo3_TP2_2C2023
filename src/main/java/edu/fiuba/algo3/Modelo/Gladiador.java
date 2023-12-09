@@ -34,13 +34,15 @@ public class Gladiador {
     public int obtenerEnergia() {
         return energia;
     }
-    public void avanzar(int cantidadAMoverse, Casilla[][] mapa,List<Casilla> camino) {
-       posicion = direccion.proximaPosicion(camino,posicion,cantidadAMoverse);
+    public void avanzar(int cantidadAMoverse,List<Casilla> camino) {
+       posicion = posicion.PosicionSiguien(camino,direccion,cantidadAMoverse);
 
     }
 
-
-    public void retroceder() {
+    //Si llego a la meta sin todo el equipamiento lo mando a la mitad del camino
+    public void retroceder(List<Casilla> camino) {
+        Casilla mitadDeCamino = camino.get(camino.size()/2);
+        posicion = new Posicion(mitadDeCamino.obtenerposicionEnX(), mitadDeCamino.obtenerposicionEny());
     }
 
     public int obtenerPosicionEnX() {
@@ -81,16 +83,6 @@ public class Gladiador {
 
     }
 
-    public boolean tieneLLave() {
-        return ((listaDeEquipamiento.stream()
-                .anyMatch(elemento -> elemento instanceof LLave)) && tienecantidadEquipamientoPermitido());
-
-    }
-
-    public boolean tienecantidadEquipamientoPermitido() {
-        return (this.obtenerCantidadDeEquipamiento() == 4); // ANTES ERA 3, LO ALTERE ACA
-    }
-    
     public void combatir(Obstaculizador unObstaculo) {
 
         for (Equipado unEquipamiento: listaDeEquipamiento) {

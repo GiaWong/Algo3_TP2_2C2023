@@ -78,7 +78,7 @@ public class CasosDeUsosEntregaDos {
 
         List<Casilla> listaCasillas = deserializadorJSON.obtenerListaCasillas();
 
-        Tablero tablero = new Tablero(1,new Turno(30),unMapa, dado);
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa,mapa.obtenereCamino(), dado);
 
         for (Casilla casillaActual : listaCasillas){
 

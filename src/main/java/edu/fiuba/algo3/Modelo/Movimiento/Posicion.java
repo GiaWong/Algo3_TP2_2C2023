@@ -22,6 +22,8 @@ public class Posicion {
         return posicionEnY;
     }
 
+
+
     public Posicion PosicionSiguien(List<Casilla> camino, Direccion direccion,int cantidadAMoverse){
         return direccion.proximaPosicion(camino,this,cantidadAMoverse);
     }
