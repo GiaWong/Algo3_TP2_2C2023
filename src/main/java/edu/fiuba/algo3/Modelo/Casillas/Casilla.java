@@ -3,9 +3,6 @@ import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
 import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
 
-
-
-
 public class Casilla {
     Ocupable unaOcupacion;
     Ocupable unaSegundaOcupacion;
