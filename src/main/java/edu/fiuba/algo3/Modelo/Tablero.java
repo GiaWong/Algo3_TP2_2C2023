@@ -1,15 +1,16 @@
 package edu.fiuba.algo3.Modelo;
+import edu.fiuba.algo3.Modelo.Casillas.Camino;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Dados.Dado;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Tablero {
     private ArrayList<Gladiador> listaDeGladiadores;
     private int cantidadDeJugadores;
     private Turno turno;
     private Casilla[][] mapa;
-
     private Dado dado;
 
     public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa, Dado dado) {
@@ -18,8 +19,15 @@ public class Tablero {
         this.turno = turno;
         this.mapa = unMapa;
         this.dado = dado;
-    }
 
+    }
+    //Por ahora agrego elcamino asi:
+    public List<Casilla> obtenerCamino(){
+        Mapa mapa = new Mapa();
+        mapa.mapaTest();
+        return mapa.obtenereCamino();
+
+    }
     public void agregarCasillaAlMapa(Casilla unaCasilla) {
         this.mapa[unaCasilla.obtenerposicionEnX()][unaCasilla.obtenerposicionEny()] = unaCasilla;
     }
@@ -39,7 +47,7 @@ public class Tablero {
 
         if (this.validarTurno(ungladiador)) {
 
-            ungladiador.avanzar(cantidadAMoverse, mapa);
+            ungladiador.avanzar(cantidadAMoverse, mapa, this.obtenerCamino());
             Casilla casillaActual = mapa[ungladiador.obtenerPosicionEnX()][ungladiador.obtenerPosicionEnY()];
             System.out.println("\nCasilla ---> (" + casillaActual.obtenerposicionEnX() + "," + casillaActual.obtenerposicionEny() + ")");
 

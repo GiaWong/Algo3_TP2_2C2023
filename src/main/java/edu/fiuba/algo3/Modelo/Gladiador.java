@@ -29,15 +29,13 @@ public class Gladiador {
         this.manejarequipamiento = new ManejarEquipamiento();
         this.lesionado = false;
         this.direccion = new Direccion(unaPosicion.obtenerX(),unaPosicion.obtenerY());
-
     }
 
     public int obtenerEnergia() {
         return energia;
     }
-
-    public void avanzar(int cantidadAMoverse, Casilla[][] mapa) {
-       posicion = direccion.proximaPosicion(mapa,posicion);
+    public void avanzar(int cantidadAMoverse, Casilla[][] mapa,List<Casilla> camino) {
+       posicion = direccion.proximaPosicion(camino,posicion,cantidadAMoverse);
 
     }
 
