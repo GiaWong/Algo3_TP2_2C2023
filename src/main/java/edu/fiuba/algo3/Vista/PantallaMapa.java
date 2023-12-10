@@ -65,12 +65,12 @@ public class PantallaMapa extends BorderPane implements Observable {
         }
 
         Jugadores jugadores = new Jugadores(gladiadores,gridMapa);
+        jugadores.actualizar();
 
 
 
         Button btnAvanzar = new Button("Tirar dado");
         btnAvanzar.setOnAction(e -> {
-
 
             tablero.avanzar();
             jugadores.actualizar();
