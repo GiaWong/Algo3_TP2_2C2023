@@ -353,17 +353,105 @@ public class CasosDeUsosEntregaUno {
     @Test
     public void Test12GladiadorNoLLegaALaMetaAlPasarTreintaTurnosElJuegoSeTermina() {
 
+
+
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Posicion posicion = new Posicion(1, 1);
+        Posicion posicion = new Posicion(1, 7);
         Dado dado = new DadoMock();
-        List<Casilla> camino = new ArrayList<>();
 
-        Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino , dado);
+        List<Casilla> camino = new ArrayList<Casilla>();
+
+       //Haré manualmente porque l mapaTst me limita l tamaño de la matriz
+
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,7,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,7,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,6,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,5,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,4,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,3,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,2,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),3,1,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),5,1,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),6,1,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),7,1,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),8,1,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),9,1,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),10,1,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),11,1,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,1,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,2,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,3,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,4,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,5,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,6,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,7,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,8,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,9,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),13,9,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),14,9,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),15,9,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),16,9,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,9,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,8,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,7,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,6,"CAMINO"));
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,5,"CAMINO"));
+
+
+
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino ,dado);
+
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,7,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,7,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,6,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,5,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,4,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,3,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,2,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),3,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),5,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),6,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),7,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),8,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),9,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),10,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),11,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,2,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,3,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,4,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,5,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,6,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,7,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,8,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,9,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),13,9,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),14,9,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),15,9,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),16,9,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,9,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,8,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,7,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,6,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,5,"LLEGADA"));
+
+
+        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
+        tablero.agregarJugador(unGladiador);
+
+        for (int i = 1; i <= 30; i++) {
+            tablero.avanzar();
+        }
 
         boolean juegoTerminado= true;
         assertEquals(juegoTerminado, tablero.FinalizarJuego());
+
     }
 
 
