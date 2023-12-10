@@ -3,6 +3,7 @@ package edu.fiuba.algo3.Vista;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Dados.Dado;
 import edu.fiuba.algo3.Modelo.Dados.DadoMock;
+import edu.fiuba.algo3.Modelo.Dados.DadoReal;
 import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Mapa;
 import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
@@ -99,7 +100,7 @@ public class PantallaMapa extends BorderPane implements Observable {
         mapa.mapaReal();
         Casilla[][] unMapa = mapa.obtenerMapa();
 
-        Dado dado = new DadoMock();
+        Dado dado = new DadoReal();
 
         Tablero tablero = new Tablero(gladiadores.size(),new Turno(30),unMapa,mapa.obtenereCamino(),dado);
 
