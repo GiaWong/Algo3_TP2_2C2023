@@ -12,6 +12,9 @@ import edu.fiuba.algo3.Modelo.Tablero;
 import edu.fiuba.algo3.Modelo.Turno;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BacanalTest {
@@ -23,7 +26,11 @@ public class BacanalTest {
         DadoMock dado = new DadoMock();
         Casilla[][] unMapa = mapa.obtenerMapa();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
+        List<Casilla> camino= new ArrayList<Casilla>();
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
+        camino.add(new Casilla(new Bacanal(),new NadaOcupacion(),1,2,"CAMINO"));
+
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa,camino, dado);
         tablero.agregarCasillaAlMapa(new Casilla(new Bacanal(),new NadaOcupacion(),1,2,"CAMINO"));
 
         Posicion posicion = new Posicion(1, 1);
@@ -46,7 +53,11 @@ public class BacanalTest {
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
+        List<Casilla> camino = new ArrayList<Casilla>();
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
+        camino.add(new Casilla(new Bacanal(),new Bacanal(),1,2,"CAMINO"));
+
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa,camino ,dado);
         tablero.agregarCasillaAlMapa(new Casilla(new Bacanal(),new Bacanal(),1,2,"CAMINO"));
 
         Posicion posicion = new Posicion(1, 1);

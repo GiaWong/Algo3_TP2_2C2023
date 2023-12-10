@@ -8,10 +8,12 @@ import java.util.List;
 
 public class Mapa {
     private Casilla[][] mapa;
+    private List<Casilla> camino;
 
     public void mapaTest() {
         DeserializadorJSON deserializadorJSON = new DeserializadorJSON();
         deserializadorJSON.extraerContenidoDeCadaCelda();
+        List <Casilla>  listaDeCasillasJSON =  deserializadorJSON.obtenerListaCasillas();
 
         Casilla[][] matriz = new Casilla[18][10];
 
@@ -24,6 +26,7 @@ public class Mapa {
         }
 
         this.mapa = matriz;
+        this.camino = listaDeCasillasJSON;
     }
 
     //Este es el verdadero mapa de juego! el de arriba es solo para los test
@@ -47,9 +50,12 @@ public class Mapa {
         }
 
         this.mapa   = matriz;
+        this.camino = listaDeCasillasJSON;
     }
     public Casilla[][] obtenerMapa(){
         return mapa;
     }
+
+    public List<Casilla> obtenereCamino(){return camino;}
 
 }

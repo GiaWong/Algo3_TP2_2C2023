@@ -52,8 +52,6 @@ public class DeserializadorJSON {
         }
     }
 
-
-
     public void extraerContenidoDeCadaCelda() {
         String rutaArchivoJson = "src/main/java/ArchivoJson/mapa.json";
         try {

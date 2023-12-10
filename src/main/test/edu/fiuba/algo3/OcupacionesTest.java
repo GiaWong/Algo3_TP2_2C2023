@@ -9,6 +9,9 @@ import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OcupacionesTest {
@@ -21,8 +24,15 @@ public class OcupacionesTest {
        mapa.mapaTest();
        Casilla[][] unMapa = mapa.obtenerMapa();
        DadoMock dado = new DadoMock();
+       List<Casilla> camino = new ArrayList<>();
 
-       Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
+
+       camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),0,1,"camino"));
+       camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"camino"));
+       camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"camino"));
+
+
+       Tablero tablero = new Tablero(1, new Turno(30),unMapa,camino, dado);
        Posicion posicion = new Posicion(0, 1);
        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
@@ -45,20 +55,22 @@ public class OcupacionesTest {
        mapa.mapaTest();
        Casilla[][] unMapa = mapa.obtenerMapa();
        DadoMock dado = new DadoMock();
+       List<Casilla> camino = new ArrayList<>();
 
-       Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
+       Tablero tablero = new Tablero(1, new Turno(30),unMapa,camino ,dado);
        Posicion posicion = new Posicion(0, 1);
        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),3,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),5,1,"camino"));
+       camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),0,1,"camino"));
+       camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),0,2,"camino"));
+
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),0,1,"camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),0,2,"camino"));
+
 
         tablero.agregarJugador(unGladiador);
         tablero.avanzar();
-        tablero.avanzar();
+
 
 
         int longitudEsperada = 1;
@@ -71,28 +83,20 @@ public class OcupacionesTest {
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
+        List<Casilla> camino = new ArrayList<>();
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),0,1,"camino"));
+        camino.add(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),1,1,"camino"));
 
-        Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
+        Tablero tablero = new Tablero(1, new Turno(30),unMapa,camino ,dado);
         Posicion posicion = new Posicion(0, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
 
-        //Maximo de agregarCasilla 10 porque el mapa tiene ancho 10 como limite
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),2,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),3,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),5,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),6,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),7,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),8,1,"camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),1,1,"camino"));
+
 
 
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
         tablero.avanzar();
 
 
@@ -107,28 +111,22 @@ public class OcupacionesTest {
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
+        List<Casilla> camino = new ArrayList<>();
 
-        Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),0,1,"camino"));
+        camino.add(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),1,1,"camino"));
+        camino.add(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),2,1,"camino"));
+
+        Tablero tablero = new Tablero(1, new Turno(30),unMapa,camino ,dado);
         Posicion posicion = new Posicion(0, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
 
-        //Maximo de agregarCasilla 10 porque el mapa tiene ancho 10 como limite
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),1,1,"camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),2,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),3,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),5,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),6,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),7,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),8,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),9,1,"camino"));
+
 
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
         tablero.avanzar();
         tablero.avanzar();
 
@@ -143,33 +141,26 @@ public class OcupacionesTest {
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
+        List<Casilla> camino = new ArrayList<>();
 
-        Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),0,1,"camino"));
+        camino.add(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"camino"));
+        camino.add(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"camino"));
+
+
+        Tablero tablero = new Tablero(1, new Turno(30),unMapa,camino ,dado);
         Posicion posicion = new Posicion(0, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
-        //Maximo de agregarCasilla 10 porque el mapa tiene ancho 10 como limite
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),2,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),3,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),5,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),6,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),7,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),8,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),9,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),10,1,"camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"camino"));
 
 
         tablero.agregarJugador(unGladiador);
         tablero.avanzar();
         tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
+
 
         int longitudEsperada = 4;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
@@ -183,24 +174,21 @@ public class OcupacionesTest {
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
+        List<Casilla> camino = new ArrayList<>();
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),0,1,"camino"));
+        camino.add(new Casilla(new NadaOcupacion(),new Casco(5),1,1,"camino"));
 
-        Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
+        Tablero tablero = new Tablero(1, new Turno(30),unMapa,camino ,dado);
         Posicion posicion = new Posicion(0, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
-        //Maximo de agregarCasilla 10 porque el mapa tiene ancho 10 como limite
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new Casco(5),new NadaOcupacion(),3,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),5,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),6,1,"camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new Casco(5),1,1,"camino"));
+
 
 
         tablero.agregarJugador(unGladiador);
         tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
+
 
 
         int longitudEsperada = 1;
@@ -213,14 +201,19 @@ public class OcupacionesTest {
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
+        List<Casilla> camino = new ArrayList<>();
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),0,1,"camino"));
+        camino.add(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),1,1,"camino"));
+        camino.add(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),2,1,"camino"));
 
-        Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
+
+        Tablero tablero = new Tablero(1, new Turno(30),unMapa,camino , dado);
         Posicion posicion = new Posicion(0, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
-        //Maximo de agregarCasilla 10 porque el mapa tiene ancho 10 como limite
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),1,1,"camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),2,1,"camino"));
+
 
 
         tablero.agregarJugador(unGladiador);
@@ -239,14 +232,22 @@ public class OcupacionesTest {
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
+        List<Casilla> camino = new ArrayList<>();
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),0,1,"camino"));
+        camino.add(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),1,1,"camino"));
+        camino.add(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),2,1,"camino"));
+        camino.add(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),3,1,"camino"));
 
-        Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
+
+
+        Tablero tablero = new Tablero(1, new Turno(30),unMapa,camino , dado);
         Posicion posicion = new Posicion(0, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),3,1,"camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),1,1,"camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),2,1,"camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),3,1,"camino"));
+
 
 
         tablero.agregarJugador(unGladiador);
@@ -266,21 +267,25 @@ public class OcupacionesTest {
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
+        List<Casilla> camino = new ArrayList<>();
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),0,1,"camino"));
+        camino.add(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),1,1,"camino"));
+        camino.add(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),2,1,"camino"));
+        camino.add(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),3,1,"camino"));
+        camino.add(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),4,1,"camino"));
 
-        Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
+
+        Tablero tablero = new Tablero(1, new Turno(30),unMapa,camino , dado);
         Posicion posicion = new Posicion(0, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
-        //Maximo de agregarCasilla 10 porque el mapa tiene ancho 10 como limite
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),1,1,"camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),2,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),3,1,"camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),3,1,"camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),4,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),5,1,"camino"));
 
 
         tablero.agregarJugador(unGladiador);
-        tablero.avanzar();
         tablero.avanzar();
         tablero.avanzar();
         tablero.avanzar();
@@ -288,167 +293,6 @@ public class OcupacionesTest {
 
 
         int longitudEsperada = 4;
-        assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
-    }
-   @Test
-    public void Test10LaListaDeCasillasTieneUnCascoYUnPremioYGladiadorGuardaDosEquipamientos() {
-
-       Mapa mapa = new Mapa();
-       mapa.mapaTest();
-       Casilla[][] unMapa = mapa.obtenerMapa();
-       DadoMock dado = new DadoMock();
-
-       Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
-       Posicion posicion = new Posicion(0, 1);
-       Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
-
-       //Maximo de agregarCasilla 10 porque el mapa tiene ancho 10 como limite
-       tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),1,1,"camino"));
-       tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"camino"));
-       tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),3,1,"camino"));
-
-        tablero.agregarJugador(unGladiador);
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-
-
-        int longitudEsperada = 2;
-        assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
-    }
-   @Test
-    public void Test11LaListaDeCasillasTieneUnCascoYDosPremiosYGladiadorGuardaTresEquipamientos() {
-
-
-       Mapa mapa = new Mapa();
-       mapa.mapaTest();
-       Casilla[][] unMapa = mapa.obtenerMapa();
-       DadoMock dado = new DadoMock();
-
-       Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
-       Posicion posicion = new Posicion(1, 1);
-       Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
-
-       //Maximo de agregarCasilla 10 porque el mapa tiene ancho 10 como limite
-       tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,1,"camino"));
-       tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),3,1,"camino"));
-       tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),4,1,"camino"));
-
-        tablero.agregarJugador(unGladiador);
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-
-
-        int longitudEsperada = 3;
-        assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
-    }
-    @Test
-    public void Test12LaListaDeCasillasTieneUnCascoYTresPremiosYGladiadorGuardaCuatroEquipamientos() {
-
-        Mapa mapa = new Mapa();
-        mapa.mapaTest();
-        Casilla[][] unMapa = mapa.obtenerMapa();
-        DadoMock dado = new DadoMock();
-
-        Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
-        Posicion posicion = new Posicion(1, 1);
-        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
-
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),3,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),5,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),6,1,"camino"));
-
-
-        tablero.agregarJugador(unGladiador);
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-
-
-        int longitudEsperada = 4;
-        assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
-    }
-    @Test
-    public void Test13LaListaDeCasillasTieneUnPremioYUnCascoYGladiadorGuardaUnEquipamiento() {
-
-        Mapa mapa = new Mapa();
-        mapa.mapaTest();
-        Casilla[][] unMapa = mapa.obtenerMapa();
-        DadoMock dado = new DadoMock();
-
-        Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
-        Posicion posicion = new Posicion(0, 1);
-        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
-
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new PremioEquipamiento(),1,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new Casco(5),2,1,"camino"));
-
-
-        tablero.agregarJugador(unGladiador);
-        tablero.avanzar();
-        tablero.avanzar();
-
-
-        int longitudEsperada = 1;
-        assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
-    }
-    @Test
-    public void Test14LaListaDeCasillasTieneDosPremiosYUnaArmaduraYGladiadorGuardaDosEquipamientos() {
-
-
-        Mapa mapa = new Mapa();
-        mapa.mapaTest();
-        Casilla[][] unMapa = mapa.obtenerMapa();
-        DadoMock dado = new DadoMock();
-
-        Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
-        Posicion posicion = new Posicion(0, 1);
-        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
-
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new Armadura(5),new NadaOcupacion(),3,1,"camino"));
-
-
-        tablero.agregarJugador(unGladiador);
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-
-
-        int longitudEsperada = 2;
-        assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
-    }
-    @Test
-    public void Test15LaListaDeCasillasTieneTresPremiosYUnaArmaduraYGladiadorGuardaTresEquipamientos() {
-
-        Mapa mapa = new Mapa();
-        mapa.mapaTest();
-        Casilla[][] unMapa = mapa.obtenerMapa();
-        DadoMock dado = new DadoMock();
-
-        Tablero tablero = new Tablero(1, new Turno(30),unMapa, dado);
-        Posicion posicion = new Posicion(1, 1);
-        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
-
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),3,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),4,1,"camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new Armadura(5),new NadaOcupacion(),5,1,"camino"));
-
-        tablero.agregarJugador(unGladiador);
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-
-
-        int longitudEsperada = 3;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
     }
 

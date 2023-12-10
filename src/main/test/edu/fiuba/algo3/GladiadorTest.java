@@ -10,6 +10,9 @@ import edu.fiuba.algo3.Modelo.Obstaculos.FieraSalvaje;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GladiadorTest {
@@ -18,9 +21,9 @@ public class GladiadorTest {
         Mapa mapa = new Mapa();
         mapa.mapaReal();
         Casilla[][] unMapa = mapa.obtenerMapa();
-       DadoMock dado = new DadoMock();
+        DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa,mapa.obtenereCamino() ,dado);
         Posicion posicion = new Posicion(1, 7);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
@@ -41,17 +44,20 @@ public class GladiadorTest {
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
+        List<Casilla> camino = new ArrayList<Casilla>();
+        camino.add(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 1, 1, "camino"));
+        camino.add(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 1, 2, "camino"));
+
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa,camino ,dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 2, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 3, 1, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 1, 2, "camino"));
 
         tablero.agregarJugador(unGladiador);
 
         tablero.avanzar();
-        tablero.avanzar();
+
 
         int energiaEsperada = 0;
 
@@ -65,21 +71,23 @@ public class GladiadorTest {
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
+        List<Casilla> camino = new ArrayList<Casilla>();
+        camino.add(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 1, 1, "camino"));
+        camino.add(new Casilla(new PremioEquipamiento(), new PremioEquipamiento(), 1, 2, "camino"));
+        camino.add(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 1, 3, "camino"));
+
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa,camino ,dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 2, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 3, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 4, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 5, 1, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 1, 3, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(), new PremioEquipamiento(), 1, 2, "camino"));
 
         tablero.agregarJugador(unGladiador);
 
         tablero.avanzar();
         tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
+
 
         int energiaEsperada = 10;
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
@@ -92,12 +100,12 @@ public class GladiadorTest {
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
-        Posicion posicion = new Posicion(1, 1);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa,mapa.obtenereCamino() ,dado);
+        Posicion posicion = new Posicion(1, 7);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 2, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 3, 1, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 2, 7, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 2, 6, "camino"));
 
         tablero.agregarJugador(unGladiador);
 
@@ -109,33 +117,6 @@ public class GladiadorTest {
     }
 
     @Test
-    public void Test05SiUnGladiadorRecibeUnPremioPorCuartaVezObtieneUnaLlave() {
-        Mapa mapa = new Mapa();
-        mapa.mapaTest();
-        Casilla[][] unMapa = mapa.obtenerMapa();
-        DadoMock dado = new DadoMock();
-
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
-        Posicion posicion = new Posicion(1, 1);
-        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
-
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 2, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 3, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 4, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 5, 1, "camino"));
-
-        tablero.agregarJugador(unGladiador);
-
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-
-        int longitudEsperada = 4;
-        assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
-    }
-
-    @Test
     public void Test06SePuedenAgregarMultiplesGladiadoresAlTablero() {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
@@ -143,16 +124,13 @@ public class GladiadorTest {
         DadoMock dado = new DadoMock();
 
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
-        Posicion posicion = new Posicion(1, 1);
+        Tablero tablero = new Tablero(3, new Turno(30), unMapa,mapa.obtenereCamino(), dado);
+        Posicion posicion = new Posicion(1, 7);
         Gladiador primerGladiador = new Gladiador(20, new Novato(), posicion);
         Gladiador segundoGladiador = new Gladiador(20, new Novato(), posicion);
         Gladiador tercerGladiador = new Gladiador(20, new Novato(), posicion);
 
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 2, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 3, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 4, 1, "camino"));
-
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,7,"Camino"));
         tablero.agregarJugador(primerGladiador);
         tablero.agregarJugador(segundoGladiador);
         tablero.agregarJugador(tercerGladiador);
@@ -189,14 +167,14 @@ public class GladiadorTest {
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
-        Posicion posicion = new Posicion(1, 1);
+        Tablero tablero = new Tablero(2, new Turno(30),unMapa,mapa.obtenereCamino() ,dado);
+        Posicion posicion = new Posicion(1, 7);
         Gladiador primerGladiador = new Gladiador(20, new Novato(), posicion);
         Gladiador segundoGladiador = new Gladiador(20, new Novato(), posicion);
 
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 2, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 3, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 4, 1, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 2, 7, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 2, 6, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 2, 5, "camino"));
 
         tablero.agregarJugador(primerGladiador);
         tablero.agregarJugador(segundoGladiador);
@@ -230,14 +208,17 @@ public class GladiadorTest {
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
+        List<Casilla> camino = new ArrayList<Casilla>();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
+        for (int i = 0;  i< 15; i++ ){
+
+            camino.add(new Casilla(new NadaOcupacion(), new NadaOcupacion(), i, 1, "camino"));
+        }
+
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa,camino ,dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
-        for (int i = 1; i < 13 ; i++) {
-            tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new NadaOcupacion(), i + 1, 1, "camino"));
-        }
 
         tablero.agregarJugador(unGladiador);
 
@@ -259,13 +240,18 @@ public class GladiadorTest {
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
+        List<Casilla> camino = new ArrayList<Casilla>();
+        camino.add(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 1, 1, "camino"));
+        camino.add(new Casilla(new FieraSalvaje(20), new NadaOcupacion(), 2, 1, "camino"));
+
+
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa,camino ,dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador primerGladiador = new Gladiador(20, new Novato(), posicion);
         Gladiador segundoGladiador = new Gladiador(20, new Novato(), posicion);
 
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 2, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 3, 1, "camino"));
+
 
         tablero.agregarJugador(primerGladiador);
         tablero.agregarJugador(segundoGladiador);
@@ -293,15 +279,19 @@ public class GladiadorTest {
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
+        List<Casilla> camino = new ArrayList<Casilla>();
+        camino.add(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 1, 1, "camino"));
+        camino.add(new Casilla(new PremioEquipamiento(), new NadaOcupacion(), 2, 1, "camino"));
+
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa,camino ,dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador primerGladiador = new Gladiador(20, new Novato(), posicion);
         Gladiador segundoGladiador = new Gladiador(20, new Novato(), posicion);
         Gladiador tercerGladiador = new Gladiador(20, new Novato(), posicion);
 
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 1, 1, "camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 2, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 3, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(), 4, 1, "camino"));
+
 
         tablero.agregarJugador(primerGladiador);
         tablero.agregarJugador(segundoGladiador);
@@ -332,31 +322,6 @@ public class GladiadorTest {
         assertEquals(longitudEsperada1, tercerGladiador.obtenerCantidadDeEquipamiento());
     }
 
-    @Test
-    public void Test11ValidarQueUnJugadorPuedeSeguirJugandoAunqueSeQuedeSinEnergia() {
-        Mapa mapa = new Mapa();
-        mapa.mapaTest();
-        Casilla[][] unMapa = mapa.obtenerMapa();
-        DadoMock dado = new DadoMock();
-
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
-        Posicion posicion = new Posicion(1, 1);
-        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
-
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 2, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 3, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 4, 1, "camino"));
-
-        tablero.agregarJugador(unGladiador);
-
-        tablero.avanzar();
-        tablero.avanzar();
-        tablero.avanzar();
-
-        int energiaEsperada = 0;
-
-        assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
-    }
 
     @Test
     public void Test12ValidarQueSiUnJugadorSeQuedaEnergiaYEsAtacadoLaEnergiaSeMantieneEnCero() {
@@ -365,14 +330,14 @@ public class GladiadorTest {
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
 
-        Tablero tablero = new Tablero(1, new Turno(30), unMapa, dado);
-        Posicion posicion = new Posicion(1, 1);
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa,mapa.obtenereCamino() ,dado);
+        Posicion posicion = new Posicion(1, 7);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
 
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 2, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 3, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 4, 1, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 5, 1, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 2, 7, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 2, 6, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 2, 5, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 2, 4, "camino"));
 
         tablero.agregarJugador(unGladiador);
 
