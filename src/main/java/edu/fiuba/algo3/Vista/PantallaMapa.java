@@ -98,13 +98,11 @@ public class PantallaMapa extends BorderPane implements Observable {
         Mapa mapa = new Mapa();
         mapa.mapaReal();
         Casilla[][] unMapa = mapa.obtenerMapa();
-<<<<<<< HEAD
+
         Dado dado = new DadoMock();
 
-        Tablero tablero = new Tablero(gladiadores.size(),new Turno(30),unMapa,dado);
-=======
         Tablero tablero = new Tablero(gladiadores.size(),new Turno(30),unMapa,mapa.obtenereCamino(),dado);
->>>>>>> master
+
 
         for (Gladiador gladiador : gladiadores) {
             tablero.agregarJugador(gladiador);
