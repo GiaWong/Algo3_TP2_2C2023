@@ -24,6 +24,7 @@ public class Tablero {
 
     }
     public void agregarCasillaAlMapa(Casilla unaCasilla) {
+        this.camino.add(unaCasilla);
         this.mapa[unaCasilla.obtenerposicionEnX()][unaCasilla.obtenerposicionEny()] = unaCasilla;
     }
 

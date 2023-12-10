@@ -24,7 +24,6 @@ public class CasosDeUsosEntregaUno {
          Mapa mapa = new Mapa();
          mapa.mapaTest();
          Casilla[][] unMapa = mapa.obtenerMapa();
-        List<Casilla> camino = new ArrayList<>();
         Posicion posicion = new Posicion(1, 1);
 
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
@@ -42,19 +41,15 @@ public class CasosDeUsosEntregaUno {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-
         DadoMock dado = new DadoMock();
         List<Casilla> camino = new ArrayList<>();
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,2,"CAMINO"));
 
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
-
         Tablero tablero = new Tablero(1, new Turno(30),unMapa,camino,dado);
 
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,2,"CAMINO"));
-
 
         tablero.agregarJugador(unGladiador);
         tablero.avanzar();
@@ -73,19 +68,18 @@ public class CasosDeUsosEntregaUno {
 
         Casilla[][] unMapa = mapa.obtenerMapa();
         Posicion posicion = new Posicion(1, 1);
-         Gladiador unGladiador = new Gladiador(0, new Novato(), posicion);
+        Gladiador unGladiador = new Gladiador(0, new Novato(), posicion);
 
         Tablero tablero = new Tablero(1, new Turno(30),unMapa, camino,dado);
-
 
         tablero.agregarJugador(unGladiador);
 
         tablero.avanzar();
 
         int posicionEsperadaEnX = 1;
-         int posicionEsperadaEnY = 1;
+        int posicionEsperadaEnY = 1;
         assertEquals(posicionEsperadaEnX, unGladiador.obtenerPosicionEnX());
-         assertEquals(posicionEsperadaEnY, unGladiador.obtenerPosicionEnY());
+        assertEquals(posicionEsperadaEnY, unGladiador.obtenerPosicionEnY());
 
 
     }
@@ -99,13 +93,13 @@ public class CasosDeUsosEntregaUno {
         DadoMock dado = new DadoMock();
 
         List<Casilla> camino = new ArrayList<>();
-        camino.add(new Casilla(new Comida(15),new NadaOcupacion(),1,1,"CAMINO"));
-        camino.add(new Casilla(new Comida(15),new NadaOcupacion(),1,2,"CAMINO"));
 
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
 
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino,dado);
+
+        tablero.agregarCasillaAlMapa(new Casilla(new Comida(15),new NadaOcupacion(),1,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new Comida(15),new NadaOcupacion(),1,2,"CAMINO"));
 
 
@@ -125,18 +119,19 @@ public class CasosDeUsosEntregaUno {
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
         List<Casilla> camino = new ArrayList<>();
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
-        camino.add(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,1,"CAMINO"));
+
 
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino,dado);
+
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,1,"CAMINO"));
 
 
         tablero.agregarJugador(unGladiador);
-
         tablero.avanzar();
+
         int longitudEsperada = 1;
         assertEquals(longitudEsperada, unGladiador.obtenerCantidadDeEquipamiento());
     }
@@ -151,13 +146,11 @@ public class CasosDeUsosEntregaUno {
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
         List<Casilla> camino = new ArrayList<>();
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"camino"));
-        camino.add(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,2,"camino"));
-        camino.add(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,3,"camino"));
-        camino.add(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,4,"camino"));
 
         Posicion posicion = new Posicion(1, 1);
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino, dado);
+
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,2,"camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,3,"camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,4,"camino"));
@@ -185,11 +178,11 @@ public class CasosDeUsosEntregaUno {
         Casilla[][] unMapa = mapa.obtenerMapa();
         DadoMock dado = new DadoMock();
         List<Casilla> camino = new ArrayList<>();
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
-        camino.add(new Casilla(new FieraSalvaje(20),new PremioEquipamiento(),1,2,"CAMINO"));
 
         Posicion posicion = new Posicion(1, 1);
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino ,dado);
+
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(20),new PremioEquipamiento(),1,2,"CAMINO"));
 
 
@@ -214,21 +207,12 @@ public class CasosDeUsosEntregaUno {
         Posicion posicion = new Posicion(1, 1);
         DadoMock dado = new DadoMock();
         List<Casilla> camino = new ArrayList<>();
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),3,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),5,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),6,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),7,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),8,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),9,1,"CAMINO"));
-
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino , dado);
-
 
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
+
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
 
          tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"CAMINO"));
          tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),3,1,"CAMINO"));
@@ -290,14 +274,12 @@ public class CasosDeUsosEntregaUno {
         DadoMock dado = new DadoMock();
         List<Casilla> camino = new ArrayList<>();
 
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
-        camino.add(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
-        camino.add(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
-        camino.add(new Casilla(new FieraSalvaje(20),new NadaOcupacion(),4,1,"CAMINO"));
-
         Casilla[][] unMapa = mapa.obtenerMapa();
         Posicion posicion = new Posicion(1, 1);
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino , dado);
+
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
+
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
 
@@ -329,12 +311,10 @@ public class CasosDeUsosEntregaUno {
         Dado dado = new DadoMock();
         List<Casilla> camino = new ArrayList<>();
 
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
-        camino.add(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
-        camino.add(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
-        camino.add(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),4,1,"CAMINO"));
-
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino , dado);
+
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
+
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),4,1,"CAMINO"));
@@ -360,48 +340,7 @@ public class CasosDeUsosEntregaUno {
         Casilla[][] unMapa = mapa.obtenerMapa();
         Posicion posicion = new Posicion(1, 7);
         Dado dado = new DadoMock();
-
         List<Casilla> camino = new ArrayList<Casilla>();
-
-       //Haré manualmente porque l mapaTst me limita l tamaño de la matriz
-
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,7,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,7,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,6,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,5,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,4,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,3,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,2,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),3,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),5,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),6,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),7,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),8,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),9,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),10,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),11,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,1,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,2,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,3,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,4,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,5,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,6,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,7,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,8,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),12,9,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),13,9,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),14,9,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),15,9,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),16,9,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,9,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,8,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,7,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,6,"CAMINO"));
-        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,5,"CAMINO"));
-
-
 
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino ,dado);
 
