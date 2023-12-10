@@ -25,18 +25,23 @@ public class CasosDeUsoEntregaTres {
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
-        Posicion posicion = new Posicion(2, 1);
+        Posicion posicion = new Posicion(1, 1);
         Dado dado = new DadoMock();
 
         List<Casilla> camino = new ArrayList<Casilla>();
-        /*camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
+
+        /*
+        En vez de hacer eso, fijate que en el metodo tablero.agregarCasillaAlMapa() ahí ya se agrega:
+
+        camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
         camino.add(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
         camino.add(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
         camino.add(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"CAMINO"));*/
 
-
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino ,dado);
-        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
+
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),1,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"LLEGDA"));
 
@@ -45,13 +50,13 @@ public class CasosDeUsoEntregaTres {
 
         tablero.avanzar();
         tablero.avanzar();
-        //tablero.avanzar();
+        tablero.avanzar();
 
         int coordenadaX= 4;
         int coordenadaY= 1;
         assertEquals(coordenadaX, unGladiador.obtenerPosicionEnX());
         assertEquals(coordenadaY, unGladiador.obtenerPosicionEnY());
-        //
+
     }
 
     public void Test20SimulamosYVerificamosQueElJugadorPierda() {
