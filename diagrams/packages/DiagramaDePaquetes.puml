@@ -1,0 +1,104 @@
+@startuml
+
+package "Controlador" {
+  package "ManejarJson" {
+    component DeserializadorJSON
+  }
+  component ControladorJugadores
+}
+
+package "Movimiento" {
+  component Direccion
+  component Posicion
+}
+
+package "Casillas" {
+  component Camino
+  component Casilla
+  component Llegada
+  component NadaOcupacion
+  component Ocupable
+}
+
+package "Dados" {
+  component Dado
+  component DadoMock
+  component DadoReal
+}
+
+package "Equipamientos" {
+  component Armadura
+  component Casco
+  component Equipado
+  component EscudoYEspada
+  component Llave
+  component PremioEquipamiento
+}
+
+package "Obstaculos" {
+  component Bacanal
+  component FieraSalvaje
+  component Lesion
+  component Obstaculizador
+}
+
+package "PatronState" {
+  component Estado
+  component EstadoConDosEquipamientos
+  component EstadoConTresEquipamientos
+  component EstadoConUnEquipamiento
+  component EstadoSinEquipamiento
+  component ManejarEquipamiento
+}
+
+package "Premios" {
+  component Comida
+  component Premio
+}
+
+package "Seniority" {
+  component Novato
+  component Semisenior
+  component Senior
+  [Seniority] as Comp4
+}
+
+component Tablero {
+  Tablero --> "Casillas"
+  Tablero --> "Dados"
+}
+
+component Mapa {
+  Mapa --> "Casillas"
+  Mapa --> "ManejarJson"
+}
+
+component Gladiador {
+  Gladiador --> "Casillas"
+  Gladiador --> "Equipamientos"
+  Gladiador --> "Movimiento"
+  Gladiador --> "Obstaculos"
+  Gladiador --> "PatronState"
+  Gladiador --> "Seniority"
+}
+
+component Turno {
+  "Obstaculos" --> Turno
+}
+
+"ManejarJson" --> "Casillas"
+"ManejarJson" --> "Equipamientos"
+"ManejarJson" --> "Obstaculos"
+"ManejarJson" --> "Premios"
+"Casillas" --> Gladiador
+"Equipamientos" --> Gladiador
+"Equipamientos" --> "Casillas"
+"Movimiento" --> "Casillas"
+"Obstaculos" --> "Casillas"
+"Obstaculos" --> "Dados"
+"Obstaculos" --> Gladiador
+"Premios" --> Gladiador
+"Premios" --> "Casillas"
+"PatronState" --> "Equipamientos"
+
+@enduml

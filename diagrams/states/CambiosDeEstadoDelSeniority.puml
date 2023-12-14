@@ -1,0 +1,21 @@
+@startuml
+
+[*] --> Novato
+Novato : Gladiador comienza como "Novato"
+
+Novato -down-> Semisenior : Transición tras 8 turnos
+Semisenior : Gladiador cambia a "Semisenior"
+
+Semisenior -down-> Senior : Transición tras 12 turnos
+Senior : Gladiador cambia a "Senior"
+
+Senior -right-> Ganador : Llega a Pompeya con equipamiento\ncompleto en < 30 turnos
+Ganador : Gladiador gana la partida
+
+Senior -left-> Perdedor : > 30 turnos sin llegar a Pompeya
+Perdedor : Gladiador pierde la partida
+
+Ganador -down-> [*] : Fin de la partida
+Perdedor -down-> [*] : Fin de la partida
+
+@enduml

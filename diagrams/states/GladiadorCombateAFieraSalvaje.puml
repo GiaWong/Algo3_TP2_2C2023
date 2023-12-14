@@ -1,0 +1,14 @@
+@startuml
+
+[*] --> Inicio
+Inicio : Gladiador comienza el juego con 20 puntos de energia
+
+Inicio -down-> Premio : Lanza los dados y avanza turno
+Premio : Gladiador obtiene un Casco
+
+Premio -down-> Obstaculo : Lanza los dados y avanza turno
+Obstaculo : Gladiador se topa con una Fiera
+
+Obstaculo -down-> [*] : La energia se ve afectada\ny pierde 15 puntos
+
+@enduml
