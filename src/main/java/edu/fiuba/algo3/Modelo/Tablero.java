@@ -11,8 +11,6 @@ public class Tablero {
     private Turno turno;
     private Casilla[][] mapa;
     private Dado dado;
-    private  int casillaMetaPosicionX;
-    private int casillaMetaPosicionY;
 
     private List<Casilla> camino;
 
@@ -23,8 +21,7 @@ public class Tablero {
         this.mapa = unMapa;
         this.dado = dado;
         this.camino = camino;
-        this.casillaMetaPosicionX=0;
-        this.casillaMetaPosicionY=0;
+
 
     }
     public void agregarCasillaAlMapa(Casilla unaCasilla) {
@@ -68,30 +65,12 @@ public class Tablero {
 
     public void validarGanador(Gladiador unGladiador){
 
-
-
         if (!camino.isEmpty()) {
             Casilla casillaMeta= camino.get(camino.size() - 1);// Obtener el último elemento
-
-            casillaMetaPosicionX = casillaMeta.obtenerposicionEnX();
-            casillaMetaPosicionY = casillaMeta.obtenerposicionEny();
-
-            //si se lleegó a la meta
-            if(unGladiador.obtenerPosicionEnX()== casillaMetaPosicionX && unGladiador.obtenerPosicionEnY() == casillaMetaPosicionY){
-                if (unGladiador.obtenerCantidadDeEquipamiento() ==4 ){
-                    System.out.println("\n\n===== El jugador gano =====");
-                }else {
-                    System.out.println("\n\n===== LLegó a la meta sin equipamiento completo =====");
-                    unGladiador.retroceder(camino);
-                }
-            }
-
+            unGladiador.validarLLegadaALaMeta(casillaMeta.obtenerposicionEnX(),casillaMeta.obtenerposicionEny(), camino);
         } else {
             System.out.println("La lista de Caminos está vacía.");
         }
-
-
-
     }
 
     private void reiniciarTodoLosValores(){

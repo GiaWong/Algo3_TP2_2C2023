@@ -112,4 +112,16 @@ public class Gladiador {
         this.lesionado = false;
     }
     public boolean estaLesionado(){return this.lesionado;}
+
+    public void validarLLegadaALaMeta(int casillaMetaPosicionX, int casillaMetaPosicionY, List<Casilla> camino) {
+        //si se lleegó a la meta
+        if(posicion.obtenerX()== casillaMetaPosicionX && posicion.obtenerY() == casillaMetaPosicionY){
+            if (obtenerCantidadDeEquipamiento() ==4 ){
+                System.out.println("\n\n===== El jugador gano =====");
+            }else {
+                System.out.println("\n\n===== LLegó a la meta sin equipamiento completo =====");
+                retroceder(camino);
+            }
+        }
+    }
 }
