@@ -1,0 +1,74 @@
+@startuml
+
+title Segunda parte
+
+"testcase:TestCase"-> "tablero:Tablero":avanzar()
+activate "tablero:Tablero"
+
+activate "casillaActual:Casilla"
+"tablero:Tablero"->"casillaActual:Casilla":interactuarConLaOcupacion(gladiador)
+
+activate "unaOcupacion:Ocupacion"
+"casillaActual:Casilla" -> "unaOcupacion:Ocupacion":interactuarConLaOcupacion(gladiador)
+
+activate "turno:Turno"
+"unaOcupacion:Ocupacion"-> "turno:Turno": perderSiguienteTurno(gladiador)
+
+activate "gladiador:Gladiador"
+"turno:Turno"-> "gladiador:Gladiador":lesionar()
+"gladiador:Gladiador"-->"turno:Turno"
+deactivate "gladiador:Gladiador"
+
+"turno:Turno"-->"unaOcupacion:Ocupacion":gladiador
+deactivate "turno:Turno"
+
+"unaOcupacion:Ocupacion"-->"casillaActual:Casilla":gladiador
+deactivate "unaOcupacion:Ocupacion"
+
+
+activate "otraOcupacion:Ocupacion"
+"casillaActual:Casilla" -> "otraOcupacion:Ocupacion":interactuarConLaOcupacion(gladiador)
+"otraOcupacion:Ocupacion"--> "casillaActual:Casilla":gladiador
+deactivate "otraOcupacion:Ocupacion"
+
+note right "otraOcupacion:Ocupacion": interactua con una casilla\n con "NadaOacupacion"
+"casillaActual:Casilla" --> "tablero:Tablero":gladiador
+deactivate "casillaActual:Casilla"
+deactivate "tablero:Tablero"
+
+
+"testcase:TestCase"-> "tablero:Tablero":avanzar()
+activate "tablero:Tablero"
+note right "tablero:Tablero":Misma secuencia que antes para el turno
+"tablero:Tablero"->"tablero:Tablero":validarTurno(gladiador)
+
+activate "turno:Turno"
+"tablero:Tablero"->"turno:Turno":jugar(gladiador)
+
+activate "gladiador:Gladiador"
+"turno:Turno"-> "gladiador:Gladiador":rehabilitar()
+deactivate "gladiador:Gladiador"
+note right "gladiador:Gladiador":rehabilito para el proximo turno
+
+
+"turno:Turno" -->"tablero:Tablero":false
+deactivate "turno:Turno"
+deactivate "tablero:Tablero"
+
+
+"testcase:TestCase" -> "gladiador:Gladiador":obtenerPosicionEnX()
+
+activate "gladiador:Gladiador"
+"gladiador:Gladiador"--> "testcase:TestCase":posicionEnX
+deactivate "gladiador:Gladiador"
+
+"testcase:TestCase" -> "gladiador:Gladiador":obtenerPosicionEnY()
+
+activate "gladiador:Gladiador"
+"gladiador:Gladiador"--> "testcase:TestCase":posicionEnY
+deactivate "gladiador:Gladiador"
+
+note left "testcase:TestCase":Con lasposiciones vemos que\n perdio el turno
+
+
+@enduml

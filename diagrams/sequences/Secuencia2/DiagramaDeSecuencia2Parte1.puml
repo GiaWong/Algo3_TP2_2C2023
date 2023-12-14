@@ -1,0 +1,48 @@
+@startuml
+
+title Primera parte
+
+
+"testcase:TestCase"-> "tablero:Tablero":avanzar()
+
+activate "tablero:Tablero"
+"tablero:Tablero"-> "dado:Dado":lanzarDado()
+
+activate "dado:Dado"
+"dado:Dado"-->"tablero:Tablero":cantidadAMoverse
+deactivate "dado:Dado"
+
+activate "turno:Turno"
+"tablero:Tablero"->"turno:Turno":siguienteTurno(gladiadores)
+"turno:Turno"-->"tablero:Tablero":gladiador
+deactivate "turno:Turno"
+
+"tablero:Tablero"->"tablero:Tablero":validarTurno(gladiador)
+
+activate "turno:Turno"
+"tablero:Tablero"->"turno:Turno":jugar(gladiador)
+note right "turno:Turno": Verifico\n energia >0 && lesion = false
+"turno:Turno"-->"tablero:Tablero":true
+deactivate "turno:Turno"
+
+activate "ungladiador:Gladiador"
+"tablero:Tablero"-> "ungladiador:Gladiador":avanzar(cantidadAMoverse,camino)
+
+activate "posicion:Posicion"
+
+"ungladiador:Gladiador" -> "posicion:Posicion":PosicionSiguiente(camino,direccion,cantidadAMoverse)
+
+activate "direccion:Direccion"
+"posicion:Posicion"->"direccion:Direccion":proximaPosicion(camino,posicion,cantidadAMoverse)
+"direccion:Direccion"-->"posicion:Posicion":nuevaPosicion
+"posicion:Posicion"-->"ungladiador:Gladiador":nuevaPosicion
+deactivate "direccion:Direccion"
+deactivate "posicion:Posicion"
+deactivate "ungladiador:Gladiador"
+
+activate "mapa:Mapa"
+"tablero:Tablero"->"mapa:Mapa":siguienteCasilla(posicion)
+"mapa:Mapa"-->"tablero:Tablero":casillaActual
+deactivate "mapa:Mapa"
+
+@enduml
