@@ -52,6 +52,10 @@ public class Mapa {
         this.mapa   = matriz;
         this.camino = listaDeCasillasJSON;
     }
+
+    public Casilla siguienteCasilla(Gladiador unGladiador){
+        return mapa[unGladiador.obtenerPosicionEnX()][unGladiador.obtenerPosicionEnY()];
+    }
     public Casilla[][] obtenerMapa(){
         return mapa;
     }
