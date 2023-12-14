@@ -2,29 +2,21 @@ package edu.fiuba.algo3.Vista;
 
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Dados.Dado;
-import edu.fiuba.algo3.Modelo.Dados.DadoMock;
 import edu.fiuba.algo3.Modelo.Dados.DadoReal;
 import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Mapa;
-import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
 import edu.fiuba.algo3.Modelo.Tablero;
 import edu.fiuba.algo3.Modelo.Turno;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import javafx.scene.layout.Pane;
-
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class PantallaMapa extends BorderPane implements Observable {
@@ -101,7 +93,6 @@ public class PantallaMapa extends BorderPane implements Observable {
         Casilla[][] unMapa = mapa.obtenerMapa();
 
         Dado dado = new DadoReal();
-
         Tablero tablero = new Tablero(gladiadores.size(),new Turno(30),unMapa,mapa.obtenereCamino(),dado);
 
 
@@ -110,9 +101,6 @@ public class PantallaMapa extends BorderPane implements Observable {
         }
         return tablero;
     }
-
-
-
 
 
 

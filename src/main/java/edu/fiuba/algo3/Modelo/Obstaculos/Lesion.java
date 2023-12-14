@@ -17,7 +17,6 @@ public class Lesion implements Obstaculizador, Ocupable {
 
     @Override
     public Gladiador interactuarConLaOcupacion(Gladiador unGladiador) {
-        System.out.println("\nEntró a Lesion");
         Turno.perderSiguienteTurno(unGladiador);
         return  unGladiador;
     }

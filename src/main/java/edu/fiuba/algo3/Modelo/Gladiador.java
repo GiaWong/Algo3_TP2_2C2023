@@ -36,6 +36,7 @@ public class Gladiador {
     }
     public void avanzar(int cantidadAMoverse,List<Casilla> camino) {
        posicion = posicion.PosicionSiguien(camino,direccion,cantidadAMoverse);
+       System.out.println("\n Se avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
 
     }
 
@@ -43,6 +44,8 @@ public class Gladiador {
     public void retroceder(List<Casilla> camino) {
         Casilla mitadDeCamino = camino.get(camino.size()/2);
         posicion = new Posicion(mitadDeCamino.obtenerposicionEnX(), mitadDeCamino.obtenerposicionEny());
+        System.out.println("\n Se retrocedió a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
+
     }
 
     public int obtenerPosicionEnX() {
@@ -66,7 +69,6 @@ public class Gladiador {
     }
 
     private List<Equipado> filtrarRepetidos() {
-        System.out.println("\n==> Filtrando equipamientos repetidos ... ok");
         return listaDeEquipamiento.stream()
                 .filter(distinguirPorClases())
                 .collect(Collectors.toList());
@@ -78,9 +80,7 @@ public class Gladiador {
     }
 
     public void agregarEquipamiento(Equipado equipamiento){
-        System.out.println("\nse guarda equipamiento");
             listaDeEquipamiento.add(equipamiento);
-
     }
 
     public void combatir(Obstaculizador unObstaculo) {

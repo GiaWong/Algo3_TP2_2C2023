@@ -1,10 +1,6 @@
 package edu.fiuba.algo3.Modelo.Movimiento;
 
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
-import javafx.geometry.Pos;
-
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Direccion {
@@ -17,13 +13,6 @@ public class Direccion {
         this.direccionEnY = direccionEnY;
     }
 
-    public int getFila() {
-        return direccionEnX;
-    }
-
-    public int getColumna() {
-        return direccionEnY;
-    }
 
     public Posicion proximaPosicion(List<Casilla> camino, Posicion posicion,int cantidadAMoverse) {
 

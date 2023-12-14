@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.Modelo;
 
-import edu.fiuba.algo3.Modelo.Seniority.Semisenior;
 import java.util.ArrayList;
 
 public class Turno {
@@ -41,7 +40,9 @@ public class Turno {
     }
 
     public static void perderSiguienteTurno(Gladiador unGladiador){
+
         unGladiador.lesionar();
+        System.out.println("\n Entró a Lesion:  Pierde un turno ... ");
     }
 }
 
