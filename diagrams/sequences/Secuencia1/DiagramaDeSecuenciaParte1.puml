@@ -1,0 +1,42 @@
+@startuml
+
+title Primera Parte
+
+
+
+":TestCase" ->"tablero:Tablero":avanzar()
+activate "tablero:Tablero"
+
+activate "dado:Dado"
+"tablero:Tablero" -> "dado:Dado":lanzarDado()
+"dado:Dado" -->"tablero:Tablero":cantidadAMoverse
+deactivate "dado:Dado"
+
+activate "turno:Turno"
+"tablero:Tablero" -> "turno:Turno":siguienteTurno(Gladiadores)
+"turno:Turno" --> "tablero:Tablero":gladadiador
+deactivate "turno:Turno"
+
+
+"tablero:Tablero"->"tablero:Tablero":validarTurno(gladiador)
+
+activate "gladiador:Gladiador"
+"tablero:Tablero"-> "gladiador:Gladiador":avanzar(cantidadAMoverse,caminio)
+"gladiador:Gladiador"-> "posicion:Posicion":posicionSiguiente(cantidadAMoverse,camino)
+
+activate "posicion:Posicion"
+activate "direccion:Direccion"
+"posicion:Posicion" -> "direccion:Direccion":proximaPosicion(camino,cantidadAMoverse)
+"direccion:Direccion" --> "posicion:Posicion":nuevaPosicion
+deactivate "direccion:Direccion"
+deactivate "posicion:Posicion"
+
+"posicion:Posicion"--> "gladiador:Gladiador":nuevaPosicion
+deactivate "gladiador:Gladiador"
+
+activate "mapa:Mapa"
+"tablero:Tablero" -> "mapa:Mapa":siguienteCasilla(posicion)
+"mapa:Mapa" -->"tablero:Tablero":casillaActual
+deactivate "mapa:Mapa"
+
+@enduml
