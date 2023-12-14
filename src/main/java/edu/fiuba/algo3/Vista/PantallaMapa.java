@@ -15,6 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 
@@ -53,6 +55,12 @@ public class PantallaMapa extends BorderPane implements Observable {
                 Label label = new Label(/*"(" + j + "," + i + ")"*/);
                 label.setMinSize(tamanoCasilla, tamanoCasilla);
                 label.setStyle("-fx-border-color: black;");
+                if (j == 1 && i == 4 || j == 2 && i == 4 || j == 2 && i == 5 || j == 2 && i == 6 || j == 2 && i == 7 || j == 2 && i == 8|| j == 2 && i == 9|| j == 2 && i == 10 || j == 3 && i == 10|| j == 4 && i == 10|| j == 5 && i == 10 || j == 6 && i == 10|| j == 7 && i == 10|| j == 8 && i == 10|| j == 9 && i == 10|| j == 10 && i == 10|| j == 11 && i == 10|| j == 12 && i == 10|| j == 12 && i == 9|| j == 12 && i == 8|| j == 12 && i == 7|| j == 12 && i == 6|| j == 12 && i == 5|| j == 12 && i == 4|| j == 12 && i == 3|| j == 12 && i == 2|| j == 13 && i == 2|| j == 14 && i == 2|| j == 15 && i == 2|| j == 16 && i == 2|| j == 17 && i == 2|| j == 17 && i == 3|| j == 17 && i == 4|| j == 17 && i == 5|| j == 17 && i == 6|| j == 17 && i == 7|| j == 17 && i == 8|| j == 17 && i == 9|| j == 17 && i == 10) {
+                    setColor(label, Color.LIGHTGRAY);
+                }
+                else{
+                    setColor(label, Color.LIGHTGREEN);
+                }
                 gridMapa.add(label, j - 1, ancho - i);
             }
         }
@@ -100,6 +108,10 @@ public class PantallaMapa extends BorderPane implements Observable {
             tablero.agregarJugador(gladiador);
         }
         return tablero;
+    }
+
+    private void setColor(Region region, Color color) {
+        region.setBackground(new javafx.scene.layout.Background(new javafx.scene.layout.BackgroundFill(color, null, null)));
     }
 
 
