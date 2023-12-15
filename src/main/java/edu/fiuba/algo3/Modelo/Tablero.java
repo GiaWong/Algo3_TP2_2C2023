@@ -44,12 +44,9 @@ public class Tablero {
 
         if (this.validarTurno(ungladiador)) {
 
-
-
             ungladiador.avanzar(cantidadAMoverse,camino);
             validarGanador(ungladiador);
             Casilla casillaActual = mapa[ungladiador.obtenerPosicionEnX()][ungladiador.obtenerPosicionEnY()];
-            //System.out.println("\n Se avanza a la casilla: (" + casillaActual.obtenerposicionEnX() + "," + casillaActual.obtenerposicionEny() + ")");
             ungladiador = casillaActual.interactuarConLaOcupacion(ungladiador);
         }
     }

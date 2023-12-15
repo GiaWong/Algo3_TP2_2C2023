@@ -1,0 +1,36 @@
+@startuml
+
+
+":TestCase" ->"tablero:Tablero":avanzar()
+
+activate "tablero:Tablero"
+"tablero:Tablero" -> "casillaActual:Casilla":interactuarConLaOcupacion(gladiador)
+
+activate "casillaActual:Casilla"
+
+activate "unaOcupacion:Ocupacion"
+"casillaActual:Casilla" ->"unaOcupacion:Ocupacion":interactuarConLaOcupacion(gladiador)
+"unaOcupacion:Ocupacion"-->"casillaActual:Casilla":gladiador
+deactivate "unaOcupacion:Ocupacion"
+
+activate "otraOcupacion:Ocupacion"
+"casillaActual:Casilla"->"otraOcupacion:Ocupacion":interactuarConLaOcupacion(gladiador)
+"otraOcupacion:Ocupacion"--> "casillaActual:Casilla":gladiador
+deactivate "otraOcupacion:Ocupacion"
+
+"casillaActual:Casilla" --> "tablero:Tablero":gladiador
+deactivate "casillaActual:Casilla"
+deactivate "tablero:Tablero"
+
+
+":TestCase"-> "tablero:Tablero":obtenerEnergia()
+activate "tablero:Tablero"
+
+"tablero:Tablero"->"gladiador:Gladiador":obtenerEnergia()
+activate "gladiador:Gladiador"
+"gladiador:Gladiador"-->"tablero:Tablero":energia
+deactivate "gladiador:Gladiador"
+
+"tablero:Tablero" -->":TestCase":energia
+deactivate "tablero:Tablero"
+@enduml

@@ -116,6 +116,7 @@ public class Gladiador {
     public void validarLLegadaALaMeta(int casillaMetaPosicionX, int casillaMetaPosicionY, List<Casilla> camino) {
         //si se lleegó a la meta
         if(posicion.obtenerX()== casillaMetaPosicionX && posicion.obtenerY() == casillaMetaPosicionY){
+
             if (obtenerCantidadDeEquipamiento() ==4 ){
                 System.out.println("\n\n===== El jugador gano =====");
             }else {
