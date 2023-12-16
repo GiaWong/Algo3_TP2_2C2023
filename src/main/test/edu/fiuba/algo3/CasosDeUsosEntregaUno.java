@@ -399,8 +399,8 @@ public class CasosDeUsosEntregaUno {
             tablero.avanzar();
         }
 
-        boolean juegoTerminado= true;
-        assertEquals(juegoTerminado, tablero.FinalizarJuego());
+        boolean gladiadorGanaPartida = false;
+        assertEquals(gladiadorGanaPartida, tablero.gladiadorGanaPartida());
 
     }
 

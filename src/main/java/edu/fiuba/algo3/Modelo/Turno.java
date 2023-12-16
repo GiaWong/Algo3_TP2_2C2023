@@ -7,7 +7,6 @@ public class Turno {
     private int maximaCantidadDeTurnos;
 
     public  Turno(int maximaCantidad){
-
         this.maximaCantidadDeTurnos = maximaCantidad;
         this.turnoActual = 0;
     }
@@ -27,22 +26,12 @@ public class Turno {
     }
 
     public boolean validarFinalizarJuego(){
-        boolean devolver = false;
-        if (turnoActual >= maximaCantidadDeTurnos){
-            System.out.println("Se finalizo el juego ----> cantidad de turnos para llegar a " + maximaCantidadDeTurnos +" es " + (maximaCantidadDeTurnos-turnoActual));
-            devolver = true;
-        }
-        if (turnoActual < maximaCantidadDeTurnos){
-            System.out.println("Aun NO se finalizo el juego ----> cantidad de turnos para llegar a " + maximaCantidadDeTurnos +" es " + (maximaCantidadDeTurnos-turnoActual));
-            devolver = false;
-        }
-        return devolver;
+        return  turnoActual >= maximaCantidadDeTurnos ;
     }
 
     public static void perderSiguienteTurno(Gladiador unGladiador){
-
         unGladiador.lesionar();
-        System.out.println("\n Entró a Lesion:  Pierde un turno ... ");
+        System.out.println("\n Gladiador se lesionó, pierde un turno ... ");
     }
 }
 

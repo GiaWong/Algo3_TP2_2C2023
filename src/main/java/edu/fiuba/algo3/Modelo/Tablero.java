@@ -13,6 +13,7 @@ public class Tablero {
     private Dado dado;
 
     private List<Casilla> camino;
+    private  boolean gladiadorGanaPartida;
 
     public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa, List<Casilla> camino,Dado dado) {
         this.cantidadDeJugadores = cantidadJugadores;
@@ -21,6 +22,7 @@ public class Tablero {
         this.mapa = unMapa;
         this.dado = dado;
         this.camino = camino;
+        this.gladiadorGanaPartida = false;
 
 
     }
@@ -51,22 +53,21 @@ public class Tablero {
         }
     }
 
-    public boolean FinalizarJuego() {
+    public void FinalizarJuego() {
         boolean validacion = turno.validarFinalizarJuego();
         if (validacion) {
             reiniciarTodoLosValores();
         }
-        return validacion;
-
     }
 
     public void validarGanador(Gladiador unGladiador){
 
         if (!camino.isEmpty()) {
-            Casilla casillaMeta= camino.get(camino.size() - 1);// Obtener el último elemento
-            unGladiador.validarLLegadaALaMeta(casillaMeta.obtenerposicionEnX(),casillaMeta.obtenerposicionEny(), camino);
-        } else {
-            System.out.println("La lista de Caminos está vacía.");
+            Casilla casillaMeta = camino.get(camino.size() - 1);// Obtener el último elemento
+            gladiadorGanaPartida = unGladiador.validarLLegadaALaMeta(casillaMeta.obtenerposicionEnX(),casillaMeta.obtenerposicionEny(), camino);
+            if(gladiadorGanaPartida){
+                FinalizarJuego();
+            }
         }
     }
 
@@ -75,10 +76,10 @@ public class Tablero {
         this.listaDeGladiadores.clear();
         this.turno = null;
     }
-
-    public Gladiador proximoJugador(){
-        return turno.siguienteTurno(listaDeGladiadores);
+    public boolean gladiadorGanaPartida(){
+        return gladiadorGanaPartida;
     }
+
 }
 
 

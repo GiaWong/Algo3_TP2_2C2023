@@ -40,7 +40,6 @@ public class Gladiador {
 
     }
 
-    //Si llego a la meta sin todo el equipamiento lo mando a la mitad del camino
     public void retroceder(List<Casilla> camino) {
         Casilla mitadDeCamino = camino.get(camino.size()/2);
         posicion = new Posicion(mitadDeCamino.obtenerposicionEnX(), mitadDeCamino.obtenerposicionEny());
@@ -113,16 +112,19 @@ public class Gladiador {
     }
     public boolean estaLesionado(){return this.lesionado;}
 
-    public void validarLLegadaALaMeta(int casillaMetaPosicionX, int casillaMetaPosicionY, List<Casilla> camino) {
+    public boolean validarLLegadaALaMeta(int casillaMetaPosicionX, int casillaMetaPosicionY, List<Casilla> camino) {
         //si se lleegó a la meta
         if(posicion.obtenerX()== casillaMetaPosicionX && posicion.obtenerY() == casillaMetaPosicionY){
 
             if (obtenerCantidadDeEquipamiento() ==4 ){
                 System.out.println("\n\n===== El jugador gano =====");
+                return true;
             }else {
                 System.out.println("\n\n===== LLegó a la meta sin equipamiento completo =====");
                 retroceder(camino);
+
             }
         }
+        return false;
     }
 }
