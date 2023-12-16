@@ -54,8 +54,7 @@ public class Tablero {
     }
 
     public void FinalizarJuego() {
-        boolean validacion = turno.validarFinalizarJuego();
-        if (validacion) {
+        if (turno.validarFinalizarJuego()) {
             reiniciarTodoLosValores();
         }
     }
