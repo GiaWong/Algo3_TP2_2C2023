@@ -1,12 +1,15 @@
 package edu.fiuba.algo3.Vista;
 
+
 import edu.fiuba.algo3.Controlador.ControladorJugadores;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class PantallaDeInicio {
@@ -18,8 +21,13 @@ public class PantallaDeInicio {
         grid.setHgap(10);
         grid.setAlignment(Pos.CENTER);
 
+        // Establecer el fondo negro
+        grid.setStyle("-fx-background-color: black;");
+
         Label labelJugadores = new Label("Cantidad de jugadores:");
         TextField inputJugadores = new TextField();
+
+        labelJugadores.setTextFill(Color.web("#66A7C5"));
 
         grid.add(labelJugadores, 0, 0);
         grid.add(inputJugadores, 1, 0);
@@ -27,11 +35,10 @@ public class PantallaDeInicio {
         ControladorJugadores controlJugadores = new ControladorJugadores(inputJugadores, stage);
         controlJugadores.controlar();
 
+
         Scene scene = new Scene(grid, 740, 580);
         stage.setScene(scene);
 
         stage.show();
     }
-
-
 }

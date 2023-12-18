@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -67,11 +68,16 @@ public class ControladorJugadores {
         Stage stageNombres = new Stage();
         stageNombres.setTitle("Gladiadores en fuga");
 
+
+
         GridPane gridNombres = new GridPane();
         gridNombres.setPadding(new Insets(20, 20, 20, 20));
         gridNombres.setVgap(10);
         gridNombres.setHgap(10);
         gridNombres.setAlignment(Pos.CENTER);
+
+        // Establecer el fondo negro
+        gridNombres.setStyle("-fx-background-color: black;");
 
         ArrayList<TextField> listaTextFieldNombres = new ArrayList<>();
 
@@ -81,6 +87,7 @@ public class ControladorJugadores {
             gridNombres.add(labelNombre, 0, i);
             gridNombres.add(nombreIngresado, 1, i);
             listaTextFieldNombres.add(nombreIngresado);
+            labelNombre.setTextFill(Color.web("#66A7C5"));
         }
 
         Button btnAceptarNombres = new Button("Aceptar");

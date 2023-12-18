@@ -46,6 +46,8 @@ public class PantallaMapa extends BorderPane implements Observable {
         gridMapa.setPadding(new Insets(10));
         gridMapa.setHgap(5);
         gridMapa.setVgap(5);
+
+
         int ancho = 10;
         int largo = 18;
         double tamanoCasilla = 40.0;

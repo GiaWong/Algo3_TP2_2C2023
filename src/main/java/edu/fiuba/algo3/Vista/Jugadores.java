@@ -92,6 +92,8 @@ public class Jugadores implements Observer{
             }
         }
         gridMapa.getChildren().removeAll(nodosAEliminar);
+        // Establecer el fondo negro
+        gridMapa.setStyle("-fx-background-color: black;");
     }
 
 
