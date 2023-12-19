@@ -125,9 +125,5 @@ public class ControladorJugadores {
 
         return gladiadores;
     }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> master
 }
