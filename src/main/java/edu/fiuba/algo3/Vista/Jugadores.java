@@ -5,10 +5,11 @@ import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-
+import javafx.scene.image.Image;
 import java.util.ArrayList;
-
+import javafx.scene.image.ImageView;
 import java.util.List;
+
 
 
 public class Jugadores implements Observer{
@@ -30,52 +31,77 @@ public class Jugadores implements Observer{
         for (Gladiador g : gladiadores){
 
             if (contador == 1) {
-                Circle circle = new Circle(5, Color.RED);
-                GridPane.setRowIndex(circle, g.obtenerPosicionEnY() - 1);
-                GridPane.setColumnIndex(circle, g.obtenerPosicionEnX() - 1);
-                circle.setTranslateX(7);
-                circle.setTranslateY(-11);
-                gridMapa.getChildren().add(circle);
+
+                String imagePath = "file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiador1.png";
+                Image gladiadorImage = new Image(imagePath);
+                ImageView imageView = new ImageView(gladiadorImage);
+                imageView.setFitWidth(35);
+                imageView.setFitHeight(35);
+                GridPane.setRowIndex(imageView, g.obtenerPosicionEnY() - 1);
+                GridPane.setColumnIndex(imageView, g.obtenerPosicionEnX() - 1);
+                imageView.setTranslateX(15);
+                imageView.setTranslateY(-11);
+                gridMapa.getChildren().add(imageView);
             }
             else if(contador == 2) {
-                Circle circle = new Circle(5, Color.BLUE);
-                GridPane.setRowIndex(circle, g.obtenerPosicionEnY() - 1);
-                GridPane.setColumnIndex(circle, g.obtenerPosicionEnX() - 1);
-                circle.setTranslateX(22);
-                circle.setTranslateY(-11);
-                gridMapa.getChildren().add(circle);
+                String imagePath = "file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiador2.png";
+                Image gladiadorImage = new Image(imagePath);
+                ImageView imageView = new ImageView(gladiadorImage);
+                imageView.setFitWidth(35);
+                imageView.setFitHeight(35);
+                GridPane.setRowIndex(imageView, g.obtenerPosicionEnY() - 1);
+                GridPane.setColumnIndex(imageView, g.obtenerPosicionEnX() - 1);
+                imageView.setTranslateX(10);
+                imageView.setTranslateY(-11);
+                gridMapa.getChildren().add(imageView);
             }
             else if(contador == 3) {
-                Circle circle = new Circle(5, Color.GREEN);
-                GridPane.setRowIndex(circle, g.obtenerPosicionEnY() - 1);
-                GridPane.setColumnIndex(circle, g.obtenerPosicionEnX() - 1);
-                circle.setTranslateX(7);
-                circle.setTranslateY(0);
-                gridMapa.getChildren().add(circle);
+                String imagePath = "file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiador3.png";
+                Image gladiadorImage = new Image(imagePath);
+                ImageView imageView = new ImageView(gladiadorImage);
+                imageView.setFitWidth(35);
+                imageView.setFitHeight(35);
+                GridPane.setRowIndex(imageView, g.obtenerPosicionEnY() - 1);
+                GridPane.setColumnIndex(imageView, g.obtenerPosicionEnX() - 1);
+                imageView.setTranslateX(7);
+                imageView.setTranslateY(0);
+                gridMapa.getChildren().add(imageView);
             }
             else if(contador == 4) {
-                Circle circle = new Circle(5, Color.BLACK);
-                GridPane.setRowIndex(circle, g.obtenerPosicionEnY() - 1);
-                GridPane.setColumnIndex(circle, g.obtenerPosicionEnX() - 1);
-                circle.setTranslateX(22);
-                circle.setTranslateY(0);
-                gridMapa.getChildren().add(circle);
+                String imagePath = "file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiador4.png";
+                Image gladiadorImage = new Image(imagePath);
+                ImageView imageView = new ImageView(gladiadorImage);
+                imageView.setFitWidth(30);
+                imageView.setFitHeight(30);
+                GridPane.setRowIndex(imageView, g.obtenerPosicionEnY() - 1);
+                GridPane.setColumnIndex(imageView, g.obtenerPosicionEnX() - 1);
+                imageView.setTranslateX(10);
+                imageView.setTranslateY(0);
+                gridMapa.getChildren().add(imageView);
             }
             else if(contador == 5) {
-                Circle circle = new Circle(5, Color.ORANGE);
-                GridPane.setRowIndex(circle, g.obtenerPosicionEnY() - 1);
-                GridPane.setColumnIndex(circle, g.obtenerPosicionEnX() - 1);
-                circle.setTranslateX(7);
-                circle.setTranslateY(11);
-                gridMapa.getChildren().add(circle);
+                String imagePath = "file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiador5.png";
+                Image gladiadorImage = new Image(imagePath);
+                ImageView imageView = new ImageView(gladiadorImage);
+                imageView.setFitWidth(35);
+                imageView.setFitHeight(35);
+                GridPane.setRowIndex(imageView, g.obtenerPosicionEnY() - 1);
+                GridPane.setColumnIndex(imageView, g.obtenerPosicionEnX() - 1);
+                imageView.setTranslateX(7);
+                imageView.setTranslateY(5);
+                gridMapa.getChildren().add(imageView);
             }
             else if(contador == 6) {
-                Circle circle = new Circle(5, Color.VIOLET);
-                GridPane.setRowIndex(circle, g.obtenerPosicionEnY() - 1);
-                GridPane.setColumnIndex(circle, g.obtenerPosicionEnX() - 1);
-                circle.setTranslateX(22);
-                circle.setTranslateY(11);
-                gridMapa.getChildren().add(circle);
+                String imagePath = "file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiador6.png";
+                Image gladiadorImage = new Image(imagePath);
+                ImageView imageView = new ImageView(gladiadorImage);
+                imageView.setFitWidth(35);
+                imageView.setFitHeight(35);
+                GridPane.setRowIndex(imageView, g.obtenerPosicionEnY() - 1);
+                GridPane.setColumnIndex(imageView, g.obtenerPosicionEnX() - 1);
+                imageView.setTranslateX(14);
+                imageView.setTranslateY(8);
+                gridMapa.getChildren().add(imageView);
             }
             contador++;
 
@@ -87,14 +113,17 @@ public class Jugadores implements Observer{
         List<Node> nodosAEliminar = new ArrayList<>();
 
         for (Node nodo : gridMapa.getChildren()) {
-            if (nodo instanceof Circle) {
+            if (nodo instanceof ImageView) {
                 nodosAEliminar.add(nodo);
             }
         }
         gridMapa.getChildren().removeAll(nodosAEliminar);
+        // Establecer el fondo negro
+        gridMapa.setStyle("-fx-background-color: black;");
     }
 
 
 
 
 }
+

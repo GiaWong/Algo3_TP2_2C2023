@@ -22,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CasosDeUsoEntregaTres {
     @Test
     public void Test19SimulamosYVerificamosQueElJugadorGane() {
+
         Mapa mapa = new Mapa();
         mapa.mapaTest();
         Casilla[][] unMapa = mapa.obtenerMapa();
@@ -29,8 +30,6 @@ public class CasosDeUsoEntregaTres {
         Dado dado = new DadoMock();
         List<Casilla> camino = new ArrayList<Casilla>();
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino ,dado);
-
-
 
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,7,"Camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(),2,6,"CAMINO"));
@@ -56,7 +55,6 @@ public class CasosDeUsoEntregaTres {
         tablero.avanzar();
         tablero.avanzar();
 
-
         int coordenadaX= 5;
         int coordenadaY= 1;
         assertEquals(coordenadaX, unGladiador.obtenerPosicionEnX());
@@ -66,7 +64,6 @@ public class CasosDeUsoEntregaTres {
 
     @Test
     public void Test20UnGladiadorLLegaALaMetaSinLaLLaveYEsteRetrocedeHastaLaMitadDeLasCasillas() {
-
 
         Mapa mapa = new Mapa();
         mapa.mapaTest();
@@ -95,7 +92,6 @@ public class CasosDeUsoEntregaTres {
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),10,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),11,1,"LLegada"));
 
-
         Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
@@ -104,18 +100,54 @@ public class CasosDeUsoEntregaTres {
             tablero.avanzar();
         }
 
-
         int posicionEsperadaEnX = 3;
         int posicionEsperadaEnY = 1;
         assertEquals(posicionEsperadaEnX, unGladiador.obtenerPosicionEnX());
         assertEquals(posicionEsperadaEnY, unGladiador.obtenerPosicionEnY());
-
     }
 
     public void Test20SimulamosYVerificamosQueElJugadorPierda() {
     //AUN LO ESTOY CODEANDOS
     }
 
+    @Test
+    public void Test21UnGladiadorLLegaALaMetaConTodosLosEquipamientosYLaPartidaFinaliza() {
+
+        Mapa mapa = new Mapa();
+        mapa.mapaTest();
+        Casilla[][] unMapa = mapa.obtenerMapa();
+        Posicion posicion = new Posicion(2, 7);
+        Dado dado = new DadoMock();
+        List<Casilla> camino = new ArrayList<Casilla>();
+        Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino ,dado);
+
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),2,7,"Camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new PremioEquipamiento(),2,6,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,5,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,4,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,3,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,2,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),3,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),5,1,"LLegada"));
+
+        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
+        tablero.agregarJugador(unGladiador);
+
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+        tablero.avanzar();
+
+        boolean juegoTerminado= true;
+        assertEquals(juegoTerminado, tablero.gladiadorGanaPartida());
+    }
 
 
 }

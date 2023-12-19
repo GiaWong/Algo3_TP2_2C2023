@@ -15,6 +15,8 @@ public class App extends Application {
         PantallaDeInicio pantallaDeInicio = new PantallaDeInicio(stage);
 
 
+
+
     }
 
 

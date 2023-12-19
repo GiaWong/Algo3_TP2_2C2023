@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.Controlador;
 
 import edu.fiuba.algo3.Modelo.Gladiador;
-import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
 import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
 import edu.fiuba.algo3.Vista.PantallaMapa;
@@ -13,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -46,6 +46,7 @@ public class ControladorJugadores {
             }
         });
     }
+
     private void mostrarAlertaCantidadJugadores(String titulo, String mensaje) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(titulo);
@@ -53,10 +54,21 @@ public class ControladorJugadores {
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
+
+    private boolean validarNombres(ArrayList<String> nombres) {
+        for (String nombre : nombres) {
+            if (nombre.length() < 4) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private void pedirNombresJugadores() {
-        
         Stage stageNombres = new Stage();
         stageNombres.setTitle("Gladiadores en fuga");
+
+
 
         GridPane gridNombres = new GridPane();
         gridNombres.setPadding(new Insets(20, 20, 20, 20));
@@ -64,31 +76,35 @@ public class ControladorJugadores {
         gridNombres.setHgap(10);
         gridNombres.setAlignment(Pos.CENTER);
 
-        for (int i = 0; i < cantidadJugadoresIngresados; i++) {
+        // Establecer el fondo negro
+        gridNombres.setStyle("-fx-background-color: black;");
 
+        ArrayList<TextField> listaTextFieldNombres = new ArrayList<>();
+
+        for (int i = 0; i < cantidadJugadoresIngresados; i++) {
             Label labelNombre = new Label("Nombre Jugador " + (i + 1) + ":");
             TextField nombreIngresado = new TextField();
             gridNombres.add(labelNombre, 0, i);
             gridNombres.add(nombreIngresado, 1, i);
-            
+            listaTextFieldNombres.add(nombreIngresado);
+            labelNombre.setTextFill(Color.web("#66A7C5"));
         }
 
         Button btnAceptarNombres = new Button("Aceptar");
         btnAceptarNombres.setOnAction(e -> {
-
             ArrayList<String> nombresJugadores = new ArrayList<>();
-
-            for (int i = 0; i < cantidadJugadoresIngresados; i++) {
-                TextField nombreIngresado = (TextField) gridNombres.getChildren().get(i * 2 + 1);
-                nombresJugadores.add(nombreIngresado.getText());
+            for (TextField textField : listaTextFieldNombres) {
+                nombresJugadores.add(textField.getText());
             }
 
-            ArrayList<Gladiador> gladiadores = crearJugadores(nombresJugadores);
-
-            stageNombres.close();
-
-            PantallaMapa mapa = new PantallaMapa(stage,gladiadores);
-            mapa.mostrarMapa();
+            if (validarNombres(nombresJugadores)) {
+                ArrayList<Gladiador> gladiadores = crearJugadores(nombresJugadores);
+                stageNombres.close();
+                PantallaMapa mapa = new PantallaMapa(stage, gladiadores);
+                mapa.mostrarMapa();
+            } else {
+                mostrarAlertaCantidadJugadores("Nombre inválido", "Los nombres deben tener al menos 4 caracteres.");
+            }
         });
 
         gridNombres.add(btnAceptarNombres, 1, cantidadJugadoresIngresados);
@@ -109,6 +125,9 @@ public class ControladorJugadores {
 
         return gladiadores;
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
 }

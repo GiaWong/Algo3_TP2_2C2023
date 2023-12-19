@@ -6,7 +6,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class PantallaDeInicio {
@@ -18,8 +20,13 @@ public class PantallaDeInicio {
         grid.setHgap(10);
         grid.setAlignment(Pos.CENTER);
 
+        // Establecer el fondo negro
+        grid.setStyle("-fx-background-color: black;");
+
         Label labelJugadores = new Label("Cantidad de jugadores:");
         TextField inputJugadores = new TextField();
+
+        labelJugadores.setTextFill(Color.web("#66A7C5"));
 
         grid.add(labelJugadores, 0, 0);
         grid.add(inputJugadores, 1, 0);
@@ -32,6 +39,4 @@ public class PantallaDeInicio {
 
         stage.show();
     }
-
-
 }
