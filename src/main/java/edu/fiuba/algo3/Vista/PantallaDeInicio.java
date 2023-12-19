@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.Vista;
 
-
 import edu.fiuba.algo3.Controlador.ControladorJugadores;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -34,7 +33,6 @@ public class PantallaDeInicio {
 
         ControladorJugadores controlJugadores = new ControladorJugadores(inputJugadores, stage);
         controlJugadores.controlar();
-
 
         Scene scene = new Scene(grid, 740, 580);
         stage.setScene(scene);
