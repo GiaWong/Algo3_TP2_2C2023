@@ -3,6 +3,7 @@ package edu.fiuba.algo3.Modelo.Obstaculos;
 import edu.fiuba.algo3.Modelo.Casillas.Ocupable;
 import edu.fiuba.algo3.Modelo.Dados.DadoMock;
 import edu.fiuba.algo3.Modelo.Gladiador;
+import edu.fiuba.algo3.Vista.PantallaMapa;
 
 public class Bacanal implements Obstaculizador, Ocupable {
     @Override
@@ -21,6 +22,7 @@ public class Bacanal implements Obstaculizador, Ocupable {
     public Gladiador interactuarConLaOcupacion(Gladiador unGladiador) {
         this.combatir(unGladiador);
         System.out.println("\nEntró a Bacanal");
+        PantallaMapa.obtenerLabel().setText("El jugador entró a un Bacanal.");
         return  unGladiador;
     }
 }

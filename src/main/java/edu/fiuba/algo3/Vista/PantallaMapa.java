@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.Vista;
-
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Dados.Dado;
 import edu.fiuba.algo3.Modelo.Dados.DadoReal;
@@ -27,12 +26,14 @@ public class PantallaMapa extends BorderPane implements Observable {
     private  Stage stage;
     private ArrayList<Gladiador> gladiadores;
     Canvas canvas;
+    static Label textoSituacion;
 
 
 
     public PantallaMapa(Stage stage, ArrayList<Gladiador> gladiadores) {
         this.stage = stage;
         this.gladiadores = gladiadores;
+        textoSituacion = new Label("Bienvenidos a 'Gladiadores en fuga'");
     }
 
     public void mostrarMapa() {
@@ -42,14 +43,8 @@ public class PantallaMapa extends BorderPane implements Observable {
         Stage stageMapa = new Stage();
         stageMapa.setTitle("Gladiadores en fuga");
 
-        Label textoSituacion = new Label("Bienvenidos a 'Gladiadores en fuga'");
         VBox vbox = new VBox();
         vbox.setAlignment(Pos.CENTER);
-
-        VBox vboxDerecha = new VBox();
-        vboxDerecha.setAlignment(Pos.CENTER);
-        Label labelHola = new Label("Hola");
-        vboxDerecha.getChildren().add(labelHola);
 
         GridPane gridMapa = new GridPane();
         gridMapa.setPadding(new Insets(10));
@@ -59,11 +54,10 @@ public class PantallaMapa extends BorderPane implements Observable {
         int largo = 18;
         double tamanoCasilla = 40.0;
 
-        this.setRight(vboxDerecha);
 
         for (int i = ancho; i >= 1; i--) {
             for (int j = 1; j <= largo; j++) {
-                Label label = new Label(/*"(" + j + "," + i + ")"*/);
+                Label label = new Label();
                 label.setMinSize(tamanoCasilla, tamanoCasilla);
                 label.setStyle("-fx-border-color: black;");
                 if (j == 1 && i == 4 || j == 2 && i == 4 || j == 2 && i == 5 || j == 2 && i == 6 || j == 2 && i == 7 || j == 2 && i == 8|| j == 2 && i == 9|| j == 2 && i == 10 || j == 3 && i == 10|| j == 4 && i == 10|| j == 5 && i == 10 || j == 6 && i == 10|| j == 7 && i == 10|| j == 8 && i == 10|| j == 9 && i == 10|| j == 10 && i == 10|| j == 11 && i == 10|| j == 12 && i == 10|| j == 12 && i == 9|| j == 12 && i == 8|| j == 12 && i == 7|| j == 12 && i == 6|| j == 12 && i == 5|| j == 12 && i == 4|| j == 12 && i == 3|| j == 12 && i == 2|| j == 13 && i == 2|| j == 14 && i == 2|| j == 15 && i == 2|| j == 16 && i == 2|| j == 17 && i == 2|| j == 17 && i == 3|| j == 17 && i == 4|| j == 17 && i == 5|| j == 17 && i == 6|| j == 17 && i == 7|| j == 17 && i == 8|| j == 17 && i == 9|| j == 17 && i == 10) {
@@ -122,6 +116,9 @@ public class PantallaMapa extends BorderPane implements Observable {
         region.setBackground(new javafx.scene.layout.Background(new javafx.scene.layout.BackgroundFill(color, null, null)));
     }
 
+    public static Label obtenerLabel(){
+        return textoSituacion;
+    }
 
 
     @Override

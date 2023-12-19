@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.Modelo;
 
+import edu.fiuba.algo3.Controlador.ControladorJugadores;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
@@ -7,6 +8,7 @@ import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculizador;
 import edu.fiuba.algo3.Modelo.PatronState.ManejarEquipamiento;
 import edu.fiuba.algo3.Modelo.Seniority.Seniority;
+import edu.fiuba.algo3.Vista.PantallaMapa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,7 @@ public class Gladiador {
     public void avanzar(int cantidadAMoverse,List<Casilla> camino) {
        posicion = posicion.PosicionSiguien(camino,direccion,cantidadAMoverse);
        System.out.println("\n Se avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
+
 
     }
 

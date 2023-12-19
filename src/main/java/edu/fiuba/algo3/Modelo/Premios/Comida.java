@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.Modelo.Premios;
 import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Casillas.Ocupable;
+import edu.fiuba.algo3.Vista.PantallaMapa;
 
 
 public class Comida  implements Premio, Ocupable {
@@ -17,6 +18,7 @@ public class Comida  implements Premio, Ocupable {
     public Gladiador interactuarConLaOcupacion(Gladiador unGladiador) {
         this.modificarEnergia(unGladiador);
         System.out.println("\nEntró a Comida");
+        PantallaMapa.obtenerLabel().setText("El jugador obtiene comida como premio");
         return unGladiador;
     }
 
