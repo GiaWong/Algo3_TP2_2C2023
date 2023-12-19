@@ -26,14 +26,18 @@ public class PantallaMapa extends BorderPane implements Observable {
     private  Stage stage;
     private ArrayList<Gladiador> gladiadores;
     Canvas canvas;
-    static Label textoSituacion;
+    static Label labelPosicion;
+    static Label labelPremio;
+    static Label labelObstaculo;
 
 
 
     public PantallaMapa(Stage stage, ArrayList<Gladiador> gladiadores) {
         this.stage = stage;
         this.gladiadores = gladiadores;
-        textoSituacion = new Label("Bienvenidos a 'Gladiadores en fuga'");
+        labelPosicion = new Label("Bienvenidos a 'Gladiadores en fuga'");
+        labelPremio = new Label("");
+        labelObstaculo = new Label("");
     }
 
     public void mostrarMapa() {
@@ -75,11 +79,14 @@ public class PantallaMapa extends BorderPane implements Observable {
 
         Button btnAvanzar = new Button("Tirar dado");
         btnAvanzar.setOnAction(e -> {
+            labelPosicion.setText("");
+            labelObstaculo.setText("");
+            labelPremio.setText("");
             tablero.avanzar();
             jugadores.actualizar();
         });
 
-        vbox.getChildren().addAll(textoSituacion, gridMapa, btnAvanzar);
+        vbox.getChildren().addAll(labelPosicion,labelObstaculo,labelPremio, gridMapa, btnAvanzar);
 
         gridMapa.add(btnAvanzar, 0, ancho + 1, largo, 1);
         gridMapa.setAlignment(Pos.CENTER);
@@ -116,9 +123,16 @@ public class PantallaMapa extends BorderPane implements Observable {
         region.setBackground(new javafx.scene.layout.Background(new javafx.scene.layout.BackgroundFill(color, null, null)));
     }
 
-    public static Label obtenerLabel(){
-        return textoSituacion;
+    public static Label obtenerLabelPosicion(){
+        return labelPosicion;
     }
+    public static Label obtenerLabelPremio(){
+        return labelPremio;
+    }
+    public static Label obtenerLabelObstaculo(){
+        return labelObstaculo;
+    }
+
 
 
     @Override
