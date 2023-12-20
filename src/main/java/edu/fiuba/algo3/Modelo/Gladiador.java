@@ -139,4 +139,7 @@ public class Gladiador {
         }
         return false;
     }
+    public String obtenerNombre(){
+        return this.nombre;
+    }
 }

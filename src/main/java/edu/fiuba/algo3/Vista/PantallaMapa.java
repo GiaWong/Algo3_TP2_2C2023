@@ -84,9 +84,6 @@ public class PantallaMapa extends BorderPane implements Observable {
             labelPremio.setText("");
             tablero.avanzar();
             jugadores.actualizar();
-            if (labelPosicion.getText().equals("")) {
-                labelPosicion.setText("El jugador pierde el turno por estar lesionado.");
-            }
         });
 
         vbox.getChildren().addAll(labelPosicion,labelObstaculo,labelPremio, gridMapa, btnAvanzar);
