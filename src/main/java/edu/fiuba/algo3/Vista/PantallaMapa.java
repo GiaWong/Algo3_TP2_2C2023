@@ -35,7 +35,7 @@ public class PantallaMapa extends BorderPane implements Observable {
     public PantallaMapa(Stage stage, ArrayList<Gladiador> gladiadores) {
         this.stage = stage;
         this.gladiadores = gladiadores;
-        labelPosicion = new Label("Bienvenidos a 'Gladiadores en fuga'");
+        labelPosicion = new Label("Bienvenidos a 'Gladiadores en fuga'.");
         labelPremio = new Label("");
         labelObstaculo = new Label("");
     }
@@ -84,6 +84,9 @@ public class PantallaMapa extends BorderPane implements Observable {
             labelPremio.setText("");
             tablero.avanzar();
             jugadores.actualizar();
+            if (labelPosicion.getText().equals("")) {
+                labelPosicion.setText("El jugador pierde el turno por estar lesionado.");
+            }
         });
 
         vbox.getChildren().addAll(labelPosicion,labelObstaculo,labelPremio, gridMapa, btnAvanzar);

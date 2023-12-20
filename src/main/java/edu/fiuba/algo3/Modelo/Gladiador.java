@@ -40,14 +40,14 @@ public class Gladiador {
     public void avanzar(int cantidadAMoverse,List<Casilla> camino) {
        posicion = posicion.PosicionSiguien(camino,direccion,cantidadAMoverse);
        System.out.println("\n Se avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
-       PantallaMapa.obtenerLabelPosicion().setText("Se avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
+       PantallaMapa.obtenerLabelPosicion().setText("Se avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ").");
     }
 
     public void retroceder(List<Casilla> camino) {
         Casilla mitadDeCamino = camino.get(camino.size()/2);
         posicion = new Posicion(mitadDeCamino.obtenerposicionEnX(), mitadDeCamino.obtenerposicionEny());
         System.out.println("\n Se retrocedió a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
-        PantallaMapa.obtenerLabelPosicion().setText("Se retrocedió a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
+        PantallaMapa.obtenerLabelPosicion().setText("Se retrocedió a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ").");
     }
 
     public int obtenerPosicionEnX() {

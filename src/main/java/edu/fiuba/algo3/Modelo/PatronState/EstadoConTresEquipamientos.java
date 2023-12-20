@@ -11,7 +11,7 @@ public class EstadoConTresEquipamientos implements Estado {
     public Estado ejercutarAccion(List<Equipado> listaDeEquipamiento) {
         listaDeEquipamiento.add(new LLave(2));
         System.out.println("\n===> Obtiene una llave como premio");
-        PantallaMapa.obtenerLabelPremio().setText("El jugador obtiene una llave como premio");
+        PantallaMapa.obtenerLabelPremio().setText("El jugador obtiene una llave como premio.");
         return new EstadoSinEquipamiento();
     }
 }

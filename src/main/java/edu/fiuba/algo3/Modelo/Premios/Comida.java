@@ -18,7 +18,7 @@ public class Comida  implements Premio, Ocupable {
     public Gladiador interactuarConLaOcupacion(Gladiador unGladiador) {
         this.modificarEnergia(unGladiador);
         System.out.println("\nEntró a Comida");
-        PantallaMapa.obtenerLabelPremio().setText("El jugador obtiene comida como premio");
+        PantallaMapa.obtenerLabelPremio().setText("El jugador obtiene comida como premio.");
         return unGladiador;
     }
 
