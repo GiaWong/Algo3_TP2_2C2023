@@ -119,7 +119,7 @@ public class ControladorJugadores {
         ArrayList<Gladiador> gladiadores = new ArrayList<>();
         Posicion posicion = new Posicion(1, 7);
         for (String nombre : nombresJugadores) {
-            Gladiador gladiador = new Gladiador(20, new Novato(), posicion);
+            Gladiador gladiador = new Gladiador( nombre,20, new Novato(), posicion );
             gladiadores.add(gladiador);
         }
 

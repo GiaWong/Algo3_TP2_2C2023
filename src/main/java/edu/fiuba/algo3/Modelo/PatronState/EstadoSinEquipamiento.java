@@ -11,7 +11,7 @@ public class EstadoSinEquipamiento implements Estado{
     public Estado ejercutarAccion(List<Equipado> listaDeEquipamiento) {
         listaDeEquipamiento.add(new Casco(5));
         System.out.println("\n===> Obtiene un Casco como premio");
-        PantallaMapa.obtenerLabelPremio().setText("El jugador obtiene un casco como premio.");
+        PantallaMapa.obtenerLabelPremio().setText("Premio: obtiene un casco.");
         return new EstadoConUnEquipamiento();
     }
 }

@@ -11,7 +11,7 @@ public class EstadoConUnEquipamiento implements Estado{
     public Estado ejercutarAccion(List<Equipado> listaDeEquipamiento) {
         listaDeEquipamiento.add(new Armadura(5));
         System.out.println("\n===> Obtiene una Armadura como premio");
-        PantallaMapa.obtenerLabelPremio().setText("El jugador obtiene una armadura como premio.");
+        PantallaMapa.obtenerLabelPremio().setText("Premio: obtiene una armadura.");
         return new EstadoConDosEquipamientos();
     }
 }

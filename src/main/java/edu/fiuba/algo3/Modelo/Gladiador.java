@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 public class Gladiador {
     private int energia;
+    private String nombre;
     private Seniority unSeniority;
     private List<Equipado> listaDeEquipamiento;
     private boolean lesionado;
@@ -34,20 +35,31 @@ public class Gladiador {
         this.direccion = new Direccion(unaPosicion.obtenerX(),unaPosicion.obtenerY());
     }
 
+    public Gladiador(String unNombre, int unaEnergia, Seniority unSeniority, Posicion unaPosicion) {
+        this.nombre = unNombre;
+        this.energia = unaEnergia;
+        this.posicion = unaPosicion;
+        this.unSeniority = unSeniority;
+        this.listaDeEquipamiento = new ArrayList<>();
+        this.manejarequipamiento = new ManejarEquipamiento();
+        this.lesionado = false;
+        this.direccion = new Direccion(unaPosicion.obtenerX(),unaPosicion.obtenerY());
+    }
+
     public int obtenerEnergia() {
         return energia;
     }
     public void avanzar(int cantidadAMoverse,List<Casilla> camino) {
        posicion = posicion.PosicionSiguien(camino,direccion,cantidadAMoverse);
        System.out.println("\n Se avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
-       PantallaMapa.obtenerLabelPosicion().setText("Se avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ").");
+       PantallaMapa.obtenerLabelPosicion().setText("El jugador "+ this.nombre +" avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ").");
     }
 
     public void retroceder(List<Casilla> camino) {
         Casilla mitadDeCamino = camino.get(camino.size()/2);
         posicion = new Posicion(mitadDeCamino.obtenerposicionEnX(), mitadDeCamino.obtenerposicionEny());
         System.out.println("\n Se retrocedió a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
-        PantallaMapa.obtenerLabelPosicion().setText("Se retrocedió a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ").");
+        PantallaMapa.obtenerLabelPosicion().setText("El jugador " + this.nombre + " retrocede a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ").");
     }
 
     public int obtenerPosicionEnX() {

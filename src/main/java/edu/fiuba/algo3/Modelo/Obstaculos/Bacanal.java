@@ -22,7 +22,7 @@ public class Bacanal implements Obstaculizador, Ocupable {
     public Gladiador interactuarConLaOcupacion(Gladiador unGladiador) {
         this.combatir(unGladiador);
         System.out.println("\nEntró a Bacanal");
-        PantallaMapa.obtenerLabelObstaculo().setText("El jugador entró a un Bacanal.");
+        PantallaMapa.obtenerLabelObstaculo().setText("Obstaculo: entró a un Bacanal.");
         return  unGladiador;
     }
 }

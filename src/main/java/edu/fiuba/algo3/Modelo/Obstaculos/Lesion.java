@@ -19,7 +19,7 @@ public class Lesion implements Obstaculizador, Ocupable {
     @Override
     public Gladiador interactuarConLaOcupacion(Gladiador unGladiador) {
         Turno.perderSiguienteTurno(unGladiador);
-        PantallaMapa.obtenerLabelObstaculo().setText("El jugador se lesionó.");
+        PantallaMapa.obtenerLabelObstaculo().setText("Obstaculo: se lesionó.");
         return  unGladiador;
     }
 
