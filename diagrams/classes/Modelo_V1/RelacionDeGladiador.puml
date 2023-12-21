@@ -1,0 +1,70 @@
+@startuml
+class Gladiador{
+    -energia:int
+    -nombre: string
+    -lesionado:boolean
+
+    +Gladiador(nombre String,unaEnergia int, seniority Seniority,posicion Posicion, direccion Direccion)
+    +AumentarEnergiaAlIniciarElTurno():void
+    +avanzar(cantidadAMoverse int):void
+    +retroceder(cantidadAMoverse int):void
+    +combatir(unObstaculo Obstaculizador): void
+    +lesionar():void
+    +rehabilitado():void
+    +estaLesionado():void
+}
+
+class Direccion{
+    -direccionEnX:int
+    -direccionEnY:int
+    +Direccion(direccionEnX int, direccionEnY int):void
+    +obtenerProximaCasillaConCamino(caminoList <Casilla> , posicion Posicion, cantidadAMoverse int):Posicion
+}
+
+class Posicion{
+    -posicionEnX:int
+    -posicionEnY:int
+    +obtenerX():int
+    +obtenerY():int
+    +posicionSiguiente(camino List<Casilla> ,direccion Direccion,cantidadAMoverse int):Posicion
+}
+
+abstract class Seniority{
+    -turnoActual: int
+    +Seniority(turno int)
+    +{abstract}modificarEnergia(unaEnergia int):int
+    +{abstract}sumarTurno():Seniority
+}
+
+class Novato{
+    +Novato():void
+    +modificarEnergia(unaEnergia int:int
+    +sumarTurno():Seniority
+}
+class SemiSenior{
+    +SemiSenior():void
+    +modificarEnergia(unaEnergia int):int
+    +sumarTurno():Seniority
+}
+
+class Senior{
+    +Senior():void
+    +modificarEnergia(unaEnergia int):int
+    +sumarTurno():Seniority
+}
+
+interface Equipado{
+    +{abstract}modificarEnergia(unaEnergia int):int
+}
+
+Seniority <|.up. Novato
+Seniority <|.up. SemiSenior
+Seniority <|.up. Senior
+
+Gladiador -->"*"Equipado
+Gladiador -up->Seniority
+Gladiador -down-> Direccion
+Gladiador -left-> Posicion
+
+
+@enduml

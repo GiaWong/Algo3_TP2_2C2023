@@ -1,0 +1,33 @@
+@startuml
+interface Estado {
++{abstract} ejercutarAccion(List<Equipado> listaDeEquipamiento):Estado
+}
+
+class ManejarEquipamiento{
++ManejarEquipamiento():void
++obtenerPremio(List<Equipado> listaDeEquipamiento):void
+}
+
+class EstadoSinEquipamiento{
+ejercutarAccion(List<Equipado> listaDeEquipamiento):Estado
+}
+
+class EstadoConUnEquipamiento{
+ejercutarAccion(List<Equipado> listaDeEquipamiento):Estado
+}
+
+class EstadoConDosEquipamiento{
+ejercutarAccion(List<Equipado> listaDeEquipamiento):Estado
+}
+
+class EstadoConTresEquipamiento{
+ejercutarAccion(List<Equipado> listaDeEquipamiento):Estado
+}
+
+
+ManejarEquipamiento-> Estado
+EstadoSinEquipamiento .up.|> Estado
+EstadoConUnEquipamiento .up.|> Estado
+EstadoConDosEquipamiento ..|> Estado
+EstadoConTresEquipamiento ..|> Estado
+@enduml

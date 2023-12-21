@@ -1,30 +1,32 @@
 @startuml
 class Gladiador{
     -energia:int
-    -posicionEnX:int
-    -posicionEnY:int
+    -nombre: string
     -lesionado:boolean
-    -direccion: Direccion
-    +Gladiador(unaEnergia int, seniority Seniority,posicionenX int,posicionEnY int, direccion Direccion)
+    +Gladiador(nombre String,unaEnergia int, seniority Seniority,posicion Posicion, direccion Direccion)
     +AumentarEnergiaAlIniciarElTurno():void
     +avanzar(cantidadAMoverse int):void
     +retroceder(cantidadAMoverse int):void
     +combatir(unObstaculo Obstaculizador): void
-    +tieneLLave(): boolean
     +lesionar():void
     +rehabilitado():void
     +estaLesionado():void
 }
 
 class Direccion{
-    -posicionEnx:int
-    -posicionEnY:int
-    +Direccion(x int, y int):void
-    +getFila():int
-    +getColumna():int
-    +obtenerProximaCasillaConCamino(mapa Casilla[][]):Direccion
+    -direccionEnX:int
+    -direccionEnY:int
+    +Direccion(direccionEnX int, direccionEnY int):void
+    +obtenerProximaCasillaConCamino(caminoList <Casilla> , posicion Posicion, cantidadAMoverse int):Posicion
 }
 
+class Posicion{
+    -posicionEnX:int
+    -posicionEnY:int
+    +obtenerX():int
+    +obtenerY():int
+    +posicionSiguiente(camino List<Casilla> ,direccion Direccion,cantidadAMoverse int):Posicion
+}
 
 class Mapa{
     -mapa Casilla[][]
