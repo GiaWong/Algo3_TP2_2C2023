@@ -96,6 +96,13 @@ public class PantallaMapa extends BorderPane implements Observable {
             tablero.avanzar();
             jugadores.actualizar();
             this.actualizarEnergia(vboxEnergia);
+
+            if(tablero.gladiadorGanaPartida()){
+
+                VentanaMensajeParaGanador ventanaGanador = new VentanaMensajeParaGanador("Ganaste el juego", stage, stageMapa);
+                ventanaGanador.mostrar();
+
+            }
         });
 
         vbox.getChildren().addAll(labelPosicion,labelObstaculo,labelPremio, hboxPrincipal, btnAvanzar);
@@ -116,6 +123,8 @@ public class PantallaMapa extends BorderPane implements Observable {
         stageMapa.show();
         stage.close();
     }
+
+
 
     public Tablero crearTablero(ArrayList<Gladiador> gladiadores){
 

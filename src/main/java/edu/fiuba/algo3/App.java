@@ -13,12 +13,7 @@ public class App extends Application {
         this.stage = stage;
         stage.setTitle("Gladiadores en fuga");
         PantallaDeInicio pantallaDeInicio = new PantallaDeInicio(stage);
-
-
-
-
     }
-
 
 
     public static void main(String[] args) {
