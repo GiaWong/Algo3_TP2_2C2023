@@ -24,7 +24,7 @@ public  class FieraSalvaje implements Ocupable, Obstaculizador {
     public Gladiador interactuarConLaOcupacion(Gladiador unGladiador) {
         this.combatir(unGladiador);
         System.out.println("\nEntró a FieraSalvaje");
-        PantallaMapa.obtenerLabelObstaculo().setText("Obstaculo: se enfrenta a una fiera salvaje.");
+        //PantallaMapa.obtenerLabelObstaculo().setText("Obstaculo: se enfrenta a una fiera salvaje.");
         return  unGladiador;
     }
 }

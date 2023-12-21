@@ -26,7 +26,7 @@ public class CasosDeUsosEntregaUno {
          Casilla[][] unMapa = mapa.obtenerMapa();
         Posicion posicion = new Posicion(1, 1);
 
-        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20, new Novato(), posicion);
 
         int energiaEsperada = 20;
         int equipamientoEsperado = 0;
@@ -45,7 +45,7 @@ public class CasosDeUsosEntregaUno {
         List<Casilla> camino = new ArrayList<>();
 
         Posicion posicion = new Posicion(1, 1);
-        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20, new Novato(), posicion);
         Tablero tablero = new Tablero(1, new Turno(30),unMapa,camino,dado);
 
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
@@ -68,7 +68,7 @@ public class CasosDeUsosEntregaUno {
 
         Casilla[][] unMapa = mapa.obtenerMapa();
         Posicion posicion = new Posicion(1, 1);
-        Gladiador unGladiador = new Gladiador(0, new Novato(), posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 0, new Novato(), posicion);
 
         Tablero tablero = new Tablero(1, new Turno(30),unMapa, camino,dado);
 
@@ -95,7 +95,7 @@ public class CasosDeUsosEntregaUno {
         List<Casilla> camino = new ArrayList<>();
 
         Posicion posicion = new Posicion(1, 1);
-        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20,new Novato(),posicion);
 
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino,dado);
 
@@ -122,7 +122,7 @@ public class CasosDeUsosEntregaUno {
 
 
         Posicion posicion = new Posicion(1, 1);
-        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20,new Novato(),posicion);
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino,dado);
 
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
@@ -155,7 +155,7 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,3,"camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),1,4,"camino"));
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
 
@@ -186,7 +186,7 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(20),new PremioEquipamiento(),1,2,"CAMINO"));
 
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
         tablero.avanzar();
@@ -209,7 +209,7 @@ public class CasosDeUsosEntregaUno {
         List<Casilla> camino = new ArrayList<>();
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino , dado);
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
@@ -263,7 +263,7 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,3,"llegada"));
 
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
         tablero.avanzar();
@@ -300,7 +300,7 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,2,"llegada"));
 
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
         tablero.avanzar();
@@ -330,7 +330,7 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new NadaOcupacion(),4,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,2,"llegada"));
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
         tablero.avanzar();
@@ -392,7 +392,7 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),17,5,"LLEGADA"));
 
 
-        Gladiador unGladiador = new Gladiador(20,new Novato(),posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20,new Novato(),posicion);
         tablero.agregarJugador(unGladiador);
 
         for (int i = 1; i <= 30; i++) {

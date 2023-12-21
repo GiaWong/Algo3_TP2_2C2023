@@ -12,7 +12,7 @@ public class EstadoConDosEquipamientos implements Estado{
     public Estado ejercutarAccion(List<Equipado> listaDeEquipamiento) {
         listaDeEquipamiento.add(new EscudoYEspada(8));
         System.out.println("\n===> Obtiene un Escudo y una espada como premio");
-        PantallaMapa.obtenerLabelPremio().setText("Premio: obtiene un escudo y una espada.");
+        //PantallaMapa.obtenerLabelPremio().setText("Premio: obtiene un escudo y una espada.");
         return new EstadoConTresEquipamientos();
     }
 }

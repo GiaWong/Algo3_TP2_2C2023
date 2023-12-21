@@ -34,7 +34,7 @@ public class BacanalTest {
         tablero.agregarCasillaAlMapa(new Casilla(new Bacanal(),new NadaOcupacion(),1,2,"CAMINO"));
 
         Posicion posicion = new Posicion(1, 1);
-        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20, new Novato(), posicion);
 
         tablero.agregarJugador(unGladiador);
         tablero.avanzar();
@@ -61,7 +61,7 @@ public class BacanalTest {
         tablero.agregarCasillaAlMapa(new Casilla(new Bacanal(),new Bacanal(),1,2,"CAMINO"));
 
         Posicion posicion = new Posicion(1, 1);
-        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20, new Novato(), posicion);
 
         tablero.agregarJugador(unGladiador);
         tablero.avanzar();

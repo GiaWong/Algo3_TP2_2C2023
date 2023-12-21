@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.Modelo;
 
-import edu.fiuba.algo3.Controlador.ControladorJugadores;
 import edu.fiuba.algo3.Modelo.Casillas.Casilla;
 import edu.fiuba.algo3.Modelo.Equipamientos.*;
 import edu.fiuba.algo3.Modelo.Movimiento.Direccion;
@@ -25,16 +24,6 @@ public class Gladiador {
     private final int MaximaCantidadEquipamiento = 4;
 
     private ManejarEquipamiento manejarequipamiento;
-    public Gladiador(int unaEnergia, Seniority unSeniority, Posicion unaPosicion) {
-        this.energia = unaEnergia;
-        this.posicion = unaPosicion;
-        this.unSeniority = unSeniority;
-        this.listaDeEquipamiento = new ArrayList<>();
-        this.manejarequipamiento = new ManejarEquipamiento();
-        this.lesionado = false;
-        this.direccion = new Direccion(unaPosicion.obtenerX(),unaPosicion.obtenerY());
-    }
-
     public Gladiador(String unNombre, int unaEnergia, Seniority unSeniority, Posicion unaPosicion) {
         this.nombre = unNombre;
         this.energia = unaEnergia;
@@ -45,21 +34,20 @@ public class Gladiador {
         this.lesionado = false;
         this.direccion = new Direccion(unaPosicion.obtenerX(),unaPosicion.obtenerY());
     }
-
     public int obtenerEnergia() {
         return energia;
     }
     public void avanzar(int cantidadAMoverse,List<Casilla> camino) {
        posicion = posicion.PosicionSiguien(camino,direccion,cantidadAMoverse);
        System.out.println("\n Se avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
-       PantallaMapa.obtenerLabelPosicion().setText("El jugador "+ this.nombre +" avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ").");
+       //PantallaMapa.obtenerLabelPosicion().setText("El jugador "+ this.nombre +" avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ").");
     }
 
     public void retroceder(List<Casilla> camino) {
         Casilla mitadDeCamino = camino.get(camino.size()/2);
         posicion = new Posicion(mitadDeCamino.obtenerposicionEnX(), mitadDeCamino.obtenerposicionEny());
         System.out.println("\n Se retrocedió a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
-        PantallaMapa.obtenerLabelPosicion().setText("El jugador " + this.nombre + " retrocede a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ").");
+        //PantallaMapa.obtenerLabelPosicion().setText("El jugador " + this.nombre + " retrocede a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ").");
     }
 
     public int obtenerPosicionEnX() {

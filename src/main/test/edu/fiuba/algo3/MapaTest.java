@@ -21,7 +21,7 @@ public class MapaTest {
 
         Tablero tablero = new Tablero(1, new Turno(30),unMapa,mapa.obtenereCamino() ,dado);
         Posicion posicion = new Posicion(1, 7);
-        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20, new Novato(), posicion);
 
         tablero.agregarJugador(unGladiador);
         tablero.avanzar();

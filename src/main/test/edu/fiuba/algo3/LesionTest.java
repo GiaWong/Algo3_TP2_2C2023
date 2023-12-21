@@ -30,7 +30,7 @@ public class LesionTest {
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa,camino ,dado);
         Posicion posicion = new Posicion(1, 1);
-        Gladiador unGladiador = new Gladiador(20, new Novato(), posicion);
+        Gladiador unGladiador = new Gladiador("Fran1", 20, new Novato(), posicion);
 
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new Lesion(), 2, 1, "camino"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 4, 1, "camino"));
