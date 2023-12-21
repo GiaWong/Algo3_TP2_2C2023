@@ -12,10 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.util.ArrayList;
@@ -59,6 +56,20 @@ public class PantallaMapa extends BorderPane implements Observable {
         double tamanoCasilla = 40.0;
 
 
+        VBox vboxEnergia = new VBox();
+        Label labelEnergia = new Label("Energia de los gladiadores:");
+        vboxEnergia.getChildren().add(labelEnergia);
+        for (Gladiador g : gladiadores){
+            Label label = new Label(g.obtenerNombre()+":"+ g.obtenerEnergia());
+            vboxEnergia.getChildren().add(label);
+        }
+        VBox vBoxEspacio = new VBox();
+        Label labelEspacio = new Label("       ");
+        vBoxEspacio.getChildren().addAll(labelEspacio);
+        HBox hboxPrincipal = new HBox( gridMapa , vBoxEspacio , vboxEnergia );
+        hboxPrincipal.setAlignment(Pos.CENTER);
+
+
         for (int i = ancho; i >= 1; i--) {
             for (int j = 1; j <= largo; j++) {
                 Label label = new Label();
@@ -84,9 +95,12 @@ public class PantallaMapa extends BorderPane implements Observable {
             labelPremio.setText("");
             tablero.avanzar();
             jugadores.actualizar();
+            this.actualizarEnergia(vboxEnergia);
         });
 
-        vbox.getChildren().addAll(labelPosicion,labelObstaculo,labelPremio, gridMapa, btnAvanzar);
+        vbox.getChildren().addAll(labelPosicion,labelObstaculo,labelPremio, hboxPrincipal, btnAvanzar);
+        vbox.setAlignment(Pos.CENTER);
+
 
         gridMapa.add(btnAvanzar, 0, ancho + 1, largo, 1);
         gridMapa.setAlignment(Pos.CENTER);
@@ -133,6 +147,15 @@ public class PantallaMapa extends BorderPane implements Observable {
         return labelObstaculo;
     }
 
+    public void actualizarEnergia(VBox vBox){
+        vBox.getChildren().clear();
+        Label labelEnergia = new Label("Energia de los gladiadores:");
+        vBox.getChildren().add(labelEnergia);
+        for (Gladiador g : gladiadores){
+            Label label = new Label(g.obtenerNombre()+":"+ g.obtenerEnergia());
+            vBox.getChildren().add(label);
+        }
+    }
 
 
     @Override
