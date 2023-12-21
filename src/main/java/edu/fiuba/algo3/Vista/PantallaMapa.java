@@ -39,7 +39,7 @@ public class PantallaMapa extends BorderPane implements Observable {
 
     public void mostrarMapa() {
 
-        canvas = new Canvas(100,100);
+        canvas = new Canvas(100, 100);
         Tablero tablero = this.crearTablero(gladiadores);
         Stage stageMapa = new Stage();
         stageMapa.setTitle("Gladiadores en fuga");
@@ -59,14 +59,14 @@ public class PantallaMapa extends BorderPane implements Observable {
         VBox vboxEnergia = new VBox();
         Label labelEnergia = new Label("Energia de los gladiadores:");
         vboxEnergia.getChildren().add(labelEnergia);
-        for (Gladiador g : gladiadores){
-            Label label = new Label(g.obtenerNombre()+":"+ g.obtenerEnergia());
+        for (Gladiador g : gladiadores) {
+            Label label = new Label(g.obtenerNombre() + ":" + g.obtenerEnergia());
             vboxEnergia.getChildren().add(label);
         }
         VBox vBoxEspacio = new VBox();
         Label labelEspacio = new Label("       ");
         vBoxEspacio.getChildren().addAll(labelEspacio);
-        HBox hboxPrincipal = new HBox( gridMapa , vBoxEspacio , vboxEnergia );
+        HBox hboxPrincipal = new HBox(gridMapa, vBoxEspacio, vboxEnergia);
         hboxPrincipal.setAlignment(Pos.CENTER);
 
 
@@ -75,18 +75,18 @@ public class PantallaMapa extends BorderPane implements Observable {
                 Label label = new Label();
                 label.setMinSize(tamanoCasilla, tamanoCasilla);
                 label.setStyle("-fx-border-color: black;");
-                if (j == 1 && i == 4 || j == 2 && i == 4 || j == 2 && i == 5 || j == 2 && i == 6 || j == 2 && i == 7 || j == 2 && i == 8|| j == 2 && i == 9|| j == 2 && i == 10 || j == 3 && i == 10|| j == 4 && i == 10|| j == 5 && i == 10 || j == 6 && i == 10|| j == 7 && i == 10|| j == 8 && i == 10|| j == 9 && i == 10|| j == 10 && i == 10|| j == 11 && i == 10|| j == 12 && i == 10|| j == 12 && i == 9|| j == 12 && i == 8|| j == 12 && i == 7|| j == 12 && i == 6|| j == 12 && i == 5|| j == 12 && i == 4|| j == 12 && i == 3|| j == 12 && i == 2|| j == 13 && i == 2|| j == 14 && i == 2|| j == 15 && i == 2|| j == 16 && i == 2|| j == 17 && i == 2|| j == 17 && i == 3|| j == 17 && i == 4|| j == 17 && i == 5|| j == 17 && i == 6|| j == 17 && i == 7|| j == 17 && i == 8|| j == 17 && i == 9|| j == 17 && i == 10) {
+                if (j == 1 && i == 4 || j == 2 && i == 4 || j == 2 && i == 5 || j == 2 && i == 6 || j == 2 && i == 7 || j == 2 && i == 8 || j == 2 && i == 9 || j == 2 && i == 10 || j == 3 && i == 10 || j == 4 && i == 10 || j == 5 && i == 10 || j == 6 && i == 10 || j == 7 && i == 10 || j == 8 && i == 10 || j == 9 && i == 10 || j == 10 && i == 10 || j == 11 && i == 10 || j == 12 && i == 10 || j == 12 && i == 9 || j == 12 && i == 8 || j == 12 && i == 7 || j == 12 && i == 6 || j == 12 && i == 5 || j == 12 && i == 4 || j == 12 && i == 3 || j == 12 && i == 2 || j == 13 && i == 2 || j == 14 && i == 2 || j == 15 && i == 2 || j == 16 && i == 2 || j == 17 && i == 2 || j == 17 && i == 3 || j == 17 && i == 4 || j == 17 && i == 5 || j == 17 && i == 6 || j == 17 && i == 7 || j == 17 && i == 8 || j == 17 && i == 9 || j == 17 && i == 10) {
                     setColor(label, Color.LIGHTGRAY);
-                }
-                else{
+                } else {
                     setColor(label, Color.LIGHTGREEN);
                 }
                 gridMapa.add(label, j - 1, ancho - i);
             }
         }
 
-        Jugadores jugadores = new Jugadores(gladiadores,gridMapa);
+        Jugadores jugadores = new Jugadores(gladiadores, gridMapa);
         jugadores.actualizar();
+
 
         Button btnAvanzar = new Button("Tirar dado");
         btnAvanzar.setOnAction(e -> {
@@ -105,9 +105,19 @@ public class PantallaMapa extends BorderPane implements Observable {
             }
         });
 
-        vbox.getChildren().addAll(labelPosicion,labelObstaculo,labelPremio, hboxPrincipal, btnAvanzar);
+        Button btnJugadorAleatorio = new Button("Elegir Jugador Aleatorio");
+        btnJugadorAleatorio.setOnAction(e -> {
+            btnAvanzar.setVisible(true);
+            btnJugadorAleatorio.setVisible(false);
+        });
+
+        btnAvanzar.setVisible(false);
+
+        vbox.getChildren().addAll(labelPosicion, labelObstaculo, labelPremio, hboxPrincipal, btnAvanzar , btnJugadorAleatorio);
         vbox.setAlignment(Pos.CENTER);
 
+        gridMapa.add(btnJugadorAleatorio, 0, ancho + 3, largo, 1);
+        gridMapa.setAlignment(Pos.CENTER);
 
         gridMapa.add(btnAvanzar, 0, ancho + 1, largo, 1);
         gridMapa.setAlignment(Pos.CENTER);
