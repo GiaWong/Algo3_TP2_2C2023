@@ -11,6 +11,7 @@ public class Tablero {
     private Turno turno;
     private Casilla[][] mapa;
     private Dado dado;
+    private Casilla casillaActual;
 
     private List<Casilla> camino;
     private  boolean gladiadorGanaPartida;
@@ -23,7 +24,6 @@ public class Tablero {
         this.dado = dado;
         this.camino = camino;
         this.gladiadorGanaPartida = false;
-
 
     }
     public void agregarCasillaAlMapa(Casilla unaCasilla) {
@@ -48,7 +48,9 @@ public class Tablero {
 
             ungladiador.avanzar(cantidadAMoverse,camino);
             validarGanador(ungladiador);
-            Casilla casillaActual = mapa[ungladiador.obtenerPosicionEnX()][ungladiador.obtenerPosicionEnY()];
+            //Casilla casillaActual = mapa[ungladiador.obtenerPosicionEnX()][ungladiador.obtenerPosicionEnY()];
+            this.casillaActual = mapa[ungladiador.obtenerPosicionEnX()][ungladiador.obtenerPosicionEnY()];
+
             ungladiador = casillaActual.interactuarConLaOcupacion(ungladiador);
         }
     }
@@ -77,6 +79,10 @@ public class Tablero {
     }
     public boolean gladiadorGanaPartida(){
         return gladiadorGanaPartida;
+    }
+
+    public Casilla obtenerCasillaALaQueSeDesplazo(){
+        return casillaActual;
     }
 
 }

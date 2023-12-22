@@ -90,11 +90,16 @@ public class PantallaMapa extends BorderPane implements Observable {
 
         Button btnAvanzar = new Button("Tirar dado");
         btnAvanzar.setOnAction(e -> {
+
             labelPosicion.setText("");
             labelObstaculo.setText("");
             labelPremio.setText("");
+
             tablero.avanzar();
             jugadores.actualizar();
+            Casilla casilla = tablero.obtenerCasillaALaQueSeDesplazo();
+            this.actualizarLabels(casilla);
+
             this.actualizarEnergia(vboxEnergia);
 
             if(tablero.gladiadorGanaPartida()){
@@ -174,6 +179,11 @@ public class PantallaMapa extends BorderPane implements Observable {
             Label label = new Label(g.obtenerNombre()+":"+ g.obtenerEnergia());
             vBox.getChildren().add(label);
         }
+    }
+
+    public void actualizarLabels(Casilla casilla){
+        labelPremio.setText("Premio:"+ casilla.obtenerSegundaOcupacion());
+        labelObstaculo.setText("Obstaculo:"+ casilla.obtenerPrimeraOcupacion());
     }
 
 

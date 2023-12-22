@@ -39,5 +39,41 @@ public class Casilla {
         return ungladiador;
     }
 
+    public String obtenerPrimeraOcupacion(){
+        if (unaOcupacion.getClass().getSimpleName().equals("Bacanal")){
+            return " Bacanal.";
+        }
+        else if(unaOcupacion.getClass().getSimpleName().equals("Lesion")){
+            return " Lesion.";
+        }
+        else if (unaOcupacion.getClass().getSimpleName().equals("FieraSalvaje")){
+            return " Fiera salvaje.";
+        }
+        else {
+            return " Ninguno.";
+        }
+    }
+
+    public String obtenerSegundaOcupacion(){
+        if (unaSegundaOcupacion.getClass().getSimpleName().equals("Armadura")){
+            return " Armadura.";
+        }
+        else if(unaSegundaOcupacion.getClass().getSimpleName().equals("Casco")){
+            return " Casco.";
+        }
+        else if(unaSegundaOcupacion.getClass().getSimpleName().equals("EscudoYEspada")){
+            return " Escudo y espada.";
+        }
+        else if(unaSegundaOcupacion.getClass().getSimpleName().equals("Llave")){
+            return " Llave.";
+        }
+        else if(unaSegundaOcupacion.getClass().getSimpleName().equals("Comida")){
+            return " Comida.";
+        }
+        else{
+            return " Ninguno.";
+        }
+    }
+
 }
 
