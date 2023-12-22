@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 
@@ -58,7 +60,9 @@ public class PantallaMapa extends BorderPane implements Observable {
 
 
         VBox vboxEnergia = new VBox();
-        Label labelEnergia = new Label("Energia de los gladiadores:");
+        Font font = Font.font("Arial", FontWeight.BOLD, 14);
+        Label labelEnergia = new Label("ENERGÍA DE LOS GLADIADORES");
+        labelEnergia.setFont(font);
         vboxEnergia.getChildren().add(labelEnergia);
         for (Gladiador g : gladiadores) {
             Label label = new Label(g.obtenerNombre() + ":" + g.obtenerEnergia());
@@ -174,7 +178,10 @@ public class PantallaMapa extends BorderPane implements Observable {
 
     public void actualizarEnergia(VBox vBox){
         vBox.getChildren().clear();
-        Label labelEnergia = new Label("Energia de los gladiadores:");
+
+        Font font = Font.font("Arial", FontWeight.BOLD, 14);
+        Label labelEnergia = new Label("ENERGÍA DE LOS GLADIADORES");
+        labelEnergia.setFont(font);
         vBox.getChildren().add(labelEnergia);
         for (Gladiador g : gladiadores){
             Label label = new Label(g.obtenerNombre()+":"+ g.obtenerEnergia());
@@ -184,7 +191,7 @@ public class PantallaMapa extends BorderPane implements Observable {
 
     public void actualizarLabels(Casilla casilla){
         Gladiador ungladiador = tablero.obtenerGladiadorQueJugo();
-        labelPosicion.setText("El jugador "+ ungladiador.obtenerNombre() +" avanza a la casilla: (" + casilla.obtenerposicionEnX() + "," + casilla.obtenerposicionEny() + ").");
+        labelPosicion.setText("Salio: " + tablero.obtenerCantidadAMoverse() +". El jugador "+ ungladiador.obtenerNombre() +" avanza a la casilla: (" + casilla.obtenerposicionEnX() + "," + casilla.obtenerposicionEny() + ").");
         labelPremio.setText("Premio:"+ casilla.obtenerSegundaOcupacion());
         labelObstaculo.setText("Obstaculo:"+ casilla.obtenerPrimeraOcupacion());
     }

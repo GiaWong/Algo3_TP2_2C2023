@@ -15,6 +15,7 @@ public class Tablero {
     private Gladiador ungladiador;
     private List<Casilla> camino;
     private  boolean gladiadorGanaPartida;
+    private int cantidadAMoverse;
 
     public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa, List<Casilla> camino,Dado dado) {
         this.cantidadDeJugadores = cantidadJugadores;
@@ -41,7 +42,7 @@ public class Tablero {
 
     public void avanzar() {
 
-        int cantidadAMoverse = dado.lanzarDado();
+        this.cantidadAMoverse = dado.lanzarDado();
         this.ungladiador = turno.siguienteTurno(listaDeGladiadores);
 
         if (this.validarTurno(ungladiador)) {
@@ -89,7 +90,7 @@ public class Tablero {
     public Gladiador obtenerGladiadorQueJugo(){
         return ungladiador;
     }
-
+    public int obtenerCantidadAMoverse(){return cantidadAMoverse;}
 
 }
 
