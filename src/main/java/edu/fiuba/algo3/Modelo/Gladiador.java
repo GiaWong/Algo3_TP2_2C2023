@@ -63,8 +63,6 @@ public class Gladiador {
         energia = unSeniority.modificarEnergia(energia);}
 
     public int obtenerCantidadDeEquipamiento(){
-
-        listaDeEquipamiento = filtrarRepetidos();//ver test13 de OcupacionesTests
         return listaDeEquipamiento.size();
 
     }

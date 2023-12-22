@@ -38,6 +38,7 @@ public class PantallaMapa extends BorderPane implements Observable {
         labelPosicion = new Label("Bienvenidos a 'Gladiadores en fuga'.");
         labelPremio = new Label("");
         labelObstaculo = new Label("");
+
     }
 
     public void mostrarMapa() {
@@ -97,8 +98,8 @@ public class PantallaMapa extends BorderPane implements Observable {
         btnAvanzar.setOnAction(e -> {
 
             labelPosicion.setText("");
-            labelObstaculo.setText("");
             labelPremio.setText("");
+            labelObstaculo.setText("");
 
             tablero.avanzar();
             jugadores.actualizar();
@@ -192,8 +193,8 @@ public class PantallaMapa extends BorderPane implements Observable {
     public void actualizarLabels(Casilla casilla){
         Gladiador ungladiador = tablero.obtenerGladiadorQueJugo();
         labelPosicion.setText("Salio: " + tablero.obtenerCantidadAMoverse() +". El jugador "+ ungladiador.obtenerNombre() +" avanza a la casilla: (" + casilla.obtenerposicionEnX() + "," + casilla.obtenerposicionEny() + ").");
-        labelPremio.setText("Premio:"+ casilla.obtenerSegundaOcupacion());
-        labelObstaculo.setText("Obstaculo:"+ casilla.obtenerPrimeraOcupacion());
+        labelPremio.setText("El gladiador obtiene el premio:"+ casilla.obtenerSegundaOcupacion(ungladiador));
+        labelObstaculo.setText("El gladiador debe enfrentarse al obstaculo:"+ casilla.obtenerPrimeraOcupacion());
     }
 
 

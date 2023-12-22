@@ -54,22 +54,23 @@ public class Casilla {
         }
     }
 
-    public String obtenerSegundaOcupacion(){
-        if (unaSegundaOcupacion.getClass().getSimpleName().equals("Armadura")){
+    public String obtenerSegundaOcupacion(Gladiador unGladiador){
+
+
+        if (unaSegundaOcupacion.getClass().getSimpleName().equals("PremioEquipamiento") && unGladiador.obtenerCantidadDeEquipamiento() == 1) {
+            return "Casco.";
+        } else if (unaSegundaOcupacion.getClass().getSimpleName().equals("PremioEquipamiento") && unGladiador.obtenerCantidadDeEquipamiento() == 2) {
             return " Armadura.";
-        }
-        else if(unaSegundaOcupacion.getClass().getSimpleName().equals("Casco")){
-            return " Casco.";
-        }
-        else if(unaSegundaOcupacion.getClass().getSimpleName().equals("EscudoYEspada")){
+        } else if (unaSegundaOcupacion.getClass().getSimpleName().equals("PremioEquipamiento") && unGladiador.obtenerCantidadDeEquipamiento() == 3) {
             return " Escudo y espada.";
-        }
-        else if(unaSegundaOcupacion.getClass().getSimpleName().equals("Llave")){
+        } else if (unaSegundaOcupacion.getClass().getSimpleName().equals("PremioEquipamiento") && unGladiador.obtenerCantidadDeEquipamiento() == 4) {
             return " Llave.";
         }
-        else if(unaSegundaOcupacion.getClass().getSimpleName().equals("Comida")){
+
+        if(unaSegundaOcupacion.getClass().getSimpleName().equals("Comida")){
             return " Comida.";
         }
+
         else{
             return " Ninguno.";
         }
