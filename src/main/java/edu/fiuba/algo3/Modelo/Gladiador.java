@@ -7,7 +7,6 @@ import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculizador;
 import edu.fiuba.algo3.Modelo.PatronState.ManejarEquipamiento;
 import edu.fiuba.algo3.Modelo.Seniority.Seniority;
-import edu.fiuba.algo3.Vista.PantallaMapa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,16 +113,17 @@ public class Gladiador {
     public boolean estaLesionado(){return this.lesionado;}
 
     public boolean validarLLegadaALaMeta(int casillaMetaPosicionX, int casillaMetaPosicionY, List<Casilla> camino) {
-        //si se lleegó a la meta
-        if(posicion.obtenerX()== casillaMetaPosicionX && posicion.obtenerY() == casillaMetaPosicionY){
 
-            if (obtenerCantidadDeEquipamiento() == MaximaCantidadEquipamiento ){
+        // Si se llegó a la meta
+        if (posicion.obtenerX() == casillaMetaPosicionX && posicion.obtenerY() == casillaMetaPosicionY) {
+            if (obtenerCantidadDeEquipamiento() == MaximaCantidadEquipamiento) {
                 System.out.println("\n\n===== El jugador Ganó =====");
-                return true;
-            }else {
+            } else {
                 System.out.println("\n\n===== LLegó a la meta sin equipamiento completo =====");
+                // Retrocede solo si no tiene equipamiento completo
                 retroceder(camino);
             }
+            return true;
         }
         return false;
     }
