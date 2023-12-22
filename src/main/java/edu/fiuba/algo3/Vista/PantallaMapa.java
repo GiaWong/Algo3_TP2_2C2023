@@ -26,6 +26,7 @@ public class PantallaMapa extends BorderPane implements Observable {
     static Label labelPosicion;
     static Label labelPremio;
     static Label labelObstaculo;
+    private Tablero tablero;
 
 
 
@@ -40,7 +41,7 @@ public class PantallaMapa extends BorderPane implements Observable {
     public void mostrarMapa() {
 
         canvas = new Canvas(100, 100);
-        Tablero tablero = this.crearTablero(gladiadores);
+        this.tablero = this.crearTablero(gladiadores);
         Stage stageMapa = new Stage();
         stageMapa.setTitle("Gladiadores en fuga");
 
@@ -182,6 +183,8 @@ public class PantallaMapa extends BorderPane implements Observable {
     }
 
     public void actualizarLabels(Casilla casilla){
+        Gladiador ungladiador = tablero.obtenerGladiadorQueJugo();
+        labelPosicion.setText("El jugador "+ ungladiador.obtenerNombre() +" avanza a la casilla: (" + casilla.obtenerposicionEnX() + "," + casilla.obtenerposicionEny() + ").");
         labelPremio.setText("Premio:"+ casilla.obtenerSegundaOcupacion());
         labelObstaculo.setText("Obstaculo:"+ casilla.obtenerPrimeraOcupacion());
     }

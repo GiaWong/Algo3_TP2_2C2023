@@ -12,7 +12,7 @@ public class Tablero {
     private Casilla[][] mapa;
     private Dado dado;
     private Casilla casillaActual;
-
+    private Gladiador ungladiador;
     private List<Casilla> camino;
     private  boolean gladiadorGanaPartida;
 
@@ -42,7 +42,7 @@ public class Tablero {
     public void avanzar() {
 
         int cantidadAMoverse = dado.lanzarDado();
-        Gladiador ungladiador = turno.siguienteTurno(listaDeGladiadores);
+        this.ungladiador = turno.siguienteTurno(listaDeGladiadores);
 
         if (this.validarTurno(ungladiador)) {
 
@@ -77,6 +77,7 @@ public class Tablero {
         this.listaDeGladiadores.clear();
         this.turno = null;
     }
+
     public boolean gladiadorGanaPartida(){
         return gladiadorGanaPartida;
     }
@@ -84,6 +85,11 @@ public class Tablero {
     public Casilla obtenerCasillaALaQueSeDesplazo(){
         return casillaActual;
     }
+
+    public Gladiador obtenerGladiadorQueJugo(){
+        return ungladiador;
+    }
+
 
 }
 
