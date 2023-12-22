@@ -71,8 +71,8 @@ public class Jugadores implements Observer{
                 String imagePath = "file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiador4.png";
                 Image gladiadorImage = new Image(imagePath);
                 ImageView imageView = new ImageView(gladiadorImage);
-                imageView.setFitWidth(30);
-                imageView.setFitHeight(30);
+                imageView.setFitWidth(35);
+                imageView.setFitHeight(35);
                 GridPane.setRowIndex(imageView, g.obtenerPosicionEnY() - 1);
                 GridPane.setColumnIndex(imageView, g.obtenerPosicionEnX() - 1);
                 imageView.setTranslateX(10);
