@@ -167,15 +167,6 @@ public class PantallaMapa extends BorderPane implements Observable {
         region.setBackground(new javafx.scene.layout.Background(new javafx.scene.layout.BackgroundFill(color, null, null)));
     }
 
-    public static Label obtenerLabelPosicion(){
-        return labelPosicion;
-    }
-    public static Label obtenerLabelPremio(){
-        return labelPremio;
-    }
-    public static Label obtenerLabelObstaculo(){
-        return labelObstaculo;
-    }
 
     public void actualizarEnergia(VBox vBox){
         vBox.getChildren().clear();
@@ -190,12 +181,20 @@ public class PantallaMapa extends BorderPane implements Observable {
         }
     }
 
-    public void actualizarLabels(Casilla casilla){
+    public void actualizarLabels(Casilla casilla) {
         Gladiador ungladiador = tablero.obtenerGladiadorQueJugo();
-        labelPosicion.setText("Salio: " + tablero.obtenerCantidadAMoverse() +". El jugador "+ ungladiador.obtenerNombre() +" avanza a la casilla: (" + casilla.obtenerposicionEnX() + "," + casilla.obtenerposicionEny() + ").");
-        labelPremio.setText("El gladiador obtiene el premio:"+ casilla.obtenerSegundaOcupacion(ungladiador));
-        labelObstaculo.setText("El gladiador debe enfrentarse al obstaculo:"+ casilla.obtenerPrimeraOcupacion());
+        if (tablero.habilitadoAJugar()) {
+            labelPosicion.setText("Salio: " + tablero.obtenerCantidadAMoverse() + ". El jugador " + ungladiador.obtenerNombre() + " avanza a la casilla: (" + ungladiador.obtenerPosicionEnX() + "," + casilla.obtenerposicionEny() + ").");
+            labelPremio.setText("El gladiador obtiene el premio:" + casilla.obtenerSegundaOcupacion(ungladiador));
+            labelObstaculo.setText("El gladiador debe enfrentarse al obstaculo:" + casilla.obtenerPrimeraOcupacion());
+        }
+        else{
+            labelPosicion.setText("El jugador "+ungladiador.obtenerNombre()+ " perdió su turno.");
+            labelPremio.setText("");
+            labelObstaculo.setText("");
+        }
     }
+
 
 
     @Override

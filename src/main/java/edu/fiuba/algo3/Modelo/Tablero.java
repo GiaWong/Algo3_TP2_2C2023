@@ -16,6 +16,7 @@ public class Tablero {
     private List<Casilla> camino;
     private  boolean gladiadorGanaPartida;
     private int cantidadAMoverse;
+    private boolean habilitacionAJugar;
 
     public Tablero(int cantidadJugadores, Turno turno, Casilla[][] unMapa, List<Casilla> camino,Dado dado) {
         this.cantidadDeJugadores = cantidadJugadores;
@@ -37,7 +38,7 @@ public class Tablero {
     }
 
     public boolean validarTurno(Gladiador unGladiador) {
-        return (turno.jugar(unGladiador));
+        return (this.habilitacionAJugar = turno.jugar(unGladiador));
     }
 
     public void avanzar() {
@@ -91,6 +92,9 @@ public class Tablero {
         return ungladiador;
     }
     public int obtenerCantidadAMoverse(){return cantidadAMoverse;}
+    public boolean habilitadoAJugar(){
+        return habilitacionAJugar;
+    }
 
 }
 
