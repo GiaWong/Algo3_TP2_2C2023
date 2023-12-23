@@ -183,7 +183,7 @@ public class CasosDeUsosEntregaUno {
         Tablero tablero = new Tablero(1,new Turno(30),unMapa,camino ,dado);
 
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
-        tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(20),new PremioEquipamiento(),1,2,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(),new PremioEquipamiento(),1,2,"CAMINO"));
 
 
         Gladiador unGladiador = new Gladiador("Fran1", 20,new Novato(),posicion);
@@ -296,7 +296,7 @@ public class CasosDeUsosEntregaUno {
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),1,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),2,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(),new PremioEquipamiento(),3,1,"CAMINO"));
-        tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(20),new NadaOcupacion(),4,1,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new FieraSalvaje(),new NadaOcupacion(),4,1,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),4,2,"llegada"));
 
 

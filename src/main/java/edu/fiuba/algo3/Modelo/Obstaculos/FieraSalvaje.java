@@ -1,13 +1,12 @@
 package edu.fiuba.algo3.Modelo.Obstaculos;
 import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Casillas.Ocupable;
-import edu.fiuba.algo3.Vista.PantallaMapa;
 
 public  class FieraSalvaje implements Ocupable, Obstaculizador {
     private int unaEnergia;
 
-    public FieraSalvaje(int energia) {
-        unaEnergia = energia;
+    public FieraSalvaje() {
+        unaEnergia = 20;
     }
 
     @Override

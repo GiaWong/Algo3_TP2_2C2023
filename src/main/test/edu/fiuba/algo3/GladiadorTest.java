@@ -47,13 +47,13 @@ public class GladiadorTest {
 
         List<Casilla> camino = new ArrayList<Casilla>();
         camino.add(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 1, 1, "camino"));
-        camino.add(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 1, 2, "camino"));
+        camino.add(new Casilla(new NadaOcupacion(), new FieraSalvaje(), 1, 2, "camino"));
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa,camino ,dado);
         Posicion posicion = new Posicion(1, 1);
         Gladiador unGladiador = new Gladiador("Fran1", 20, new Novato(), posicion);
 
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 1, 2, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(), 1, 2, "camino"));
 
         tablero.agregarJugador(unGladiador);
 
@@ -80,7 +80,7 @@ public class GladiadorTest {
 
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new NadaOcupacion(),1,7,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new PremioEquipamiento(), new PremioEquipamiento(),2,7,"CAMINO"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20),2,6,"CAMINO"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(),2,6,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,5,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,4,"CAMINO"));
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(),new NadaOcupacion(),2,3,"CAMINO"));
@@ -288,7 +288,7 @@ public class GladiadorTest {
 
         List<Casilla> camino = new ArrayList<Casilla>();
         camino.add(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 1, 1, "camino"));
-        camino.add(new Casilla(new FieraSalvaje(20), new NadaOcupacion(), 2, 1, "camino"));
+        camino.add(new Casilla(new FieraSalvaje(), new NadaOcupacion(), 2, 1, "camino"));
 
 
         Tablero tablero = new Tablero(1, new Turno(30), unMapa,camino ,dado);
@@ -296,7 +296,7 @@ public class GladiadorTest {
         Gladiador primerGladiador = new Gladiador("Fran1", 20, new Novato(), posicion);
         Gladiador segundoGladiador = new Gladiador("Fran1", 20, new Novato(), posicion);
 
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 2, 1, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(), 2, 1, "camino"));
 
 
         tablero.agregarJugador(primerGladiador);
@@ -385,9 +385,9 @@ public class GladiadorTest {
         Gladiador unGladiador = new Gladiador("Fran1", 20, new Novato(), posicion);
 
         tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new NadaOcupacion(), 2, 7, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 2, 6, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 2, 5, "camino"));
-        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(20), 2, 4, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(), 2, 6, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(), 2, 5, "camino"));
+        tablero.agregarCasillaAlMapa(new Casilla(new NadaOcupacion(), new FieraSalvaje(), 2, 4, "camino"));
 
         tablero.agregarJugador(unGladiador);
 

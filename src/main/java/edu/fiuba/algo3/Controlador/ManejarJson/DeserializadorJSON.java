@@ -88,7 +88,7 @@ public class DeserializadorJSON {
             return new Lesion();
 
         } else if (nombreActual.equalsIgnoreCase("Fiera")) {
-            return new FieraSalvaje(5);
+            return new FieraSalvaje();
 
         } else if (nombreActual.equalsIgnoreCase("Bacanal")) {
             return new Bacanal();
