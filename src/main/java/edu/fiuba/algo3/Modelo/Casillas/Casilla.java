@@ -12,7 +12,6 @@ public class Casilla {
 
     String tipo;
 
-
     public Casilla(Ocupable primeraOcupacion, Ocupable segundaOcupacion, int posX, int posY, String tipo) {
         this.unaOcupacion = primeraOcupacion;
         this.unaSegundaOcupacion = segundaOcupacion;

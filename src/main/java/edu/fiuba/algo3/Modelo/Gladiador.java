@@ -39,14 +39,12 @@ public class Gladiador {
     public void avanzar(int cantidadAMoverse,List<Casilla> camino) {
        posicion = posicion.PosicionSiguien(camino,direccion,cantidadAMoverse);
        System.out.println("\n Se avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
-       //PantallaMapa.obtenerLabelPosicion().setText("El jugador "+ this.nombre +" avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ").");
     }
 
     public void retroceder(List<Casilla> camino) {
         Casilla mitadDeCamino = camino.get(camino.size()/2);
         posicion = new Posicion(mitadDeCamino.obtenerposicionEnX(), mitadDeCamino.obtenerposicionEny());
         System.out.println("\n Se retrocedió a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
-        //PantallaMapa.obtenerLabelPosicion().setText("El jugador " + this.nombre + " retrocede a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ").");
     }
 
     public int obtenerPosicionEnX() {
@@ -65,17 +63,6 @@ public class Gladiador {
     public int obtenerCantidadDeEquipamiento(){
         return listaDeEquipamiento.size();
 
-    }
-
-    private List<Equipado> filtrarRepetidos() {
-        return listaDeEquipamiento.stream()
-                .filter(distinguirPorClases())
-                .collect(Collectors.toList());
-    }
-
-    private  java.util.function.Predicate<Object> distinguirPorClases() {
-        java.util.Set<Class<?>> vista = new java.util.HashSet<>();
-        return objeto -> vista.add(objeto.getClass());
     }
 
     public void agregarEquipamiento(Equipado equipamiento){

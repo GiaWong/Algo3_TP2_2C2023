@@ -400,4 +400,26 @@ public class GladiadorTest {
 
         assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
     }
+
+    @Test
+    public void test13SiUnGladiadorTieneEnergiaNegativaRecibe5PuntosDeEnergia(){
+        Mapa mapa = new Mapa();
+        mapa.mapaTest();
+        Casilla[][] unMapa = mapa.obtenerMapa();
+        DadoMock dado = new DadoMock();
+
+        Tablero tablero = new Tablero(1, new Turno(30), unMapa,mapa.obtenereCamino() ,dado);
+        Posicion posicion = new Posicion(1, 7);
+        Gladiador unGladiador = new Gladiador("Fran1", -5, new Novato(), posicion);
+
+        tablero.agregarJugador(unGladiador);
+
+        tablero.avanzar();
+
+        System.out.println(unGladiador.obtenerPosicionEnX());
+        int energiaEsperada = 0;
+
+        assertEquals(energiaEsperada, unGladiador.obtenerEnergia());
+
+    }
 }

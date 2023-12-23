@@ -15,8 +15,14 @@ public class Turno {
 
     public boolean jugar(Gladiador unGladiador) {
         if (unGladiador.obtenerEnergia() <= 0 || unGladiador.estaLesionado() ) {
-            //PantallaMapa.obtenerLabelObstaculo().setText("El jugador " +unGladiador.obtenerNombre() + " pierde el turno por estar lesionado.");
-            unGladiador.rehabilitar();
+
+            if (unGladiador.obtenerEnergia() <0 ){
+                unGladiador.aumentarEnergia(5);
+            }
+
+           unGladiador.aumentarEnergiaAlIniciarElTurno();
+           unGladiador.rehabilitar();
+
             return false;
         }
         return true;
