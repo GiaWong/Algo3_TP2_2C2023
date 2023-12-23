@@ -49,10 +49,8 @@ public class Tablero {
         if (this.validarTurno(ungladiador)) {
 
             ungladiador.avanzar(cantidadAMoverse,camino);
-            validarGanador(ungladiador);
-            //Casilla casillaActual = mapa[ungladiador.obtenerPosicionEnX()][ungladiador.obtenerPosicionEnY()];
+            validarGanador();
             this.casillaActual = mapa[ungladiador.obtenerPosicionEnX()][ungladiador.obtenerPosicionEnY()];
-
             ungladiador = casillaActual.interactuarConLaOcupacion(ungladiador);
         }
     }
@@ -63,11 +61,11 @@ public class Tablero {
         }
     }
 
-    public void validarGanador(Gladiador unGladiador){
+    public void validarGanador(){
 
         if (!camino.isEmpty()) {
             Casilla casillaMeta = camino.get(camino.size() - 1);// Obtener el último elemento
-            gladiadorGanaPartida = unGladiador.validarLLegadaALaMeta(casillaMeta.obtenerposicionEnX(),casillaMeta.obtenerposicionEny(), camino);
+            gladiadorGanaPartida = ungladiador.validarGanador(casillaMeta.obtenerposicionEnX(),casillaMeta.obtenerposicionEny(), camino);
             if(gladiadorGanaPartida){
                 FinalizarJuego();
             }

@@ -106,10 +106,6 @@ public class CasosDeUsoEntregaTres {
         assertEquals(posicionEsperadaEnY, unGladiador.obtenerPosicionEnY());
     }
 
-    public void Test20SimulamosYVerificamosQueElJugadorPierda() {
-    //AUN LO ESTOY CODEANDOS
-    }
-
     @Test
     public void Test21UnGladiadorLLegaALaMetaConTodosLosEquipamientosYLaPartidaFinaliza() {
 

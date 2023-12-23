@@ -110,18 +110,18 @@ public class Gladiador {
     }
     public boolean estaLesionado(){return this.lesionado;}
 
-    public boolean validarLLegadaALaMeta(int casillaMetaPosicionX, int casillaMetaPosicionY, List<Casilla> camino) {
+    public boolean validarGanador(int casillaMetaPosicionX, int casillaMetaPosicionY, List<Casilla> camino) {
 
         // Si se llegó a la meta
         if (posicion.obtenerX() == casillaMetaPosicionX && posicion.obtenerY() == casillaMetaPosicionY) {
             if (obtenerCantidadDeEquipamiento() == MaximaCantidadEquipamiento) {
                 System.out.println("\n\n===== El jugador Ganó =====");
+                return true;
             } else {
                 System.out.println("\n\n===== LLegó a la meta sin equipamiento completo =====");
-                // Retrocede solo si no tiene equipamiento completo
                 retroceder(camino);
+                return false;
             }
-            return true;
         }
         return false;
     }

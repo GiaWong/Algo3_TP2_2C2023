@@ -105,14 +105,11 @@ public class PantallaMapa extends BorderPane implements Observable {
             jugadores.actualizar();
             Casilla casilla = tablero.obtenerCasillaALaQueSeDesplazo();
             this.actualizarLabels(casilla);
-
             this.actualizarEnergia(vboxEnergia);
 
             if(tablero.gladiadorGanaPartida()){
-
                 VentanaMensajeParaGanador ventanaGanador = new VentanaMensajeParaGanador("Ganaste el juego", stage, stageMapa);
                 ventanaGanador.mostrar();
-
             }
         });
 
