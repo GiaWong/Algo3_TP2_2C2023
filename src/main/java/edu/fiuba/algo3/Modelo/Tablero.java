@@ -82,10 +82,11 @@ public class Tablero {
         return gladiadorGanaPartida;
     }
 
+
+
     public Casilla obtenerCasillaALaQueSeDesplazo(){
         return casillaActual;
     }
-
     public Gladiador obtenerGladiadorQueJugo(){
         return ungladiador;
     }

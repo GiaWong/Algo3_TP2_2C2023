@@ -21,8 +21,12 @@ public class Gladiador {
     private Direccion direccion;
     private Posicion posicion;
     private final int MaximaCantidadEquipamiento = 4;
-
     private ManejarEquipamiento manejarequipamiento;
+
+
+    private int tragosATomar;
+
+
     public Gladiador(String unNombre, int unaEnergia, Seniority unSeniority, Posicion unaPosicion) {
         this.nombre = unNombre;
         this.energia = unaEnergia;
@@ -37,6 +41,7 @@ public class Gladiador {
         return energia;
     }
     public void avanzar(int cantidadAMoverse,List<Casilla> camino) {
+       this.tragosATomar = cantidadAMoverse;
        posicion = posicion.PosicionSiguien(camino,direccion,cantidadAMoverse);
        System.out.println("\n Se avanza a la casilla: (" + obtenerPosicionEnX() + "," + obtenerPosicionEnY() + ")");
     }
@@ -79,6 +84,10 @@ public class Gladiador {
 
     }
 
+    public void tomarTragos(Obstaculizador unObstaculo){
+        energia = unObstaculo.modificarEnergia(energia);
+    }
+
     public void aumentarEnergia(int unaEnergia) {
         this.energia = this.energia + unaEnergia;
     }
@@ -115,4 +124,5 @@ public class Gladiador {
     public String obtenerNombre(){
         return this.nombre;
     }
+    public int obtenerTragosATomar(){return this.tragosATomar;}
 }
