@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.Controlador;
-
 import edu.fiuba.algo3.Modelo.Gladiador;
 import edu.fiuba.algo3.Modelo.Movimiento.Posicion;
 import edu.fiuba.algo3.Modelo.Seniority.Novato;
@@ -14,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 
 public class ControladorJugadores {
@@ -68,15 +66,12 @@ public class ControladorJugadores {
         Stage stageNombres = new Stage();
         stageNombres.setTitle("Gladiadores en fuga");
 
-
-
         GridPane gridNombres = new GridPane();
         gridNombres.setPadding(new Insets(20, 20, 20, 20));
         gridNombres.setVgap(10);
         gridNombres.setHgap(10);
         gridNombres.setAlignment(Pos.CENTER);
 
-        // Establecer el fondo negro
         gridNombres.setStyle("-fx-background-color: black;");
 
         ArrayList<TextField> listaTextFieldNombres = new ArrayList<>();
@@ -123,7 +118,6 @@ public class ControladorJugadores {
             Gladiador gladiador = new Gladiador(nombre, 20, new Novato(), posicion );
             gladiadores.add(gladiador);
         }
-
         return gladiadores;
     }
 

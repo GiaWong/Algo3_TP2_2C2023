@@ -42,7 +42,6 @@ public class VentanaMensajeParaGanador {
         Scene escena = new Scene(panel);
         escena.setFill(Color.TRANSPARENT);
         ventana.setScene(escena);
-        // Agregar el controlador de eventos para el cierre de la ventana
         ventana.setOnHiding(event -> {
             stageMapa.close();
             new PantallaDeInicio(stageAnterior);

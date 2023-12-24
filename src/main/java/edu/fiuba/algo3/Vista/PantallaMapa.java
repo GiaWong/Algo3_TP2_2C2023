@@ -17,8 +17,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.util.ArrayList;
@@ -63,7 +61,6 @@ public class PantallaMapa extends BorderPane {
         ImageView imageView = new ImageView(imagenDeFondo);
         imageView.setFitWidth(bounds.getWidth());
         imageView.setFitHeight(bounds.getHeight());
-
 
         GridPane gridMapa = new GridPane();
         gridMapa.setPadding(new Insets(10));

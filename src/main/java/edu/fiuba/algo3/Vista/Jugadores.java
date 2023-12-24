@@ -3,19 +3,15 @@ package edu.fiuba.algo3.Vista;
 import edu.fiuba.algo3.Modelo.Gladiador;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 import javafx.scene.image.ImageView;
 import java.util.List;
 
 
-
 public class Jugadores {
     private ArrayList<Gladiador> gladiadores;
     private GridPane gridMapa;
-
 
     public Jugadores(ArrayList<Gladiador> gladiadores, GridPane gridMapa){
         this.gladiadores = gladiadores;
@@ -117,9 +113,6 @@ public class Jugadores {
         }
         gridMapa.getChildren().removeAll(nodosAEliminar);
     }
-
-
-
 
 }
 
