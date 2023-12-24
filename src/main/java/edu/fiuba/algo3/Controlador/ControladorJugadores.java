@@ -111,6 +111,7 @@ public class ControladorJugadores {
 
         Scene sceneNombres = new Scene(gridNombres, 740, 580);
         stageNombres.setScene(sceneNombres);
+        stageNombres.setMaximized(true);
 
         stageNombres.show();
     }

@@ -110,7 +110,8 @@ public class PantallaMapa extends BorderPane {
             this.mostrarEnergia(vboxEnergia);
 
             if(tablero.gladiadorGanaPartida()){
-                VentanaMensajeParaGanador ventanaGanador = new VentanaMensajeParaGanador("Ganaste el juego", stage, stageMapa);
+                stageMapa.close();
+                VentanaMensajeParaGanador ventanaGanador = new VentanaMensajeParaGanador(tablero.obtenerGladiadorQueJugo().obtenerNombre()+" ganó la partida.", stage, stageMapa);
                 ventanaGanador.mostrar();
             }
         });

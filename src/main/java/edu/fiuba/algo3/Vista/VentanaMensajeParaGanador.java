@@ -17,6 +17,7 @@ public class VentanaMensajeParaGanador {
 
     public VentanaMensajeParaGanador(String mensaje, Stage stageAnterior,Stage stageMapa) {
         ventana = new Stage();
+
         StackPane panel = new StackPane();
 
         ventana.initModality(Modality.APPLICATION_MODAL);
@@ -50,6 +51,7 @@ public class VentanaMensajeParaGanador {
     }
 
     public void mostrar() {
+        ventana.setMaximized(true);
         ventana.showAndWait();
     }
 }

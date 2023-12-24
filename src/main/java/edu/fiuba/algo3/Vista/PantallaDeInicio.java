@@ -36,6 +36,7 @@ public class PantallaDeInicio {
 
         Scene scene = new Scene(grid, 740, 580);
         stage.setScene(scene);
+        stage.setMaximized(true);
 
         stage.show();
     }
