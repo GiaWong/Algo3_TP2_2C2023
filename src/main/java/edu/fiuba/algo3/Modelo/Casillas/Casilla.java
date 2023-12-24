@@ -18,7 +18,6 @@ public class Casilla {
         this.posicionEnX = posX;
         this.posicionEnY = posY;
         this.tipo = tipo;
-
     }
 
     public int obtenerposicionEnX() {
@@ -40,16 +39,16 @@ public class Casilla {
 
     public String obtenerPrimeraOcupacion(){
         if (unaOcupacion.getClass().getSimpleName().equals("Bacanal")){
-            return " Bacanal.";
+            return "El gladiador asiste a un Bacanal.";
         }
         else if(unaOcupacion.getClass().getSimpleName().equals("Lesion")){
-            return " Lesion.";
+            return "El gladiador sufre una Lesion.";
         }
         else if (unaOcupacion.getClass().getSimpleName().equals("FieraSalvaje")){
-            return " Fiera salvaje.";
+            return "El gladiador se enfrenta a una fiera salvaje.";
         }
         else {
-            return " Ninguno.";
+            return "Ninguno.";
         }
     }
 
@@ -57,21 +56,21 @@ public class Casilla {
 
 
         if (unaSegundaOcupacion.getClass().getSimpleName().equals("PremioEquipamiento") && unGladiador.obtenerCantidadDeEquipamiento() == 1) {
-            return "Casco.";
+            return "El gladiador recibe de equipamiento un Casco.";
         } else if (unaSegundaOcupacion.getClass().getSimpleName().equals("PremioEquipamiento") && unGladiador.obtenerCantidadDeEquipamiento() == 2) {
-            return " Armadura.";
+            return "El gladiador recibe de equipamiento una Armadura.";
         } else if (unaSegundaOcupacion.getClass().getSimpleName().equals("PremioEquipamiento") && unGladiador.obtenerCantidadDeEquipamiento() == 3) {
-            return " Escudo y espada.";
+            return "El gladiador recibe de equipamiento un Escudo y una espada.";
         } else if (unaSegundaOcupacion.getClass().getSimpleName().equals("PremioEquipamiento") && unGladiador.obtenerCantidadDeEquipamiento() == 4) {
-            return " Llave.";
+            return "El gladiador recibe una Llave.";
         }
 
         if(unaSegundaOcupacion.getClass().getSimpleName().equals("Comida")){
-            return " Comida.";
+            return "El gladiador recibe Comida.";
         }
 
         else{
-            return " Ninguno.";
+            return "Ninguno.";
         }
     }
 

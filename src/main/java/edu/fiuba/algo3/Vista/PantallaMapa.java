@@ -28,6 +28,7 @@ public class PantallaMapa extends BorderPane implements Observable {
     static Label labelPosicion;
     static Label labelPremio;
     static Label labelObstaculo;
+    private Label labelEspacio;
     private Tablero tablero;
 
 
@@ -38,7 +39,7 @@ public class PantallaMapa extends BorderPane implements Observable {
         labelPosicion = new Label("Bienvenidos a 'Gladiadores en fuga'.");
         labelPremio = new Label("");
         labelObstaculo = new Label("");
-
+        labelEspacio = new Label("");
     }
 
     public void mostrarMapa() {
@@ -61,17 +62,11 @@ public class PantallaMapa extends BorderPane implements Observable {
 
 
         VBox vboxEnergia = new VBox();
-        Font font = Font.font("Arial", FontWeight.BOLD, 14);
-        Label labelEnergia = new Label("ENERGÍA DE LOS GLADIADORES");
-        labelEnergia.setFont(font);
-        vboxEnergia.getChildren().add(labelEnergia);
-        for (Gladiador g : gladiadores) {
-            Label label = new Label(g.obtenerNombre() + ":" + g.obtenerEnergia());
-            vboxEnergia.getChildren().add(label);
-        }
+        this.mostrarEnergia(vboxEnergia);
+
         VBox vBoxEspacio = new VBox();
-        Label labelEspacio = new Label("       ");
-        vBoxEspacio.getChildren().addAll(labelEspacio);
+        Label labelEspacioH = new Label("       ");
+        vBoxEspacio.getChildren().addAll(labelEspacioH);
         HBox hboxPrincipal = new HBox(gridMapa, vBoxEspacio, vboxEnergia);
         hboxPrincipal.setAlignment(Pos.CENTER);
 
@@ -100,12 +95,13 @@ public class PantallaMapa extends BorderPane implements Observable {
             labelPosicion.setText("");
             labelPremio.setText("");
             labelObstaculo.setText("");
+            labelEspacio.setText("");
 
             tablero.avanzar();
             jugadores.actualizar();
             Casilla casilla = tablero.obtenerCasillaALaQueSeDesplazo();
             this.actualizarLabels(casilla);
-            this.actualizarEnergia(vboxEnergia);
+            this.mostrarEnergia(vboxEnergia);
 
             if(tablero.gladiadorGanaPartida()){
                 VentanaMensajeParaGanador ventanaGanador = new VentanaMensajeParaGanador("Ganaste el juego", stage, stageMapa);
@@ -113,19 +109,9 @@ public class PantallaMapa extends BorderPane implements Observable {
             }
         });
 
-        Button btnJugadorAleatorio = new Button("Elegir Jugador Aleatorio");
-        btnJugadorAleatorio.setOnAction(e -> {
-            btnAvanzar.setVisible(true);
-            btnJugadorAleatorio.setVisible(false);
-        });
 
-        btnAvanzar.setVisible(false);
-
-        vbox.getChildren().addAll(labelPosicion, labelObstaculo, labelPremio, hboxPrincipal, btnAvanzar , btnJugadorAleatorio);
+        vbox.getChildren().addAll(labelPosicion, labelObstaculo, labelPremio,labelEspacio, hboxPrincipal, btnAvanzar );
         vbox.setAlignment(Pos.CENTER);
-
-        gridMapa.add(btnJugadorAleatorio, 0, ancho + 3, largo, 1);
-        gridMapa.setAlignment(Pos.CENTER);
 
         gridMapa.add(btnAvanzar, 0, ancho + 1, largo, 1);
         gridMapa.setAlignment(Pos.CENTER);
@@ -165,15 +151,14 @@ public class PantallaMapa extends BorderPane implements Observable {
     }
 
 
-    public void actualizarEnergia(VBox vBox){
+    public void mostrarEnergia(VBox vBox){
         vBox.getChildren().clear();
-
         Font font = Font.font("Arial", FontWeight.BOLD, 14);
-        Label labelEnergia = new Label("ENERGÍA DE LOS GLADIADORES");
+        Label labelEnergia = new Label("ENERGÍA");
         labelEnergia.setFont(font);
         vBox.getChildren().add(labelEnergia);
         for (Gladiador g : gladiadores){
-            Label label = new Label(g.obtenerNombre()+":"+ g.obtenerEnergia());
+            Label label = new Label(g.obtenerNombre()+": "+ g.obtenerEnergia());
             vBox.getChildren().add(label);
         }
     }
@@ -181,9 +166,9 @@ public class PantallaMapa extends BorderPane implements Observable {
     public void actualizarLabels(Casilla casilla) {
         Gladiador ungladiador = tablero.obtenerGladiadorQueJugo();
         if (tablero.habilitadoAJugar()) {
-            labelPosicion.setText("Salio: " + tablero.obtenerCantidadAMoverse() + ". El jugador " + ungladiador.obtenerNombre() + " avanza a la casilla: (" + ungladiador.obtenerPosicionEnX() + "," + casilla.obtenerposicionEny() + ").");
-            labelPremio.setText("El gladiador obtiene el premio:" + casilla.obtenerSegundaOcupacion(ungladiador));
-            labelObstaculo.setText("El gladiador debe enfrentarse al obstaculo:" + casilla.obtenerPrimeraOcupacion());
+            labelPosicion.setText("Salio " + tablero.obtenerCantidadAMoverse() + ", el jugador " + ungladiador.obtenerNombre() + " avanza a la casilla: (" + ungladiador.obtenerPosicionEnX() + "," + casilla.obtenerposicionEny() + ").");
+            labelPremio.setText("Premio: " + casilla.obtenerSegundaOcupacion(ungladiador));
+            labelObstaculo.setText("Obstaculo: " + casilla.obtenerPrimeraOcupacion());
         }
         else{
             labelPosicion.setText("El jugador "+ungladiador.obtenerNombre()+ " perdió su turno.");
