@@ -12,7 +12,7 @@ import java.util.List;
 
 
 
-public class Jugadores implements Observer{
+public class Jugadores {
     private ArrayList<Gladiador> gladiadores;
     private GridPane gridMapa;
 
@@ -22,7 +22,6 @@ public class Jugadores implements Observer{
         this.gridMapa = gridMapa;
     }
 
-    @Override
     public void actualizar(){
 
         this.clear(gridMapa);
@@ -35,72 +34,72 @@ public class Jugadores implements Observer{
                 String imagePath = "file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiador1.png";
                 Image gladiadorImage = new Image(imagePath);
                 ImageView imageView = new ImageView(gladiadorImage);
-                imageView.setFitWidth(35);
-                imageView.setFitHeight(35);
+                imageView.setFitWidth(25);
+                imageView.setFitHeight(25);
                 GridPane.setRowIndex(imageView, g.obtenerPosicionEnY() - 1);
                 GridPane.setColumnIndex(imageView, g.obtenerPosicionEnX() - 1);
-                imageView.setTranslateX(15);
-                imageView.setTranslateY(-11);
+                imageView.setTranslateX(3);
+                imageView.setTranslateY(-15);
                 gridMapa.getChildren().add(imageView);
             }
             else if(contador == 2) {
                 String imagePath = "file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiador2.png";
                 Image gladiadorImage = new Image(imagePath);
                 ImageView imageView = new ImageView(gladiadorImage);
-                imageView.setFitWidth(35);
-                imageView.setFitHeight(35);
+                imageView.setFitWidth(25);
+                imageView.setFitHeight(25);
                 GridPane.setRowIndex(imageView, g.obtenerPosicionEnY() - 1);
                 GridPane.setColumnIndex(imageView, g.obtenerPosicionEnX() - 1);
-                imageView.setTranslateX(10);
-                imageView.setTranslateY(-11);
+                imageView.setTranslateX(23);
+                imageView.setTranslateY(-15);
                 gridMapa.getChildren().add(imageView);
             }
             else if(contador == 3) {
                 String imagePath = "file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiador3.png";
                 Image gladiadorImage = new Image(imagePath);
                 ImageView imageView = new ImageView(gladiadorImage);
-                imageView.setFitWidth(35);
-                imageView.setFitHeight(35);
+                imageView.setFitWidth(25);
+                imageView.setFitHeight(25);
                 GridPane.setRowIndex(imageView, g.obtenerPosicionEnY() - 1);
                 GridPane.setColumnIndex(imageView, g.obtenerPosicionEnX() - 1);
-                imageView.setTranslateX(7);
-                imageView.setTranslateY(0);
+                imageView.setTranslateX(3);
+                imageView.setTranslateY(-2);
                 gridMapa.getChildren().add(imageView);
             }
             else if(contador == 4) {
                 String imagePath = "file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiador4.png";
                 Image gladiadorImage = new Image(imagePath);
                 ImageView imageView = new ImageView(gladiadorImage);
-                imageView.setFitWidth(35);
-                imageView.setFitHeight(35);
+                imageView.setFitWidth(25);
+                imageView.setFitHeight(25);
                 GridPane.setRowIndex(imageView, g.obtenerPosicionEnY() - 1);
                 GridPane.setColumnIndex(imageView, g.obtenerPosicionEnX() - 1);
-                imageView.setTranslateX(10);
-                imageView.setTranslateY(0);
+                imageView.setTranslateX(23);
+                imageView.setTranslateY(-2);
                 gridMapa.getChildren().add(imageView);
             }
             else if(contador == 5) {
                 String imagePath = "file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiador5.png";
                 Image gladiadorImage = new Image(imagePath);
                 ImageView imageView = new ImageView(gladiadorImage);
-                imageView.setFitWidth(35);
-                imageView.setFitHeight(35);
+                imageView.setFitWidth(25);
+                imageView.setFitHeight(25);
                 GridPane.setRowIndex(imageView, g.obtenerPosicionEnY() - 1);
                 GridPane.setColumnIndex(imageView, g.obtenerPosicionEnX() - 1);
-                imageView.setTranslateX(7);
-                imageView.setTranslateY(5);
+                imageView.setTranslateX(3);
+                imageView.setTranslateY(12);
                 gridMapa.getChildren().add(imageView);
             }
             else if(contador == 6) {
                 String imagePath = "file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiador6.png";
                 Image gladiadorImage = new Image(imagePath);
                 ImageView imageView = new ImageView(gladiadorImage);
-                imageView.setFitWidth(35);
-                imageView.setFitHeight(35);
+                imageView.setFitWidth(25);
+                imageView.setFitHeight(25);
                 GridPane.setRowIndex(imageView, g.obtenerPosicionEnY() - 1);
                 GridPane.setColumnIndex(imageView, g.obtenerPosicionEnX() - 1);
-                imageView.setTranslateX(14);
-                imageView.setTranslateY(8);
+                imageView.setTranslateX(23);
+                imageView.setTranslateY(12);
                 gridMapa.getChildren().add(imageView);
             }
             contador++;

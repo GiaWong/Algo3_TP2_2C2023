@@ -20,8 +20,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 
-public class PantallaMapa extends BorderPane implements Observable {
-
+public class PantallaMapa extends BorderPane {
     private  Stage stage;
     private ArrayList<Gladiador> gladiadores;
     Canvas canvas;
@@ -30,7 +29,6 @@ public class PantallaMapa extends BorderPane implements Observable {
     static Label labelObstaculo;
     private Label labelEspacio;
     private Tablero tablero;
-
 
 
     public PantallaMapa(Stage stage, ArrayList<Gladiador> gladiadores) {
@@ -46,6 +44,7 @@ public class PantallaMapa extends BorderPane implements Observable {
 
         canvas = new Canvas(100, 100);
         this.tablero = this.crearTablero(gladiadores);
+
         Stage stageMapa = new Stage();
         stageMapa.setTitle("Gladiadores en fuga");
 
@@ -58,8 +57,7 @@ public class PantallaMapa extends BorderPane implements Observable {
         gridMapa.setVgap(5);
         int ancho = 10;
         int largo = 18;
-        double tamanoCasilla = 40.0;
-
+        int tamanoCasilla = 50;
 
         VBox vboxEnergia = new VBox();
         this.mostrarEnergia(vboxEnergia);
@@ -70,16 +68,15 @@ public class PantallaMapa extends BorderPane implements Observable {
         HBox hboxPrincipal = new HBox(gridMapa, vBoxEspacio, vboxEnergia);
         hboxPrincipal.setAlignment(Pos.CENTER);
 
-
         for (int i = ancho; i >= 1; i--) {
             for (int j = 1; j <= largo; j++) {
                 Label label = new Label();
                 label.setMinSize(tamanoCasilla, tamanoCasilla);
                 label.setStyle("-fx-border-color: black;");
                 if (j == 1 && i == 4 || j == 2 && i == 4 || j == 2 && i == 5 || j == 2 && i == 6 || j == 2 && i == 7 || j == 2 && i == 8 || j == 2 && i == 9 || j == 2 && i == 10 || j == 3 && i == 10 || j == 4 && i == 10 || j == 5 && i == 10 || j == 6 && i == 10 || j == 7 && i == 10 || j == 8 && i == 10 || j == 9 && i == 10 || j == 10 && i == 10 || j == 11 && i == 10 || j == 12 && i == 10 || j == 12 && i == 9 || j == 12 && i == 8 || j == 12 && i == 7 || j == 12 && i == 6 || j == 12 && i == 5 || j == 12 && i == 4 || j == 12 && i == 3 || j == 12 && i == 2 || j == 13 && i == 2 || j == 14 && i == 2 || j == 15 && i == 2 || j == 16 && i == 2 || j == 17 && i == 2 || j == 17 && i == 3 || j == 17 && i == 4 || j == 17 && i == 5 || j == 17 && i == 6 || j == 17 && i == 7 || j == 17 && i == 8 || j == 17 && i == 9 || j == 17 && i == 10) {
-                    setColor(label, Color.LIGHTGRAY);
+                    colorear(label, Color.LIGHTGRAY);
                 } else {
-                    setColor(label, Color.LIGHTGREEN);
+                    colorear(label, Color.LIGHTGREEN);
                 }
                 gridMapa.add(label, j - 1, ancho - i);
             }
@@ -88,15 +85,10 @@ public class PantallaMapa extends BorderPane implements Observable {
         Jugadores jugadores = new Jugadores(gladiadores, gridMapa);
         jugadores.actualizar();
 
-
         Button btnAvanzar = new Button("Tirar dado");
         btnAvanzar.setOnAction(e -> {
 
-            labelPosicion.setText("");
-            labelPremio.setText("");
-            labelObstaculo.setText("");
-            labelEspacio.setText("");
-
+            this.eliminarContenidoLabels();
             tablero.avanzar();
             jugadores.actualizar();
             Casilla casilla = tablero.obtenerCasillaALaQueSeDesplazo();
@@ -108,7 +100,6 @@ public class PantallaMapa extends BorderPane implements Observable {
                 ventanaGanador.mostrar();
             }
         });
-
 
         vbox.getChildren().addAll(labelPosicion, labelObstaculo, labelPremio,labelEspacio, hboxPrincipal, btnAvanzar );
         vbox.setAlignment(Pos.CENTER);
@@ -131,25 +122,20 @@ public class PantallaMapa extends BorderPane implements Observable {
 
 
     public Tablero crearTablero(ArrayList<Gladiador> gladiadores){
-
         Mapa mapa = new Mapa();
         mapa.mapaReal();
         Casilla[][] unMapa = mapa.obtenerMapa();
-
         Dado dado = new DadoReal();
         Tablero tablero = new Tablero(gladiadores.size(),new Turno(30),unMapa,mapa.obtenereCamino(),dado);
-
-
         for (Gladiador gladiador : gladiadores) {
             tablero.agregarJugador(gladiador);
         }
         return tablero;
     }
 
-    private void setColor(Region region, Color color) {
+    private void colorear(Region region, Color color) {
         region.setBackground(new javafx.scene.layout.Background(new javafx.scene.layout.BackgroundFill(color, null, null)));
     }
-
 
     public void mostrarEnergia(VBox vBox){
         vBox.getChildren().clear();
@@ -177,11 +163,11 @@ public class PantallaMapa extends BorderPane implements Observable {
         }
     }
 
-
-
-    @Override
-    public void agregarObservador(Observer o){    }
-    @Override
-    public void eliminarObservador(Observer o){}
+    public void eliminarContenidoLabels(){
+        labelPosicion.setText("");
+        labelPremio.setText("");
+        labelObstaculo.setText("");
+        labelEspacio.setText("");
+    }
 
 }
