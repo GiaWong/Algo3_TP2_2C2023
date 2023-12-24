@@ -8,6 +8,7 @@ import edu.fiuba.algo3.Modelo.Tablero;
 import edu.fiuba.algo3.Modelo.Turno;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
@@ -18,6 +19,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 
@@ -36,14 +38,15 @@ public class PantallaMapa extends BorderPane {
     public PantallaMapa(Stage stage, ArrayList<Gladiador> gladiadores) {
         this.stage = stage;
         this.gladiadores = gladiadores;
-        labelPosicion = new Label("Bienvenidos a 'Gladiadores en fuga'.");
+        labelPosicion = new Label("");
         labelPremio = new Label("");
-        labelObstaculo = new Label("");
+        labelObstaculo = new Label("Bienvenidos a 'Gladiadores en fuga'.");
         labelEspacio = new Label("");
     }
 
     public void mostrarMapa() {
 
+        labelObstaculo.setStyle("-fx-text-fill: black;-fx-background-color: white; -fx-font-size: 20;-fx-font-weight: bold;");
         canvas = new Canvas(100, 100);
         this.tablero = this.crearTablero(gladiadores);
 
@@ -53,7 +56,14 @@ public class PantallaMapa extends BorderPane {
         VBox vbox = new VBox();
         vbox.setAlignment(Pos.CENTER);
 
-        Image imagenDeFondo = new Image("file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiadores_fondo.png");
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
+        StackPane stackPane = new StackPane();
+        Image imagenDeFondo = new Image("file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiadores_fondo.jpg");
+        ImageView imageView = new ImageView(imagenDeFondo);
+        imageView.setFitWidth(bounds.getWidth());
+        imageView.setFitHeight(bounds.getHeight());
+
 
         GridPane gridMapa = new GridPane();
         gridMapa.setPadding(new Insets(10));
@@ -114,7 +124,10 @@ public class PantallaMapa extends BorderPane {
         double ventanaAncho = largo * tamanoCasilla + 15;
         double ventanaAlto = ancho * tamanoCasilla + 15;
 
-        Scene sceneMapa = new Scene(vbox, ventanaAncho, ventanaAlto);
+        stackPane.getChildren().add(imageView);
+        stackPane.getChildren().add(vbox);
+
+        Scene sceneMapa = new Scene(stackPane, ventanaAncho, ventanaAlto);
 
         stageMapa.setScene(sceneMapa);
         stageMapa.setMaximized(true);
@@ -143,12 +156,12 @@ public class PantallaMapa extends BorderPane {
 
     public void mostrarEnergia(VBox vBox){
         vBox.getChildren().clear();
-        Font font = Font.font("Arial", FontWeight.BOLD, 14);
         Label labelEnergia = new Label("ENERGÍA");
-        labelEnergia.setFont(font);
+        labelEnergia.setStyle("-fx-text-fill: black;-fx-background-color: white; -fx-font-size: 20;-fx-font-weight: bold;-fx-pref-width: 110");
         vBox.getChildren().add(labelEnergia);
         for (Gladiador g : gladiadores){
             Label label = new Label(g.obtenerNombre()+": "+ g.obtenerEnergia());
+            label.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-font-size: 10; -fx-font-weight: bold; -fx-pref-width: 110;");
             vBox.getChildren().add(label);
         }
     }
@@ -157,13 +170,17 @@ public class PantallaMapa extends BorderPane {
         Gladiador ungladiador = tablero.obtenerGladiadorQueJugo();
         if (tablero.habilitadoAJugar()) {
             labelPosicion.setText("Salio " + tablero.obtenerCantidadAMoverse() + ", el jugador " + ungladiador.obtenerNombre() + " avanza a la casilla: (" + ungladiador.obtenerPosicionEnX() + "," + casilla.obtenerposicionEny() + ").");
+            labelPosicion.setStyle("-fx-text-fill: black;-fx-background-color: white; -fx-font-size: 15;-fx-font-weight: bold;");
             labelPremio.setText("Premio: " + casilla.obtenerSegundaOcupacion(ungladiador));
+            labelPremio.setStyle("-fx-text-fill: green;-fx-background-color: white; -fx-font-size: 15;-fx-font-weight: bold;");
             labelObstaculo.setText("Obstaculo: " + casilla.obtenerPrimeraOcupacion());
+            labelObstaculo.setStyle("-fx-text-fill: red;-fx-background-color: white; -fx-font-size: 15;-fx-font-weight: bold;");
         }
         else{
-            labelPosicion.setText("El jugador "+ungladiador.obtenerNombre()+ " perdió su turno.");
+            labelObstaculo.setText("El jugador "+ungladiador.obtenerNombre()+ " perdió su turno.");
+            labelObstaculo.setStyle("-fx-text-fill: red;-fx-background-color: white; -fx-font-size: 15;-fx-font-weight: bold;");
             labelPremio.setText("");
-            labelObstaculo.setText("");
+            labelPosicion.setText("");
         }
     }
 

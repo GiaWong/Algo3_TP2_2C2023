@@ -116,7 +116,6 @@ public class Jugadores {
             }
         }
         gridMapa.getChildren().removeAll(nodosAEliminar);
-        gridMapa.setStyle("-fx-background-color: black;");
     }
 
 

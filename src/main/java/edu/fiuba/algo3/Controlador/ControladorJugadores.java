@@ -57,7 +57,7 @@ public class ControladorJugadores {
 
     private boolean validarNombres(ArrayList<String> nombres) {
         for (String nombre : nombres) {
-            if (nombre.length() < 4) {
+            if (nombre.length() < 3 || nombre.length() > 10) {
                 return false;
             }
         }
@@ -103,7 +103,7 @@ public class ControladorJugadores {
                 PantallaMapa mapa = new PantallaMapa(stage, gladiadores);
                 mapa.mostrarMapa();
             } else {
-                mostrarAlertaCantidadJugadores("Nombre inválido", "Los nombres deben tener al menos 4 caracteres.");
+                mostrarAlertaCantidadJugadores("Nombre inválido", "Los nombres deben tener entre 3 a 10 caracteres.");
             }
         });
 
