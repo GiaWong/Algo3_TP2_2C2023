@@ -24,7 +24,7 @@ public class Jugadores {
 
     public void actualizar(){
 
-        this.clear(gridMapa);
+        this.limpiarGrilla(gridMapa);
         int contador = 1;
 
         for (Gladiador g : gladiadores){
@@ -108,16 +108,14 @@ public class Jugadores {
 
     }
 
-    private void clear(GridPane gridMapa) {
+    private void limpiarGrilla(GridPane gridMapa) {
         List<Node> nodosAEliminar = new ArrayList<>();
-
         for (Node nodo : gridMapa.getChildren()) {
             if (nodo instanceof ImageView) {
                 nodosAEliminar.add(nodo);
             }
         }
         gridMapa.getChildren().removeAll(nodosAEliminar);
-        // Establecer el fondo negro
         gridMapa.setStyle("-fx-background-color: black;");
     }
 

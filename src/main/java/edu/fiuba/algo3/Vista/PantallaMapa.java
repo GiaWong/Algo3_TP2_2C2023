@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -50,6 +52,8 @@ public class PantallaMapa extends BorderPane {
 
         VBox vbox = new VBox();
         vbox.setAlignment(Pos.CENTER);
+
+        Image imagenDeFondo = new Image("file:src/main/java/edu/fiuba/algo3/Vista/imagenes/Gladiadores_fondo.png");
 
         GridPane gridMapa = new GridPane();
         gridMapa.setPadding(new Insets(10));
